@@ -1,6 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "prettier"],
+  "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "prettier", "storybook/recommended"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },

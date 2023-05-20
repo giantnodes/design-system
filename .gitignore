@@ -11,6 +11,9 @@ coverage
 # typescript
 dist
 
+# storybook
+.storybook/tailwind.css
+
 # misc
 .DS_Store
 *.pem
