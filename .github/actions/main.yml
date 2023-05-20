@@ -1,0 +1,95 @@
+name: main
+
+on:
+  push:
+    branches: [main, next]
+  pull_request:
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+
+      - name: install
+        run: pnpm install
+
+      - name: type check
+        run: pnpm run lint
+
+  typescript:
+    name: type check
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+
+      - name: install
+        run: pnpm install
+
+      - name: type check
+        run: pnpm run typecheck
+
+  build:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+
+      - name: install
+        run: pnpm install
+
+      - name: test
+        run: pnpm run build
+
+  test:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+
+      - name: install
+        run: pnpm install
+
+      - name: test
+        run: pnpm run test
