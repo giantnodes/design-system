@@ -1,5 +1,7 @@
 dist
 
+!.storybook
+
 jest.config.ts
 tsup.config.ts
 vite.config.ts
