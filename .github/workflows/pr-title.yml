@@ -10,8 +10,8 @@ on:
 
 jobs:
   main:
+    name: 🏷️ PR Title
     runs-on: ubuntu-latest
-
     steps:
       - uses: amannn/action-semantic-pull-request@v5
         env:
