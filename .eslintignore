@@ -3,7 +3,7 @@ dist
 !.storybook
 
 jest.config.ts
-postcss.config.ts
+postcss.config.cjs
 tailwind.config.ts
 tsup.config.ts
 vite.config.ts
