@@ -55,7 +55,7 @@ const navbar = tv({
     },
   },
   defaultVariants: {
-    kind: 'sticky',
+    position: 'sticky',
     size: 'md',
   },
 })
