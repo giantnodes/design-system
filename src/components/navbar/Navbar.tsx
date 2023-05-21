@@ -10,7 +10,7 @@ import { useNavbar } from '@/components/navbar/use-navbar.hook'
 
 export type NavbarProps = Component<'nav'> & UseNavbarProps
 
-const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>((props, ref) => {
+const Navbar = React.forwardRef<HTMLElement, NavbarProps>((props, ref) => {
   const { as, children, className, ...rest } = props
   const { slots } = useNavbar(props)
 
