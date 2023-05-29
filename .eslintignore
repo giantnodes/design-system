@@ -1,6 +1,6 @@
 dist
 
-!.storybook
+!.storybook/*
 
 jest.config.ts
 postcss.config.cjs
