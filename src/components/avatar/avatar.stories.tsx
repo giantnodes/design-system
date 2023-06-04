@@ -8,16 +8,10 @@ const Component: Meta<typeof Avatar> = {
   title: 'Components/Avatar',
   component: Avatar,
   argTypes: {
-    color: {
-      control: {
-        type: 'select',
-        options: ['neutral', 'primary', 'secondary', 'success', 'warning', 'danger'],
-      },
-    },
     radius: {
       control: {
         type: 'select',
-        options: ['none', 'base', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full'],
+        options: ['none', 'sm', 'md', 'lg', 'xl', 'full'],
       },
     },
     size: {
@@ -42,47 +36,66 @@ Default.args = {
   ...defaultProps,
 }
 
-export const Group: StoryFn = (args: AvatarGroupProps) => (
+export const UsingGroup: StoryFn = (args: AvatarGroupProps) => (
   <Avatar.Group {...args}>
     <Avatar>
       <Avatar.Image src="https://i.pravatar.cc/150?img=1" alt="avatar image 1" />
+      <Avatar.Notification />
     </Avatar>
     <Avatar>
-      <Avatar.Image src="https://i.pravatar.cc/150?img=2" alt="avatar image 2" />
+      <Avatar.Image src="https://i.pravatar.cc/150?img=1" alt="avatar image 2" />
+      <Avatar.Notification />
     </Avatar>
     <Avatar>
-      <Avatar.Image src="https://i.pravatar.cc/150?img=3" alt="avatar image 3" />
+      <Avatar.Image src="https://i.pravatar.cc/150?img=1" alt="avatar image 3" />
+      <Avatar.Notification />
     </Avatar>
     <Avatar>
-      <Avatar.Image src="https://i.pravatar.cc/150?img=4" alt="avatar image 4" />
+      <Avatar.Image src="https://i.pravatar.cc/150?img=1" alt="avatar image 4" />
+      <Avatar.Notification />
     </Avatar>
     <Avatar>
-      <Avatar.Image src="https://i.pravatar.cc/150?img=5" alt="avatar image 5" />
+      <Avatar.Image src="https://i.pravatar.cc/150?img=1" alt="avatar image 5" />
+      <Avatar.Notification />
     </Avatar>
   </Avatar.Group>
 )
-Group.args = {
+UsingGroup.args = {
+  ...defaultProps,
+}
+
+export const UsingText: StoryFn = (args: AvatarProps) => (
+  <Avatar {...args} className="bg-zinc-100">
+    <p>JP</p>
+  </Avatar>
+)
+UsingText.args = {
   ...defaultProps,
 }
 
 export const UsingIcon: StoryFn = (args: AvatarProps) => (
-  <Avatar {...args}>
-    <Avatar.Icon icon={<p>Icon</p>} />
+  <Avatar {...args} className="bg-zinc-100">
+    <Avatar.Icon
+      icon={
+        <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      }
+    />
   </Avatar>
 )
 UsingIcon.args = {
   ...defaultProps,
 }
 
-export const UsingBorder: StoryFn = (args: AvatarProps) => (
+export const UsingNotification: StoryFn = (args: AvatarProps) => (
   <Avatar {...args}>
-    <Avatar.Image src="https://i.pravatar.cc/150?img=1" alt="avatar image" />
+    <Avatar.Image src="https://i.pravatar.cc/150?img=1" alt="avatar image 1" />
+    <Avatar.Notification />
   </Avatar>
 )
-UsingBorder.args = {
+UsingNotification.args = {
   ...defaultProps,
-  bordered: true,
-  color: 'primary',
 }
 
 export default Component

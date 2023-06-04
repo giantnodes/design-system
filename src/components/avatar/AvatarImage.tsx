@@ -5,11 +5,7 @@ import React from 'react'
 
 import { useAvatar } from '@/components/avatar/use-avatar.hook'
 
-export type AvatarImageProps = Component<'img'> &
-  UseAvatarProps & {
-    src: string
-    alt: string
-  }
+export type AvatarImageProps = Component<'img'> & UseAvatarProps
 
 const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
   const { as, children, className, src, alt, ...rest } = props

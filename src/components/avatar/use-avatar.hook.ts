@@ -7,18 +7,16 @@ import avatar from '@/components/avatar/Avatar.styles'
 export type UseAvatarProps = AvatarVariantProps
 
 export const useAvatar = (props: UseAvatarProps) => {
-  const { color, radius, size, bordered, zoomed } = props
+  const { radius, size, zoomed } = props
 
   const slots = React.useMemo(
     () =>
       avatar({
-        color,
         radius,
         size,
-        bordered,
         zoomed,
       }),
-    [color, radius, size, bordered, zoomed]
+    [radius, size, zoomed]
   )
 
   return {
