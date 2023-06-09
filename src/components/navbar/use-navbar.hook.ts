@@ -7,7 +7,7 @@ import navbar from '@/components/navbar/Navbar.styles'
 export type UseNavbarProps = NavbarVariantProps
 
 export const useNavbar = (props: UseNavbarProps) => {
-  const { blurred, position, size } = props
+  const { blurred, position, size, variant } = props
 
   const slots = React.useMemo(
     () =>
@@ -15,11 +15,16 @@ export const useNavbar = (props: UseNavbarProps) => {
         blurred,
         position,
         size,
+        variant,
       }),
-    [blurred, position, size]
+    [blurred, position, size, variant]
   )
 
   return {
+    blurred,
+    position,
+    size,
+    variant,
     slots,
   }
 }

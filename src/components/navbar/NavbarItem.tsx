@@ -3,13 +3,13 @@ import type { Component } from '@/utils/types'
 
 import React from 'react'
 
-import { useNavbar } from '@/components/navbar/use-navbar.hook'
+import { useNavbarContext } from '@/components/navbar/use-navbar-context.hook'
 
-export type NavbarItemProps = Component<'li'> & UseNavbarProps
+export type NavbarItemProps = Component<'li'> & Pick<UseNavbarProps, 'variant'>
 
 const NavbarItem = React.forwardRef<HTMLLIElement, NavbarItemProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavbar(props)
+  const { slots } = useNavbarContext()
 
   const Component = as || 'li'
 

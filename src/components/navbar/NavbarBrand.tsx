@@ -1,15 +1,14 @@
-import type { UseNavbarProps } from '@/components/navbar/use-navbar.hook'
 import type { Component } from '@/utils/types'
 
 import React from 'react'
 
-import { useNavbar } from '@/components/navbar/use-navbar.hook'
+import { useNavbarContext } from '@/components/navbar/use-navbar-context.hook'
 
-export type NavbarBrandProps = Component<'div'> & UseNavbarProps
+export type NavbarBrandProps = Component<'div'>
 
 const NavbarBrand = React.forwardRef<HTMLDivElement, NavbarBrandProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavbar(props)
+  const { slots } = useNavbarContext()
 
   const Component = as || 'div'
 
