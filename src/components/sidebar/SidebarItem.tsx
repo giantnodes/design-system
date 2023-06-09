@@ -1,15 +1,14 @@
-import type { UseSidebarProps } from '@/components/sidebar/use-sidebar.hook'
 import type { Component } from '@/utils/types'
 
 import React from 'react'
 
-import { useSidebar } from '@/components/sidebar/use-sidebar.hook'
+import { useSidebarContext } from '@/components/sidebar/use-sidebar-context.hook'
 
-export type SidebarItemProps = Component<'li'> & UseSidebarProps
+export type SidebarItemProps = Component<'li'>
 
 const SidebarItem = React.forwardRef<HTMLLIElement, SidebarItemProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useSidebar(props)
+  const { slots } = useSidebarContext()
 
   const Component = as || 'li'
 

@@ -8,12 +8,6 @@ const Component: Meta<typeof Sidebar> = {
   title: 'Components/Sidebar',
   component: Sidebar,
   argTypes: {
-    align: {
-      control: {
-        type: 'select',
-        options: ['left', 'center', 'right'],
-      },
-    },
     position: {
       control: {
         type: 'select',
@@ -23,7 +17,7 @@ const Component: Meta<typeof Sidebar> = {
     size: {
       control: {
         type: 'select',
-        options: ['xs', 'sm', 'md', 'lg', 'xl'],
+        options: ['sm', 'md', 'lg'],
       },
     },
   },
@@ -51,81 +45,21 @@ export const Default: StoryFn = (args: SidebarProps) => (
     </Sidebar.Brand>
 
     <Sidebar.Content>
-      <Sidebar.Item>Dashboard</Sidebar.Item>
-      <Sidebar.Item>About</Sidebar.Item>
-      <Sidebar.Item>Contact</Sidebar.Item>
-    </Sidebar.Content>
+      <Sidebar.Segment>
+        <Sidebar.Item>Dashboard</Sidebar.Item>
+        <Sidebar.Item>About</Sidebar.Item>
+        <Sidebar.Item>Contact</Sidebar.Item>
+      </Sidebar.Segment>
 
-    <Sidebar.Content>
-      <Sidebar.Item>Login</Sidebar.Item>
-      <Sidebar.Item>Logout</Sidebar.Item>
+      <Sidebar.Segment>
+        <Sidebar.Item>Login</Sidebar.Item>
+        <Sidebar.Item>Logout</Sidebar.Item>
+      </Sidebar.Segment>
     </Sidebar.Content>
   </Sidebar>
 )
 
 Default.args = {
-  ...defaultProps,
-}
-
-export const Icons: StoryFn = (args: SidebarProps) => (
-  <Sidebar {...args}>
-    <Sidebar.Brand>
-      <AcmeLogo />
-    </Sidebar.Brand>
-
-    <Sidebar.Content>
-      <Sidebar.Item>
-        <AcmeLogo />
-      </Sidebar.Item>
-      <Sidebar.Item>
-        <AcmeLogo />
-      </Sidebar.Item>
-      <Sidebar.Item>
-        <AcmeLogo />
-      </Sidebar.Item>
-    </Sidebar.Content>
-
-    <Sidebar.Content>
-      <Sidebar.Item>
-        <AcmeLogo />
-      </Sidebar.Item>
-      <Sidebar.Item>
-        <AcmeLogo />
-      </Sidebar.Item>
-    </Sidebar.Content>
-  </Sidebar>
-)
-
-Icons.args = {
-  ...defaultProps,
-}
-
-export const Mixed: StoryFn = (args: SidebarProps) => (
-  <Sidebar {...args}>
-    <Sidebar.Brand>
-      <AcmeLogo />
-    </Sidebar.Brand>
-
-    <Sidebar.Content>
-      <Sidebar.Item>
-        <AcmeLogo /> Dashboard
-      </Sidebar.Item>
-      <Sidebar.Item>
-        <AcmeLogo /> About
-      </Sidebar.Item>
-      <Sidebar.Item>
-        <AcmeLogo /> Contact
-      </Sidebar.Item>
-    </Sidebar.Content>
-
-    <Sidebar.Content>
-      <Sidebar.Item>Settings</Sidebar.Item>
-      <Sidebar.Item>Logout</Sidebar.Item>
-    </Sidebar.Content>
-  </Sidebar>
-)
-
-Mixed.args = {
   ...defaultProps,
 }
 

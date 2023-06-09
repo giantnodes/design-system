@@ -1,17 +1,16 @@
-import type { UseSidebarProps } from '@/components/sidebar/use-sidebar.hook'
 import type { Component } from '@/utils/types'
 
 import React from 'react'
 
-import { useSidebar } from '@/components/sidebar/use-sidebar.hook'
+import { useSidebarContext } from '@/components/sidebar/use-sidebar-context.hook'
 
-export type SidebarContentProps = Component<'ul'> & UseSidebarProps
+export type SidebarContentProps = Component<'div'>
 
-const SidebarContent = React.forwardRef<HTMLUListElement, SidebarContentProps>((props, ref) => {
+const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useSidebar(props)
+  const { slots } = useSidebarContext()
 
-  const Component = as || 'ul'
+  const Component = as || 'div'
 
   const getSidebarContentProps = React.useCallback(
     () => ({

@@ -4,58 +4,44 @@ import { tv } from 'tailwind-variants'
 
 const sidebar = tv({
   slots: {
-    base: ['relative', 'flex', 'flex-col'],
+    base: ['relative', 'flex', 'flex-col', 'h-full', 'z-50'],
     container: [
-      'relative',
       'flex',
+      'flex-grow',
       'flex-col',
-      'flex-nowrap',
-      'justify-between',
-      'items-center',
-      'gap-12',
-      'h-full',
-      'overflow-hidden',
-      'px-2',
-      'py-6',
-      'bg-white',
+      'overflow-y-auto',
+      'gap-y-6',
+      'p-4',
       'border-r',
       'border-gray-200',
+      'bg-white',
       'dark:bg-bunker',
       'dark:border-mineshaft-500',
     ],
-    brand: ['flex', 'flex-nowrap', 'flex-col', 'justify-start', 'items-center', 'shrink-0', 'h-full'],
-    content: ['relative', 'flex', 'flex-col', 'w-full', 'gap-2'],
+    brand: ['flex', 'flex-shrink-0', 'items-center'],
+    content: ['flex', 'flex-grow', 'flex-col', 'gap-y-6'],
+    segment: ['flex', 'flex-col', 'w-full', 'gap-y-1'],
     item: [
+      'group',
       'flex',
-      'flex-row',
       'items-center',
-      'gap-4',
-      'rounded',
+      'gap-x-3',
       'cursor-pointer',
-      'px-2',
-      'h-10',
-      'lg:text-sm',
-      'lg:leading-6',
-      'transition-all',
+      'p-2',
+      'rounded-md',
+      'text-sm',
+      'font-medium',
+      'leading-6',
+      'text-gray-900',
       'duration-50',
-      'dark:text-bunker-100',
+      'transition-all',
       'hover:bg-gray-100',
-      'dark:hover:bg-bunker-700',
-      'hover:!text-primary',
+      'dark:text-mineshaft-300',
+      'dark:hover:text-mineshaft-100',
+      'dark:hover:bg-bunker-800',
     ],
   },
   variants: {
-    align: {
-      left: {
-        item: 'justify-start',
-      },
-      center: {
-        item: 'justify-center',
-      },
-      right: {
-        item: 'justify-end',
-      },
-    },
     position: {
       sticky: 'top-0 right-0 left-0 sticky',
       static: 'static',
@@ -65,12 +51,8 @@ const sidebar = tv({
       },
     },
     size: {
-      xs: {
-        container: 'w-16',
-        item: 'px-0',
-      },
       sm: {
-        container: 'w-32',
+        container: 'w-20',
       },
       md: {
         container: 'w-64',
@@ -78,13 +60,9 @@ const sidebar = tv({
       lg: {
         container: 'w-72',
       },
-      xl: {
-        container: 'w-96',
-      },
     },
   },
   defaultVariants: {
-    align: 'left',
     position: 'sticky',
     size: 'md',
   },

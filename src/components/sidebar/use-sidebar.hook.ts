@@ -7,17 +7,9 @@ import sidebar from '@/components/sidebar/Sidebar.styles'
 export type UseSidebarProps = SidebarVariantProps
 
 export const useSidebar = (props: UseSidebarProps) => {
-  const { align, position, size } = props
+  const { position, size } = props
 
-  const slots = React.useMemo(
-    () =>
-      sidebar({
-        align,
-        position,
-        size,
-      }),
-    [align, position, size]
-  )
+  const slots = React.useMemo(() => sidebar({ position, size }), [position, size])
 
   return {
     slots,
