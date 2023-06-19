@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 
 export const avatar = tv({
   slots: {
-    group: ['isolate', 'flex', '-space-x-2', 'overflow-hidden'],
+    group: ['isolate', 'flex', '-space-x-2'],
     base: [
       'relative',
       'inline-flex',
