@@ -73,6 +73,9 @@ importers:
 
   packages/react:
     dependencies:
+      '@ariakit/react':
+        specifier: ^0.2.9
+        version: 0.2.9(react-dom@18.2.0)(react@18.2.0)
       '@giantnodes/design-system':
         specifier: workspace:*
         version: link:../core
@@ -157,6 +160,34 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
+
+  /@ariakit/core@0.2.5:
+    resolution: {integrity: sha512-vQ1T5+trGEygRqbcmN/NGHNqpVSYUFdPAkUeOe7TZC0TdfudJm+xIP4oy2gFI0DGxfbjaK7nz2I15BkQA25kfQ==}
+    dev: false
+
+  /@ariakit/react-core@0.2.9(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-h+SYkmz+RJZHoVSBKJNYtToy147ykI51h61DI+4tuMD8IS0RhRH4i7u8r2m2uHX6cyU3i5V2bYnmcEhf8wQeYQ==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@ariakit/core': 0.2.5
+      '@floating-ui/dom': 1.4.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@ariakit/react@0.2.9(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-RXzvmz1WrDzDh7TBNK+0VUgxl7PAk23T1He/TxiZOIm//1aL0N58sREiVa7wYD6QCvQk1CUy+C/bptg9L5TdNQ==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@ariakit/react-core': 0.2.9(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@aw-web-design/x-default-browser@1.4.88:
     resolution: {integrity: sha512-AkEmF0wcwYC2QkhK703Y83fxWARttIWXDmQN8+cof8FmFZ5BRhnNXGymeb1S73bOCLfWjYELxtujL56idCN/XA==}
@@ -2960,6 +2991,16 @@ packages:
   /@fal-works/esbuild-plugin-global-externals@2.1.2:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
+
+  /@floating-ui/core@1.3.1:
+    resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
+    dev: false
+
+  /@floating-ui/dom@1.4.0:
+    resolution: {integrity: sha512-b4F0iWffLiqb/TpP2PWVOixrZqE6ni+6VT64AmFH7sJIF3SFPLbe6/h3jQ5Cwffs+HaC9A8V0TQzCPBwVvziIA==}
+    dependencies:
+      '@floating-ui/core': 1.3.1
+    dev: false
 
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
@@ -8343,7 +8384,6 @@ packages:
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-    dev: true
 
   /js-yaml@3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
@@ -8679,7 +8719,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: true
 
   /lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -9755,7 +9794,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: true
 
   /react-element-to-jsx-string@15.0.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-UDg4lXB6BzlobN60P8fHWVPX3Kyw8ORrTeBtClmIlGdkOOE+GYQSFvmEU5iLLpwp/6v42DINwNcwOhOLfQ//FQ==}
@@ -9800,7 +9838,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -10140,7 +10177,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /schema-utils@3.3.0:
     resolution: {integrity: sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg==}
@@ -11186,6 +11222,14 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
+
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
