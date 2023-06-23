@@ -1,14 +1,13 @@
 import type { UseNavigationProps } from '@/components/navigation/use-navigation.hook'
 import type { Component } from '@/utilities/types'
 
-import { Focusable } from '@ariakit/react'
 import React from 'react'
 
 import { useNavigationContext } from '@/components/navigation/use-navigation-context.hook'
 
-export type NavigationItemProps = Component<typeof Focusable> & UseNavigationProps
+export type NavigationItemProps = Component<'li'> & UseNavigationProps
 
-const NavigationItem = React.forwardRef<typeof Focusable, NavigationItemProps>((props, ref) => {
+const NavigationItem = React.forwardRef<HTMLLIElement, NavigationItemProps>((props, ref) => {
   const { as, children, className, ...rest } = props
   const { slots } = useNavigationContext()
 
@@ -26,9 +25,9 @@ const NavigationItem = React.forwardRef<typeof Focusable, NavigationItemProps>((
   )
 
   return (
-    <Focusable as={Component} role="listitem" {...getProps()}>
+    <Component role="listitem" {...getProps()}>
       {children}
-    </Focusable>
+    </Component>
   )
 })
 

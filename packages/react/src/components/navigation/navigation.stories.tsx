@@ -72,7 +72,7 @@ export const Horizontal: StoryFn = (args: NavigationProps) => (
       </Navigation.Item>
     </Navigation.Segment>
 
-    <Navigation.Viewport />
+    <Navigation.Portal />
   </Navigation>
 )
 
@@ -107,7 +107,7 @@ export const Vertical: StoryFn = (args: NavigationProps) => (
       </Navigation.Item>
     </Navigation.Segment>
 
-    <Navigation.Viewport />
+    <Navigation.Portal />
   </Navigation>
 )
 

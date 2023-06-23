@@ -20,7 +20,7 @@ const Navigation = React.forwardRef<HTMLElement, NavigationProps>((props, ref) =
   const context = useNavigation(props)
   const Component = as || 'nav'
 
-  const getNavigationProps = React.useCallback(
+  const getProps = React.useCallback(
     () => ({
       ref,
       className: context.slots.base({
@@ -33,7 +33,7 @@ const Navigation = React.forwardRef<HTMLElement, NavigationProps>((props, ref) =
 
   return (
     <NavigationProvider value={context}>
-      <Component {...getNavigationProps()}>
+      <Component {...getProps()}>
         <div className={context.slots.wrapper()}>{children}</div>
       </Component>
     </NavigationProvider>

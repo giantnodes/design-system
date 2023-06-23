@@ -1,14 +1,13 @@
 import type { UseNavigationProps } from '@/components/navigation/use-navigation.hook'
 import type { Component } from '@/utilities/types'
 
-import { Portal } from '@ariakit/react'
 import React from 'react'
 
 import { useNavigationContext } from '@/components/navigation/use-navigation-context.hook'
 
-export type NavigationPortalProps = Component<typeof Portal> & UseNavigationProps
+export type NavigationPortalProps = Component<'div'> & UseNavigationProps
 
-const NavigationPortal = React.forwardRef<typeof Portal, NavigationPortalProps>((props, ref) => {
+const NavigationPortal = React.forwardRef<HTMLDivElement, NavigationPortalProps>((props, ref) => {
   const { as, children, className, ...rest } = props
   const { slots } = useNavigationContext()
 
@@ -25,11 +24,7 @@ const NavigationPortal = React.forwardRef<typeof Portal, NavigationPortalProps>(
     [ref, slots, className, rest]
   )
 
-  return (
-    <Portal as={Component} {...getProps()}>
-      {children}
-    </Portal>
-  )
+  return <Component {...getProps()}>{children}</Component>
 })
 
 NavigationPortal.displayName = 'Navigation.Portal'
