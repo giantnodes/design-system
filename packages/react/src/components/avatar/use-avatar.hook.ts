@@ -1,7 +1,7 @@
 import type { AvatarVariantProps } from '@giantnodes/design-system'
 
-import React from 'react'
 import { avatar } from '@giantnodes/design-system'
+import React from 'react'
 
 export type UseAvatarProps = AvatarVariantProps
 

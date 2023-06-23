@@ -1,3 +1,5 @@
+'use client'
+
 import type { UseNavigationReturn } from '@/components/navigation/use-navigation.hook'
 
 import { createContext } from '@/utilities/context'
