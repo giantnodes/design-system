@@ -8,7 +8,8 @@ export const navigation = tv({
     wrapper: [
       'relative',
       'flex',
-      'gap-6',
+      'gap-4',
+      'md:gap-6',
       'z-50',
       'bg-white',
       'dark:bg-bunker',
@@ -18,8 +19,18 @@ export const navigation = tv({
     ],
     brand: ['flex', 'flex-nowrap', 'flex-row', 'justify-center', 'shrink-0'],
     segment: ['list-none', 'flex', 'gap-1'],
-    item: ['p-2', 'text-sm', 'font-medium', 'dark:text-mineshaft-300', 'dark:hover:text-mineshaft-100'],
-    link: ['group', 'select-none', 'flex', 'items-center', 'gap-x-3'],
+    item: [],
+    link: [
+      'flex',
+      'items-center',
+      'gap-x-3',
+      'group',
+      'p-2',
+      'font-medium',
+      'text-sm',
+      'dark:text-mineshaft-300',
+      'dark:hover:text-mineshaft-100',
+    ],
     content: [],
     trigger: ['group', 'select-none'],
     viewport: [],
@@ -31,8 +42,8 @@ export const navigation = tv({
         segment: ['flex-col'],
       },
       horizontal: {
-        wrapper: ['w-full', 'flex-row', 'items-center', 'px-6', 'border-b'],
-        item: ['px-6'],
+        wrapper: ['w-full', 'flex-row', 'items-center', 'px-4', 'md:px-6', 'border-b'],
+        link: ['px-6'],
       },
     },
     position: {
@@ -48,13 +59,15 @@ export const navigation = tv({
       },
     },
     size: {
-      sm: {},
+      sm: {
+        segment: ['items-center'],
+      },
       md: {},
       lg: {},
     },
     variant: {
       highlight: {
-        item: ['rounded-md', 'hover:bg-gray-100', 'dark:hover:bg-bunker-800'],
+        link: ['rounded-md', 'hover:bg-gray-100', 'dark:hover:bg-bunker-800'],
       },
     },
   },
