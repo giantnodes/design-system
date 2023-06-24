@@ -19,7 +19,7 @@ export const navigation = tv({
     ],
     brand: ['flex', 'flex-nowrap', 'flex-row', 'justify-center', 'shrink-0'],
     segment: ['list-none', 'flex', 'gap-1'],
-    item: [],
+    item: ['select-none'],
     link: [
       'flex',
       'items-center',
@@ -32,7 +32,7 @@ export const navigation = tv({
       'dark:hover:text-mineshaft-100',
     ],
     content: [],
-    trigger: ['group', 'select-none'],
+    trigger: ['flex', 'items-center'],
     viewport: [],
   },
   variants: {
