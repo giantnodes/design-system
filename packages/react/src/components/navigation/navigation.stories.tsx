@@ -87,6 +87,8 @@ export const Vertical: StoryFn = (args: NavigationProps) => (
     </Navigation.Brand>
 
     <Navigation.Segment>
+      <Navigation.Title>Your Teams</Navigation.Title>
+
       <Navigation.Item>
         <Navigation.Link>Home</Navigation.Link>
       </Navigation.Item>

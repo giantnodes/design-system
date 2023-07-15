@@ -1,6 +1,11 @@
 export type { NavigationProps } from '@/components/navigation/Navigation'
+export type { NavigationBrandProps } from '@/components/navigation/NavigationBrand'
 export type { NavigationContentProps } from '@/components/navigation/NavigationContent'
 export type { NavigationItemProps } from '@/components/navigation/NavigationItem'
+export type { NavigationLinkProps } from '@/components/navigation/NavigationLink'
+export type { NavigationPortalProps } from '@/components/navigation/NavigationPortal'
 export type { NavigationSegmentProps } from '@/components/navigation/NavigationSegment'
+export type { NavigationTitleProps } from '@/components/navigation/NavigationTitle'
+export type { NavigationTriggerProps } from '@/components/navigation/NavigationTrigger'
 
 export { default as Navigation } from '@/components/navigation/Navigation'

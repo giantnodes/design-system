@@ -19,6 +19,7 @@ export const navigation = tv({
     ],
     brand: ['flex', 'flex-nowrap', 'flex-row', 'justify-center', 'shrink-0'],
     segment: ['list-none', 'flex', 'gap-1'],
+    title: ['px-2', 'mb-2', 'leading-6', 'font-semibold', 'text-xs', 'dark:text-mineshaft-300'],
     item: ['select-none'],
     link: [
       'flex',

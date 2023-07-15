@@ -9,6 +9,7 @@ import NavigationItem from '@/components/navigation/NavigationItem'
 import NavigationLink from '@/components/navigation/NavigationLink'
 import NavigationPortal from '@/components/navigation/NavigationPortal'
 import NavigationSegment from '@/components/navigation/NavigationSegment'
+import NavigationTitle from '@/components/navigation/NavigationTitle'
 import NavigationTrigger from '@/components/navigation/NavigationTrigger'
 import { NavigationProvider } from '@/components/navigation/use-navigation-context.hook'
 import { useNavigation } from '@/components/navigation/use-navigation.hook'
@@ -50,5 +51,6 @@ export default Object.assign(Navigation, {
   Link: NavigationLink,
   Portal: NavigationPortal,
   Segment: NavigationSegment,
+  Title: NavigationTitle,
   Trigger: NavigationTrigger,
 })
