@@ -12,6 +12,9 @@ export const avatar = tv({
       'justify-center',
       'leading-none',
       'font-medium',
+      'border',
+      'border-gray-200',
+      'dark:border-mineshaft-500',
     ],
     img: ['inline-block', 'w-full', 'h-full', 'rounded-[inherit]'],
     icon: ['flex', 'items-center', 'justify-center', 'text-inherit'],
@@ -20,19 +23,19 @@ export const avatar = tv({
   variants: {
     size: {
       xs: {
-        base: ['h-8', 'w-8', 'text-xs'],
+        base: ['h-6', 'w-6', 'text-xs'],
         notification: ['h-2', 'w-2'],
       },
       sm: {
-        base: ['w-10', 'h-10', 'text-sm'],
+        base: ['w-8', 'h-8', 'text-sm'],
         notification: ['h-2.5', 'w-2.5'],
       },
       md: {
-        base: ['h-12', 'w-12'],
+        base: ['h-10', 'w-10'],
         notification: ['h-3', 'w-3'],
       },
       lg: {
-        base: ['w-14', 'h-14', 'text-lg'],
+        base: ['w-12', 'h-12', 'text-lg'],
         notification: ['h-3.5', 'w-3.5'],
       },
       xl: {
