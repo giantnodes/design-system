@@ -18,7 +18,7 @@ export const avatar = tv({
     ],
     img: ['relative', 'inline-block', 'w-full', 'h-full'],
     icon: ['flex', 'items-center', 'justify-center', 'text-inherit'],
-    notification: ['absolute', 'top-0', 'right-0', 'block', 'rounded-full', 'bg-green-400', 'ring-2', 'ring-white'],
+    notification: ['absolute', 'top-0', 'right-0', 'block', 'rounded-full'],
   },
   variants: {
     size: {
@@ -74,10 +74,25 @@ export const avatar = tv({
         icon: ['hover:scale-125', 'ease-in', 'duration-200'],
       },
     },
+    status: {
+      red: {
+        notification: ['bg-red-500'],
+      },
+      green: {
+        notification: ['bg-green-500'],
+      },
+      yellow: {
+        notification: ['bg-yellow-300'],
+      },
+      gray: {
+        notification: ['bg-gray-200'],
+      },
+    },
   },
   defaultVariants: {
     size: 'md',
     radius: 'full',
+    status: 'gray',
   },
 })
 

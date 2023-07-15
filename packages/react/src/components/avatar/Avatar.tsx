@@ -12,7 +12,7 @@ import { useAvatar } from '@/components/avatar/use-avatar.hook'
 export type AvatarProps = Component<'span'> & UseAvatarProps
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
-  const { as, className, children, radius, size, ...rest } = props
+  const { as, className, children, radius, size, status, ...rest } = props
   const { slots } = useAvatar(props)
 
   const Component = as || 'span'
@@ -38,6 +38,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
         return React.cloneElement(child, {
           radius: radius ?? child.props.radius,
           size: size ?? child.props.size,
+          status: status ?? child.props.status,
         })
       })}
     </Component>
