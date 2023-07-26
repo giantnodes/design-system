@@ -10,10 +10,7 @@ const Component: Meta<typeof Table> = {
   component: Table,
   argTypes: {
     size: {
-      control: {
-        type: 'select',
-        options: ['sm', 'md', 'lg'],
-      },
+      control: { type: 'select' },
     },
   },
 }

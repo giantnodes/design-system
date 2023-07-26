@@ -10,28 +10,17 @@ const Component: Meta<typeof Badge> = {
   component: Badge,
   argTypes: {
     color: {
-      control: {
-        type: 'select',
-        options: ['neutral', 'success', 'info', 'warning', 'danger'],
-      },
+      control: { type: 'select' },
+      options: ['neutral', 'success', 'info', 'warning', 'danger'],
     },
     radius: {
-      control: {
-        type: 'select',
-        options: ['none', 'sm', 'md', 'lg', 'full'],
-      },
+      control: { type: 'select' },
     },
     size: {
-      control: {
-        type: 'select',
-        options: ['sm', 'md'],
-      },
+      control: { type: 'select' },
     },
     variant: {
-      control: {
-        type: 'select',
-        options: ['bordered', 'flat'],
-      },
+      control: { type: 'select' },
     },
   },
 }

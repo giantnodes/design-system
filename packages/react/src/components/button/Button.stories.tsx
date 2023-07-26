@@ -10,22 +10,14 @@ const Component: Meta<typeof Button> = {
   component: Button,
   argTypes: {
     color: {
-      control: {
-        type: 'select',
-        options: ['neutral', 'success', 'info', 'warning', 'danger'],
-      },
+      control: { type: 'select' },
+      options: ['neutral', 'success', 'info', 'warning', 'danger'],
     },
     size: {
-      control: {
-        type: 'select',
-        options: ['sm', 'md'],
-      },
+      control: { type: 'select' },
     },
     variant: {
-      control: {
-        type: 'select',
-        options: ['pill'],
-      },
+      control: { type: 'select' },
     },
   },
 }

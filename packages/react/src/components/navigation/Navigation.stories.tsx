@@ -9,23 +9,17 @@ const Component: Meta<typeof Navigation> = {
   title: 'Components/Navigation',
   component: Navigation,
   argTypes: {
+    orientation: {
+      control: { type: 'select' },
+    },
     position: {
-      control: {
-        type: 'select',
-        options: ['static', 'sticky', 'floating'],
-      },
+      control: { type: 'select' },
     },
     size: {
-      control: {
-        type: 'select',
-        options: ['sm', 'md', 'lg'],
-      },
+      control: { type: 'select' },
     },
-    orientation: {
-      control: {
-        type: 'select',
-        options: ['vertical', 'horizontal'],
-      },
+    variant: {
+      control: { type: 'select' },
     },
   },
 }
