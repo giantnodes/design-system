@@ -13,7 +13,7 @@ const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>((props,
 
   const Component = as || 'img'
 
-  const getAvatarImageProps = React.useCallback(
+  const getProps = React.useCallback(
     () => ({
       ref,
       src,
@@ -26,9 +26,9 @@ const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>((props,
     [ref, src, alt, slots, className, rest]
   )
 
-  return <Component {...getAvatarImageProps()}>{children}</Component>
+  return <Component {...getProps()}>{children}</Component>
 })
 
-AvatarImage.displayName = 'AvatarImage'
+AvatarImage.displayName = 'Avatar.Image'
 
 export default AvatarImage

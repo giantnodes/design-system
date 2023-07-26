@@ -17,7 +17,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
   const Component = as || 'span'
 
-  const getAvatarProps = React.useCallback(
+  const getProps = React.useCallback(
     () => ({
       ref,
       className: slots.base({
@@ -29,7 +29,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   )
 
   return (
-    <Component {...getAvatarProps()}>
+    <Component {...getProps()}>
       {React.Children.map(children, (child) => {
         if (!React.isValidElement<AvatarProps>(child)) {
           return child

@@ -13,7 +13,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
 
   const Component = as || 'span'
 
-  const getBadgeProps = React.useCallback(
+  const getProps = React.useCallback(
     () => ({
       ref,
       className: slots.base({
@@ -24,7 +24,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     [ref, slots, className, rest]
   )
 
-  return <Component {...getBadgeProps()}>{children}</Component>
+  return <Component {...getProps()}>{children}</Component>
 })
 
 Badge.displayName = 'Badge'

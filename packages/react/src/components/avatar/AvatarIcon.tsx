@@ -16,7 +16,7 @@ const AvatarIcon = React.forwardRef<HTMLImageElement, AvatarIconProps>((props, r
 
   const Component = as || 'span'
 
-  const getAvatarIconProps = React.useCallback(
+  const getProps = React.useCallback(
     () => ({
       ref,
       className: slots.icon({
@@ -27,9 +27,9 @@ const AvatarIcon = React.forwardRef<HTMLImageElement, AvatarIconProps>((props, r
     [ref, slots, className, rest]
   )
 
-  return <Component {...getAvatarIconProps()}>{icon}</Component>
+  return <Component {...getProps()}>{icon}</Component>
 })
 
-AvatarIcon.displayName = 'AvatarIcon'
+AvatarIcon.displayName = 'Avatar.Icon'
 
 export default AvatarIcon

@@ -13,7 +13,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
 
   const Component = as || 'button'
 
-  const getBadgeProps = React.useCallback(
+  const getProps = React.useCallback(
     () => ({
       ref,
       className: slots.base({
@@ -25,7 +25,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   )
 
   return (
-    <Component type="button" {...getBadgeProps()}>
+    <Component type="button" {...getProps()}>
       {children}
     </Component>
   )

@@ -13,7 +13,7 @@ const AvatarNotification = React.forwardRef<HTMLSpanElement, AvatarNotificationP
 
   const Component = as || 'span'
 
-  const getAvatarNotificationProps = React.useCallback(
+  const getProps = React.useCallback(
     () => ({
       ref,
       className: slots.notification({
@@ -24,9 +24,9 @@ const AvatarNotification = React.forwardRef<HTMLSpanElement, AvatarNotificationP
     [ref, slots, className, rest]
   )
 
-  return <Component {...getAvatarNotificationProps()} />
+  return <Component {...getProps()} />
 })
 
-AvatarNotification.displayName = 'AvatarNotification'
+AvatarNotification.displayName = 'Avatar.Notification'
 
 export default AvatarNotification

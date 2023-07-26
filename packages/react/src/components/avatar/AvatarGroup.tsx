@@ -14,7 +14,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
 
   const Component = as || 'div'
 
-  const getAvatarGroupProps = React.useCallback(
+  const getProps = React.useCallback(
     () => ({
       ref,
       className: slots.group({
@@ -26,7 +26,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
   )
 
   return (
-    <Component {...getAvatarGroupProps()}>
+    <Component {...getProps()}>
       {React.Children.map(children, (child) => {
         if (!React.isValidElement<AvatarProps>(child)) {
           return child
@@ -41,6 +41,6 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, r
   )
 })
 
-AvatarGroup.displayName = 'AvatarGroup'
+AvatarGroup.displayName = 'Avatar.Group'
 
 export default AvatarGroup
