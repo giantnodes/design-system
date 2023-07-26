@@ -9,17 +9,15 @@ const Component: Meta<typeof Avatar> = {
   title: 'Components/Avatar',
   component: Avatar,
   argTypes: {
+    color: {
+      control: { type: 'select' },
+      options: ['neutral', 'success', 'info', 'warning', 'danger'],
+    },
     radius: {
-      control: {
-        type: 'select',
-        options: ['none', 'sm', 'md', 'lg', 'xl', 'full'],
-      },
+      control: { type: 'select' },
     },
     size: {
-      control: {
-        type: 'select',
-        options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      },
+      control: { type: 'select' },
     },
   },
 }

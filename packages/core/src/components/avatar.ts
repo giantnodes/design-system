@@ -21,26 +21,21 @@ export const avatar = tv({
     notification: ['absolute', 'top-0', 'right-0', 'block', 'rounded-full'],
   },
   variants: {
-    size: {
-      xs: {
-        base: ['h-6', 'w-6', 'text-xs'],
-        notification: ['h-2', 'w-2'],
+    color: {
+      neutral: {
+        notification: ['bg-gray-200'],
       },
-      sm: {
-        base: ['w-8', 'h-8', 'text-sm'],
-        notification: ['h-2.5', 'w-2.5'],
+      success: {
+        notification: ['bg-green-500'],
       },
-      md: {
-        base: ['h-10', 'w-10'],
-        notification: ['h-3', 'w-3'],
+      info: {
+        notification: ['bg-blue-500'],
       },
-      lg: {
-        base: ['w-12', 'h-12', 'text-lg'],
-        notification: ['h-3.5', 'w-3.5'],
+      warning: {
+        notification: ['bg-yellow-300'],
       },
-      xl: {
-        base: ['w-16', 'h-16', 'text-xl'],
-        notification: ['h-4', 'w-4'],
+      danger: {
+        notification: ['bg-red-500'],
       },
     },
     radius: {
@@ -68,31 +63,39 @@ export const avatar = tv({
         base: ['rounded-full'],
       },
     },
+    size: {
+      xs: {
+        base: ['h-6', 'w-6', 'text-xs'],
+        notification: ['h-2', 'w-2'],
+      },
+      sm: {
+        base: ['w-8', 'h-8', 'text-sm'],
+        notification: ['h-2.5', 'w-2.5'],
+      },
+      md: {
+        base: ['h-10', 'w-10'],
+        notification: ['h-3', 'w-3'],
+      },
+      lg: {
+        base: ['w-12', 'h-12', 'text-lg'],
+        notification: ['h-3.5', 'w-3.5'],
+      },
+      xl: {
+        base: ['w-16', 'h-16', 'text-xl'],
+        notification: ['h-4', 'w-4'],
+      },
+    },
     zoomed: {
       true: {
         img: ['hover:scale-125', 'ease-in', 'duration-200'],
         icon: ['hover:scale-125', 'ease-in', 'duration-200'],
       },
     },
-    status: {
-      red: {
-        notification: ['bg-red-500'],
-      },
-      green: {
-        notification: ['bg-green-500'],
-      },
-      yellow: {
-        notification: ['bg-yellow-300'],
-      },
-      gray: {
-        notification: ['bg-gray-200'],
-      },
-    },
   },
   defaultVariants: {
-    size: 'md',
+    color: 'neutral',
     radius: 'full',
-    status: 'gray',
+    size: 'md',
   },
 })
 
