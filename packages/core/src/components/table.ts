@@ -5,12 +5,12 @@ import { tv } from 'tailwind-variants'
 export const table = tv({
   slots: {
     base: ['overflow-auto'],
-    table: ['table-auto', 'min-w-full', 'divide-y', 'divide-gray-200', 'dark:divide-mineshaft-500'],
+    table: ['table-auto', 'min-w-full', 'divide-y', 'divide-foreground'],
     thead: [],
-    tbody: ['divide-y', 'divide-gray-200', 'dark:divide-mineshaft-500'],
+    tbody: ['divide-y', 'divide-foreground'],
     tr: [],
-    th: ['text-left', 'text-sm', 'font-semibold'],
-    td: ['whitespace-nowrap', 'text-sm'],
+    th: ['text-left', 'text-sm', 'font-semibold', 'text-title'],
+    td: ['whitespace-nowrap', 'text-sm', 'text-subtitle'],
   },
   variants: {
     size: {
@@ -37,17 +37,16 @@ export const table = tv({
           'backdrop-blur',
           'backdrop-filter',
           'border-b',
-          'border-gray-200',
-          'dark:border-mineshaft-500',
+          'border-foreground',
           'z-10',
         ],
-        td: ['border-b', 'border-gray-200', 'dark:border-mineshaft-500'],
+        td: ['border-b', 'border-foreground'],
       },
     },
     striped: {
       true: {
         tbody: ['divide-y-0'],
-        tr: ['odd:bg-transparent', 'even:bg-gray-100', 'dark:even:bg-mineshaft-500'],
+        tr: ['odd:bg-transparent', 'even:bg-middleground'],
       },
       false: {
         th: ['first:pl-0', 'last:pr-0'],

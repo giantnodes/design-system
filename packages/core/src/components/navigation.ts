@@ -5,21 +5,10 @@ import { tv } from 'tailwind-variants'
 export const navigation = tv({
   slots: {
     base: ['relative', 'flex', 'z-50'],
-    wrapper: [
-      'relative',
-      'flex',
-      'gap-4',
-      'md:gap-6',
-      'z-50',
-      'bg-white',
-      'dark:bg-bunker',
-      'border-solid',
-      'border-gray-200',
-      'dark:border-mineshaft-500',
-    ],
+    wrapper: ['relative', 'flex', 'gap-4', 'md:gap-6', 'z-50', 'bg-background', 'border-solid', 'border-foreground'],
     brand: ['flex', 'flex-nowrap', 'flex-row', 'justify-center', 'shrink-0'],
     segment: ['list-none', 'flex', 'gap-1'],
-    title: ['px-2', 'mb-2', 'leading-6', 'font-semibold', 'text-xs', 'dark:text-mineshaft-300'],
+    title: ['px-2', 'mb-2', 'leading-6', 'text-xs', 'text-title', 'font-semibold'],
     item: ['select-none'],
     link: [
       'flex',
@@ -27,10 +16,11 @@ export const navigation = tv({
       'gap-x-3',
       'group',
       'p-2',
-      'font-medium',
       'text-sm',
-      'dark:text-mineshaft-300',
-      'dark:hover:text-mineshaft-100',
+      'text-title',
+      'hover:text-title',
+      '[&_svg]:text-subtitle',
+      '[&_svg]:hover:text-primary',
     ],
     content: [],
     trigger: ['flex', 'items-center'],
@@ -68,7 +58,7 @@ export const navigation = tv({
     },
     variant: {
       highlight: {
-        link: ['rounded-md', 'hover:bg-gray-100', 'dark:hover:bg-bunker-800'],
+        link: ['rounded-md', 'hover:bg-middleground'],
       },
     },
   },
