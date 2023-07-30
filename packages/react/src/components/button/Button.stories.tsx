@@ -11,7 +11,10 @@ const Component: Meta<typeof Button> = {
   argTypes: {
     color: {
       control: { type: 'select' },
-      options: ['neutral', 'success', 'info', 'warning', 'danger'],
+      options: ['primary', 'secondary', 'success', 'info', 'warning', 'danger'],
+    },
+    shape: {
+      control: { type: 'select' },
     },
     size: {
       control: { type: 'select' },
@@ -28,7 +31,10 @@ const defaultProps = {
 
 export const Default: StoryFn = (args: ButtonProps) => (
   <div className="flex gap-2">
-    <Button {...args} color="neutral">
+    <Button {...args} color="primary">
+      Button
+    </Button>
+    <Button {...args} color="secondary">
       Button
     </Button>
     <Button {...args} color="success">
