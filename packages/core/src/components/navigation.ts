@@ -28,7 +28,7 @@ export const navigation = tv({
       'text-sm',
       'text-shark-200',
       'hover:text-shark-50',
-      '[&_svg]:hover:text-brand',
+      '[&_svg]:hover:text-brand-500',
     ],
     content: [],
     trigger: ['flex', 'items-center'],
