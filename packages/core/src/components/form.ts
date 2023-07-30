@@ -15,6 +15,9 @@ export const form = tv({
       neutral: {
         input: ['dark:border-shark-500'],
       },
+      brand: {
+        input: ['border-brand-500'],
+      },
       success: {
         input: ['border-green-500'],
         feedback: ['text-green-500'],
