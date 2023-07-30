@@ -24,36 +24,20 @@ export const button = tv({
   },
   variants: {
     color: {
-      primary: {
+      brand: {
         base: [
           'text-white',
-          'bg-primary-500',
-          'hover:bg-primary-600',
-          'disabled:bg-primary-200',
-          'disabled:text-primary-700',
-          'focus:outline-primary-700',
-          'dark:text-primary-950',
-          'dark:bg-primary-400',
-          'hover:dark:bg-primary-300',
-          'disabled:dark:bg-primary-800',
-          'disabled:dark:text-primary-100',
-          'focus:dark:outline-primary-300',
-        ],
-      },
-      secondary: {
-        base: [
-          'text-white',
-          'bg-secondary-500',
-          'hover:bg-secondary-600',
-          'disabled:bg-secondary-200',
-          'disabled:text-secondary-700',
-          'focus:outline-secondary-700',
-          'dark:text-secondary-950',
-          'dark:bg-secondary-400',
-          'hover:dark:bg-secondary-300',
-          'disabled:dark:bg-secondary-800',
-          'disabled:dark:text-secondary-100',
-          'focus:dark:outline-secondary-300',
+          'bg-brand-500',
+          'hover:bg-brand-600',
+          'disabled:bg-brand-200',
+          'disabled:text-brand-700',
+          'focus:outline-brand-700',
+          'dark:text-brand-950',
+          'dark:bg-brand-400',
+          'hover:dark:bg-brand-300',
+          'disabled:dark:bg-brand-800',
+          'disabled:dark:text-brand-100',
+          'focus:dark:outline-brand-300',
         ],
       },
       success: {
@@ -155,27 +139,14 @@ export const button = tv({
   compoundVariants: [
     {
       variant: 'outlined',
-      color: 'primary',
+      color: 'brand',
       class: {
         base: [
-          'border-primary-700',
-          'text-primary-700',
-          'dark:text-primary-300',
-          'dark:border-primary-300',
-          'hover:dark:bg-primary-950',
-        ],
-      },
-    },
-    {
-      variant: 'outlined',
-      color: 'secondary',
-      class: {
-        base: [
-          'border-secondary-700',
-          'text-secondary-700',
-          'dark:text-secondary-300',
-          'dark:border-secondary-300',
-          'hover:dark:bg-secondary-950',
+          'border-brand-700',
+          'text-brand-700',
+          'dark:text-brand-300',
+          'dark:border-brand-300',
+          'hover:dark:bg-brand-950',
         ],
       },
     },
@@ -227,27 +198,14 @@ export const button = tv({
     },
     {
       variant: 'dashed',
-      color: 'primary',
+      color: 'brand',
       class: {
         base: [
-          'border-primary-700',
-          'text-primary-700',
-          'dark:text-primary-300',
-          'dark:border-primary-300',
-          'hover:dark:bg-primary-950',
-        ],
-      },
-    },
-    {
-      variant: 'dashed',
-      color: 'secondary',
-      class: {
-        base: [
-          'border-secondary-700',
-          'text-secondary-700',
-          'dark:text-secondary-300',
-          'dark:border-secondary-300',
-          'hover:dark:bg-secondary-950',
+          'border-brand-700',
+          'text-brand-700',
+          'dark:text-brand-300',
+          'dark:border-brand-300',
+          'hover:dark:bg-brand-950',
         ],
       },
     },
@@ -299,7 +257,7 @@ export const button = tv({
     },
   ],
   defaultVariants: {
-    color: 'primary',
+    color: 'brand',
     size: 'md',
   },
 })

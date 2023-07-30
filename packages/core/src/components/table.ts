@@ -5,12 +5,12 @@ import { tv } from 'tailwind-variants'
 export const table = tv({
   slots: {
     base: ['overflow-auto'],
-    table: ['table-auto', 'min-w-full', 'divide-y', 'divide-foreground'],
+    table: ['table-auto', 'min-w-full', 'divide-y', 'dark:divide-shark-500'],
     thead: [],
-    tbody: ['divide-y', 'divide-foreground'],
+    tbody: ['divide-y', 'dark:divide-shark-500'],
     tr: [],
-    th: ['text-left', 'text-sm', 'font-semibold', 'text-title'],
-    td: ['whitespace-nowrap', 'text-sm', 'text-subtitle'],
+    th: ['text-left', 'text-sm', 'font-semibold', 'text-shark-50'],
+    td: ['whitespace-nowrap', 'text-sm', 'text-shark-200'],
   },
   variants: {
     size: {
@@ -37,16 +37,16 @@ export const table = tv({
           'backdrop-blur',
           'backdrop-filter',
           'border-b',
-          'border-foreground',
           'z-10',
+          'dark:divide-shark-500',
         ],
-        td: ['border-b', 'border-foreground'],
+        td: ['border-b', 'dark:border-shark-500'],
       },
     },
     striped: {
       true: {
         tbody: ['divide-y-0'],
-        tr: ['odd:bg-transparent', 'even:bg-middleground'],
+        tr: ['odd:bg-transparent', 'even:dark:bg-shark-500'],
       },
       false: {
         th: ['first:pl-0', 'last:pr-0'],

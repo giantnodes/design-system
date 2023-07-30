@@ -13,7 +13,7 @@ export const avatar = tv({
       'leading-none',
       'font-medium',
       'border',
-      'border-foreground',
+      'dark:border-shark-500',
     ],
     img: ['inline-block', 'w-full', 'h-full', 'rounded-[inherit]'],
     icon: ['flex', 'items-center', 'justify-center', 'text-inherit'],

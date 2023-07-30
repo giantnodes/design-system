@@ -5,10 +5,19 @@ import { tv } from 'tailwind-variants'
 export const navigation = tv({
   slots: {
     base: ['relative', 'flex', 'z-50'],
-    wrapper: ['relative', 'flex', 'gap-4', 'md:gap-6', 'z-50', 'bg-background', 'border-solid', 'border-foreground'],
+    wrapper: [
+      'relative',
+      'flex',
+      'gap-4',
+      'md:gap-6',
+      'z-50',
+      'border-solid',
+      'dark:bg-shark-800',
+      'dark:border-shark-500',
+    ],
     brand: ['flex', 'flex-nowrap', 'flex-row', 'justify-center', 'shrink-0'],
     segment: ['list-none', 'flex', 'gap-1'],
-    title: ['px-2', 'mb-2', 'leading-6', 'text-xs', 'text-title', 'font-semibold'],
+    title: ['px-2', 'mb-2', 'leading-6', 'text-xs', 'text-shark-50', 'font-semibold'],
     item: ['select-none'],
     link: [
       'flex',
@@ -17,10 +26,9 @@ export const navigation = tv({
       'group',
       'p-2',
       'text-sm',
-      'text-title',
-      'hover:text-title',
-      '[&_svg]:text-subtitle',
-      '[&_svg]:hover:text-primary',
+      'text-shark-200',
+      'hover:text-shark-50',
+      '[&_svg]:hover:text-brand',
     ],
     content: [],
     trigger: ['flex', 'items-center'],
@@ -58,7 +66,7 @@ export const navigation = tv({
     },
     variant: {
       highlight: {
-        link: ['rounded-md', 'hover:bg-middleground'],
+        link: ['rounded-md', 'hover:dark:bg-shark-600'],
       },
     },
   },

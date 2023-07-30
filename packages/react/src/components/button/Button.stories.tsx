@@ -11,7 +11,7 @@ const Component: Meta<typeof Button> = {
   argTypes: {
     color: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'success', 'info', 'warning', 'danger'],
+      options: ['brand', 'success', 'info', 'warning', 'danger'],
     },
     shape: {
       control: { type: 'select' },
