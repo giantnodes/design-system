@@ -31,6 +31,7 @@ export const navigation = tv({
       '[&_svg]:hover:text-brand-500',
     ],
     content: [],
+    divider: ['dark:border-shark-500'],
     trigger: ['flex', 'items-center'],
     viewport: [],
   },
@@ -39,10 +40,12 @@ export const navigation = tv({
       vertical: {
         wrapper: ['h-full', 'flex-col', 'p-4', 'border-r'],
         segment: ['flex-col'],
+        divider: ['h-px', 'w-full', 'my-2'],
       },
       horizontal: {
         wrapper: ['w-full', 'flex-row', 'items-center', 'px-4', 'md:px-6', 'border-b'],
         link: ['px-6'],
+        divider: ['w-px', 'h-full', 'mx-2'],
       },
     },
     position: {

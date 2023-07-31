@@ -5,6 +5,7 @@ import React from 'react'
 
 import NavigationBrand from '@/components/navigation/NavigationBrand'
 import NavigationContent from '@/components/navigation/NavigationContent'
+import NavigationDivider from '@/components/navigation/NavigationDivider'
 import NavigationItem from '@/components/navigation/NavigationItem'
 import NavigationLink from '@/components/navigation/NavigationLink'
 import NavigationPortal from '@/components/navigation/NavigationPortal'
@@ -47,6 +48,7 @@ Navigation.displayName = 'Navigation'
 export default Object.assign(Navigation, {
   Brand: NavigationBrand,
   Content: NavigationContent,
+  Divider: NavigationDivider,
   Item: NavigationItem,
   Link: NavigationLink,
   Portal: NavigationPortal,
