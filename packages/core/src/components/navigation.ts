@@ -16,7 +16,7 @@ export const navigation = tv({
       'dark:border-shark-500',
     ],
     brand: ['flex', 'flex-nowrap', 'flex-row', 'justify-center', 'shrink-0'],
-    segment: ['list-none', 'flex', 'gap-1'],
+    segment: ['list-none', 'flex', 'gap-2'],
     title: ['px-2', 'mb-2', 'leading-6', 'text-xs', 'text-shark-50', 'font-semibold'],
     item: ['select-none'],
     link: [
@@ -31,7 +31,7 @@ export const navigation = tv({
       '[&_svg]:hover:text-brand-500',
     ],
     content: [],
-    divider: ['dark:border-shark-500'],
+    divider: ['dark:bg-shark-500', 'dark:border-shark-500'],
     trigger: ['flex', 'items-center'],
     viewport: [],
   },
@@ -44,6 +44,7 @@ export const navigation = tv({
       },
       horizontal: {
         wrapper: ['w-full', 'flex-row', 'items-center', 'px-4', 'md:px-6', 'border-b'],
+        segment: ['items-center'],
         link: ['px-6'],
         divider: ['w-px', 'h-full', 'mx-2'],
       },

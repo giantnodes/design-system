@@ -1,6 +1,7 @@
 export type { NavigationProps } from '@/components/navigation/Navigation'
 export type { NavigationBrandProps } from '@/components/navigation/NavigationBrand'
 export type { NavigationContentProps } from '@/components/navigation/NavigationContent'
+export type { NavigationDividerProps } from '@/components/navigation/NavigationDivider'
 export type { NavigationItemProps } from '@/components/navigation/NavigationItem'
 export type { NavigationLinkProps } from '@/components/navigation/NavigationLink'
 export type { NavigationPortalProps } from '@/components/navigation/NavigationPortal'
