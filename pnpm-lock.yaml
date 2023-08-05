@@ -78,8 +78,8 @@ importers:
   packages/react:
     dependencies:
       '@ariakit/react':
-        specifier: ^0.2.12
-        version: 0.2.12(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^0.2.15
+        version: 0.2.15(react-dom@18.2.0)(react@18.2.0)
       '@giantnodes/design-system':
         specifier: workspace:*
         version: link:../core
@@ -174,8 +174,8 @@ packages:
     resolution: {integrity: sha512-Hs0N1EMYq88WW4v9xnSIHNR38TvbQuoUX6FYFmeLCZSTIXQBiET7lr1DQXwOOmdEtRtlxQ5HsxbTkxeOkPv+eg==}
     dev: false
 
-  /@ariakit/react-core@0.2.12(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-3KSKlX10nnhCvjsbPW0CAnqG+6grryfwnMkeJJ/h34FSV7hEfUMexmIjKBVZyfBG08Xj8NjSK8kkx9c3ChkXeA==}
+  /@ariakit/react-core@0.2.15(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-nNM/Qxcjub6i1r2ApFJuK5LlJ1+8vqFvkKJxGUTfJWv11BKP9l7BTavmjOrkxFEye0aHyyRplildtIVY+j6jyw==}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
@@ -187,13 +187,13 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@ariakit/react@0.2.12(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-4rAgMyUURHW78EKgRCanhyRUtsiYCOxO65BBHF4mg3tZsDeOvu9kBG5IAXX8mUgakTcyr0EKXuOtGThaj7gobA==}
+  /@ariakit/react@0.2.15(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-nrcyN4QCDzlNWiTuGyr9/s5Q9x1parEgnkr5R70K0N4QfbQ3foafb4S2Q28a6B3PpuoNhJIW5NNkOq72ZKHM3g==}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
-      '@ariakit/react-core': 0.2.12(react-dom@18.2.0)(react@18.2.0)
+      '@ariakit/react-core': 0.2.15(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false

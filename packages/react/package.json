@@ -36,7 +36,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ariakit/react": "^0.2.12",
+    "@ariakit/react": "^0.2.15",
     "@giantnodes/design-system": "workspace:*",
     "clsx": "^2.0.0"
   },
