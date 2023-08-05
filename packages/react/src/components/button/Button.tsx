@@ -1,6 +1,7 @@
 import type { UseButtonProps } from '@/components/button/use-button.hook'
 import type { Component } from '@/utilities/types'
 
+import * as Ariakit from '@ariakit/react'
 import React from 'react'
 
 import { useButton } from '@/components/button/use-button.hook'
@@ -25,9 +26,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   )
 
   return (
-    <Component type="button" {...getProps()}>
+    <Ariakit.Button as={Component} type="button" {...getProps()}>
       {children}
-    </Component>
+    </Ariakit.Button>
   )
 })
 
