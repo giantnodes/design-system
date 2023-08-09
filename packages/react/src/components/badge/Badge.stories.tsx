@@ -1,7 +1,7 @@
 import type { BadgeProps } from '@/components/badge'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { badge } from '@giantnodes/design-system'
+import { badge } from '@giantnodes/theme'
 
 import { Badge } from '@/components/badge'
 

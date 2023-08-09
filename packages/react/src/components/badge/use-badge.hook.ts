@@ -1,6 +1,6 @@
-import type { BadgeVariantProps } from '@giantnodes/design-system'
+import type { BadgeVariantProps } from '@giantnodes/theme'
 
-import { badge } from '@giantnodes/design-system'
+import { badge } from '@giantnodes/theme'
 import React from 'react'
 
 export type UseBadgeProps = BadgeVariantProps

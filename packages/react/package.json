@@ -1,5 +1,5 @@
 {
-  "name": "@giantnodes/design-system-react",
+  "name": "@giantnodes/react",
   "version": "0.0.0",
   "description": "",
   "license": "AGPL-3.0",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@ariakit/react": "^0.2.15",
-    "@giantnodes/design-system": "workspace:*",
+    "@giantnodes/theme": "workspace:*",
     "clsx": "^2.0.0"
   },
   "devDependencies": {

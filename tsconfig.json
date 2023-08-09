@@ -9,6 +9,7 @@
     "checkJs": false,
     "removeComments": true,
     "declaration": true,
+    "sourceMap": true,
 
     /* Strict Type-Checking Options */
     "strict": true,
@@ -34,5 +35,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "exclude": ["node_modules"]
+  "include": ["packages"],
+  "exclude": ["**/node_modules", "**/dist", "**/.turbo"]
 }

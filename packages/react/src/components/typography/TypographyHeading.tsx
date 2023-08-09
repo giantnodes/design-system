@@ -1,5 +1,5 @@
 import type { ComponentWithoutAs } from '@/utilities/types'
-import type { TypographyVariantProps } from '@giantnodes/design-system'
+import type { TypographyVariantProps } from '@giantnodes/theme'
 
 import * as Ariakit from '@ariakit/react'
 import React from 'react'

@@ -1,7 +1,7 @@
 import type { InputProps } from '@/components/input'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { input } from '@giantnodes/design-system'
+import { input } from '@giantnodes/theme'
 
 import { Input } from '@/components/input'
 

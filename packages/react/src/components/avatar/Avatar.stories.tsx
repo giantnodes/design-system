@@ -1,7 +1,7 @@
 import type { AvatarGroupProps, AvatarProps } from '@/components/avatar'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { avatar } from '@giantnodes/design-system'
+import { avatar } from '@giantnodes/theme'
 
 import { Avatar } from '@/components/avatar'
 

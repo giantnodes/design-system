@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss'
 // https://javisperez.github.io/tailwindcolorshades
 
 const config: Config = {
-  content: ['./src/**/*.{ts,tsx}', './node_modules/@giantnodes/design-system/dist/**/*.js'],
+  content: ['./src/**/*.{ts,tsx}', './node_modules/@giantnodes/theme/dist/**/*.js'],
   plugins: [],
   darkMode: 'class',
   theme: {

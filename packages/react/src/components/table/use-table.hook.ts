@@ -1,6 +1,6 @@
-import type { TableVariantProps } from '@giantnodes/design-system'
+import type { TableVariantProps } from '@giantnodes/theme'
 
-import { table } from '@giantnodes/design-system'
+import { table } from '@giantnodes/theme'
 import React from 'react'
 
 export type UseTableProps = TableVariantProps

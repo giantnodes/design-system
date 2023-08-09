@@ -1,6 +1,6 @@
-import type { ButtonVariantProps } from '@giantnodes/design-system'
+import type { ButtonVariantProps } from '@giantnodes/theme'
 
-import { button } from '@giantnodes/design-system'
+import { button } from '@giantnodes/theme'
 import React from 'react'
 
 export type UseButtonProps = ButtonVariantProps

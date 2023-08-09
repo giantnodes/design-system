@@ -15,15 +15,15 @@ export const table = tv({
   variants: {
     size: {
       sm: {
-        th: ['px-2', 'py-2.5'],
+        th: ['px-2', 'py-3'],
         td: ['px-2', 'py-2'],
       },
       md: {
-        th: ['px-3', 'py-3.5'],
+        th: ['px-3', 'py-4'],
         td: ['px-3', 'py-3'],
       },
       lg: {
-        th: ['px-4', 'py-4.5'],
+        th: ['px-4', 'py-5'],
         td: ['px-4', 'py-4'],
       },
     },
@@ -47,10 +47,6 @@ export const table = tv({
       true: {
         tbody: ['divide-y-0'],
         tr: ['odd:bg-transparent', 'even:dark:bg-shark-500'],
-      },
-      false: {
-        th: ['first:pl-0', 'last:pr-0'],
-        td: ['first:pl-0', 'last:pr-0'],
       },
     },
   },

@@ -1,7 +1,7 @@
 import type { ButtonProps } from '@/components/button'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { button } from '@giantnodes/design-system'
+import { button } from '@giantnodes/theme'
 
 import { Button } from '@/components/button'
 

@@ -1,6 +1,6 @@
-import type { CardVariantProps } from '@giantnodes/design-system'
+import type { CardVariantProps } from '@giantnodes/theme'
 
-import { card } from '@giantnodes/design-system'
+import { card } from '@giantnodes/theme'
 import React from 'react'
 
 export type UseCardProps = CardVariantProps

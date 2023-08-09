@@ -1,7 +1,7 @@
 import type { CardProps } from '@/components/card'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { card } from '@giantnodes/design-system'
+import { card } from '@giantnodes/theme'
 
 import { Card } from '@/components/card'
 

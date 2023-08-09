@@ -1,8 +1,8 @@
 'use client'
 
-import type { FormVariantProps } from '@giantnodes/design-system'
+import type { FormVariantProps } from '@giantnodes/theme'
 
-import { form } from '@giantnodes/design-system'
+import { form } from '@giantnodes/theme'
 import React from 'react'
 
 export type UseFormProps = FormVariantProps

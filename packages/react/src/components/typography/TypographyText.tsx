@@ -1,5 +1,5 @@
 import type { Component } from '@/utilities/types'
-import type { TypographyVariantProps } from '@giantnodes/design-system'
+import type { TypographyVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 

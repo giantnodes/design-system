@@ -1,6 +1,6 @@
-import type { NavigationVariantProps } from '@giantnodes/design-system'
+import type { NavigationVariantProps } from '@giantnodes/theme'
 
-import { navigation } from '@giantnodes/design-system'
+import { navigation } from '@giantnodes/theme'
 import React from 'react'
 
 export type UseNavigationProps = NavigationVariantProps

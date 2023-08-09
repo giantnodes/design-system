@@ -1,7 +1,7 @@
 import type { NavigationProps } from '@/components/navigation'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { navigation } from '@giantnodes/design-system'
+import { navigation } from '@giantnodes/theme'
 
 import { Navigation } from '@/components/navigation'
 

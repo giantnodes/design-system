@@ -1,11 +1,11 @@
-import type { HeadingVariantProps } from '@giantnodes/design-system'
+import type { TypographyVariantProps } from '@giantnodes/theme'
 
-import { typography } from '@giantnodes/design-system'
+import { typography } from '@giantnodes/theme'
 import React from 'react'
 
-export type UseHeadingProps = HeadingVariantProps
+export type UseTypographyProps = TypographyVariantProps
 
-export const useTypography = (props: UseHeadingProps) => {
+export const useTypography = (props: UseTypographyProps) => {
   const { level } = props
 
   const slots = React.useMemo(() => typography({ level }), [level])

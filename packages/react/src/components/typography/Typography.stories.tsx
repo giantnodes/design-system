@@ -1,7 +1,7 @@
 import type { TypographyHeadingProps } from '@/components/typography'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { typography } from '@giantnodes/design-system'
+import { typography } from '@giantnodes/theme'
 
 import { Typography } from '@/components/typography'
 

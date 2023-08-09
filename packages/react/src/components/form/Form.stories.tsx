@@ -1,7 +1,7 @@
 import type { FormProps } from '@/components/form'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { form } from '@giantnodes/design-system'
+import { form } from '@giantnodes/theme'
 
 import { Form } from '@/components/form'
 import { Input } from '@/components/input'

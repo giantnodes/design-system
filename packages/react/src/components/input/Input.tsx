@@ -1,5 +1,5 @@
 import type { Component } from '@/utilities/types'
-import type { InputVariantProps } from '@giantnodes/design-system'
+import type { InputVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 

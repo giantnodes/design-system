@@ -1,7 +1,7 @@
 import type { TableProps } from '@/components/table'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { table } from '@giantnodes/design-system'
+import { table } from '@giantnodes/theme'
 
 import { Table } from '@/components/table'
 

@@ -1,5 +1,5 @@
 import type { ComponentWithoutAs } from '@/utilities/types'
-import type { FormVariantProps } from '@giantnodes/design-system'
+import type { FormVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
@@ -13,7 +13,7 @@ import { useForm } from '@/components/form/use-form.hook'
 export type FormProps = ComponentWithoutAs<'form'> & FormVariantProps
 
 const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => {
-  const { className, ...rest } = props
+  const { children, className, ...rest } = props
 
   const context = useForm(props)
 
@@ -30,7 +30,7 @@ const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => {
 
   return (
     <FormProvider value={context}>
-      <form {...getProps()} />
+      <form {...getProps()}>{children}</form>
     </FormProvider>
   )
 })

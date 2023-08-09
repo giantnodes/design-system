@@ -1,8 +1,8 @@
 'use client'
 
-import type { InputVariantProps } from '@giantnodes/design-system'
+import type { InputVariantProps } from '@giantnodes/theme'
 
-import { input } from '@giantnodes/design-system'
+import { input } from '@giantnodes/theme'
 import React from 'react'
 
 export type UseInputProps = InputVariantProps
