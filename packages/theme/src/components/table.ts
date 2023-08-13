@@ -9,8 +9,8 @@ export const table = tv({
     thead: [],
     tbody: ['divide-y', 'dark:divide-shark-500'],
     tr: [],
-    th: ['text-left', 'text-sm', 'font-semibold', 'text-shark-50'],
-    td: ['whitespace-nowrap', 'text-sm', 'text-shark-200'],
+    th: ['text-left', 'text-sm', 'font-semibold', 'text-shark-600', 'dark:text-shark-50'],
+    td: ['whitespace-nowrap', 'text-sm', 'text-shark-400', 'dark:text-shark-200'],
   },
   variants: {
     size: {

@@ -4,8 +4,8 @@ import { tv } from 'tailwind-variants'
 
 export const typography = tv({
   slots: {
-    heading: ['font-bold', 'text-shark-50'],
-    text: ['text-sm', 'text-shark-200'],
+    heading: ['font-bold', 'text-shark-600', 'dark:text-shark-50'],
+    text: ['text-sm', 'text-shark-400', 'dark:text-shark-200'],
   },
   variants: {
     level: {

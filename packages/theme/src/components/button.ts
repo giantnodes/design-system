@@ -20,6 +20,7 @@ export const button = tv({
       'shadow-sm',
       'rounded',
       'disabled:opacity-50',
+      'disabled:cursor-not-allowed',
     ],
   },
   variants: {
