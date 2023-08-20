@@ -1,15 +1,15 @@
-import type { UseBadgeProps } from '@/components/badge/use-badge.hook'
+import type { UseChipProps } from '@/components/chip/use-chip.hook'
 import type { Component } from '@/utilities/types'
 
 import React from 'react'
 
-import { useBadge } from '@/components/badge/use-badge.hook'
+import { useChip } from '@/components/chip/use-chip.hook'
 
-export type BadgeProps = Component<'span'> & UseBadgeProps
+export type ChipProps = Component<'span'> & UseChipProps
 
-const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
+const Chip = React.forwardRef<HTMLSpanElement, ChipProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useBadge(props)
+  const { slots } = useChip(props)
 
   const Component = as || 'span'
 
@@ -27,6 +27,6 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   return <Component {...getProps()}>{children}</Component>
 })
 
-Badge.displayName = 'Badge'
+Chip.displayName = 'Chip'
 
-export default Object.assign(Badge, {})
+export default Object.assign(Chip, {})

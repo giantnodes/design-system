@@ -2,26 +2,29 @@ import type { VariantProps } from 'tailwind-variants'
 
 import { tv } from 'tailwind-variants'
 
-export const badge = tv({
+export const chip = tv({
   slots: {
     base: ['inline-flex', 'items-center', 'gap-1.5', 'font-medium'],
   },
   variants: {
     color: {
+      brand: {
+        base: ['bg-brand-400/10', 'ring-brand-400/30', 'text-brand-400'],
+      },
       neutral: {
-        base: ['bg-gray-50', 'text-gray-600', 'ring-gray-500/10'],
+        base: ['bg-shark-400/10', 'ring-shark-400/30', 'text-shark-400'],
       },
       success: {
-        base: ['bg-green-50', 'text-green-700', 'ring-green-600/10'],
+        base: ['bg-green-400/10', 'ring-green-400/30', 'text-green-400'],
       },
       info: {
-        base: ['bg-blue-50', 'text-blue-700', 'ring-blue-700/10'],
+        base: ['bg-blue-400/10', 'ring-blue-400/30', 'text-blue-400'],
       },
       warning: {
-        base: ['bg-yellow-50', 'text-yellow-800', 'ring-yellow-600/10'],
+        base: ['bg-yellow-400/10', 'ring-yellow-400/30', 'text-yellow-400'],
       },
       danger: {
-        base: ['bg-red-50', 'text-red-700', 'ring-red-600/10'],
+        base: ['bg-red-400/10', 'ring-red-400/30', 'text-red-400'],
       },
     },
     radius: {
@@ -48,6 +51,7 @@ export const badge = tv({
       md: {
         base: ['px-2', 'py-1', 'text-xs'],
       },
+      lg: ['px-2.5', 'py-1.5', 'text-xs'],
     },
     variant: {
       flat: {
@@ -66,4 +70,4 @@ export const badge = tv({
   },
 })
 
-export type BadgeVariantProps = VariantProps<typeof badge>
+export type ChipVariantProps = VariantProps<typeof chip>
