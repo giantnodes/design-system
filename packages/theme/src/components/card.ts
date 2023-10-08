@@ -5,7 +5,6 @@ import { tv } from 'tailwind-variants'
 export const card = tv({
   slots: {
     base: [
-      'bg-background',
       'border',
       'border-solid',
       'border-foreground',
@@ -17,11 +16,17 @@ export const card = tv({
       'dark:border-shark-500',
       'dark:divide-shark-500',
     ],
-    header: ['text-shark-600', 'dark:text-shark-50', 'px-4', 'py-5', 'sm:px-6'],
-    body: ['text-shark-400', 'dark:text-shark-200', 'px-4', 'py-5', 'sm:px-6'],
-    footer: ['text-shark-400', 'dark:text-shark-200', 'px-4', 'py-5', 'sm:px-6'],
+    header: ['text-shark-600', 'dark:text-shark-50', 'p-3'],
+    body: ['text-shark-400', 'dark:text-shark-200', 'p-3'],
+    footer: ['text-shark-400', 'dark:text-shark-200', 'p-3'],
   },
-  variants: {},
+  variants: {
+    transparent: {
+      true: {
+        base: ['!bg-transparent'],
+      },
+    },
+  },
   defaultVariants: {},
 })
 

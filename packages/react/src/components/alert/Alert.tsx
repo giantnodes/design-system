@@ -1,3 +1,4 @@
+import type { UseAlertProps } from '@/components/alert/use-alert.hook'
 import type { Component } from '@/utilities/types'
 
 import React from 'react'
@@ -10,7 +11,7 @@ import AlertText from '@/components/alert/AlertText'
 import { AlertProvider } from '@/components/alert/use-alert-context.hook'
 import { useAlert } from '@/components/alert/use-alert.hook'
 
-export type AlertProps = Component<'div'>
+export type AlertProps = Component<'div'> & UseAlertProps
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const { as, children, className, ...rest } = props

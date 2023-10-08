@@ -38,10 +38,11 @@ const FormFeedback = React.forwardRef<HTMLSpanElement, FormFeedbackProps>((props
       ref,
       className: slots.feedback({
         class: clsx(className, { hidden: !isVisible }),
+        status,
       }),
       ...rest,
     }),
-    [ref, slots, isVisible, className, rest]
+    [ref, slots, className, isVisible, status, rest]
   )
 
   return <Component {...getProps()}>{children}</Component>
