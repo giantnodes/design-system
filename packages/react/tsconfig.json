@@ -5,7 +5,8 @@
     "isolatedModules": false,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "tailwind-variants": ["../../node_modules/tailwind-variants"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
