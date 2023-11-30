@@ -19,11 +19,15 @@ export const input = tv({
   },
   variants: {
     size: {
-      sm: {},
-      md: {
-        base: ['text-sm'],
+      sm: {
+        input: ['text-xs'],
       },
-      lg: {},
+      md: {
+        input: ['text-sm'],
+      },
+      lg: {
+        input: ['text-md'],
+      },
     },
     status: {
       neutral: {

@@ -31,10 +31,7 @@ const defaultProps = {
 
 export const Default: StoryFn = (args: ButtonProps) => (
   <div className="flex gap-2">
-    <Button {...args} color="primary">
-      Button
-    </Button>
-    <Button {...args} color="secondary">
+    <Button {...args} color="brand">
       Button
     </Button>
     <Button {...args} color="success">

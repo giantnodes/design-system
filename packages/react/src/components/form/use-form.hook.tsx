@@ -8,7 +8,9 @@ import React from 'react'
 export type UseFormProps = FormVariantProps
 
 export const useForm = (props: UseFormProps) => {
-  const slots = React.useMemo(() => form({}), [])
+  const { status } = props
+
+  const slots = React.useMemo(() => form({ status }), [status])
 
   return {
     slots,

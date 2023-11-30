@@ -53,13 +53,13 @@ export const navigation = tv({
     },
     position: {
       sticky: {
-        root: ['top-0', 'right-0', 'left-0', 'sticky'],
+        base: ['top-0', 'right-0', 'left-0', 'sticky'],
       },
       static: {
-        root: ['static'],
+        base: ['static'],
       },
       floating: {
-        root: ['top-0', 'right-0', 'left-0', 'sticky'],
+        base: ['top-0', 'right-0', 'left-0', 'sticky'],
         wrapper: ['mx-6', 'mt-6', 'rounded-xl', 'border'],
       },
     },
