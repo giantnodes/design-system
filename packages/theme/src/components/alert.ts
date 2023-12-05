@@ -13,6 +13,17 @@ export const alert = tv({
   },
   variants: {
     color: {
+      neutral: {
+        base: [
+          'bg-shark-50',
+          'text-shark-700',
+          'border-shark-400',
+          'dark:bg-shark-900',
+          'dark:text-shark-50',
+          'dark:border-shark-600',
+        ],
+        heading: ['dark:text-shark-100'],
+      },
       brand: {
         base: [
           'bg-brand-50',
@@ -70,7 +81,9 @@ export const alert = tv({
       },
     },
   },
-  defaultVariants: {},
+  defaultVariants: {
+    color: 'neutral',
+  },
 })
 
 export type AlertVariantProps = VariantProps<typeof alert>

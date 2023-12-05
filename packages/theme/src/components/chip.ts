@@ -8,11 +8,18 @@ export const chip = tv({
   },
   variants: {
     color: {
+      neutral: {
+        base: [
+          'bg-shark-400/10',
+          'ring-shark-400/30',
+          'text-shark-400',
+          'dark:bg-shark-200/10',
+          'dark:ring-shark-200/30',
+          'dark:text-shark-200',
+        ],
+      },
       brand: {
         base: ['bg-brand-400/10', 'ring-brand-400/30', 'text-brand-400'],
-      },
-      neutral: {
-        base: ['bg-shark-400/10', 'ring-shark-400/30', 'text-shark-400'],
       },
       success: {
         base: ['bg-green-400/10', 'ring-green-400/30', 'text-green-400'],
