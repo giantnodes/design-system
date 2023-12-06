@@ -1,17 +1,16 @@
-import type { UseAvatarProps } from '@/components/avatar/use-avatar.hook'
 import type { Component } from '@/utilities/types'
 
 import React from 'react'
 
-import { useAvatar } from '@/components/avatar/use-avatar.hook'
+import { useAvatarContext } from '@/components/avatar/use-avatar.context.hook'
 
-export type AvatarNotificationProps = Component<'span'> & UseAvatarProps
+export type AvatarNotificationProps = Component<'span'>
 
 const AvatarNotification = React.forwardRef<HTMLSpanElement, AvatarNotificationProps>((props, ref) => {
   const { as, className, ...rest } = props
-  const { slots } = useAvatar(props)
 
   const Component = as || 'span'
+  const { slots } = useAvatarContext()
 
   const getProps = React.useCallback(
     () => ({
