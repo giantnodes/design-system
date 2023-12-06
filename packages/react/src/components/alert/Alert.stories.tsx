@@ -11,7 +11,7 @@ const Component: Meta<typeof Alert> = {
   argTypes: {
     color: {
       control: { type: 'select' },
-      options: ['default', 'brand', 'success', 'info', 'warning', 'danger'],
+      options: ['neutral', 'brand', 'success', 'info', 'warning', 'danger'],
     },
   },
 }
