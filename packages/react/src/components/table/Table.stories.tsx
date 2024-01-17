@@ -12,6 +12,12 @@ const Component: Meta<typeof Table> = {
     size: {
       control: { type: 'select' },
     },
+    mode: {
+      control: { type: 'select' },
+    },
+    behavior: {
+      control: { type: 'select' },
+    },
   },
 }
 
@@ -22,49 +28,47 @@ const defaultProps = {
 export const Default: StoryFn = (args: TableProps) => (
   <Table {...args}>
     <Table.Head>
-      <Table.Row>
-        <Table.Header>Name</Table.Header>
-        <Table.Header>Title</Table.Header>
-        <Table.Header>Email</Table.Header>
-        <Table.Header>Role</Table.Header>
-      </Table.Row>
+      <Table.Column>Name</Table.Column>
+      <Table.Column>Title</Table.Column>
+      <Table.Column>Email</Table.Column>
+      <Table.Column>Role</Table.Column>
     </Table.Head>
     <Table.Body>
-      <Table.Row>
-        <Table.Data>Lindsay Walton</Table.Data>
-        <Table.Data>Front-end Developer</Table.Data>
-        <Table.Data>lindsay.walton@example.com</Table.Data>
-        <Table.Data>Member</Table.Data>
+      <Table.Row key="1">
+        <Table.Cell>Lindsay Walton</Table.Cell>
+        <Table.Cell>Front-end Developer</Table.Cell>
+        <Table.Cell>lindsay.walton@example.com</Table.Cell>
+        <Table.Cell>Member</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.Data>Courtney Henry</Table.Data>
-        <Table.Data>Designer</Table.Data>
-        <Table.Data>courtney.henry@example.com</Table.Data>
-        <Table.Data>Admin</Table.Data>
+      <Table.Row key="2">
+        <Table.Cell>Courtney Henry</Table.Cell>
+        <Table.Cell>Designer</Table.Cell>
+        <Table.Cell>courtney.henry@example.com</Table.Cell>
+        <Table.Cell>Admin</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.Data>Tom Cook</Table.Data>
-        <Table.Data>Director of Product</Table.Data>
-        <Table.Data>tom.cook@example.com</Table.Data>
-        <Table.Data>Member</Table.Data>
+      <Table.Row key="3">
+        <Table.Cell>Tom Cook</Table.Cell>
+        <Table.Cell>Director of Product</Table.Cell>
+        <Table.Cell>tom.cook@example.com</Table.Cell>
+        <Table.Cell>Member</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.Data>Whitney Francis</Table.Data>
-        <Table.Data>Copywriter</Table.Data>
-        <Table.Data>whitney.francis@example.com</Table.Data>
-        <Table.Data>Admin</Table.Data>
+      <Table.Row key="4">
+        <Table.Cell>Whitney Francis</Table.Cell>
+        <Table.Cell>Copywriter</Table.Cell>
+        <Table.Cell>whitney.francis@example.com</Table.Cell>
+        <Table.Cell>Admin</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.Data>Leonard Krasner</Table.Data>
-        <Table.Data>Senior Designer</Table.Data>
-        <Table.Data>leonard.krasner@example.com</Table.Data>
-        <Table.Data>Owner</Table.Data>
+      <Table.Row key="5">
+        <Table.Cell>Leonard Krasner</Table.Cell>
+        <Table.Cell>Senior Designer</Table.Cell>
+        <Table.Cell>leonard.krasner@example.com</Table.Cell>
+        <Table.Cell>Owner</Table.Cell>
       </Table.Row>
-      <Table.Row>
-        <Table.Data>Floyd Miles</Table.Data>
-        <Table.Data>Principal Designer</Table.Data>
-        <Table.Data>floyd.miles@example.com</Table.Data>
-        <Table.Data>Member</Table.Data>
+      <Table.Row key="6">
+        <Table.Cell>Floyd Miles</Table.Cell>
+        <Table.Cell>Principal Designer</Table.Cell>
+        <Table.Cell>floyd.miles@example.com</Table.Cell>
+        <Table.Cell>Member</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table>

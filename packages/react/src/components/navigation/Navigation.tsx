@@ -18,10 +18,10 @@ import { useNavigation } from '@/components/navigation/use-navigation.hook'
 export type NavigationProps = Component<'nav'> & UseNavigationProps
 
 const Navigation = React.forwardRef<HTMLElement, NavigationProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+  const { as, children, className, position, size, orientation, variant, ...rest } = props
 
-  const context = useNavigation(props)
   const Component = as || 'nav'
+  const context = useNavigation({ position, size, orientation, variant })
 
   const getProps = React.useCallback(
     () => ({

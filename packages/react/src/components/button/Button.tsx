@@ -1,37 +1,31 @@
 import type { UseButtonProps } from '@/components/button/use-button.hook'
-import type { Component } from '@/utilities/types'
+import type { ComponentWithoutAs } from '@/utilities/types'
+import type { ButtonProps as ComponentProps } from 'react-aria-components'
 
-import * as Ariakit from '@ariakit/react'
 import React from 'react'
+import { Button as Component } from 'react-aria-components'
 
 import { useButton } from '@/components/button/use-button.hook'
 
-export type ButtonProps = Component<'button'> & UseButtonProps
+export type ButtonProps = ComponentWithoutAs<'button'> & ComponentProps & UseButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
-  const { slots } = useButton(props)
+  const { children, className, color, shape, size, variant, ...rest } = props
 
-  const Component = as || 'button'
+  const { slots } = useButton({ color, shape, size, variant })
 
   const getProps = React.useCallback(
     () => ({
       ref,
-      className: slots.base({
-        class: className,
-      }),
+      className: slots.button({ className }),
       ...rest,
     }),
     [ref, slots, className, rest]
   )
 
-  return (
-    <Ariakit.Button as={Component} type="button" {...getProps()}>
-      {children}
-    </Ariakit.Button>
-  )
+  return <Component {...getProps()}>{children}</Component>
 })
 
 Button.displayName = 'Button'
 
-export default Object.assign(Button, {})
+export default Button

@@ -4,136 +4,113 @@ import { tv } from 'tailwind-variants'
 
 export const button = tv({
   slots: {
-    base: [
+    button: [
       'inline-flex',
-      'iems-center',
-      'justify-center',
       'items-center',
-      'space-x-2',
+      'justify-center',
       'gap-x-1',
+      'space-x-2',
       'text-center',
-      'font-regular',
-      'transition-all',
-      'outline-none',
-      'focus:outline-2',
-      'focus:outline-offset-1',
-      'shadow-sm',
-      'rounded',
+      'rounded-md',
+      'border',
+      'transition-all ease-out duration-200',
+      'focus:outline-dashed focus:outline-offset-2 focus:outline-1',
       'disabled:opacity-50',
       'disabled:cursor-not-allowed',
     ],
   },
   variants: {
     color: {
-      brand: {
-        base: [
+      neutral: {
+        button: [
           'text-white',
-          'bg-brand-500',
-          'hover:bg-brand-600',
-          'disabled:bg-brand-200',
-          'disabled:text-brand-700',
-          'focus:outline-brand-700',
-          'dark:text-brand-950',
-          'dark:bg-brand-400',
-          'hover:dark:bg-brand-300',
-          'disabled:dark:bg-brand-800',
-          'disabled:dark:text-brand-100',
-          'focus:dark:outline-brand-300',
+          'dark:border-shark-500',
+          'dark:bg-shark-600',
+          'hover:dark:bg-shark-600/80',
+          'focus:dark:outline-shark-400',
+        ],
+      },
+      brand: {
+        button: [
+          'text-white',
+          'dark:border-brand-600',
+          'dark:bg-brand-800',
+          'hover:dark:bg-brand-800/80',
+          'focus:dark:outline-brand-600',
         ],
       },
       success: {
-        base: [
+        button: [
           'text-white',
-          'bg-green-500',
-          'hover:bg-green-600',
-          'disabled:bg-green-200',
-          'disabled:text-green-700',
-          'focus:outline-green-700',
-          'dark:text-green-950',
-          'dark:bg-green-400',
-          'hover:dark:bg-green-300',
-          'disabled:dark:bg-green-800',
-          'disabled:dark:text-green-100',
+          'dark:border-green-600',
+          'dark:bg-green-800',
           'focus:dark:outline-green-300',
+          'hover:dark:bg-green-800/80',
+          'focus:dark:outline-green-600',
         ],
       },
       info: {
-        base: [
+        button: [
           'text-white',
-          'bg-blue-500',
-          'hover:bg-blue-600',
-          'disabled:bg-blue-200',
-          'disabled:text-blue-700',
-          'focus:outline-blue-700',
-          'dark:text-blue-950',
-          'dark:bg-blue-400',
-          'hover:dark:bg-blue-300',
-          'disabled:dark:bg-blue-800',
-          'disabled:dark:text-blue-100',
+          'dark:border-blue-600',
+          'dark:bg-blue-800',
           'focus:dark:outline-blue-300',
+          'hover:dark:bg-blue-800/80',
+          'focus:dark:outline-blue-600',
         ],
       },
       warning: {
-        base: [
+        button: [
           'text-white',
-          'bg-yellow-500',
-          'hover:bg-yellow-600',
-          'disabled:bg-yellow-200',
-          'disabled:text-yellow-700',
-          'focus:outline-yellow-700',
-          'dark:text-yellow-950',
-          'dark:bg-yellow-400',
-          'hover:dark:bg-yellow-300',
-          'disabled:dark:bg-yellow-800',
-          'disabled:dark:text-yellow-100',
+          'dark:border-yellow-600',
+          'dark:bg-yellow-800',
           'focus:dark:outline-yellow-300',
+          'hover:dark:bg-yellow-800/80',
+          'focus:dark:outline-yellow-600',
         ],
       },
       danger: {
-        base: [
+        button: [
           'text-white',
-          'bg-red-500',
-          'hover:bg-red-600',
-          'disabled:bg-red-200',
-          'disabled:text-red-700',
-          'focus:outline-red-700',
-          'dark:text-red-950',
-          'dark:bg-red-400',
-          'hover:dark:bg-red-300',
-          'disabled:dark:bg-red-800',
-          'disabled:dark:text-red-100',
+          'dark:border-red-600',
+          'dark:bg-red-800',
           'focus:dark:outline-red-300',
+          'hover:dark:bg-red-800/80',
+          'focus:dark:outline-red-600',
         ],
       },
     },
     shape: {
       pill: {
-        base: ['rounded-full'],
+        button: ['rounded-full'],
       },
     },
     size: {
       xs: {
-        base: ['text-xs', 'px-2.5', 'py-1'],
+        button: ['text-xs', 'px-2.5', 'py-1'],
       },
       sm: {
-        base: ['text-sm', 'leading-4', 'px-3', 'py-2'],
+        button: ['text-sm', 'leading-4', 'px-3', 'py-2'],
       },
       md: {
-        base: ['text-sm', 'px-4', 'py-2'],
+        button: ['text-sm', 'px-4', 'py-2'],
       },
       lg: {
-        base: ['text-base', 'px-4', 'py-2'],
+        button: ['text-base', 'px-4', 'py-2'],
       },
       xl: {
-        base: ['text-base', 'px-6', 'py-3'],
+        button: ['text-base', 'px-6', 'py-3'],
       },
     },
     variant: {
+      blank: {
+        button: ['border-0', '!bg-transparent'],
+      },
       dashed: {
-        base: ['border', 'border-dashed', '!bg-transparent'],
+        button: ['border', 'border-dashed', '!bg-transparent'],
       },
       outlined: {
-        base: ['border', '!bg-transparent'],
+        button: ['border', '!bg-transparent'],
       },
     },
   },
@@ -142,7 +119,7 @@ export const button = tv({
       variant: 'outlined',
       color: 'brand',
       class: {
-        base: [
+        button: [
           'border-brand-700',
           'text-brand-700',
           'dark:text-brand-300',
@@ -155,7 +132,7 @@ export const button = tv({
       variant: 'outlined',
       color: 'success',
       class: {
-        base: [
+        button: [
           'border-green-700',
           'text-green-700',
           'dark:text-green-300',
@@ -168,7 +145,7 @@ export const button = tv({
       variant: 'outlined',
       color: 'info',
       class: {
-        base: [
+        button: [
           'border-blue-700',
           'text-blue-700',
           'dark:text-blue-300',
@@ -181,7 +158,7 @@ export const button = tv({
       variant: 'outlined',
       color: 'warning',
       class: {
-        base: [
+        button: [
           'border-yellow-700',
           'text-yellow-700',
           'dark:text-yellow-300',
@@ -194,14 +171,14 @@ export const button = tv({
       variant: 'outlined',
       color: 'danger',
       class: {
-        base: ['border-red-700', 'text-red-700', 'dark:text-red-300', 'dark:border-red-300', 'hover:dark:bg-red-950'],
+        button: ['border-red-700', 'text-red-700', 'dark:text-red-300', 'dark:border-red-300', 'hover:dark:bg-red-950'],
       },
     },
     {
       variant: 'dashed',
       color: 'brand',
       class: {
-        base: [
+        button: [
           'border-brand-700',
           'text-brand-700',
           'dark:text-brand-300',
@@ -214,7 +191,7 @@ export const button = tv({
       variant: 'dashed',
       color: 'success',
       class: {
-        base: [
+        button: [
           'border-green-700',
           'text-green-700',
           'dark:text-green-300',
@@ -227,7 +204,7 @@ export const button = tv({
       variant: 'dashed',
       color: 'info',
       class: {
-        base: [
+        button: [
           'border-blue-700',
           'text-blue-700',
           'dark:text-blue-300',
@@ -240,7 +217,7 @@ export const button = tv({
       variant: 'dashed',
       color: 'warning',
       class: {
-        base: [
+        button: [
           'border-yellow-700',
           'text-yellow-700',
           'dark:text-yellow-300',
@@ -253,7 +230,7 @@ export const button = tv({
       variant: 'dashed',
       color: 'danger',
       class: {
-        base: ['border-red-700', 'text-red-700', 'dark:text-red-300', 'dark:border-red-300', 'hover:dark:bg-red-950'],
+        button: ['border-red-700', 'text-red-700', 'dark:text-red-300', 'dark:border-red-300', 'hover:dark:bg-red-950'],
       },
     },
   ],

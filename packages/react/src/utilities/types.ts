@@ -6,3 +6,5 @@ export type Component<
 }
 
 export type ComponentWithoutAs<T extends React.ElementType> = Omit<Component<T>, 'as'>
+
+export type Selection = 'all' | Set<React.Key>

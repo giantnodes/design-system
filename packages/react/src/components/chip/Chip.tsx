@@ -8,10 +8,10 @@ import { useChip } from '@/components/chip/use-chip.hook'
 export type ChipProps = Component<'span'> & UseChipProps
 
 const Chip = React.forwardRef<HTMLSpanElement, ChipProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
-  const { slots } = useChip(props)
+  const { as, children, className, color, radius, size, variant, ...rest } = props
 
   const Component = as || 'span'
+  const { slots } = useChip({ color, radius, size, variant })
 
   const getProps = React.useCallback(
     () => ({

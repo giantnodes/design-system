@@ -13,25 +13,21 @@ export const form = tv({
   variants: {
     status: {
       neutral: {
-        input: ['dark:border-shark-500'],
+        feedback: ['text-shark-500'],
       },
       brand: {
-        input: ['border-brand-500'],
+        feedback: ['text-brand-500'],
       },
       success: {
-        input: ['border-green-500'],
         feedback: ['text-green-500'],
       },
       info: {
-        input: ['border-blue-500'],
         feedback: ['text-blue-500'],
       },
       warning: {
-        input: ['border-yellow-600'],
         feedback: ['text-yellow-500'],
       },
       danger: {
-        input: ['border-red-500'],
         feedback: ['text-red-500'],
       },
     },

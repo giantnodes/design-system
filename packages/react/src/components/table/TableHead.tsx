@@ -1,31 +1,41 @@
-import type { Component } from '@/utilities/types'
+import type { TableHeaderProps as ComponentProps } from 'react-aria-components'
 
 import React from 'react'
+import { Collection, TableHeader as Component, useTableOptions } from 'react-aria-components'
 
+import Checkbox from '@/components/checkbox/Checkbox'
+import TableColumn from '@/components/table/TableColumn'
 import { useTableContext } from '@/components/table/use-table-context.hook'
 
-export type TableHeadProps = Component<'thead'>
+export type TableHeadProps<T extends object> = ComponentProps<T>
 
-const TableHead = React.forwardRef<HTMLTableSectionElement, TableHeadProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
-  const { slots } = useTableContext()
+const TableHead: <T extends object>(props: TableHeadProps<T>) => React.ReactNode = (() =>
+  React.forwardRef((props, ref: React.ForwardedRef<HTMLTableSectionElement>) => {
+    const { children, className, columns, ...rest } = props
 
-  const Component = as || 'thead'
+    const { slots } = useTableContext()
+    const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.thead({
-        class: className,
+    const getProps = React.useCallback(
+      () => ({
+        ref,
+        className: slots.thead(),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [ref, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Component {...getProps()}>
+        {allowsDragging && <TableColumn />}
 
-TableHead.displayName = 'Table.Header'
+        {selectionBehavior === 'toggle' && (
+          <TableColumn>{selectionMode === 'multiple' && <Checkbox slot="selection" />}</TableColumn>
+        )}
+
+        <Collection items={columns}>{children}</Collection>
+      </Component>
+    )
+  }))()
 
 export default TableHead

@@ -1,9 +1,8 @@
 import type { ComponentWithoutAs } from '@/utilities/types'
 
-import * as Ariakit from '@ariakit/react'
 import React from 'react'
 
-export type TypographyHeadingLevelProps = ComponentWithoutAs<'div'> & Ariakit.HeadingLevelProps
+export type TypographyHeadingLevelProps = ComponentWithoutAs<'div'>
 
 const TypographyHeadingLevel = React.forwardRef<HTMLHeadingElement, TypographyHeadingLevelProps>((props, ref) => {
   const { children, className, ...rest } = props
@@ -17,7 +16,7 @@ const TypographyHeadingLevel = React.forwardRef<HTMLHeadingElement, TypographyHe
     [ref, className, rest]
   )
 
-  return <Ariakit.HeadingLevel {...getProps()}>{children}</Ariakit.HeadingLevel>
+  return <div {...getProps()}>{children}</div>
 })
 
 TypographyHeadingLevel.displayName = 'Typography.HeadingLevel'

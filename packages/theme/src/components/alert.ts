@@ -17,7 +17,7 @@ export const alert = tv({
         base: [
           'bg-shark-50',
           'text-shark-700',
-          'border-shark-400',
+          'border-shark-500',
           'dark:bg-shark-900',
           'dark:text-shark-50',
           'dark:border-shark-600',

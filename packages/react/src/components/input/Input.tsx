@@ -1,27 +1,26 @@
-import type { Component } from '@/utilities/types'
-import type { InputVariantProps } from '@giantnodes/theme'
+import type { UseInputProps } from '@/components/input/use-input.hook'
+import type { ComponentWithoutAs } from '@/utilities/types'
+import type { TextFieldProps as ComponentProps } from 'react-aria-components'
 
 import React from 'react'
+import { TextField as Component } from 'react-aria-components'
 
 import InputAddon from '@/components/input/InputAddon'
 import InputControl from '@/components/input/InputControl'
 import { InputProvider } from '@/components/input/use-input.context.hook'
 import { useInput } from '@/components/input/use-input.hook'
 
-export type InputProps = Component<'div'> & InputVariantProps
+export type InputProps = ComponentWithoutAs<'div'> & ComponentProps & UseInputProps
 
 const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+  const { children, className, status, size, variant, ...rest } = props
 
-  const context = useInput(props)
-  const Component = as || 'div'
+  const context = useInput({ status, size, variant })
 
   const getProps = React.useCallback(
     () => ({
       ref,
-      className: context.slots.input({
-        class: className,
-      }),
+      className: context.slots.input({ className }),
       ...rest,
     }),
     [className, context.slots, ref, rest]

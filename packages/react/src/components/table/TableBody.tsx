@@ -1,31 +1,28 @@
-import type { Component } from '@/utilities/types'
+import type { TableBodyProps as ComponentProps } from 'react-aria-components'
 
 import React from 'react'
+import { TableBody as Component } from 'react-aria-components'
 
 import { useTableContext } from '@/components/table/use-table-context.hook'
 
-export type TableBodyProps = Component<'tbody'>
+export type TableBodyProps<T extends object> = ComponentProps<T>
 
-const TableBody = React.forwardRef<HTMLTableSectionElement, TableBodyProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
-  const { slots } = useTableContext()
+const TableBody: <T extends object>(props: TableBodyProps<T>) => React.ReactNode = (() =>
+  React.forwardRef((props, ref: React.ForwardedRef<HTMLTableSectionElement>) => {
+    const { children, className, ...rest } = props
 
-  const Component = as || 'tbody'
+    const { slots } = useTableContext()
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.tbody({
-        class: className,
+    const getProps = React.useCallback(
+      () => ({
+        ref,
+        className: slots.tbody(),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [ref, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
-
-TableBody.displayName = 'Table.Body'
+    return <Component {...getProps()}>{children}</Component>
+  }))()
 
 export default TableBody

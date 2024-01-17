@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants'
 export const typography = tv({
   slots: {
     heading: ['font-bold'],
-    text: ['text-sm'],
+    text: ['text-sm', 'font-normal'],
   },
   variants: {
     variant: {
@@ -15,27 +15,27 @@ export const typography = tv({
       },
       subtitle: {
         heading: ['text-shark-600', 'dark:text-shark-50'],
-        text: ['text-shark-400', 'dark:text-shark-200'],
+        text: ['text-shark-400', 'dark:text-shark-200', 'font-normal', 'text-xs'],
       },
     },
     level: {
       1: {
-        title: ['text-4xl'],
+        heading: ['text-4xl'],
       },
       2: {
-        title: ['text-3xl'],
+        heading: ['text-3xl'],
       },
       3: {
-        title: ['text-2xl'],
+        heading: ['text-2xl'],
       },
       4: {
-        title: ['text-xl'],
+        heading: ['text-xl'],
       },
       5: {
-        title: ['text-lg'],
+        heading: ['text-lg'],
       },
       6: {
-        title: ['text-md'],
+        heading: ['text-md'],
       },
     },
   },

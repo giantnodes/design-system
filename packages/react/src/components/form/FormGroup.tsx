@@ -13,10 +13,10 @@ export type FormGroupProps = Component<'div'> & {
 const FormGroup = React.forwardRef<HTMLDivElement, FormGroupProps>((props, ref) => {
   const { as, children, className, error, ...rest } = props
 
+  const Component = as || 'div'
+
   const { slots } = useFormContext()
   const context = useFormGroup()
-
-  const Component = as || 'div'
 
   const getProps = React.useCallback(
     () => ({

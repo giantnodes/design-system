@@ -1,31 +1,48 @@
-import type { Component } from '@/utilities/types'
+import type { RowProps as ComponentProps } from 'react-aria-components'
 
 import React from 'react'
+import { Collection, Row as Component, useTableOptions } from 'react-aria-components'
 
+import Button from '@/components/button/Button'
+import Checkbox from '@/components/checkbox/Checkbox'
+import TableCell from '@/components/table/TableCell'
 import { useTableContext } from '@/components/table/use-table-context.hook'
 
-export type TableRowProps = Component<'tr'>
+export type TableRowProps<T extends object> = ComponentProps<T>
 
-const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
-  const { slots } = useTableContext()
+const TableRow: <T extends object>(props: TableRowProps<T>) => React.ReactNode = (() =>
+  React.forwardRef((props, ref: React.ForwardedRef<HTMLTableRowElement>) => {
+    const { children, columns, className, ...rest } = props
 
-  const Component = as || 'tr'
+    const { slots } = useTableContext()
+    const { selectionBehavior, allowsDragging } = useTableOptions()
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.tr({
-        class: className,
+    const getProps = React.useCallback(
+      () => ({
+        ref,
+        className: slots.tr(),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [ref, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Component {...getProps()}>
+        {allowsDragging && (
+          <TableCell>
+            <Button slot="drag">≡</Button>
+          </TableCell>
+        )}
 
-TableRow.displayName = 'Table.Row'
+        {selectionBehavior === 'toggle' && (
+          <TableCell>
+            <Checkbox slot="selection" />
+          </TableCell>
+        )}
+
+        <Collection items={columns}>{children}</Collection>
+      </Component>
+    )
+  }))()
 
 export default TableRow

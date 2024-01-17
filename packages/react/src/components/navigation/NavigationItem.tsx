@@ -9,9 +9,9 @@ export type NavigationItemProps = Component<'li'> & UseNavigationProps
 
 const NavigationItem = React.forwardRef<HTMLLIElement, NavigationItemProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavigationContext()
 
   const Component = as || 'li'
+  const { slots } = useNavigationContext()
 
   const getProps = React.useCallback(
     () => ({

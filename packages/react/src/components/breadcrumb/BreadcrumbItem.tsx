@@ -1,39 +1,32 @@
-import type { Component } from '@/utilities/types'
+import type { ComponentWithoutAs } from '@/utilities/types'
+import type { BreadcrumbProps as ComponentProps } from 'react-aria-components'
 
-import { Focusable } from '@ariakit/react'
 import React from 'react'
+import { Breadcrumb as Component } from 'react-aria-components'
 
 import { useBreadcrumbContext } from '@/components/breadcrumb/use-breadcrumb-context.hook'
 
-export type BreadcrumbItemProps = Component<'li'> & {
-  disabled?: boolean
-  active?: boolean
-}
+export type BreadcrumbItemProps = ComponentWithoutAs<'li'> & ComponentProps
 
 const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>((props, ref) => {
-  const { as, children, className, disabled, active, ...rest } = props
-  const { slots, separator } = useBreadcrumbContext()
+  const { children, className, ...rest } = props
 
-  const Component = as || 'li'
+  const { slots, separator } = useBreadcrumbContext()
 
   const getProps = React.useCallback(
     () => ({
       ref,
-      className: slots.item({
-        class: className,
-        disabled,
-        active,
-      }),
+      className: slots.item({ className }),
       ...rest,
     }),
-    [ref, slots, disabled, active, className, rest]
+    [ref, slots, className, rest]
   )
 
   return (
-    <Component {...getProps()} aria-current={active ? 'page' : undefined}>
-      <Focusable>{children}</Focusable>
+    <Component {...getProps()}>
+      {children}
 
-      {!active && separator && (
+      {separator && (
         <span aria-hidden="true" className={slots.separator()}>
           {separator}
         </span>
@@ -41,11 +34,6 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>((pro
     </Component>
   )
 })
-
-BreadcrumbItem.defaultProps = {
-  disabled: false,
-  active: false,
-}
 
 BreadcrumbItem.displayName = 'Breadcrumb.Item'
 

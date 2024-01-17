@@ -14,10 +14,11 @@ import { useAlert } from '@/components/alert/use-alert.hook'
 export type AlertProps = Component<'div'> & UseAlertProps
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+  const { as, children, className, color, ...rest } = props
 
-  const context = useAlert(props)
   const Component = as || 'div'
+
+  const context = useAlert({ color })
 
   const getProps = React.useCallback(
     () => ({

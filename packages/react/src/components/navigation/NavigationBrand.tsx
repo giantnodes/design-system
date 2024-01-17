@@ -8,9 +8,9 @@ export type NavigationBrandProps = Component<'div'>
 
 const NavigationBrand = React.forwardRef<HTMLDivElement, NavigationBrandProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavigationContext()
 
   const Component = as || 'div'
+  const { slots } = useNavigationContext()
 
   const getProps = React.useCallback(
     () => ({

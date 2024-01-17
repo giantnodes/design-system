@@ -8,9 +8,9 @@ export type UseBreadcrumbProps = BreadcrumbVariantProps & {
 }
 
 export const useBreadcrumb = (props: UseBreadcrumbProps) => {
-  const { size, disabled, separator = '/' } = props
+  const { size, separator = '/' } = props
 
-  const slots = React.useMemo(() => breadcrumb({ size, disabled }), [size, disabled])
+  const slots = React.useMemo(() => breadcrumb({ size }), [size])
 
   return {
     slots,

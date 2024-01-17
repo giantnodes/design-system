@@ -8,9 +8,9 @@ export type NavigationDividerProps = Component<'hr'>
 
 const NavigationDivider = React.forwardRef<HTMLHRElement, NavigationDividerProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavigationContext()
 
   const Component = as || 'hr'
+  const { slots } = useNavigationContext()
 
   const getProps = React.useCallback(
     () => ({

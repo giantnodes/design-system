@@ -9,9 +9,9 @@ export type NavigationTriggerProps = Component<'button'> & UseNavigationProps
 
 const NavigationTrigger = React.forwardRef<HTMLButtonElement, NavigationTriggerProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavigationContext()
 
   const Component = as || 'button'
+  const { slots } = useNavigationContext()
 
   const getProps = React.useCallback(
     () => ({

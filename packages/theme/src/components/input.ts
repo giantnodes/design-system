@@ -10,11 +10,19 @@ export const input = tv({
       'items-center',
       'w-full',
       'p-1.5',
-      'text-shark-600',
-      'dark:text-shark-50',
       'rounded-md',
+      'text-shark-400 dark:text-shark-200',
+      'has-[:disabled]:cursor-not-allowed',
+      'has-[:focused]:outline-1 has-[:focused]:outline-dashed has-[:focused]:outline-offset-2 has-[:focused]:dark:outline-shark-400 has-[:focused]:dark:border-shark-500',
     ],
-    control: ['grow', 'bg-transparent', 'focus:outline-none', 'text-shark-600', 'dark:text-shark-50'],
+    control: [
+      'grow',
+      'bg-transparent',
+      'text-shark-400 dark:text-shark-200',
+      'focus:outline-none',
+      'disabled:cursor-not-allowed',
+      'placeholder:font-normal placeholder:text-sm',
+    ],
     addon: ['flex', 'pointer-events-none', 'px-1.5'],
   },
   variants: {
@@ -55,17 +63,6 @@ export const input = tv({
       },
       outlined: {
         input: ['border', 'border-solid'],
-      },
-    },
-    isFocused: {
-      true: {
-        input: ['border-blue-500', 'dark:border-shark-400'],
-      },
-    },
-    isDisabled: {
-      true: {
-        input: ['cursor-not-allowed'],
-        control: ['cursor-not-allowed'],
       },
     },
   },

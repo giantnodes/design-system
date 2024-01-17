@@ -12,10 +12,10 @@ import { useCard } from '@/components/card/use-card.hook'
 export type CardProps = Component<'div'> & UseCardProps
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+  const { as, children, className, transparent, ...rest } = props
 
-  const context = useCard(props)
   const Component = as || 'div'
+  const context = useCard({ transparent })
 
   const getProps = React.useCallback(
     () => ({

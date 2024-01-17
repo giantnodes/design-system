@@ -6,9 +6,9 @@ import React from 'react'
 export type UseTypographyProps = TypographyVariantProps
 
 export const useTypography = (props: UseTypographyProps) => {
-  const { level } = props
+  const { level, variant } = props
 
-  const slots = React.useMemo(() => typography({ level }), [level])
+  const slots = React.useMemo(() => typography({ level, variant }), [level, variant])
 
   return {
     slots,

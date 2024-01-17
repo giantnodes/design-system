@@ -4,9 +4,9 @@ import { tv } from 'tailwind-variants'
 
 export const breadcrumb = tv({
   slots: {
-    base: ['flex', 'flex-wrap', 'list-none'],
-    item: ['flex', 'items-center', 'cursor-pointer', 'text-shark-600', 'dark:text-shark-50'],
-    separator: ['text-shark', 'px-1', 'cursor-default'],
+    base: ['flex flex-wrap', 'list-none'],
+    item: ['group', 'flex items-center', 'cursor-pointer', 'text-shark-600 dark:text-shark-50'],
+    separator: ['group-last:hidden', 'text-shark', 'px-1', 'cursor-default'],
   },
   variants: {
     size: {

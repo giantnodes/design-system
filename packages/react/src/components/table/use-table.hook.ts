@@ -6,8 +6,9 @@ import React from 'react'
 export type UseTableProps = TableVariantProps
 
 export const useTable = (props: UseTableProps) => {
-  const { size, sticky, striped } = props
-  const slots = React.useMemo(() => table({ size, sticky, striped }), [size, sticky, striped])
+  const { size, sticky, striped, headingless } = props
+
+  const slots = React.useMemo(() => table({ size, sticky, striped, headingless }), [size, sticky, striped, headingless])
 
   return {
     slots,

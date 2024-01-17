@@ -1,51 +1,25 @@
 import type { ComponentWithoutAs } from '@/utilities/types'
+import type { InputProps as ComponentProps } from 'react-aria-components'
 
 import React from 'react'
+import { Input as Component } from 'react-aria-components'
 
 import { useInputContext } from '@/components/input/use-input.context.hook'
 
-export type InputControlProps = ComponentWithoutAs<'input'>
+export type InputControlProps = ComponentWithoutAs<'input'> & ComponentProps
 
 const InputControl = React.forwardRef<HTMLInputElement, InputControlProps>((props, ref) => {
   const { className, disabled, onFocus, onBlur, ...rest } = props
 
-  const { slots, isDisabled, setDisabled, setFocused } = useInputContext()
-  const Component = 'input'
-
-  const onInputFocus = React.useCallback(
-    (event: React.FocusEvent<HTMLInputElement>) => {
-      setFocused(true)
-
-      if (onFocus) onFocus(event)
-    },
-    [onFocus, setFocused]
-  )
-
-  const onInputBlur = React.useCallback(
-    (event: React.FocusEvent<HTMLInputElement>) => {
-      setFocused(false)
-
-      if (onBlur) onBlur(event)
-    },
-    [onBlur, setFocused]
-  )
-
-  React.useEffect(() => {
-    setDisabled(disabled ?? false)
-  }, [disabled, setDisabled])
+  const { slots } = useInputContext()
 
   const getProps = React.useCallback(
     () => ({
       ref,
-      disabled: isDisabled,
-      className: slots.control({
-        class: className,
-      }),
-      onFocus: onInputFocus,
-      onBlur: onInputBlur,
+      className: slots.control({ className }),
       ...rest,
     }),
-    [ref, isDisabled, slots, className, onInputFocus, onInputBlur, rest]
+    [ref, slots, className, rest]
   )
 
   return <Component {...getProps()} />

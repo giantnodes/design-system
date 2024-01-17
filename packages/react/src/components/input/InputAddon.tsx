@@ -9,8 +9,8 @@ export type InputAddonProps = Component<'div'>
 const InputAddon = React.forwardRef<HTMLDivElement, InputAddonProps>((props, ref) => {
   const { as, children, className, ...rest } = props
 
-  const { slots } = useInputContext()
   const Component = as || 'div'
+  const { slots } = useInputContext()
 
   const getProps = React.useCallback(
     () => ({

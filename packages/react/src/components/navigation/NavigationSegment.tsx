@@ -9,9 +9,9 @@ export type NavigationSegmentProps = Component<'ul'> & UseNavigationProps
 
 const NavigationSegment = React.forwardRef<HTMLUListElement, NavigationSegmentProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavigationContext()
 
   const Component = as || 'ul'
+  const { slots } = useNavigationContext()
 
   const getProps = React.useCallback(
     () => ({

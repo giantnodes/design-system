@@ -11,9 +11,9 @@ export type ProgressBarProps = Omit<Component<'span'>, 'children'> & {
 
 const ProgressBar = React.forwardRef<HTMLSpanElement, ProgressBarProps>((props, ref) => {
   const { as, className, style, color, width, ...rest } = props
-  const { slots } = useProgressContext()
 
   const Component = as || 'span'
+  const { slots } = useProgressContext()
 
   const getProps = React.useCallback(
     () => ({

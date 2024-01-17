@@ -15,10 +15,10 @@ export type FormFeedbackProps = Component<'span'> & {
 const FormFeedback = React.forwardRef<HTMLSpanElement, FormFeedbackProps>((props, ref) => {
   const { as, children, className, type, ...rest } = props
 
+  const Component = as || 'span'
+
   const { slots } = useFormContext()
   const { status } = useFormGroupContext()
-
-  const Component = as || 'span'
 
   const isVisible = React.useMemo<boolean>(() => {
     switch (type) {

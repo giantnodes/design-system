@@ -10,9 +10,9 @@ import { useProgress } from '@/components/progress/use-progress.hook'
 export type ProgressProps = Component<'div'> & UseProgressProps
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((props, ref) => {
-  const { children, className, ...rest } = props
+  const { children, className, radius, size, ...rest } = props
 
-  const context = useProgress(props)
+  const context = useProgress({ radius, size })
 
   const getProps = React.useCallback(
     () => ({

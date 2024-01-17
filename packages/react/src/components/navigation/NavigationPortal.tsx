@@ -9,9 +9,9 @@ export type NavigationPortalProps = Component<'div'> & UseNavigationProps
 
 const NavigationPortal = React.forwardRef<HTMLDivElement, NavigationPortalProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavigationContext()
 
   const Component = as || 'div'
+  const { slots } = useNavigationContext()
 
   const getProps = React.useCallback(
     () => ({

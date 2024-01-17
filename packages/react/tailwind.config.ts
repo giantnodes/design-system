@@ -1,10 +1,11 @@
 import type { Config } from 'tailwindcss'
+import ReactAriaComponents from 'tailwindcss-react-aria-components'
 
 // https://javisperez.github.io/tailwindcolorshades
 
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}', './node_modules/@giantnodes/theme/dist/**/*.js'],
-  plugins: [],
+  plugins: [ReactAriaComponents],
   darkMode: 'class',
   theme: {
     extend: {

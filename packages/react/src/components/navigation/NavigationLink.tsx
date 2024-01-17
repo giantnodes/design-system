@@ -9,9 +9,9 @@ export type NavigationLinkProps = Component<'a'> & UseNavigationProps
 
 const NavigationLink = React.forwardRef<HTMLAnchorElement, NavigationLinkProps>((props, ref) => {
   const { as, children, className, ...rest } = props
-  const { slots } = useNavigationContext()
 
   const Component = as || 'a'
+  const { slots } = useNavigationContext()
 
   const getProps = React.useCallback(
     () => ({
