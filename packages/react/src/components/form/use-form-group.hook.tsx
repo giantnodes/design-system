@@ -1,24 +1,34 @@
 'use client'
 
+import type { FeedbackType } from '@/components/form/FormFeedback'
 import type { FormVariantProps } from '@giantnodes/theme'
 
+import { form } from '@giantnodes/theme'
 import React from 'react'
 
 export const useFormGroup = () => {
-  const [isError, setError] = React.useState<boolean | null>(null)
-  const [status, setStatus] = React.useState<FormVariantProps['status']>('neutral')
+  const [feedback, setFeedback] = React.useState<FeedbackType | null>(null)
 
-  React.useEffect(() => {
-    if (isError == null) {
-      setStatus('neutral')
-    } else {
-      setStatus(isError ? 'danger' : 'success')
+  const status = React.useMemo<FormVariantProps['status']>(() => {
+    switch (feedback) {
+      case 'success':
+        return 'success'
+      case 'warning':
+        return 'warning'
+      case 'error':
+        return 'danger'
+      default:
+        return 'neutral'
     }
-  }, [status, isError])
+  }, [feedback])
+
+  const slots = React.useMemo(() => form({ status }), [status])
 
   return {
+    slots,
     status,
-    setError,
+    feedback,
+    setFeedback,
   }
 }
 

@@ -9,7 +9,7 @@ import { useInputContext } from '@/components/input/use-input.context.hook'
 export type InputControlProps = ComponentWithoutAs<'input'> & ComponentProps
 
 const InputControl = React.forwardRef<HTMLInputElement, InputControlProps>((props, ref) => {
-  const { className, disabled, onFocus, onBlur, ...rest } = props
+  const { className, ...rest } = props
 
   const { slots } = useInputContext()
 

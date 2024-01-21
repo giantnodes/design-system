@@ -4,14 +4,14 @@ import type { TextProps as ComponentProps } from 'react-aria-components'
 import React from 'react'
 import { Text as Component } from 'react-aria-components'
 
-import { useFormContext } from '@/components/form/use-form.context'
+import { useFormGroupContext } from '@/components/form/use-form-group.context'
 
 export type FormCaptionProps = ComponentWithoutAs<'span'> & ComponentProps
 
 const FormCaption = React.forwardRef<HTMLSpanElement, FormCaptionProps>((props, ref) => {
   const { children, className, ...rest } = props
 
-  const { slots } = useFormContext()
+  const { slots } = useFormGroupContext()
 
   const getProps = React.useCallback(
     () => ({

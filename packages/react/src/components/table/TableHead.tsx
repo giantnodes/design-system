@@ -19,10 +19,10 @@ const TableHead: <T extends object>(props: TableHeadProps<T>) => React.ReactNode
     const getProps = React.useCallback(
       () => ({
         ref,
-        className: slots.thead(),
+        className: slots.thead({ className }),
         ...rest,
       }),
-      [ref, rest, slots]
+      [className, ref, rest, slots]
     )
 
     return (
@@ -30,7 +30,7 @@ const TableHead: <T extends object>(props: TableHeadProps<T>) => React.ReactNode
         {allowsDragging && <TableColumn />}
 
         {selectionBehavior === 'toggle' && (
-          <TableColumn>{selectionMode === 'multiple' && <Checkbox slot="selection" />}</TableColumn>
+          <TableColumn className="w-0">{selectionMode === 'multiple' && <Checkbox slot="selection" />}</TableColumn>
         )}
 
         <Collection items={columns}>{children}</Collection>

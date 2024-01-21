@@ -9,30 +9,31 @@ export const checkbox = tv({
       'relative',
       'flex items-center',
       'rounded',
-      'bg-shark-100 dark:bg-shark-500',
+      'border-2',
+      'cursor-pointer',
       'transition-all',
-      'cursor-pointer disabled:cursor-not-allowed',
-      'border-2 border-transparent selected:border-brand-500',
-      'focused:outline-1 focused:outline-dashed focused:outline-offset-8 focused:outline-shark-100 focused:dark:outline-shark-400',
-      '[&>svg]:selected:stroke-current',
+      'bg-shark-100 dark:bg-shark-500',
+      'border-transparent selected:border-brand-500',
     ],
-    icon: ['text-brand-500', 'h-full', 'w-full'],
+    icon: ['size-full', 'group-selected:stroke-brand-500'],
   },
   variants: {
     size: {
       sm: {
-        label: ['h-4', 'w-4'],
+        label: ['size-4'],
       },
       md: {
-        label: ['h-5', 'w-5'],
+        label: ['size-5'],
       },
       lg: {
-        label: ['h-6', 'w-6'],
+        label: ['size-6'],
       },
     },
   },
   defaultVariants: {
     size: 'md',
+    isSelected: false,
+    isDisabled: false,
   },
 })
 

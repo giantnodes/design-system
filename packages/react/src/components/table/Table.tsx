@@ -19,7 +19,7 @@ export type TableProps = Omit<ComponentProps, 'selectionMode' | 'selectionBehavi
   }
 
 const Table = React.forwardRef<HTMLTableElement, TableProps>((props, ref) => {
-  const { children, behavior, mode, size, sticky, striped, headingless, ...rest } = props
+  const { children, className, behavior, mode, size, sticky, striped, headingless, ...rest } = props
 
   const context = useTable({ size, sticky, striped, headingless })
 
@@ -28,10 +28,10 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>((props, ref) => {
       ref,
       selectionBehavior: behavior,
       selectionMode: mode,
-      className: context.slots.table(),
+      className: context.slots.table({ className }),
       ...rest,
     }),
-    [behavior, context.slots, mode, ref, rest]
+    [behavior, className, context.slots, mode, ref, rest]
   )
 
   return (

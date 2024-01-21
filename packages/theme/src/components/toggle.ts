@@ -12,15 +12,15 @@ export const toggle = tv({
     size: {
       sm: {
         wrapper: ['w-10', 'h-5'],
-        circle: ['h-4', 'w-4'],
+        circle: ['size-4'],
       },
       md: {
         wrapper: ['w-12', 'h-6'],
-        circle: ['h-5 w-5'],
+        circle: ['size-5'],
       },
       lg: {
         wrapper: ['w-14', 'h-7'],
-        circle: ['h-6', 'w-6'],
+        circle: ['size-6'],
       },
     },
     color: {

@@ -12,7 +12,7 @@ export type TableRowProps<T extends object> = ComponentProps<T>
 
 const TableRow: <T extends object>(props: TableRowProps<T>) => React.ReactNode = (() =>
   React.forwardRef((props, ref: React.ForwardedRef<HTMLTableRowElement>) => {
-    const { children, columns, className, ...rest } = props
+    const { children, className, columns, ...rest } = props
 
     const { slots } = useTableContext()
     const { selectionBehavior, allowsDragging } = useTableOptions()

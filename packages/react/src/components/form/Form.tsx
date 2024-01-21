@@ -1,4 +1,3 @@
-import type { UseFormProps } from '@/components/form/use-form.hook'
 import type { ComponentWithoutAs } from '@/utilities/types'
 import type { FormProps as ComponentProps } from 'react-aria-components'
 
@@ -9,30 +8,21 @@ import FormCaption from '@/components/form/FormCaption'
 import FormFeedback from '@/components/form/FormFeedback'
 import FormGroup from '@/components/form/FormGroup'
 import FormLabel from '@/components/form/FormLabel'
-import { FormProvider } from '@/components/form/use-form.context'
-import { useForm } from '@/components/form/use-form.hook'
 
-export type FormProps = ComponentWithoutAs<'form'> & UseFormProps & ComponentProps
+export type FormProps = ComponentWithoutAs<'form'> & ComponentProps
 
 const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => {
-  const { children, className, status, ...rest } = props
-
-  const context = useForm({ status })
+  const { children, className, ...rest } = props
 
   const getProps = React.useCallback(
     () => ({
       ref,
-      className: context.slots.form({ className }),
       ...rest,
     }),
-    [ref, className, context.slots, rest]
+    [ref, rest]
   )
 
-  return (
-    <FormProvider value={context}>
-      <Component {...getProps()}>{children}</Component>
-    </FormProvider>
-  )
+  return <Component {...getProps()}>{children}</Component>
 })
 
 Form.displayName = 'Form'

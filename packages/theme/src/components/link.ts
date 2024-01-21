@@ -7,8 +7,8 @@ export const link = tv({
     base: [
       'text-sm',
       'text-inherit',
-      'hover:cursor-pointer hover:underline hover:text-sky-600',
-      'data-[disabled=true]:text-shark-200 data-[disabled=true]:hover:text-shark-200 data-[disabled=true]:hover:no-underline',
+      'hover:underline hover:text-sky-600',
+      'disabled:cursor-default disabled:text-shark-200 disabled:hover:text-shark-200 disabled:hover:no-underline',
     ],
   },
   variants: {},

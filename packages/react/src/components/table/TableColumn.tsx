@@ -1,5 +1,6 @@
 import type { ColumnProps as ComponentProps } from 'react-aria-components'
 
+import clsx from 'clsx'
 import React from 'react'
 import { Column as Component } from 'react-aria-components'
 
@@ -15,10 +16,10 @@ const TableColumn = React.forwardRef<HTMLTableCellElement, TableColumnProps>((pr
   const getProps = React.useCallback(
     () => ({
       ref,
-      className: slots.th(),
+      className: clsx(slots.th(), className),
       ...rest,
     }),
-    [ref, rest, slots]
+    [className, ref, rest, slots]
   )
 
   return <Component {...getProps()}>{children}</Component>

@@ -4,17 +4,7 @@ import { tv } from 'tailwind-variants'
 
 export const input = tv({
   slots: {
-    input: [
-      'flex',
-      'flex-row',
-      'items-center',
-      'w-full',
-      'p-1.5',
-      'rounded-md',
-      'text-shark-400 dark:text-shark-200',
-      'has-[:disabled]:cursor-not-allowed',
-      'has-[:focused]:outline-1 has-[:focused]:outline-dashed has-[:focused]:outline-offset-2 has-[:focused]:dark:outline-shark-400 has-[:focused]:dark:border-shark-500',
-    ],
+    input: ['flex flex-row', 'items-center', 'w-full', 'p-1.5', 'rounded-md', 'text-shark-400 dark:text-shark-200'],
     control: [
       'grow',
       'bg-transparent',

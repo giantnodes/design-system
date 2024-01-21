@@ -15,7 +15,7 @@ export const avatar = tv({
       'border',
       'dark:border-shark-500',
     ],
-    img: ['inline-block', 'w-full', 'h-full', 'rounded-[inherit]'],
+    img: ['inline-block', 'size-full', 'rounded-[inherit]'],
     icon: ['flex', 'items-center', 'justify-center', 'text-inherit'],
     notification: ['absolute', 'top-0', 'right-0', 'block', 'rounded-full'],
   },
@@ -64,24 +64,24 @@ export const avatar = tv({
     },
     size: {
       xs: {
-        base: ['h-6', 'w-6', 'text-xs'],
-        notification: ['h-2', 'w-2'],
+        base: ['size-6', 'text-xs'],
+        notification: ['size-2'],
       },
       sm: {
-        base: ['w-8', 'h-8', 'text-sm'],
-        notification: ['h-2.5', 'w-2.5'],
+        base: ['size-8', 'text-sm'],
+        notification: ['size-2.5'],
       },
       md: {
-        base: ['h-10', 'w-10'],
-        notification: ['h-3', 'w-3'],
+        base: ['size-10'],
+        notification: ['size-3'],
       },
       lg: {
-        base: ['w-12', 'h-12', 'text-lg'],
-        notification: ['h-3.5', 'w-3.5'],
+        base: ['size-12', 'text-lg'],
+        notification: ['size-3.5'],
       },
       xl: {
-        base: ['w-16', 'h-16', 'text-xl'],
-        notification: ['h-4', 'w-4'],
+        base: ['size-16', 'text-xl'],
+        notification: ['size-4'],
       },
     },
     zoomed: {
