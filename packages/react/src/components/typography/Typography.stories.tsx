@@ -13,18 +13,11 @@ const defaultProps = {
 }
 
 export const Heading: StoryFn = () => (
-  <Typography.HeadingLevel>
+  <>
     <Typography.Heading>Heading 1</Typography.Heading>
+    <Typography.Paragraph>Torquent penatibus ipsum nascetur cursus primis lobortis</Typography.Paragraph>
     <Typography.Text>Torquent penatibus ipsum nascetur cursus primis lobortis</Typography.Text>
-    <Typography.HeadingLevel>
-      <Typography.Heading>Heading 2</Typography.Heading>
-      <Typography.Text>Volutpat metus id purus dignissim fusce Tellus egestas.</Typography.Text>
-    </Typography.HeadingLevel>
-    <Typography.HeadingLevel>
-      <Typography.Heading>Heading 2</Typography.Heading>
-      <Typography.Text>Platea justo lectus. Praesent. Et sodales pellentesque</Typography.Text>
-    </Typography.HeadingLevel>
-  </Typography.HeadingLevel>
+  </>
 )
 
 Heading.args = {

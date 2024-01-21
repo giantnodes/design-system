@@ -1,9 +1,9 @@
 import TypographyHeading from '@/components/typography/TypographyHeading'
-import TypographyHeadingLevel from '@/components/typography/TypographyHeadingLevel'
+import TypographyParagraph from '@/components/typography/TypographyParagraph'
 import TypographyText from '@/components/typography/TypographyText'
 
 export default {
-  HeadingLevel: TypographyHeadingLevel,
   Heading: TypographyHeading,
+  Paragraph: TypographyParagraph,
   Text: TypographyText,
 }

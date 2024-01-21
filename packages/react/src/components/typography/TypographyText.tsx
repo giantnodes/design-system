@@ -1,24 +1,22 @@
 import type { Component } from '@/utilities/types'
 import type { TypographyVariantProps } from '@giantnodes/theme'
 
+import { typography } from '@giantnodes/theme'
 import React from 'react'
 
-import { useTypography } from '@/components/typography/use-typography.hook'
-
-export type TypographyTextProps = Component<'p'> & TypographyVariantProps
+export type TypographyTextProps = Component<'span'> & TypographyVariantProps
 
 const TypographyText = React.forwardRef<HTMLParagraphElement, TypographyTextProps>((props, ref) => {
-  const { as, children, className, level, variant, ...rest } = props
+  const { as, children, className, variant, ...rest } = props
 
-  const Component = as || 'p'
-  const { slots } = useTypography({ level, variant })
+  const Component = as || 'span'
+
+  const slots = React.useMemo(() => typography({ variant }), [variant])
 
   const getProps = React.useCallback(
     () => ({
       ref,
-      className: slots.text({
-        class: className,
-      }),
+      className: slots.paragraph({ className }),
       ...rest,
     }),
     [ref, slots, className, rest]

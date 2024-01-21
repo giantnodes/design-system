@@ -1,27 +1,26 @@
 import type { ComponentWithoutAs } from '@/utilities/types'
-import type { TypographyVariantProps } from '@giantnodes/theme'
+import type { HeadingVariantProps } from '@giantnodes/theme'
+import type { HeadingProps as ComponentProps } from 'react-aria-components'
 
+import { heading } from '@giantnodes/theme'
 import React from 'react'
+import { Heading as Component } from 'react-aria-components'
 
-import { useTypography } from '@/components/typography/use-typography.hook'
-
-export type TypographyHeadingProps = ComponentWithoutAs<'h1'> & TypographyVariantProps
+export type TypographyHeadingProps = ComponentWithoutAs<'h1'> & ComponentProps & HeadingVariantProps
 
 const TypographyHeading = React.forwardRef<HTMLHeadingElement, TypographyHeadingProps>((props, ref) => {
-  const { children, className, level, variant, ...rest } = props
+  const { children, className, level, ...rest } = props
 
-  const Component = `h${level}`
-  const { slots } = useTypography({ level, variant })
+  const slots = React.useMemo(() => heading({ level }), [level])
 
   const getProps = React.useCallback(
     () => ({
       ref,
-      className: slots.heading({
-        class: className,
-      }),
+      level,
+      className: slots.heading({ className }),
       ...rest,
     }),
-    [ref, slots, className, rest]
+    [ref, level, slots, className, rest]
   )
 
   return <Component {...getProps()}>{children}</Component>
