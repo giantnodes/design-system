@@ -2,7 +2,7 @@ import type { Component } from '@/utilities/types'
 
 import React from 'react'
 
-import { useInputContext } from '@/components/input/use-input.context.hook'
+import { useInputContext } from '@/components/input/use-input.hook'
 
 export type InputAddonProps = Component<'div'>
 

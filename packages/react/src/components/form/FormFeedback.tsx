@@ -1,22 +1,20 @@
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { TextProps as ComponentProps } from 'react-aria-components'
+import type { Component } from '@/utilities/types'
 
 import clsx from 'clsx'
 import React from 'react'
-import { Text as Component } from 'react-aria-components'
 
-import { useFormGroupContext } from '@/components/form/use-form-group.context'
+import { useFormGroupContext } from '@/components/form/use-form-group.hook'
 
 export type FeedbackType = 'success' | 'warning' | 'error'
 
-export type FormFeedbackProps = ComponentWithoutAs<'span'> &
-  ComponentProps & {
-    type: FeedbackType
-  }
+export type FormFeedbackProps = Component<'span'> & {
+  type: FeedbackType
+}
 
 const FormFeedback = React.forwardRef<HTMLSpanElement, FormFeedbackProps>((props, ref) => {
-  const { children, className, type, ...rest } = props
+  const { as, children, className, type, ...rest } = props
 
+  const Component = as || 'span'
   const { slots, status, feedback } = useFormGroupContext()
 
   const getProps = React.useCallback(
@@ -31,7 +29,11 @@ const FormFeedback = React.forwardRef<HTMLSpanElement, FormFeedbackProps>((props
     [ref, slots, className, type, feedback, status, rest]
   )
 
-  return <Component {...getProps()}>{children}</Component>
+  return (
+    <Component {...getProps()} slot="errorMessage">
+      {children}
+    </Component>
+  )
 })
 
 FormFeedback.displayName = 'Form.Feedback'

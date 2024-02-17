@@ -1,6 +1,7 @@
 import type { UseTableProps } from '@/components/table/use-table.hook'
 import type { TableProps as ComponentProps, SelectionMode } from 'react-aria-components'
 
+import clsx from 'clsx'
 import React from 'react'
 import { Table as Component } from 'react-aria-components'
 
@@ -9,8 +10,7 @@ import TableCell from '@/components/table/TableCell'
 import TableColumn from '@/components/table/TableColumn'
 import TableHead from '@/components/table/TableHead'
 import TableRow from '@/components/table/TableRow'
-import { TableProvider } from '@/components/table/use-table-context.hook'
-import { useTable } from '@/components/table/use-table.hook'
+import { TableContext, useTable } from '@/components/table/use-table.hook'
 
 export type TableProps = Omit<ComponentProps, 'selectionMode' | 'selectionBehavior'> &
   UseTableProps & {
@@ -28,16 +28,16 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>((props, ref) => {
       ref,
       selectionBehavior: behavior,
       selectionMode: mode,
-      className: context.slots.table({ className }),
+      className: clsx(context.slots.table(), className),
       ...rest,
     }),
     [behavior, className, context.slots, mode, ref, rest]
   )
 
   return (
-    <TableProvider value={context}>
+    <TableContext.Provider value={context}>
       <Component {...getProps()}>{children}</Component>
-    </TableProvider>
+    </TableContext.Provider>
   )
 })
 

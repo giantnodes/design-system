@@ -2,7 +2,7 @@ import type { Component } from '@/utilities/types'
 
 import React from 'react'
 
-import { useProgressContext } from '@/components/progress/use-progress-context.hook'
+import { useProgressContext } from '@/components/progress/use-progress.hook'
 
 export type ProgressBarProps = Omit<Component<'span'>, 'children'> & {
   color: string

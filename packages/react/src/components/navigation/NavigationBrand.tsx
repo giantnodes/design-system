@@ -2,7 +2,7 @@ import type { Component } from '@/utilities/types'
 
 import React from 'react'
 
-import { useNavigationContext } from '@/components/navigation/use-navigation-context.hook'
+import { useNavigationContext } from '@/components/navigation/use-navigation.hook'
 
 export type NavigationBrandProps = Component<'div'>
 

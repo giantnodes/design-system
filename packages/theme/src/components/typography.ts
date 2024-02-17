@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 
 export const typography = tv({
   slots: {
-    paragraph: ['text-sm', 'antialiased', 'text-shark-400 dark:text-shark-200'],
+    paragraph: ['text-sm', 'antialiased', 'text-shark-400 dark:text-shark-100'],
   },
   variants: {
     variant: {

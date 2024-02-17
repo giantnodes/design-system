@@ -6,8 +6,7 @@ import React from 'react'
 import { Breadcrumbs as Component } from 'react-aria-components'
 
 import BreadcrumbItem from '@/components/breadcrumb/BreadcrumbItem'
-import { BreadcrumbProvider } from '@/components/breadcrumb/use-breadcrumb-context.hook'
-import { useBreadcrumb } from '@/components/breadcrumb/use-breadcrumb.hook'
+import { BreadcrumbContext, useBreadcrumb } from '@/components/breadcrumb/use-breadcrumb.hook'
 
 export type BreadcrumbProps<T extends object> = ComponentWithoutAs<'ol'> & ComponentProps<T> & UseBreadcrumbProps
 
@@ -27,9 +26,9 @@ const Breadcrumb: <T extends object>(props: BreadcrumbProps<T>) => React.ReactNo
     )
 
     return (
-      <BreadcrumbProvider value={context}>
+      <BreadcrumbContext.Provider value={context}>
         <Component {...getProps()}>{children}</Component>
-      </BreadcrumbProvider>
+      </BreadcrumbContext.Provider>
     )
   }))()
 

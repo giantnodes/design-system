@@ -5,6 +5,8 @@ import React from 'react'
 
 export type UseCheckboxProps = Omit<CheckboxVariantProps, 'checked'>
 
+export type UseCheckboxReturn = ReturnType<typeof useCheckbox>
+
 export const useCheckbox = (props: UseCheckboxProps) => {
   const { size } = props
 
@@ -14,5 +16,3 @@ export const useCheckbox = (props: UseCheckboxProps) => {
     slots,
   }
 }
-
-export type UseCheckboxReturn = ReturnType<typeof useCheckbox>

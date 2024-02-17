@@ -3,9 +3,13 @@ import type { BreadcrumbVariantProps } from '@giantnodes/theme'
 import { breadcrumb } from '@giantnodes/theme'
 import React from 'react'
 
+import { createContext } from '@/utilities/context'
+
 export type UseBreadcrumbProps = BreadcrumbVariantProps & {
   separator?: React.ReactNode
 }
+
+export type UseBreadcrumbReturn = ReturnType<typeof useBreadcrumb>
 
 export const useBreadcrumb = (props: UseBreadcrumbProps) => {
   const { size, separator = '/' } = props
@@ -18,4 +22,9 @@ export const useBreadcrumb = (props: UseBreadcrumbProps) => {
   }
 }
 
-export type UseBreadcrumbReturn = ReturnType<typeof useBreadcrumb>
+export const [BreadcrumbContext, useBreadcrumbContext] = createContext<UseBreadcrumbReturn>({
+  name: 'BreadcrumbContext',
+  strict: true,
+  errorMessage:
+    'useBreadcrumbContext: `context` is undefined. Seems you forgot to wrap component within <Breadcrumb />',
+})

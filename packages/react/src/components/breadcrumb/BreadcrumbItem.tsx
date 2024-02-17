@@ -4,7 +4,7 @@ import type { BreadcrumbProps as ComponentProps } from 'react-aria-components'
 import React from 'react'
 import { Breadcrumb as Component } from 'react-aria-components'
 
-import { useBreadcrumbContext } from '@/components/breadcrumb/use-breadcrumb-context.hook'
+import { useBreadcrumbContext } from '@/components/breadcrumb/use-breadcrumb.hook'
 
 export type BreadcrumbItemProps = ComponentWithoutAs<'li'> & ComponentProps
 

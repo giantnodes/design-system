@@ -3,7 +3,7 @@ import type { TableBodyProps as ComponentProps } from 'react-aria-components'
 import React from 'react'
 import { TableBody as Component } from 'react-aria-components'
 
-import { useTableContext } from '@/components/table/use-table-context.hook'
+import { useTableContext } from '@/components/table/use-table.hook'
 
 export type TableBodyProps<T extends object> = ComponentProps<T>
 

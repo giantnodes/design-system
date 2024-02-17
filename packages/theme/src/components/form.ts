@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants'
 export const form = tv({
   slots: {
     form: [],
-    group: ['group', 'flex flex-col gap-1', 'w-full'],
+    group: ['group', 'flex flex-col gap-2', 'w-full'],
     label: ['text-sm', 'font-medium', 'dark:text-white'],
     caption: ['text-xs'],
     feedback: ['text-xs'],

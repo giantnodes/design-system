@@ -38,8 +38,9 @@
   "dependencies": {
     "@giantnodes/theme": "workspace:*",
     "clsx": "^2.1.0",
-    "react-aria-components": "^1.0.1",
-    "tailwindcss-react-aria-components": "^1.0.0"
+    "react-aria": "^3.32.0",
+    "react-aria-components": "^1.1.0",
+    "tailwindcss-react-aria-components": "^1.1.0"
   },
   "devDependencies": {
     "@jest/types": "^29.6.3",

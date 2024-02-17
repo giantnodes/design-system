@@ -4,7 +4,16 @@ import { tv } from 'tailwind-variants'
 
 export const input = tv({
   slots: {
-    input: ['flex flex-row', 'items-center', 'w-full', 'p-1.5', 'rounded-md', 'text-shark-400 dark:text-shark-200'],
+    input: [
+      'group',
+      'flex flex-row',
+      'items-center',
+      'w-full',
+      'p-1.5',
+      'rounded-md',
+      'text-shark-400 dark:text-shark-200',
+      'has-[:disabled]:opacity-50',
+    ],
     control: [
       'grow',
       'bg-transparent',
@@ -48,11 +57,13 @@ export const input = tv({
       },
     },
     variant: {
-      none: {
-        input: [],
-      },
       outlined: {
         input: ['border', 'border-solid'],
+      },
+    },
+    transparent: {
+      false: {
+        input: ['dark:bg-shark-700'],
       },
     },
   },
@@ -60,6 +71,7 @@ export const input = tv({
     size: 'md',
     status: 'neutral',
     variant: 'outlined',
+    transparent: false,
   },
 })
 

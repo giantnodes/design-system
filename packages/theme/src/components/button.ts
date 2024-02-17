@@ -25,8 +25,8 @@ export const button = tv({
         button: [
           'text-white',
           'dark:border-shark-500',
-          'dark:bg-shark-600',
-          'hover:dark:bg-shark-600/80',
+          'dark:bg-shark-700',
+          'hover:dark:bg-shark-700/80',
           'focus:dark:outline-shark-400',
         ],
       },

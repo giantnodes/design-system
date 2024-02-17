@@ -6,8 +6,7 @@ import React from 'react'
 import CardBody from '@/components/card/CardBody'
 import CardFooter from '@/components/card/CardFooter'
 import CardHeader from '@/components/card/CardHeader'
-import { CardProvider } from '@/components/card/use-card-context.hook'
-import { useCard } from '@/components/card/use-card.hook'
+import { CardContext, useCard } from '@/components/card/use-card.hook'
 
 export type CardProps = Component<'div'> & UseCardProps
 
@@ -29,9 +28,9 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   )
 
   return (
-    <CardProvider value={context}>
+    <CardContext.Provider value={context}>
       <Component {...getProps()}>{children}</Component>
-    </CardProvider>
+    </CardContext.Provider>
   )
 })
 

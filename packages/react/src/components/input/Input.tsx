@@ -1,21 +1,19 @@
 import type { UseInputProps } from '@/components/input/use-input.hook'
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { TextFieldProps as ComponentProps } from 'react-aria-components'
+import type { Component } from '@/utilities/types'
 
 import React from 'react'
-import { TextField as Component } from 'react-aria-components'
 
 import InputAddon from '@/components/input/InputAddon'
 import InputControl from '@/components/input/InputControl'
-import { InputProvider } from '@/components/input/use-input.context.hook'
-import { useInput } from '@/components/input/use-input.hook'
+import { InputContext, useInput } from '@/components/input/use-input.hook'
 
-export type InputProps = ComponentWithoutAs<'div'> & ComponentProps & UseInputProps
+export type InputProps = Component<'div'> & UseInputProps
 
 const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
-  const { children, className, status, size, variant, ...rest } = props
+  const { as, children, className, status, size, variant, transparent, ...rest } = props
 
-  const context = useInput({ status, size, variant })
+  const Component = as || 'div'
+  const context = useInput({ status, size, variant, transparent })
 
   const getProps = React.useCallback(
     () => ({
@@ -23,13 +21,13 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
       className: context.slots.input({ className }),
       ...rest,
     }),
-    [className, context.slots, ref, rest]
+    [ref, className, context.slots, rest]
   )
 
   return (
-    <InputProvider value={context}>
+    <InputContext.Provider value={context}>
       <Component {...getProps()}>{children}</Component>
-    </InputProvider>
+    </InputContext.Provider>
   )
 })
 

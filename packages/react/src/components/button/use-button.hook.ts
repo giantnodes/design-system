@@ -5,6 +5,8 @@ import React from 'react'
 
 export type UseButtonProps = ButtonVariantProps
 
+export type UseButtonReturn = ReturnType<typeof useButton>
+
 export const useButton = (props: UseButtonProps) => {
   const { color, shape, size, variant } = props
 
@@ -14,5 +16,3 @@ export const useButton = (props: UseButtonProps) => {
     slots,
   }
 }
-
-export type UseButtonReturn = ReturnType<typeof useButton>

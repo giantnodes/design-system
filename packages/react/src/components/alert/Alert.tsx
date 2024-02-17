@@ -8,8 +8,7 @@ import AlertHeading from '@/components/alert/AlertHeading'
 import AlertItem from '@/components/alert/AlertItem'
 import AlertList from '@/components/alert/AlertList'
 import AlertText from '@/components/alert/AlertText'
-import { AlertProvider } from '@/components/alert/use-alert-context.hook'
-import { useAlert } from '@/components/alert/use-alert.hook'
+import { AlertContext, useAlert } from '@/components/alert/use-alert.hook'
 
 export type AlertProps = Component<'div'> & UseAlertProps
 
@@ -32,9 +31,9 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   )
 
   return (
-    <AlertProvider value={context}>
+    <AlertContext.Provider value={context}>
       <Component {...getProps()}>{children}</Component>
-    </AlertProvider>
+    </AlertContext.Provider>
   )
 })
 

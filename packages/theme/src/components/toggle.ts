@@ -26,37 +26,37 @@ export const toggle = tv({
     color: {
       neutral: {
         wrapper: [
-          'bg-shark-100 dark:bg-shark-600',
+          'bg-shark-100 dark:bg-shark-700',
           'group-selected:bg-brand-800 group-selected:group-pressed:bg-brand-900',
         ],
       },
       brand: {
         wrapper: [
-          'bg-shark-100 dark:bg-shark-600',
+          'bg-shark-100 dark:bg-shark-700',
           'group-selected:bg-brand-800 group-selected:group-pressed:bg-brand-900',
         ],
       },
       success: {
         wrapper: [
-          'bg-shark-100 dark:bg-shark-600',
+          'bg-shark-100 dark:bg-shark-700',
           'group-selected:bg-green-800 group-selected:group-pressed:bg-green-900',
         ],
       },
       info: {
         wrapper: [
-          'bg-shark-100 dark:bg-shark-600',
+          'bg-shark-100 dark:bg-shark-700',
           'group-selected:bg-blue-800 group-selected:group-pressed:bg-blue-900',
         ],
       },
       warning: {
         wrapper: [
-          'bg-shark-100 dark:bg-shark-600',
+          'bg-shark-100 dark:bg-shark-700',
           'group-selected:bg-yellow-800 group-selected:group-pressed:bg-yellow-900',
         ],
       },
       danger: {
         wrapper: [
-          'bg-shark-100 dark:bg-shark-600',
+          'bg-shark-100 dark:bg-shark-700',
           'group-selected:bg-red-800 group-selected:group-pressed:bg-red-900',
         ],
       },

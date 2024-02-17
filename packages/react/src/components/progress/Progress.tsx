@@ -4,8 +4,7 @@ import type { Component } from '@/utilities/types'
 import React from 'react'
 
 import ProgressBar from '@/components/progress/ProgressBar'
-import { ProgressProvider } from '@/components/progress/use-progress-context.hook'
-import { useProgress } from '@/components/progress/use-progress.hook'
+import { ProgressContext, useProgress } from '@/components/progress/use-progress.hook'
 
 export type ProgressProps = Component<'div'> & UseProgressProps
 
@@ -26,9 +25,9 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((props, ref) =>
   )
 
   return (
-    <ProgressProvider value={context}>
+    <ProgressContext.Provider value={context}>
       <div {...getProps()}>{children}</div>
-    </ProgressProvider>
+    </ProgressContext.Provider>
   )
 })
 

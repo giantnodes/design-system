@@ -2,7 +2,7 @@ import type { Component } from '@/utilities/types'
 
 import React from 'react'
 
-import { useAvatarContext } from '@/components/avatar/use-avatar.context.hook'
+import { useAvatarContext } from '@/components/avatar/use-avatar.hook'
 
 export type AvatarNotificationProps = Component<'span'>
 

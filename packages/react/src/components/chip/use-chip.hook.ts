@@ -5,6 +5,8 @@ import React from 'react'
 
 export type UseChipProps = ChipVariantProps
 
+export type UseChipReturn = ReturnType<typeof useChip>
+
 export const useChip = (props: UseChipProps) => {
   const { color, radius, size, variant } = props
 
@@ -14,5 +16,3 @@ export const useChip = (props: UseChipProps) => {
     slots,
   }
 }
-
-export type UseChipReturn = ReturnType<typeof useChip>

@@ -3,7 +3,11 @@ import type { TableVariantProps } from '@giantnodes/theme'
 import { table } from '@giantnodes/theme'
 import React from 'react'
 
+import { createContext } from '@/utilities/context'
+
 export type UseTableProps = TableVariantProps
+
+export type UseTableReturn = ReturnType<typeof useTable>
 
 export const useTable = (props: UseTableProps) => {
   const { size, sticky, striped, headingless } = props
@@ -15,4 +19,8 @@ export const useTable = (props: UseTableProps) => {
   }
 }
 
-export type UseTableReturn = ReturnType<typeof useTable>
+export const [TableContext, useTableContext] = createContext<UseTableReturn>({
+  name: 'TableContext',
+  strict: true,
+  errorMessage: 'useTableContext: `context` is undefined. Seems you forgot to wrap component within <Table />',
+})

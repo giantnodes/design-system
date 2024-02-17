@@ -4,22 +4,23 @@ import type { LabelProps as ComponentProps } from 'react-aria-components'
 import React from 'react'
 import { Label as Component } from 'react-aria-components'
 
-import { useFormGroupContext } from '@/components/form/use-form-group.context'
+import { useFormGroupContext } from '@/components/form/use-form-group.hook'
 
 export type FormLabelProps = ComponentWithoutAs<'label'> & ComponentProps
 
 const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>((props, ref) => {
   const { children, className, ...rest } = props
 
-  const { slots } = useFormGroupContext()
+  const { slots, labelProps } = useFormGroupContext()
 
   const getProps = React.useCallback(
     () => ({
       ref,
       className: slots.label({ className }),
+      ...labelProps,
       ...rest,
     }),
-    [ref, className, slots, rest]
+    [ref, className, labelProps, slots, rest]
   )
 
   return <Component {...getProps()}>{children}</Component>

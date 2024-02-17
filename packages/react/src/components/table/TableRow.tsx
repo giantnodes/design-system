@@ -6,7 +6,7 @@ import { Collection, Row as Component, useTableOptions } from 'react-aria-compon
 import Button from '@/components/button/Button'
 import Checkbox from '@/components/checkbox/Checkbox'
 import TableCell from '@/components/table/TableCell'
-import { useTableContext } from '@/components/table/use-table-context.hook'
+import { useTableContext } from '@/components/table/use-table.hook'
 
 export type TableRowProps<T extends object> = ComponentProps<T>
 

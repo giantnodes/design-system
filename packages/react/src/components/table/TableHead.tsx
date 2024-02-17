@@ -1,3 +1,4 @@
+import type { UseTableProps } from '@/components/table/use-table.hook'
 import type { TableHeaderProps as ComponentProps } from 'react-aria-components'
 
 import React from 'react'
@@ -5,13 +6,13 @@ import { Collection, TableHeader as Component, useTableOptions } from 'react-ari
 
 import Checkbox from '@/components/checkbox/Checkbox'
 import TableColumn from '@/components/table/TableColumn'
-import { useTableContext } from '@/components/table/use-table-context.hook'
+import { useTableContext } from '@/components/table/use-table.hook'
 
-export type TableHeadProps<T extends object> = ComponentProps<T>
+export type TableHeadProps<T extends object> = ComponentProps<T> & Pick<UseTableProps, 'size'>
 
 const TableHead: <T extends object>(props: TableHeadProps<T>) => React.ReactNode = (() =>
   React.forwardRef((props, ref: React.ForwardedRef<HTMLTableSectionElement>) => {
-    const { children, className, columns, ...rest } = props
+    const { children, className, columns, size, ...rest } = props
 
     const { slots } = useTableContext()
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
@@ -19,10 +20,10 @@ const TableHead: <T extends object>(props: TableHeadProps<T>) => React.ReactNode
     const getProps = React.useCallback(
       () => ({
         ref,
-        className: slots.thead({ className }),
+        className: slots.thead({ className, size }),
         ...rest,
       }),
-      [className, ref, rest, slots]
+      [className, ref, rest, size, slots]
     )
 
     return (

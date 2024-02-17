@@ -2,7 +2,7 @@ import type { Component } from '@/utilities/types'
 
 import React from 'react'
 
-import { useAlertContext } from '@/components/alert/use-alert-context.hook'
+import { useAlertContext } from '@/components/alert/use-alert.hook'
 
 export type AlertListProps = Component<'ul'>
 

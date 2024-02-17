@@ -16,18 +16,20 @@ export const navigation = tv({
     ],
     brand: ['flex', 'flex-nowrap', 'flex-row', 'justify-center', 'shrink-0'],
     segment: ['list-none', 'flex', 'gap-2'],
-    title: ['px-2', 'mb-2', 'text-xs', 'font-semibold', 'text-shark-600 dark:text-shark-50'],
+    title: ['text-sm', 'font-semibold', 'text-shark-600 dark:text-shark-50'],
     item: ['select-none', 'grow'],
     link: [
+      'select-none',
+      'grow',
       'flex',
       'items-center',
       'gap-x-3',
-      'group',
       'p-2',
       'text-sm',
-      'text-shark-400 dark:text-shark-200',
+      'text-shark-500 dark:text-shark-300',
+      'transition-all duration-200',
       'focus:outline-dashed focus:outline-offset-2 focus:outline-1 focus:border-shark-100 focus:dark:outline-shark-400',
-      'hover:text-shark-600 hover:dark:text-shark-50',
+      'hover:text-shark-400 hover:dark:text-shark-100',
       '[&_svg]:hover:text-brand-500',
     ],
     content: [],
@@ -70,7 +72,17 @@ export const navigation = tv({
     },
     variant: {
       highlight: {
-        link: ['rounded-md', 'hover:bg-shark-50 hover:dark:bg-shark-600'],
+        link: ['rounded-md', 'hover:bg-shark-50 hover:dark:bg-shark-700'],
+      },
+    },
+    isSelected: {
+      true: {
+        link: [
+          'font-semibold',
+          'text-shark-400 dark:text-shark-100',
+          'bg-shark-50 dark:bg-shark-700',
+          '[&_svg]:text-brand-500',
+        ],
       },
     },
   },

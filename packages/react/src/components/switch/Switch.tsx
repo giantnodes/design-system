@@ -5,32 +5,39 @@ import type { SwitchProps as ComponentProps } from 'react-aria-components'
 import React from 'react'
 import { Switch as Component } from 'react-aria-components'
 
-import { useSwitch } from '@/components/switch/use-switch.hook'
+import { useFormGroupContext } from '@/components/form/use-form-group.hook'
+import { SwitchContext, useSwitch } from '@/components/switch/use-switch.hook'
 
-export type SwitchProps = ComponentWithoutAs<'label'> & Omit<ComponentProps, 'onChange'> & UseSwitchProps
+export type SwitchProps = ComponentWithoutAs<'label'> & ComponentProps & UseSwitchProps
 
 const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
-  const { children, className, size, color, onChange, ...rest } = props
+  const { children, className, size, color, ...rest } = props
 
-  const { slots } = useSwitch({ size, color })
+  const group = useFormGroupContext()
+
+  const context = useSwitch({ size, color })
 
   const getProps = React.useCallback(
     () => ({
       ref,
-      className: slots.label({ className }),
+      className: context.slots.label({ className }),
+      name: group?.name,
+      ...group?.fieldProps,
       ...rest,
     }),
-    [className, ref, rest, slots]
+    [className, context.slots, group?.fieldProps, group?.name, ref, rest]
   )
 
   return (
-    <Component {...getProps()}>
-      <div className={slots.wrapper()}>
-        <span className={slots.circle()} />
-      </div>
+    <SwitchContext.Provider value={context}>
+      <Component {...getProps()}>
+        <div className={context.slots.wrapper()}>
+          <span className={context.slots.circle()} />
+        </div>
 
-      {children}
-    </Component>
+        {children}
+      </Component>
+    </SwitchContext.Provider>
   )
 })
 

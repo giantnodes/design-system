@@ -7,8 +7,7 @@ import AvatarGroup from '@/components/avatar/AvatarGroup'
 import AvatarIcon from '@/components/avatar/AvatarIcon'
 import AvatarImage from '@/components/avatar/AvatarImage'
 import AvatarNotification from '@/components/avatar/AvatarNotification'
-import { AvatarProvider } from '@/components/avatar/use-avatar.context.hook'
-import { useAvatar } from '@/components/avatar/use-avatar.hook'
+import { AvatarContext, useAvatar } from '@/components/avatar/use-avatar.hook'
 
 export type AvatarProps = Component<'span'> & UseAvatarProps
 
@@ -30,7 +29,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   )
 
   return (
-    <AvatarProvider value={context}>
+    <AvatarContext.Provider value={context}>
       <Component {...getProps()}>
         {React.Children.map(children, (child) => {
           if (!React.isValidElement<AvatarProps>(child)) {
@@ -45,7 +44,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
           })
         })}
       </Component>
-    </AvatarProvider>
+    </AvatarContext.Provider>
   )
 })
 

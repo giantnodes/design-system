@@ -12,8 +12,7 @@ import NavigationPortal from '@/components/navigation/NavigationPortal'
 import NavigationSegment from '@/components/navigation/NavigationSegment'
 import NavigationTitle from '@/components/navigation/NavigationTitle'
 import NavigationTrigger from '@/components/navigation/NavigationTrigger'
-import { NavigationProvider } from '@/components/navigation/use-navigation-context.hook'
-import { useNavigation } from '@/components/navigation/use-navigation.hook'
+import { NavigationContext, useNavigation } from '@/components/navigation/use-navigation.hook'
 
 export type NavigationProps = Component<'nav'> & UseNavigationProps
 
@@ -35,11 +34,11 @@ const Navigation = React.forwardRef<HTMLElement, NavigationProps>((props, ref) =
   )
 
   return (
-    <NavigationProvider value={context}>
+    <NavigationContext.Provider value={context}>
       <Component {...getProps()}>
         <div className={context.slots.wrapper()}>{children}</div>
       </Component>
-    </NavigationProvider>
+    </NavigationContext.Provider>
   )
 })
 

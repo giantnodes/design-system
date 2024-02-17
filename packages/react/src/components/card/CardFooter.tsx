@@ -2,7 +2,7 @@ import type { Component } from '@/utilities/types'
 
 import React from 'react'
 
-import { useCardContext } from '@/components/card/use-card-context.hook'
+import { useCardContext } from '@/components/card/use-card.hook'
 
 export type CardFooterProps = Component<'div'>
 

@@ -1,33 +1,36 @@
-import type { Component } from '@/utilities/types'
+import type { UseFormGroupProps } from '@/components/form/use-form-group.hook'
+import type { ComponentWithoutAs } from '@/utilities/types'
 
 import React from 'react'
+import { useField } from 'react-aria'
 
-import { FormGroupProvider } from '@/components/form/use-form-group.context'
-import { useFormGroup } from '@/components/form/use-form-group.hook'
-import { Input } from '@/components/input'
+import { FormGroupContext, useFormGroup } from '@/components/form/use-form-group.hook'
+import { useDomRef } from '@/utilities/dom'
 
-export type FormGroupProps = Component<'div'> & {
-  success?: boolean
-  warning?: boolean
-  error?: boolean
-}
+export type FormGroupProps = ComponentWithoutAs<'input'> &
+  UseFormGroupProps & {
+    name: string
+    success?: boolean
+    warning?: boolean
+    error?: boolean
+  }
 
-const FormGroup = React.forwardRef<HTMLDivElement, FormGroupProps>((props, ref) => {
-  const { as, children, className, success, warning, error, ...rest } = props
+const FormGroup = React.forwardRef<HTMLInputElement, FormGroupProps>((props, ref) => {
+  const { name, children, className, success, warning, error, onChange, onBlur, ...rest } = props
 
-  const Component = as || 'div'
+  const dom = useDomRef(ref)
 
-  const context = useFormGroup()
+  const { labelProps, fieldProps } = useField({ ...props, label: name })
+  const context = useFormGroup({ ref: dom, name, labelProps, fieldProps, onChange, onBlur })
 
   const getProps = React.useCallback(
     () => ({
-      ref,
       className: context.slots.group({
         class: className,
       }),
       ...rest,
     }),
-    [ref, className, context.slots, rest]
+    [className, context.slots, rest]
   )
 
   React.useEffect(() => {
@@ -38,15 +41,15 @@ const FormGroup = React.forwardRef<HTMLDivElement, FormGroupProps>((props, ref) 
   }, [context, success, warning, error])
 
   return (
-    <FormGroupProvider value={context}>
-      <Component
+    <FormGroupContext.Provider value={context}>
+      <div
         data-error={error || undefined}
         data-success={success || undefined}
         data-warning={warning || undefined}
         {...getProps()}
       >
         {React.Children.map(children, (child) => {
-          if (!React.isValidElement(child) || child.type !== Input) {
+          if (!React.isValidElement(child)) {
             return child
           }
 
@@ -55,8 +58,8 @@ const FormGroup = React.forwardRef<HTMLDivElement, FormGroupProps>((props, ref) 
             ...child.props,
           })
         })}
-      </Component>
-    </FormGroupProvider>
+      </div>
+    </FormGroupContext.Provider>
   )
 })
 
