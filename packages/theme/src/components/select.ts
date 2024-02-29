@@ -46,26 +46,33 @@ export const select = tv({
     status: {
       neutral: {
         select: ['dark:border-shark-500'],
+        popover: ['dark:border-shark-500'],
       },
       brand: {
         select: ['border-brand-500'],
+        popover: ['border-brand-500'],
       },
       success: {
         select: ['border-green-500'],
+        popover: ['border-green-500'],
       },
       info: {
         select: ['border-blue-500'],
+        popover: ['border-blue-500'],
       },
       warning: {
         select: ['border-yellow-600'],
+        popover: ['border-yellow-600'],
       },
       danger: {
         select: ['border-red-500'],
+        popover: ['border-red-500'],
       },
     },
     variant: {
       outlined: {
         select: ['border', 'border-solid'],
+        popover: ['border', 'border-solid'],
       },
     },
     transparent: {

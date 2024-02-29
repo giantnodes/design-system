@@ -32,8 +32,6 @@ export const checkbox = tv({
   },
   defaultVariants: {
     size: 'md',
-    isSelected: false,
-    isDisabled: false,
   },
 })
 
