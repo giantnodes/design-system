@@ -5,7 +5,7 @@ import React from 'react'
 
 export type UseLinkProps = LinkVariantProps
 
-export const useLink = (_: LinkVariantProps) => {
+export const useLink = () => {
   const slots = React.useMemo(() => link({}), [])
 
   return {

@@ -11,5 +11,5 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "**/*.stories.tsx"]
+  "exclude": ["node_modules"]
 }

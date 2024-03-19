@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "turbo build",
-    "lint": "turbo lint",
+    "lint": "turbo lint:eslint",
     "typecheck": "turbo typecheck",
     "test": "turbo test"
   },
