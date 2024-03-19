@@ -68,9 +68,6 @@ importers:
 
   packages/react:
     dependencies:
-      '@giantnodes/theme':
-        specifier: workspace:*
-        version: link:../theme
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
@@ -84,6 +81,9 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1(tailwindcss@3.4.1)
     devDependencies:
+      '@giantnodes/theme':
+        specifier: workspace:*
+        version: link:../theme
       '@jest/types':
         specifier: ^29.6.3
         version: 29.6.3
@@ -133,10 +133,10 @@ importers:
         specifier: 15.8.1
         version: 15.8.1
       react:
-        specifier: ^18.2.0
+        specifier: ^18.0.0
         version: 18.2.0
       react-dom:
-        specifier: ^18.2.0
+        specifier: ^18.0.0
         version: 18.2.0(react@18.2.0)
       storybook:
         specifier: 8.0.1

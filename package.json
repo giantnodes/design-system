@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "",
   "license": "AGPL-3.0",
-  "packageManager": "pnpm@8.6.0",
   "author": {
     "name": "Jordan Phillips",
     "email": "jordan@giantnodes.com"
@@ -13,10 +12,10 @@
     "url": "ssh://git@github.com/giantnodes/design-system.git"
   },
   "scripts": {
-    "build": "turbo run build",
-    "lint": "turbo run lint",
-    "typecheck": "turbo run typecheck",
-    "test": "turbo run test"
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
@@ -40,6 +39,7 @@
     "typescript": "^5.4.2"
   },
   "engines": {
-    "node": ">=16.x"
+    "node": ">=16.x",
+    "pnpm": ">=8.x"
   }
 }

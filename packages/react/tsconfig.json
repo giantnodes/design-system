@@ -6,9 +6,10 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "tailwind-variants": ["../../node_modules/tailwind-variants"],
-    },
+      "@react-types/shared": ["../../node_modules/@react-types/shared"],
+      "tailwind-variants": ["../../node_modules/tailwind-variants"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "**/*.stories.tsx"]
 }
