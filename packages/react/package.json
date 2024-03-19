@@ -30,13 +30,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@giantnodes/theme": "workspace:*",
     "clsx": "^2.1.0",
     "react-aria": "^3.32.1",
     "react-aria-components": "^1.1.1",
     "tailwindcss-react-aria-components": "^1.1.1"
   },
   "devDependencies": {
-    "@giantnodes/theme": "workspace:*",
     "@jest/types": "^29.6.3",
     "@storybook/addon-backgrounds": "^8.0.1",
     "@storybook/addon-essentials": "8.0.1",
@@ -61,7 +61,6 @@
     "vite": "^5.1.6"
   },
   "peerDependencies": {
-    "@giantnodes/theme": "workspace:*",
     "react": ">=18",
     "react-dom": ">=18",
     "tailwindcss": ">=3"

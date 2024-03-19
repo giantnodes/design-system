@@ -68,6 +68,9 @@ importers:
 
   packages/react:
     dependencies:
+      '@giantnodes/theme':
+        specifier: workspace:*
+        version: link:../theme
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
@@ -81,9 +84,6 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1(tailwindcss@3.4.1)
     devDependencies:
-      '@giantnodes/theme':
-        specifier: workspace:*
-        version: link:../theme
       '@jest/types':
         specifier: ^29.6.3
         version: 29.6.3
