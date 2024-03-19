@@ -8,7 +8,7 @@ import { FormGroupContext, useFormGroup } from '@/components/form/use-form-group
 import { useDomRef } from '@/utilities/dom'
 
 export type FormGroupProps = ComponentWithoutAs<'input'> &
-  UseFormGroupProps & {
+  Omit<UseFormGroupProps, 'ref'> & {
     name: string
     success?: boolean
     warning?: boolean

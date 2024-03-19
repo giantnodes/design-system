@@ -1,4 +1,5 @@
 import type { FeedbackType } from '@/components/form/FormFeedback'
+import type { ChangeHandler } from '@/utilities/types'
 import type { FormVariantProps } from '@giantnodes/theme'
 import type { LabelAria } from 'react-aria'
 
@@ -7,11 +8,11 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseFormGroupProps = LabelAria & {
-  ref: React.RefObject<HTMLInputElement>
+export type UseFormGroupProps = Partial<LabelAria> & {
+  ref?: React.RefObject<HTMLInputElement>
   name?: string
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
-  onBlur?: React.ChangeEventHandler<HTMLInputElement>
+  onChange?: ChangeHandler
+  onBlur?: ChangeHandler
 }
 
 export type UseFormGroupReturn = ReturnType<typeof useFormGroup>

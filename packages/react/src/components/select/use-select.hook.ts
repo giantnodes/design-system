@@ -1,3 +1,4 @@
+import type { ChangeHandler } from '@/utilities/types'
 import type { SelectVariantProps } from '@giantnodes/theme'
 import type { Key, SelectProps, SelectionMode } from 'react-aria-components'
 
@@ -8,11 +9,11 @@ import { createContext } from '@/utilities/context'
 
 export type UseSelectProps<T extends object> = SelectVariantProps &
   Pick<SelectProps<T>, 'onSelectionChange'> & {
-    ref: React.RefObject<HTMLInputElement>
+    ref?: React.RefObject<HTMLInputElement>
     name?: string
     behavior?: 'toggle' | 'replace'
     mode?: SelectionMode
-    onChange?: React.ChangeEventHandler<HTMLInputElement>
+    onChange?: ChangeHandler
   }
 
 export type UseSelectReturn = ReturnType<typeof useSelect>
@@ -25,13 +26,13 @@ export const useSelect = <T extends object>(props: UseSelectProps<T>) => {
   const onSelect = (key: Key) => {
     onSelectionChange?.(key)
 
-    if (onChange && typeof onChange === 'function' && ref.current) {
+    if (onChange && typeof onChange === 'function' && ref?.current) {
       const event = {
         target: {
           value: key.toString(),
           name,
         },
-      } as React.ChangeEvent<HTMLInputElement>
+      }
 
       onChange(event)
     }

@@ -8,3 +8,5 @@ export type Component<
 export type ComponentWithoutAs<T extends React.ElementType> = Omit<Component<T>, 'as'>
 
 export type Selection = 'all' | Set<string | number>
+
+export type ChangeHandler = (event: { target: any; type?: any }) => Promise<void | boolean>

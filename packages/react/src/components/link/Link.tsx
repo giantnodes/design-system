@@ -11,7 +11,7 @@ export type LinkProps = ComponentWithoutAs<'a'> & ComponentProps
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   const { children, className, ...rest } = props
 
-  const { slots } = useLink(props)
+  const { slots } = useLink()
 
   const getProps = React.useCallback(
     () => ({

@@ -28,7 +28,7 @@ Default.args = {
 
 export const UsingForm: StoryFn = (args: SelectProps<object>) => (
   <Form>
-    <Form.Group>
+    <Form.Group name="name">
       <Form.Label>Name</Form.Label>
       <Select {...args}>
         <Select.Option>Aardvark</Select.Option>

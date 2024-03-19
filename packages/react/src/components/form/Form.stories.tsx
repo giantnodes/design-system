@@ -18,7 +18,7 @@ const defaultProps = {
 
 export const Default: StoryFn = (args: FormProps) => (
   <Form {...args}>
-    <Form.Group>
+    <Form.Group name="email-address">
       <Form.Label>Email address</Form.Label>
       <Input>
         <Input.Addon>$</Input.Addon>
