@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "license": "AGPL-3.0",
+  "packageManager": "pnpm@8.7.0",
   "author": {
     "name": "Jordan Phillips",
     "email": "jordan@giantnodes.com"
