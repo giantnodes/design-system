@@ -48,6 +48,9 @@ jobs:
       - name: install
         run: pnpm install
 
+      - name: build
+        run: pnpm build
+
       - name: type check
         run: pnpm run typecheck
 
@@ -71,7 +74,7 @@ jobs:
       - name: install
         run: pnpm install
 
-      - name: type check
+      - name: lint
         run: pnpm run lint
 
   test:
