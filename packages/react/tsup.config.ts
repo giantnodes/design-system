@@ -4,7 +4,7 @@ import { defineConfig } from 'tsup'
 
 const config: Options = {
   clean: true,
-  dts: true,
+  dts: false,
   entry: ['src/**/*.ts?(x)'],
   format: ['cjs', 'esm'],
   target: 'esnext',
