@@ -3,19 +3,18 @@
   "globalDependencies": ["tsconfig.json"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
-    },
-    "typecheck": {
-      "cache": false,
-      "dependsOn": ["^typecheck"]
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build"]
     },
     "test": {
-      "dependsOn": ["build"],
-      "outputs": []
+      "outputs": ["coverage/**"],
+      "dependsOn": []
+    },
+    "type-check": {
+      "dependsOn": ["^build"]
     },
     "lint:eslint": {
-      "outputs": []
+      "dependsOn": ["^lint:eslint"]
     }
   }
 }

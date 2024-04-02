@@ -1,4 +1,4 @@
-name: '  🔀️  Push'
+name: '🔀️  Push'
 
 on:
   push:
@@ -43,21 +43,20 @@ jobs:
       - name: '🔺️  Cache (turbo)'
         uses: ./.github/actions/cache
 
-      - name: '🚨️  Lint'
-        uses: ./.github/actions/lint
-
-      - name: '📛  Commit Message'
-        run: |
-          echo "message=$(git log --no-merges -1 --oneline)" >> $GITHUB_OUTPUT
-
       - name: '🏗️  Build'
         uses: ./.github/actions/build
         with:
-          BUILD_COMMAND: 'build'
+          COMMAND: 'build'
 
-      - name: '🏷️  Release'
-        if: ${{ contains(steps.push-commit-message.outputs.message, '[b]') }}
-        uses: ./.github/actions/release
+      - name: '🚨️  Lint'
+        uses: ./.github/actions/lint
+
+      - name: '🦺  Type Check'
+        uses: ./.github/actions/type-check
         with:
-          GH_TOKEN: ${{ env.GH_BOT_TOKEN }}
-          NPM_TOKEN: ${{ env.NPM_TOKEN }}
+          COMMAND: 'type-check'
+
+      - name: '🧪  Test'
+        uses: ./.github/actions/test
+        with:
+          COMMAND: 'test'

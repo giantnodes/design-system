@@ -1,15 +1,15 @@
-name: '🏗️  '
+name: '🦺  '
 author: 'PHILLIPS71'
 
 inputs:
   COMMAND:
-    default: 'build'
+    default: 'type-check'
     required: true
 
 runs:
   using: 'composite'
   steps:
-    - name: '🏗️  Build'
+    - name: '🦺  Type Check'
       shell: bash
       run: |
         pnpm run ${{ inputs.COMMAND }}

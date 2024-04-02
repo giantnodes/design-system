@@ -1,15 +1,15 @@
-name: '🏗️  '
+name: '🧪  '
 author: 'PHILLIPS71'
 
 inputs:
   COMMAND:
-    default: 'build'
+    default: 'test'
     required: true
 
 runs:
   using: 'composite'
   steps:
-    - name: '🏗️  Build'
+    - name: '🧪  Test'
       shell: bash
       run: |
         pnpm run ${{ inputs.COMMAND }}

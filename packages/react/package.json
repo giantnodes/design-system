@@ -27,7 +27,7 @@
     "sb:build": "pnpm run sb:build:css && storybook build",
     "-": "",
     "test": "jest --passWithNoTests",
-    "typecheck": "tsc --noEmit"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@giantnodes/theme": "workspace:*",
