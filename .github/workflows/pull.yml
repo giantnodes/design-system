@@ -1,28 +1,30 @@
-name: '🔀️  Push'
+name: '▶️  Pull'
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-      - chore/**
-      - feat/**
-      - fix/**
+      - canary
+      - develop
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+      - converted_to_draft
 
 concurrency:
-  group: push-${{ github.ref }}
+  group: pull-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   pull:
     name: '👷️  CI'
+    if: github.event.pull_request.draft == false
     timeout-minutes: 20
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-    env:
-      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: '🐙️  Checkout'
         uses: actions/checkout@v4
