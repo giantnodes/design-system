@@ -1,0 +1,63 @@
+name: '  🔀️  Push'
+
+on:
+  push:
+    branches:
+      - main
+      - chore/**
+      - feat/**
+      - fix/**
+
+concurrency:
+  group: push-${{ github.ref }}-1
+  cancel-in-progress: true
+
+env:
+  GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+  GH_DEPLOY_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  pull:
+    name: '👷️  CI'
+    # if: (contains(github.event.head_commit.message, '[b]') || github.ref == 'refs/heads/main') && !contains(github.event.head_commit.message, '[skip ci]')
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    env:
+      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: '🐙️  Checkout'
+        uses: actions/checkout@v4
+
+      - name: '💽️  Init'
+        uses: ./.github/actions/init
+
+      - name: '📦  Install'
+        uses: ./.github/actions/install
+
+      - name: '🔺️  Cache (turbo)'
+        uses: ./.github/actions/cache
+
+      - name: '🚨️  Lint'
+        uses: ./.github/actions/lint
+
+      - name: '📛  Commit Message'
+        run: |
+          echo "message=$(git log --no-merges -1 --oneline)" >> $GITHUB_OUTPUT
+
+      - name: '🏗️  Build'
+        uses: ./.github/actions/build
+        with:
+          BUILD_COMMAND: 'build'
+
+      - name: '🏷️  Release'
+        if: ${{ contains(steps.push-commit-message.outputs.message, '[b]') }}
+        uses: ./.github/actions/release
+        with:
+          GH_TOKEN: ${{ env.GH_BOT_TOKEN }}
+          NPM_TOKEN: ${{ env.NPM_TOKEN }}
