@@ -15,7 +15,7 @@
   "scripts": {
     "build": "turbo build",
     "lint": "turbo lint:eslint",
-    "typecheck": "turbo typecheck",
+    "type-check": "turbo type-check",
     "test": "turbo test"
   },
   "devDependencies": {
