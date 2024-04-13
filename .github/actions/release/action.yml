@@ -47,7 +47,7 @@ runs:
       shell: bash
       run: |
         git checkout -b release/${{ steps.version.outputs.version }}
-        git commit -m 'chore(release): ${{ steps.version.outputs.version }}'
+        git commit -anm 'chore(release): ${{ steps.version.outputs.version }}'
         git tag ${{ steps.version.outputs.version }}
         git push origin release/${{ steps.version.outputs.version }} --tags --force
 
