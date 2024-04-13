@@ -13,16 +13,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  pull:
+  push:
     name: '👷️  CI'
     timeout-minutes: 20
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-    env:
-      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: '🐙️  Checkout'
         uses: actions/checkout@v4
