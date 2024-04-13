@@ -1,0 +1,37 @@
+name: '🏷️  Release'
+
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        type: choice
+        description: 'SemVer Increment'
+        default: 'prerelease'
+        required: true
+        options:
+          - prerelease
+          - prepatch
+          - patch
+          - preminor
+          - minor
+          - premajor
+          - major
+      identifier:
+        type: choice
+        description: 'Version Prefix'
+        required: false
+        options:
+          - canary
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: '🐙️  Checkout'
+        uses: actions/checkout@v4
+
+      - name: '🏷️  Release'
+        uses: ./.github/actions/release
+        with:
+          RELEASE_TYPE: ${{ github.event.inputs.type }}
+          RELEASE_IDENTIFIER: ${{ github.event.inputs.identifier }}

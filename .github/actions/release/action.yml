@@ -2,18 +2,51 @@ name: '🏷️  '
 author: 'PHILLIPS71'
 
 inputs:
-  GH_TOKEN:
+  RELEASE_TYPE:
     required: true
-  NPM_TOKEN:
-    required: true
+  RELEASE_IDENTIFIER:
+    required: false
 
 runs:
   using: 'composite'
   steps:
     - name: '🏷️  Release'
+      id: version
+      uses: giantnodes/semver@latest
+      with:
+        path: VERSION.txt
+        type: ${{ inputs.RELEASE_TYPE }}
+        identifier: ${{ inputs.RELEASE_IDENTIFIER }}
+
+    - name: '🏷️  Version @giantnodes/design-system'
       shell: bash
-      env:
-        GH_TOKEN: ${{ inputs.GH_TOKEN }}
-        NPM_TOKEN: ${{ inputs.NPM_TOKEN }}
       run: |
-        pnpm run semantic-release
+        pnpm version ${{ steps.version.outputs.version }} --no-git-tag-version
+
+    - name: '🏷️  Version @giantnodes/theme'
+      working-directory: packages/theme
+      shell: bash
+      run: |
+        pnpm version ${{ steps.version.outputs.version }} --no-git-tag-version
+
+    - name: '🏷️  Version @giantnodes/react'
+      working-directory: packages/react
+      shell: bash
+      run: |
+        pnpm version ${{ steps.version.outputs.version }} --no-git-tag-version
+
+    - name: '🏷️  Tag & Commit Release'
+      shell: bash
+      run: |
+        git checkout -b release/${{ steps.version.outputs.version }}
+        git commit -m 'chore(release): ${{ steps.version.outputs.version }}'
+        git tag ${{ steps.version.outputs.version }}
+        git push origin release/${{ steps.version.outputs.version }} --tags --force
+
+    - name: '🏷️  Open Pull Request'
+      uses: thomaseizinger/create-pull-request@master
+      with:
+        title: 'chore(release): ${{ steps.version.outputs.version }}'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        head: release/${{ steps.version.outputs.version }}
+        base: main
