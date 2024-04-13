@@ -12,7 +12,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: '🏷️  Release'
+    - name: '🏷️  Increment Release'
       id: version
       uses: giantnodes/next-semver@v0.0.1
       with:
@@ -36,6 +36,11 @@ runs:
       shell: bash
       run: |
         pnpm version ${{ steps.version.outputs.version }} --no-git-tag-version
+
+    - name: '🏷️  Configure Git'
+      run: |
+        git config --global user.name 'Giantnodes Bot'
+        git config --global user.email 'bot@giantnodes.com'
 
     - name: '🏷️  Tag & Commit Release'
       shell: bash
