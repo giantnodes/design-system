@@ -38,6 +38,7 @@ runs:
         pnpm version ${{ steps.version.outputs.version }} --no-git-tag-version
 
     - name: '🏷️  Configure Git'
+      shell: bash
       run: |
         git config --global user.name 'Giantnodes Bot'
         git config --global user.email 'bot@giantnodes.com'
