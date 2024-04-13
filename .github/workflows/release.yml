@@ -33,5 +33,6 @@ jobs:
       - name: '🏷️  Release'
         uses: ./.github/actions/release
         with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_TYPE: ${{ github.event.inputs.type }}
           RELEASE_IDENTIFIER: ${{ github.event.inputs.identifier }}
