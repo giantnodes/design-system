@@ -14,7 +14,7 @@ runs:
   steps:
     - name: '🏷️  Release'
       id: version
-      uses: giantnodes/semver@latest
+      uses: giantnodes/next-semver@v0.0.1
       with:
         path: VERSION.txt
         type: ${{ inputs.RELEASE_TYPE }}
