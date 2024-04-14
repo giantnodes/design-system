@@ -59,7 +59,7 @@ runs:
         git commit -anm 'chore(release): ${{ steps.version.outputs.version }}'
         git push origin release/${{ steps.version.outputs.version }}
 
-        gh release create v${{ steps.version.outputs.version }} ${{ steps.version.outputs.tag == 'latest' ? '--latest' : '--prerelease' }} --generate-notes
+        gh release create v${{ steps.version.outputs.version }} ${{ steps.version.outputs.tag == 'latest' && '--latest' || '--prerelease' }} --generate-notes
 
         echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
       env:
