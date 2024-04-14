@@ -20,13 +20,13 @@ jobs:
       - name: '🐙️  Checkout'
         uses: actions/checkout@v4
 
-      - name: '💽️  Init'
-        uses: ./.github/actions/init
+      - name: '💽️  Setup'
+        uses: ./.github/actions/setup
 
       - name: '📦  Install'
         uses: ./.github/actions/install
 
-      - name: '🔺️  Cache (turbo)'
+      - name: '🔺️  Cache'
         uses: ./.github/actions/cache
 
       - name: '🏗️  Build'
