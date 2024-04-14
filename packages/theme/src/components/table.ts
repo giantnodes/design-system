@@ -10,24 +10,24 @@ export const table = tv({
     tbody: ['divide-y', 'divide-shark-100 dark:divide-shark-500'],
     tr: ['outline-none'],
     th: [
-      'font-normal',
+      'font-medium text-left',
       'outline-none',
       'whitespace-nowrap',
       'text-shark-600 dark:text-shark-50',
       'bg-white dark:bg-shark-950',
       'first:rounded-l-md last:rounded-r-md',
     ],
-    td: ['outline-none', 'whitespace-normal', 'text-sm', 'text-shark-400 dark:text-shark-200', 'px-2', 'py-2'],
+    td: ['outline-none', 'whitespace-normal', 'text-shark-400 dark:text-shark-200'],
   },
   variants: {
     size: {
       sm: {
-        th: ['px-2', 'py-3'],
-        td: ['px-2', 'py-2'],
+        th: ['px-2', 'py-3', 'text-sm'],
+        td: ['px-2', 'py-2', 'text-sm'],
       },
       md: {
-        th: ['px-3', 'py-4'],
-        td: ['px-3', 'py-3'],
+        th: ['px-3', 'py-4', 'text-sm'],
+        td: ['px-3', 'py-3', 'text-sm'],
       },
       lg: {
         th: ['px-4', 'py-5'],

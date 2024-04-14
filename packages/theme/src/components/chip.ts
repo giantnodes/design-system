@@ -52,6 +52,9 @@ export const chip = tv({
       },
     },
     size: {
+      xs: {
+        base: ['px-1', 'py-0.5', 'text-xs'],
+      },
       sm: {
         base: ['px-1.5', 'py-0.5', 'text-xs'],
       },

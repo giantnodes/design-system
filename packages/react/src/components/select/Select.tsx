@@ -1,43 +1,72 @@
 import type { UseSelectProps } from '@/components/select/use-select.hook'
-import type { SelectProps as ComponentProps } from 'react-aria-components'
+import type { SelectProps as ComponentProps, ListBoxProps } from 'react-aria-components'
 
 import React from 'react'
-import { Button, Select as Component, ListBox, Popover, SelectValue } from 'react-aria-components'
+import { Button, Select as Component, ListBox, Popover } from 'react-aria-components'
 
 import { useFormGroupContext } from '@/components/form/use-form-group.hook'
 import SelectOption from '@/components/select/SelectOption'
+import SelectValue from '@/components/select/SelectValue'
 import { SelectContext, useSelect } from '@/components/select/use-select.hook'
 
 export type SelectProps<T extends object> = ComponentProps<T> &
-  UseSelectProps<T> & {
+  Omit<UseSelectProps<T>, 'ref'> &
+  ListBoxProps<T> & {
     placement?: 'top' | 'bottom'
   }
 
 const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (() =>
   React.forwardRef((props, ref: React.ForwardedRef<HTMLDivElement>) => {
-    const { children, className, behavior, mode, placement, onChange, onSelectionChange, ...rest } = props
+    const {
+      children,
+      className,
+      items,
+      placeholder,
+      behavior,
+      mode,
+      placement,
+      status,
+      onChange,
+      onSelectionChange,
+      ...rest
+    } = props
 
     const group = useFormGroupContext()
 
     const context = useSelect({
       ref: group.ref,
+      name: group?.name,
       behavior,
       mode,
-      name: group?.name,
+      status,
       onSelectionChange,
       onChange: group?.onChange ?? onChange,
     })
 
     const getProps = React.useCallback(
       () => ({
-        ...rest,
-        ...group?.fieldProps,
         ref: group?.ref ?? ref,
         name: group?.name,
+        placeholder,
+        onChange: group?.onChange,
+        onBlur: group?.onBlur,
         onSelectionChange: context.onSelect,
         className: context.slots.select(),
+        ...group?.fieldProps,
+        ...rest,
       }),
-      [context.onSelect, context.slots, group?.fieldProps, group?.name, group?.ref, ref, rest]
+      [
+        context.onSelect,
+        context.slots,
+        group?.fieldProps,
+        group?.name,
+        group?.onBlur,
+        group?.onChange,
+        group?.ref,
+        placeholder,
+        ref,
+        rest,
+      ]
     )
 
     const getButtonProps = React.useCallback(
@@ -57,18 +86,20 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
 
     const getListBoxProps = React.useCallback(
       () => ({
+        items,
         selectionMode: mode,
         selectionBehavior: behavior,
         className: context.slots.list(),
       }),
-      [behavior, context.slots, mode]
+      [behavior, context.slots, items, mode]
     )
 
     return (
       <SelectContext.Provider value={context}>
         <Component {...getProps()}>
           <Button {...getButtonProps()}>
-            <SelectValue className={context.slots.placeholder()} />
+            <SelectValue />
+
             <svg
               aria-hidden="true"
               className={context.slots.icon()}

@@ -23,20 +23,13 @@ export const button = tv({
       neutral: {
         button: [
           'text-white',
-          'dark:border-shark-500',
-          'dark:bg-shark-700',
-          'hover:dark:bg-shark-700/80',
-          'focus:dark:outline-shark-400',
+          'bg-shark-400/10 hover:bg-shark-200/10',
+          'border-shark-200/30',
+          'focus:outline-shark-200/30',
         ],
       },
       brand: {
-        button: [
-          'text-white',
-          'dark:border-brand-600',
-          'dark:bg-brand-800',
-          'hover:dark:bg-brand-800/80',
-          'focus:dark:outline-brand-600',
-        ],
+        button: ['text-white', 'bg-brand-800 hover:bg-brand-800/80', 'border-brand-600', 'focus:outline-brand-600'],
       },
       success: {
         button: [
@@ -69,14 +62,10 @@ export const button = tv({
         ],
       },
       danger: {
-        button: [
-          'text-white',
-          'dark:border-red-600',
-          'dark:bg-red-800',
-          'focus:dark:outline-red-300',
-          'hover:dark:bg-red-800/80',
-          'focus:dark:outline-red-600',
-        ],
+        button: ['text-red-500', 'bg-red-800/10 hover:bg-red-500/10', 'border-red-500/30', 'focus:outline-red-500/30'],
+      },
+      transparent: {
+        button: ['text-white', 'bg-transparent', 'border-transparent', 'focus:outline-shark-200/30'],
       },
     },
     shape: {
@@ -85,6 +74,9 @@ export const button = tv({
       },
     },
     size: {
+      none: {
+        button: ['text-xs'],
+      },
       xs: {
         button: ['text-xs', 'px-2.5', 'py-1'],
       },
@@ -102,9 +94,6 @@ export const button = tv({
       },
     },
     variant: {
-      blank: {
-        button: ['border-0', '!bg-transparent'],
-      },
       dashed: {
         button: ['border', 'border-dashed', '!bg-transparent'],
       },

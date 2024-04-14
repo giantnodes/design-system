@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 
 export const heading = tv({
   slots: {
-    heading: ['leading-none', 'antialiased', 'tracking-tight', 'text-shark-600 dark:text-shark-50'],
+    heading: ['leading-none', 'antialiased', 'tracking-tight', 'font-semibold', 'text-shark-600 dark:text-shark-50'],
   },
   variants: {
     level: {
