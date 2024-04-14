@@ -24,8 +24,8 @@ on:
           - canary
 
 jobs:
-  release:
-    name: '🏷️  Release'
+  create-release:
+    name: '🏷️  Create Release'
     runs-on: ubuntu-latest
     steps:
       - name: '🐙️  Checkout'
@@ -35,8 +35,51 @@ jobs:
         uses: ./.github/actions/init
 
       - name: '🏷️  Release'
+        id: release
         uses: ./.github/actions/release
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_TYPE: ${{ github.event.inputs.type }}
           RELEASE_IDENTIFIER: ${{ github.event.inputs.identifier }}
+
+  publish-theme:
+    name: '🏷️  Publish @giantnodes/theme'
+    runs-on: ubuntu-latest
+    needs: [create-release]
+    steps:
+      - name: '🐙️  Checkout'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.version.outputs.branch }}
+
+      - name: '💽️  Init'
+        uses: ./.github/actions/init
+
+      - name: '🏷️  Publish @giantnodes/theme'
+        working-directory: packages/theme
+        shell: bash
+        run: |
+          pnpm publish --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-react:
+    name: '🏷️  Publish @giantnodes/theme'
+    runs-on: ubuntu-latest
+    needs: [create-release]
+    steps:
+      - name: '🐙️  Checkout'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.version.outputs.branch }}
+
+      - name: '💽️  Init'
+        uses: ./.github/actions/init
+
+      - name: '🏷️  Publish @giantnodes/react'
+        working-directory: packages/react
+        shell: bash
+        run: |
+          pnpm publish --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

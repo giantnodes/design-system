@@ -1,11 +1,12 @@
 {
   "name": "@giantnodes/theme",
   "version": "0.0.0",
-  "description": "",
+  "description": "A collection default Giantnodes Tailwind CSS components",
   "license": "AGPL-3.0",
   "sideEffects": false,
-  "packageManager": "pnpm@8.6.0",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],

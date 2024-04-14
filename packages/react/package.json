@@ -1,10 +1,12 @@
 {
   "name": "@giantnodes/react",
   "version": "0.0.0",
-  "description": "",
+  "description": "A collection Giantnodes React components",
   "license": "AGPL-3.0",
   "sideEffects": false,
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],

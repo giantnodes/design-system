@@ -9,12 +9,18 @@ inputs:
   RELEASE_IDENTIFIER:
     required: false
 
+outputs:
+  version:
+    value: ${{ steps.version.outputs.version }}
+  branch:
+    value: ${{ steps.branch.outputs.branch }}
+
 runs:
   using: 'composite'
   steps:
     - name: '🏷️  Increment Release'
       id: version
-      uses: giantnodes/next-semver@v0.0.1
+      uses: giantnodes/next-semver@v1
       with:
         path: VERSION.txt
         type: ${{ inputs.RELEASE_TYPE }}
@@ -43,18 +49,24 @@ runs:
         git config --global user.name 'Giantnodes Bot'
         git config --global user.email 'bot@giantnodes.com'
 
-    - name: '🏷️  Tag & Commit Release'
+    - name: '🏷️  Tag, Commit & Release'
       shell: bash
+      id: branch
       run: |
         git checkout -b release/${{ steps.version.outputs.version }}
-        git commit -m 'chore(release): ${{ steps.version.outputs.version }}'
+        git commit -anm 'chore(release): ${{ steps.version.outputs.version }}'
         git tag ${{ steps.version.outputs.version }}
         git push origin release/${{ steps.version.outputs.version }} --tags --force
 
-    - name: '🏷️  Open Pull Request'
-      uses: thomaseizinger/create-pull-request@master
-      with:
-        title: 'chore(release): ${{ steps.version.outputs.version }}'
-        github_token: ${{ inputs.GITHUB_TOKEN }}
-        head: release/${{ steps.version.outputs.version }}
-        base: main
+        gh release create ${{ steps.version.outputs.version }} --generate-notes
+
+        echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
+
+    # - name: '🏷️  Open Pull Request'
+    #   uses: thomaseizinger/create-pull-request@master
+    #   with:
+    #     title: 'chore(release): ${{ steps.version.outputs.version }}'
+    #     labels: '🏷️ Release, 🥳️ LGTM'
+    #     github_token: ${{ inputs.GITHUB_TOKEN }}
+    #     head: release/${{ steps.version.outputs.version }}
+    #     base: main
