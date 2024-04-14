@@ -12,6 +12,8 @@ inputs:
 outputs:
   version:
     value: ${{ steps.version.outputs.version }}
+  tag:
+    value: ${{ steps.version.outputs.tag }}
   branch:
     value: ${{ steps.branch.outputs.branch }}
 
@@ -20,7 +22,7 @@ runs:
   steps:
     - name: '🏷️  Increment Release'
       id: version
-      uses: giantnodes/next-semver@v1
+      uses: giantnodes/next-semver@v1.0.0
       with:
         path: VERSION.txt
         type: ${{ inputs.RELEASE_TYPE }}
@@ -61,12 +63,14 @@ runs:
         gh release create ${{ steps.version.outputs.version }} --generate-notes
 
         echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
+      env:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
 
-    # - name: '🏷️  Open Pull Request'
-    #   uses: thomaseizinger/create-pull-request@master
-    #   with:
-    #     title: 'chore(release): ${{ steps.version.outputs.version }}'
-    #     labels: '🏷️ Release, 🥳️ LGTM'
-    #     github_token: ${{ inputs.GITHUB_TOKEN }}
-    #     head: release/${{ steps.version.outputs.version }}
-    #     base: main
+    - name: '🏷️  Open Pull Request'
+      uses: thomaseizinger/create-pull-request@master
+      with:
+        title: 'chore(release): ${{ steps.version.outputs.version }}'
+        labels: '🏷️ Release, 🥳️ LGTM'
+        github_token: ${{ inputs.GITHUB_TOKEN }}
+        head: release/${{ steps.version.outputs.version }}
+        base: main
