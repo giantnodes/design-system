@@ -1,5 +1,5 @@
 import type { ComponentWithoutAs } from '@/utilities/types'
-import type { DialogProps } from 'react-aria-components'
+import type { DialogProps, ModalOverlayProps } from 'react-aria-components'
 
 import React from 'react'
 import { Dialog, Modal, ModalOverlay } from 'react-aria-components'
@@ -13,21 +13,21 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>((prop
 
   const { slots } = useDialogContext()
 
-  const getOverlayProps = React.useCallback(
+  const overlay = React.useMemo<ModalOverlayProps>(
     () => ({
       className: slots.overlay(),
     }),
     [slots]
   )
 
-  const getModalProps = React.useCallback(
+  const modal = React.useMemo<ModalOverlayProps>(
     () => ({
       className: slots.modal(),
     }),
     [slots]
   )
 
-  const getContentProps = React.useCallback(
+  const content = React.useMemo<DialogProps>(
     () => ({
       ref,
       className: slots.content({ className }),
@@ -37,9 +37,9 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>((prop
   )
 
   return (
-    <ModalOverlay {...getOverlayProps()}>
-      <Modal {...getModalProps()}>
-        <Dialog {...getContentProps()}>{children}</Dialog>
+    <ModalOverlay {...overlay}>
+      <Modal {...modal}>
+        <Dialog {...content}>{children}</Dialog>
       </Modal>
     </ModalOverlay>
   )

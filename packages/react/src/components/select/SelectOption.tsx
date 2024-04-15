@@ -12,7 +12,7 @@ const SelectOption = React.forwardRef<HTMLDivElement, SelectOptionProps>((props,
 
   const { slots } = useSelectContext()
 
-  const getProps = React.useCallback(
+  const component = React.useMemo<ComponentProps>(
     () => ({
       ref,
       className: slots.option(),
@@ -21,7 +21,7 @@ const SelectOption = React.forwardRef<HTMLDivElement, SelectOptionProps>((props,
     [ref, rest, slots]
   )
 
-  return <Component {...getProps()}>{children}</Component>
+  return <Component {...component}>{children}</Component>
 })
 
 export default SelectOption

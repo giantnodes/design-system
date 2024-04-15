@@ -1,5 +1,5 @@
 import type { UseSelectProps } from '@/components/select/use-select.hook'
-import type { SelectProps as ComponentProps, ListBoxProps } from 'react-aria-components'
+import type { ButtonProps, SelectProps as ComponentProps, ListBoxProps, PopoverProps } from 'react-aria-components'
 
 import React from 'react'
 import { Button, Select as Component, ListBox, Popover } from 'react-aria-components'
@@ -12,6 +12,7 @@ import { SelectContext, useSelect } from '@/components/select/use-select.hook'
 export type SelectProps<T extends object> = ComponentProps<T> &
   Omit<UseSelectProps<T>, 'ref'> &
   ListBoxProps<T> & {
+    items?: Pick<ListBoxProps<T>, 'items'> | null
     placement?: 'top' | 'bottom'
   }
 
@@ -43,7 +44,7 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
       onChange: group?.onChange ?? onChange,
     })
 
-    const getProps = React.useCallback(
+    const component = React.useMemo<ComponentProps<any>>(
       () => ({
         ref: group?.ref ?? ref,
         name: group?.name,
@@ -69,14 +70,14 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
       ]
     )
 
-    const getButtonProps = React.useCallback(
+    const button = React.useMemo<ButtonProps>(
       () => ({
         className: context.slots.button(),
       }),
       [context.slots]
     )
 
-    const getPopoverProps = React.useCallback(
+    const popover = React.useMemo<PopoverProps>(
       () => ({
         placement,
         className: context.slots.popover(),
@@ -84,9 +85,9 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
       [context.slots, placement]
     )
 
-    const getListBoxProps = React.useCallback(
+    const listbox = React.useMemo<ListBoxProps<any>>(
       () => ({
-        items,
+        items: items ?? undefined,
         selectionMode: mode,
         selectionBehavior: behavior,
         className: context.slots.list(),
@@ -96,8 +97,8 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
 
     return (
       <SelectContext.Provider value={context}>
-        <Component {...getProps()}>
-          <Button {...getButtonProps()}>
+        <Component {...component}>
+          <Button {...button}>
             <SelectValue />
 
             <svg
@@ -118,8 +119,8 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
             </svg>
           </Button>
 
-          <Popover {...getPopoverProps()}>
-            <ListBox {...getListBoxProps()}>{children}</ListBox>
+          <Popover {...popover}>
+            <ListBox {...listbox}>{children}</ListBox>
           </Popover>
         </Component>
       </SelectContext.Provider>

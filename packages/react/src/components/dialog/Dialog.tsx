@@ -15,18 +15,19 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 
   const context = useDialog({ blur, placement })
 
-  const getProps = React.useCallback(
+  const component = React.useMemo<ComponentProps>(
     () => ({
       ref,
+      children,
       className: context.slots.dialog({ className }),
       ...rest,
     }),
-    [className, context.slots, ref, rest]
+    [children, className, context.slots, ref, rest]
   )
 
   return (
     <DialogContext.Provider value={context}>
-      <Component {...getProps()}>{children}</Component>
+      <Component {...component}>{children}</Component>
     </DialogContext.Provider>
   )
 })
