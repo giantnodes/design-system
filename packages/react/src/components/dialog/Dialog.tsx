@@ -1,21 +1,21 @@
 import type { UseDialogProps } from '@/components/dialog/use-dialog.hook'
 import type { ComponentWithoutAs } from '@/utilities/types'
-import type { DialogTriggerProps as ComponentProps } from 'react-aria-components'
+import type { DialogTriggerProps } from 'react-aria-components'
 
 import React from 'react'
-import { DialogTrigger as Component } from 'react-aria-components'
+import { DialogTrigger } from 'react-aria-components'
 
 import DialogContent from '@/components/dialog/DialogContent'
 import { DialogContext, useDialog } from '@/components/dialog/use-dialog.hook'
 
-export type DialogProps = ComponentWithoutAs<'div'> & ComponentProps & UseDialogProps
+type ComponentProps = ComponentWithoutAs<'div'> & Omit<DialogTriggerProps, 'children'> & UseDialogProps
 
-const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
+const Component = React.forwardRef<HTMLDivElement, ComponentProps>((props, ref) => {
   const { children, className, blur, placement, ...rest } = props
 
   const context = useDialog({ blur, placement })
 
-  const component = React.useMemo<ComponentProps>(
+  const trigger = React.useMemo<DialogTriggerProps>(
     () => ({
       ref,
       children,
@@ -27,13 +27,14 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 
   return (
     <DialogContext.Provider value={context}>
-      <Component {...component}>{children}</Component>
+      <DialogTrigger {...trigger}>{children}</DialogTrigger>
     </DialogContext.Provider>
   )
 })
 
-Dialog.displayName = 'Dialog'
+Component.displayName = 'Dialog'
 
-export default Object.assign(Dialog, {
+export { ComponentProps as DialogProps }
+export default Object.assign(Component, {
   Content: DialogContent,
 })
