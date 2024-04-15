@@ -1,18 +1,18 @@
-import type { ListBoxItemProps as ComponentProps } from 'react-aria-components'
+import type { ListBoxItemProps } from 'react-aria-components'
 
 import React from 'react'
-import { ListBoxItem as Component } from 'react-aria-components'
+import { ListBoxItem } from 'react-aria-components'
 
 import { useSelectContext } from '@/components/select/use-select.hook'
 
-type SelectOptionProps = ComponentProps
+type ComponentProps = ListBoxItemProps
 
-const SelectOption = React.forwardRef<HTMLDivElement, SelectOptionProps>((props, ref) => {
+const Component = React.forwardRef<HTMLDivElement, ComponentProps>((props, ref) => {
   const { children, className, ...rest } = props
 
   const { slots } = useSelectContext()
 
-  const component = React.useMemo<ComponentProps>(
+  const item = React.useMemo<ListBoxItemProps>(
     () => ({
       ref,
       className: slots.option(),
@@ -21,7 +21,8 @@ const SelectOption = React.forwardRef<HTMLDivElement, SelectOptionProps>((props,
     [ref, rest, slots]
   )
 
-  return <Component {...component}>{children}</Component>
+  return <ListBoxItem {...item}>{children}</ListBoxItem>
 })
 
-export default SelectOption
+export { ComponentProps as SelectOptionProps }
+export default Component

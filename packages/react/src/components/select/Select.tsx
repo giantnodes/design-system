@@ -1,22 +1,36 @@
 import type { UseSelectProps } from '@/components/select/use-select.hook'
-import type { ButtonProps, SelectProps as ComponentProps, ListBoxProps, PopoverProps } from 'react-aria-components'
+import type { Override } from '@/utilities/types'
+import type { ButtonProps, ListBoxProps, PopoverProps, SelectProps } from 'react-aria-components'
 
 import React from 'react'
-import { Button, Select as Component, ListBox, Popover } from 'react-aria-components'
+import { Button, ListBox, Popover, Select } from 'react-aria-components'
 
 import { useFormGroupContext } from '@/components/form/use-form-group.hook'
 import SelectOption from '@/components/select/SelectOption'
 import SelectValue from '@/components/select/SelectValue'
 import { SelectContext, useSelect } from '@/components/select/use-select.hook'
 
-export type SelectProps<T extends object> = ComponentProps<T> &
-  Omit<UseSelectProps<T>, 'ref'> &
-  ListBoxProps<T> & {
-    items?: Pick<ListBoxProps<T>, 'items'> | null
+type OveriddenSelectProps<T extends object> = Override<
+  SelectProps<T>,
+  {
+    children?: React.ReactNode | ((item: T) => React.ReactNode)
+  }
+>
+
+type OveriddenListBoxProps<T extends object> = Override<
+  ListBoxProps<T>,
+  {
+    items?: Iterable<T> | null
+  }
+>
+
+type ComponentProps<T extends object> = UseSelectProps<T> &
+  OveriddenSelectProps<T> &
+  OveriddenListBoxProps<T> & {
     placement?: 'top' | 'bottom'
   }
 
-const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (() =>
+const Component: <T extends object>(props: ComponentProps<T>) => React.ReactNode = (() =>
   React.forwardRef((props, ref: React.ForwardedRef<HTMLDivElement>) => {
     const {
       children,
@@ -44,7 +58,7 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
       onChange: group?.onChange ?? onChange,
     })
 
-    const component = React.useMemo<ComponentProps<any>>(
+    const select = React.useMemo<SelectProps<any>>(
       () => ({
         ref: group?.ref ?? ref,
         name: group?.name,
@@ -97,7 +111,7 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
 
     return (
       <SelectContext.Provider value={context}>
-        <Component {...component}>
+        <Select {...select}>
           <Button {...button}>
             <SelectValue />
 
@@ -122,11 +136,12 @@ const Select: <T extends object>(props: SelectProps<T>) => React.ReactNode = (()
           <Popover {...popover}>
             <ListBox {...listbox}>{children}</ListBox>
           </Popover>
-        </Component>
+        </Select>
       </SelectContext.Provider>
     )
   }))()
 
-export default Object.assign(Select, {
+export { ComponentProps as SelectProps }
+export default Object.assign(Component, {
   Option: SelectOption,
 })
