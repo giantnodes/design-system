@@ -1,4 +1,3 @@
-import type { ComponentWithoutAs } from '@/utilities/types'
 import type { DialogProps, ModalOverlayProps } from 'react-aria-components'
 
 import React from 'react'
@@ -6,9 +5,9 @@ import { Dialog, Modal, ModalOverlay } from 'react-aria-components'
 
 import { useDialogContext } from '@/components/dialog/use-dialog.hook'
 
-export type DialogContentProps = ComponentWithoutAs<'div'> & DialogProps
+type ComponentProps = DialogProps
 
-const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>((props, ref) => {
+const Component = React.forwardRef<HTMLDivElement, ComponentProps>((props, ref) => {
   const { children, className, ...rest } = props
 
   const { slots } = useDialogContext()
@@ -45,6 +44,7 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>((prop
   )
 })
 
-DialogContent.displayName = 'Dialog.Content'
+Component.displayName = 'Dialog.Content'
 
-export default DialogContent
+export { ComponentProps as DialogContentProps }
+export default Component
