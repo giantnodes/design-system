@@ -1,7 +1,5 @@
 import { RouterProvider } from '@react-aria/utils'
 
-import { createContext } from '@/utilities/context'
-
 export type UseDesignSystemProps = React.PropsWithChildren & {
   /**
    * Provides a client side router to all components that contain links
@@ -9,9 +7,7 @@ export type UseDesignSystemProps = React.PropsWithChildren & {
   navigate?: (path: string) => void
 }
 
-export type UseDesignSystemReturn = ReturnType<typeof useDesignSystem>
-
-export const useDesignSystem = ({ navigate, children }: UseDesignSystemProps) => {
+export const DesignSystemProvider: React.FC<UseDesignSystemProps> = ({ navigate, children }) => {
   let contents = children
 
   if (navigate) {
@@ -20,10 +16,3 @@ export const useDesignSystem = ({ navigate, children }: UseDesignSystemProps) =>
 
   return contents
 }
-
-export const [DesignSystemContext, useDesignSystemContext] = createContext<UseDesignSystemReturn>({
-  name: 'DesignSystemContext',
-  strict: true,
-  errorMessage:
-    'useDesignSystemContext: `context` is undefined. Seems you forgot to wrap component within <DesignSystem.Provider />',
-})

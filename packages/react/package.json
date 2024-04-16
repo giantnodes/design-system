@@ -41,7 +41,6 @@
   },
   "devDependencies": {
     "@jest/types": "^29.6.3",
-    "@react-types/shared": "^3.22.1",
     "@storybook/addon-backgrounds": "^8.0.1",
     "@storybook/addon-essentials": "8.0.1",
     "@storybook/addon-interactions": "8.0.1",
