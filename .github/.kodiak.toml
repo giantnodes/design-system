@@ -1,9 +1,0 @@
-version = 1
-
-[merge]
-automerge_label = ["🥳️ LGTM"]
-method = "squash"
-delete_branch_on_merge = true
-
-[update]
-always = true
