@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 
 export const link = tv({
   slots: {
-    base: [
+    link: [
       'text-sm',
       'text-inherit',
       'hover:underline hover:text-sky-600',
