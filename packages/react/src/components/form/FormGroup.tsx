@@ -5,7 +5,7 @@ import React from 'react'
 import { useField } from 'react-aria'
 
 import { FormGroupContext, useFormGroup } from '@/components/form/use-form-group.hook'
-import { useDomRef } from '@/utilities/dom'
+import { useDomRef } from '@/hooks/use-dom-ref'
 
 export type FormGroupProps = ComponentWithoutAs<'input'> &
   Omit<UseFormGroupProps, 'ref'> & {

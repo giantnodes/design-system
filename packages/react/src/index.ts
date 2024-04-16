@@ -1,3 +1,4 @@
+// Components
 export * from '@/components/alert'
 export * from '@/components/avatar'
 export * from '@/components/breadcrumb'
@@ -18,4 +19,8 @@ export * from '@/components/switch'
 export * from '@/components/table'
 export * from '@/components/typography'
 
+// Hooks
+export * from '@/hooks/use-design-system'
+
+// Utilities
 export * from '@/utilities/types'

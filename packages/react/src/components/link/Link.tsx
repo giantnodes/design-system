@@ -1,30 +1,36 @@
 import type { ComponentWithoutAs } from '@/utilities/types'
-import type { LinkProps as ComponentProps } from 'react-aria-components'
+import type { LinkProps } from 'react-aria-components'
 
+import { link } from '@giantnodes/theme'
 import React from 'react'
-import { Link as Component } from 'react-aria-components'
+import { Link } from 'react-aria-components'
 
-import { useLink } from '@/components/link/use-link.hook'
+import { useDomRef } from '@/hooks/use-dom-ref'
+import { useLink } from '@/hooks/use-link.hook'
 
-export type LinkProps = ComponentWithoutAs<'a'> & ComponentProps
+type ComponentProps = ComponentWithoutAs<'a'> & LinkProps
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
-  const { children, className, ...rest } = props
+const Component = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
+  const { children, className } = props
 
-  const { slots } = useLink()
+  const dom = useDomRef(ref)
+  const { ...rest } = useLink(props, dom)
 
-  const getProps = React.useCallback(
+  const slots = React.useMemo(() => link({}), [])
+
+  const component = React.useMemo<LinkProps>(
     () => ({
       ref,
-      className: slots.base({ className }),
+      className: slots.link({ class: className?.toString() }),
       ...rest,
     }),
     [ref, slots, className, rest]
   )
 
-  return <Component {...getProps()}>{children}</Component>
+  return <Link {...component}>{children}</Link>
 })
 
-Link.displayName = 'Link'
+Component.displayName = 'Link'
 
-export default Link
+export { ComponentProps as LinkProps }
+export default Component
