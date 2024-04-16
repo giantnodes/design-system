@@ -12,10 +12,12 @@ const Component: Meta<typeof Link> = {
 }
 
 const defaultProps = {
+  href: 'www.giantnodes.com',
   ...link.defaultVariants,
 }
 
-export const Default: StoryFn = (args: LinkProps) => <Link {...args}>There were 2 errors with your submission</Link>
+export const Default: StoryFn = (args: LinkProps) => <Link {...args}>Default Link</Link>
+
 Default.args = {
   ...defaultProps,
 }

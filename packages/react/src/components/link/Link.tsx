@@ -5,16 +5,10 @@ import { link } from '@giantnodes/theme'
 import React from 'react'
 import { Link } from 'react-aria-components'
 
-import { useDomRef } from '@/hooks/use-dom-ref'
-import { useLink } from '@/hooks/use-link.hook'
-
 type ComponentProps = ComponentWithoutAs<'a'> & LinkProps
 
 const Component = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
-  const { children, className } = props
-
-  const dom = useDomRef(ref)
-  const { ...rest } = useLink(props, dom)
+  const { children, className, ...rest } = props
 
   const slots = React.useMemo(() => link({}), [])
 
