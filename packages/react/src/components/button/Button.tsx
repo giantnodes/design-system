@@ -1,31 +1,41 @@
 import type { UseButtonProps } from '@/components/button/use-button.hook'
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { ButtonProps as ComponentProps } from 'react-aria-components'
+import type { ButtonProps } from 'react-aria-components'
 
 import React from 'react'
-import { Button as Component } from 'react-aria-components'
+import { Button } from 'react-aria-components'
 
 import { useButton } from '@/components/button/use-button.hook'
+import Spinner from '@/components/spinner/Spinner'
 
-export type ButtonProps = ComponentWithoutAs<'button'> & ComponentProps & UseButtonProps
+export type ComponentProps = UseButtonProps
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { children, className, color, shape, size, variant, ...rest } = props
+const Component = React.forwardRef<HTMLButtonElement, ComponentProps>((props, ref) => {
+  const { as, children, className, isLoading, color, shape, size, variant, ...rest } = props
 
-  const { slots } = useButton({ color, shape, size, variant })
+  const Element = as || Button
 
-  const getProps = React.useCallback(
+  const { isDisabled, slots } = useButton({ color, shape, size, variant, isLoading, ...rest })
+
+  const component = React.useMemo<ButtonProps>(
     () => ({
       ref,
+      'data-loading': isLoading,
+      isDisabled,
       className: slots.button({ className }),
       ...rest,
     }),
-    [ref, slots, className, rest]
+    [ref, isLoading, isDisabled, slots, className, rest]
   )
 
-  return <Component {...getProps()}>{children}</Component>
+  return (
+    <Element {...component}>
+      {isLoading && <Spinner />}
+      {children}
+    </Element>
+  )
 })
 
-Button.displayName = 'Button'
+Component.displayName = 'Button'
 
-export default Button
+export { ComponentProps as ButtonProps }
+export default Component
