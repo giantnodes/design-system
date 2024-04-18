@@ -1,30 +1,44 @@
-import type { ComponentWithoutAs } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { LinkVariantProps } from '@giantnodes/theme'
 import type { LinkProps } from 'react-aria-components'
 
 import { link } from '@giantnodes/theme'
 import React from 'react'
 import { Link } from 'react-aria-components'
 
-type ComponentProps = ComponentWithoutAs<'a'> & LinkProps
+const __ELEMENT_TYPE__ = 'a'
 
-const Component = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
-  const { children, className, ...rest } = props
+type ComponentOwnProps = LinkVariantProps & LinkProps
 
-  const slots = React.useMemo(() => link({}), [])
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const component = React.useMemo<LinkProps>(
-    () => ({
-      ref,
-      className: slots.link({ class: className?.toString() }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return <Link {...component}>{children}</Link>
-})
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, size, underline, ...rest } = props
 
-Component.displayName = 'Link'
+    const Element = as ?? Link
 
-export { ComponentProps as LinkProps }
+    const slots = React.useMemo(() => link({ size, underline }), [size, underline])
+
+    const component = React.useMemo<LinkProps>(
+      () => ({
+        className: slots.link({ className: className?.toString() }),
+        ...rest,
+      }),
+      [className, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as LinkProps }
 export default Component
