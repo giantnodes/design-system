@@ -1,31 +1,46 @@
-import type { UseButtonProps } from '@/components/button/use-button.hook'
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { ButtonProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { ButtonVariantProps } from '@giantnodes/theme'
+import type { ButtonProps } from 'react-aria-components'
 
+import { button } from '@giantnodes/theme'
 import React from 'react'
-import { Button as Component } from 'react-aria-components'
+import { Button } from 'react-aria-components'
 
-import { useButton } from '@/components/button/use-button.hook'
+const __ELEMENT_TYPE__ = 'button'
 
-export type ButtonProps = ComponentWithoutAs<'button'> & ComponentProps & UseButtonProps
+type ComponentOwnProps = ButtonVariantProps
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { children, className, color, shape, size, variant, ...rest } = props
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const { slots } = useButton({ color, shape, size, variant })
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.button({ className }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, isLoading = false, isDisabled = false, color, shape, size, variant, ...rest } = props
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    const Element = as ?? Button
 
-Button.displayName = 'Button'
+    const slots = React.useMemo(() => button({ color, shape, size, variant }), [color, shape, size, variant])
 
-export default Button
+    const component = React.useMemo<ButtonProps>(
+      () => ({
+        'data-loading': isLoading,
+        className: slots.button(),
+        isDisabled: isLoading || isDisabled,
+        ...rest,
+      }),
+      [isDisabled, isLoading, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as ButtonProps }
+export default Component
