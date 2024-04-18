@@ -1,5 +1,5 @@
-import type { UseAlertProps } from '@/components/alert/use-alert.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { AlertVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
@@ -10,36 +10,44 @@ import AlertList from '@/components/alert/AlertList'
 import AlertText from '@/components/alert/AlertText'
 import { AlertContext, useAlert } from '@/components/alert/use-alert.hook'
 
-export type AlertProps = Component<'div'> & UseAlertProps
+const __ELEMENT_TYPE__ = 'div'
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const { as, children, className, color, ...rest } = props
+type ComponentOwnProps = AlertVariantProps
 
-  const Component = as || 'div'
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const context = useAlert({ color })
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: context.slots.base({
-        class: className,
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, color, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const context = useAlert({ color })
+
+    const component = React.useMemo(
+      () => ({
+        className: context.slots.base({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, context.slots, className, rest]
-  )
+      [context.slots, className, rest]
+    )
 
-  return (
-    <AlertContext.Provider value={context}>
-      <Component {...getProps()}>{children}</Component>
-    </AlertContext.Provider>
-  )
-})
+    return (
+      <AlertContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
+      </AlertContext.Provider>
+    )
+  }
+)
 
-Alert.displayName = 'Alert'
-
-export default Object.assign(Alert, {
+export type { ComponentOwnProps as AlertProps }
+export default Object.assign(Component, {
   Body: AlertBody,
   Heading: AlertHeading,
   Item: AlertItem,

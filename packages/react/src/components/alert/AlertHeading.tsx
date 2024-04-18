@@ -1,31 +1,42 @@
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useAlertContext } from '@/components/alert/use-alert.hook'
 
-export type AlertHeadingProps = Component<'h3'>
+const __ELEMENT_TYPE__ = 'h3'
 
-const AlertHeading = React.forwardRef<HTMLHeadingElement, AlertHeadingProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
-  const { slots } = useAlertContext()
+type ComponentOwnProps = {}
 
-  const Component = as || 'h3'
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.heading({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const { slots } = useAlertContext()
+
+    const component = React.useMemo(
+      () => ({
+        className: slots.heading({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [className, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-AlertHeading.displayName = 'Alert.Heading'
-
-export default AlertHeading
+export type { ComponentOwnProps as AlertHeadingProps }
+export default Component
