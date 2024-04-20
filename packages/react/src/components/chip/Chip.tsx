@@ -1,32 +1,42 @@
-import type { UseChipProps } from '@/components/chip/use-chip.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { ChipVariantProps } from '@giantnodes/theme'
 
+import { chip } from '@giantnodes/theme'
 import React from 'react'
 
-import { useChip } from '@/components/chip/use-chip.hook'
+const __ELEMENT_TYPE__ = 'span'
 
-export type ChipProps = Component<'span'> & UseChipProps
+type ComponentOwnProps = ChipVariantProps
 
-const Chip = React.forwardRef<HTMLSpanElement, ChipProps>((props, ref) => {
-  const { as, children, className, color, radius, size, variant, ...rest } = props
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const Component = as || 'span'
-  const { slots } = useChip({ color, radius, size, variant })
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.base({
-        class: className,
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, color, radius, size, variant, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const slots = React.useMemo(() => chip({ color, radius, size, variant }), [color, radius, size, variant])
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: slots.base({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [className, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-Chip.displayName = 'Chip'
-
-export default Object.assign(Chip, {})
+export type { ComponentOwnProps as ChipProps }
+export default Component

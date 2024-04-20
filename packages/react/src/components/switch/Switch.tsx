@@ -1,46 +1,52 @@
-import type { UseSwitchProps } from '@/components/switch/use-switch.hook'
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { SwitchProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { ToggleVariantProps } from '@giantnodes/theme'
+import type { SwitchProps } from 'react-aria-components'
 
+import { toggle } from '@giantnodes/theme'
 import React from 'react'
-import { Switch as Component } from 'react-aria-components'
+import { Switch } from 'react-aria-components'
 
 import { useFormGroupContext } from '@/components/form/use-form-group.hook'
-import { SwitchContext, useSwitch } from '@/components/switch/use-switch.hook'
 
-export type SwitchProps = ComponentWithoutAs<'label'> & ComponentProps & UseSwitchProps
+const __ELEMENT_TYPE__ = 'label'
 
-const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
-  const { children, className, size, color, ...rest } = props
+type ComponentOwnProps = SwitchProps & ToggleVariantProps
 
-  const group = useFormGroupContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const context = useSwitch({ size, color })
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: context.slots.label({ className }),
-      name: group?.name,
-      ...group?.fieldProps,
-      ...rest,
-    }),
-    [className, context.slots, group?.fieldProps, group?.name, ref, rest]
-  )
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, color, size, ...rest } = props
 
-  return (
-    <SwitchContext.Provider value={context}>
-      <Component {...getProps()}>
-        <div className={context.slots.wrapper()}>
-          <span className={context.slots.circle()} />
+    const Element = as ?? Switch
+
+    const group = useFormGroupContext()
+
+    const slots = React.useMemo(() => toggle({ color, size }), [color, size])
+
+    const component = React.useMemo<SwitchProps>(
+      () => ({
+        className: slots.label({ className: className?.toString() }),
+        name: group?.name,
+        ...group?.fieldProps,
+        ...rest,
+      }),
+      [className, group?.fieldProps, group?.name, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={(group?.ref as React.RefObject<HTMLLabelElement>) ?? ref}>
+        <div className={slots.wrapper()}>
+          <span className={slots.circle()} />
         </div>
+      </Element>
+    )
+  }
+)
 
-        {children}
-      </Component>
-    </SwitchContext.Provider>
-  )
-})
-
-Switch.displayName = 'Switch'
-
-export default Switch
+export type { ComponentOwnProps as SwitchProps }
+export default Component

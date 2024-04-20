@@ -1,28 +1,44 @@
-import type { ColumnProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { ColumnProps } from 'react-aria-components'
 
-import clsx from 'clsx'
 import React from 'react'
-import { Column as Component } from 'react-aria-components'
+import { Column } from 'react-aria-components'
 
 import { useTableContext } from '@/components/table/use-table.hook'
 
-export type TableColumnProps = ComponentProps
+const __ELEMENT_TYPE__ = 'th'
 
-const TableColumn = React.forwardRef<HTMLTableCellElement, TableColumnProps>((props, ref) => {
-  const { children, className, ...rest } = props
+type ComponentOwnProps = ColumnProps
 
-  const { slots } = useTableContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: clsx(slots.th(), className),
-      ...rest,
-    }),
-    [className, ref, rest, slots]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return <Component {...getProps()}>{children}</Component>
-})
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
 
-export default TableColumn
+    const Element = as ?? Column
+
+    const { slots } = useTableContext()
+
+    const component = React.useMemo<ColumnProps>(
+      () => ({
+        className: slots.th({ className: className?.toString() }),
+        ...rest,
+      }),
+      [className, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as TableColumnProps }
+export default Component

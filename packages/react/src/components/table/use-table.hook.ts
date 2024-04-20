@@ -5,9 +5,9 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseTableProps = TableVariantProps
+type UseTableProps = TableVariantProps
 
-export type UseTableReturn = ReturnType<typeof useTable>
+type UseTableReturn = ReturnType<typeof useTable>
 
 export const useTable = (props: UseTableProps) => {
   const { size, sticky, striped, headingless } = props

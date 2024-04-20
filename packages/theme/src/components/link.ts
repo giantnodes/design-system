@@ -5,14 +5,29 @@ import { tv } from 'tailwind-variants'
 export const link = tv({
   slots: {
     link: [
-      'text-sm',
       'text-inherit',
-      'hover:underline hover:text-sky-600',
-      'disabled:cursor-default disabled:text-shark-200 disabled:hover:text-shark-200 disabled:hover:no-underline',
+      'hover:text-sky-600',
+      'disabled:cursor-default disabled:text-shark-200 disabled:hover:text-shark-200',
     ],
   },
-  variants: {},
-  defaultVariants: {},
+  variants: {
+    size: {
+      sm: 'text-sm',
+      md: 'text-md',
+      lg: 'text-lg',
+    },
+    underline: {
+      none: 'no-underline',
+      hover: 'hover:underline disabled:hover:no-underline',
+      always: 'underline',
+      active: 'active:underline',
+      focus: 'focus:underline',
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+    underline: 'none',
+  },
 })
 
 export type LinkVariantProps = VariantProps<typeof link>

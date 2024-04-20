@@ -1,31 +1,45 @@
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { LabelProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { LabelProps } from 'react-aria-components'
 
 import React from 'react'
-import { Label as Component } from 'react-aria-components'
+import { Label } from 'react-aria-components'
 
-import { useFormGroupContext } from '@/components/form/use-form-group.hook'
+import { useFormGroupContext } from './use-form-group.hook'
 
-export type FormLabelProps = ComponentWithoutAs<'label'> & ComponentProps
+const __ELEMENT_TYPE__ = 'label'
 
-const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>((props, ref) => {
-  const { children, className, ...rest } = props
+type ComponentOwnProps = LabelProps
 
-  const { slots, labelProps } = useFormGroupContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.label({ className }),
-      ...labelProps,
-      ...rest,
-    }),
-    [ref, className, labelProps, slots, rest]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return <Component {...getProps()}>{children}</Component>
-})
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, color, radius, size, variant, ...rest } = props
 
-FormLabel.displayName = 'Form.Label'
+    const Element = as ?? Label
 
-export default FormLabel
+    const { slots, labelProps, status } = useFormGroupContext()
+
+    const component = React.useMemo<LabelProps>(
+      () => ({
+        className: slots.label({ className, status }),
+        ...labelProps,
+        ...rest,
+      }),
+      [className, labelProps, rest, slots, status]
+    )
+
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as FormLabelProps }
+export default Component

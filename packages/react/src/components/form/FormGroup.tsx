@@ -1,74 +1,59 @@
-import type { UseFormGroupProps } from '@/components/form/use-form-group.hook'
-import type { ComponentWithoutAs } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 import { useField } from 'react-aria'
 
-import { FormGroupContext, useFormGroup } from '@/components/form/use-form-group.hook'
-import { useDomRef } from '@/hooks/use-dom-ref'
+import { FormGroupContext, useFormGroup } from './use-form-group.hook'
 
-export type FormGroupProps = ComponentWithoutAs<'input'> &
-  Omit<UseFormGroupProps, 'ref'> & {
-    name: string
-    success?: boolean
-    warning?: boolean
-    error?: boolean
-  }
+const __ELEMENT_TYPE__ = 'span'
 
-const FormGroup = React.forwardRef<HTMLInputElement, FormGroupProps>((props, ref) => {
-  const { name, children, className, success, warning, error, onChange, onBlur, ...rest } = props
-
-  const dom = useDomRef(ref)
-
-  const { labelProps, fieldProps } = useField({ ...props, label: name })
-  const context = useFormGroup({ ref: dom, name, labelProps, fieldProps, onChange, onBlur })
-
-  const getProps = React.useCallback(
-    () => ({
-      className: context.slots.group({
-        class: className,
-      }),
-      ...rest,
-    }),
-    [className, context.slots, rest]
-  )
-
-  React.useEffect(() => {
-    if (success) context.setFeedback('success')
-    if (warning) context.setFeedback('warning')
-    if (error) context.setFeedback('error')
-    else context.setFeedback(null)
-  }, [context, success, warning, error])
-
-  return (
-    <FormGroupContext.Provider value={context}>
-      <div
-        data-error={error || undefined}
-        data-success={success || undefined}
-        data-warning={warning || undefined}
-        {...getProps()}
-      >
-        {React.Children.map(children, (child) => {
-          if (!React.isValidElement(child)) {
-            return child
-          }
-
-          return React.cloneElement(child, {
-            status: context.status,
-            ...child.props,
-          })
-        })}
-      </div>
-    </FormGroupContext.Provider>
-  )
-})
-
-FormGroup.displayName = 'Form.Group'
-
-FormGroup.defaultProps = {
-  error: undefined,
-  warning: undefined,
-  success: undefined,
+type ComponentOwnProps = {
+  name: string
+  success?: boolean
+  warning?: boolean
+  error?: boolean
 }
 
-export default FormGroup
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
+
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, name, success, warning, error, onChange, onBlur, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const { labelProps, fieldProps } = useField({ ...props, label: name })
+    const context = useFormGroup({ ref, name, labelProps, fieldProps, onChange, onBlur })
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        'data-error': error ?? undefined,
+        'data-success': success ?? undefined,
+        'data-warning': warning ?? undefined,
+        className: context.slots.group({ className }),
+        ...rest,
+      }),
+      [className, context.slots, error, rest, success, warning]
+    )
+
+    React.useEffect(() => {
+      if (success) context.setFeedback('success')
+      if (warning) context.setFeedback('warning')
+      if (error) context.setFeedback('error')
+      else context.setFeedback(null)
+    }, [context, success, warning, error])
+
+    return (
+      <FormGroupContext.Provider value={context}>
+        <Element {...component}>{children}</Element>
+      </FormGroupContext.Provider>
+    )
+  }
+)
+
+export type { ComponentOwnProps as FormGroupProps }
+export default Component

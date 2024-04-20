@@ -1,9 +1,9 @@
-import type { UseTableProps } from '@/components/table/use-table.hook'
-import type { TableProps as ComponentProps, SelectionMode } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { TableVariantProps } from '@giantnodes/theme'
+import type { TableProps } from 'react-aria-components'
 
-import clsx from 'clsx'
 import React from 'react'
-import { Table as Component } from 'react-aria-components'
+import { Table } from 'react-aria-components'
 
 import TableBody from '@/components/table/TableBody'
 import TableCell from '@/components/table/TableCell'
@@ -12,41 +12,50 @@ import TableHead from '@/components/table/TableHead'
 import TableRow from '@/components/table/TableRow'
 import { TableContext, useTable } from '@/components/table/use-table.hook'
 
-export type TableProps = Omit<ComponentProps, 'selectionMode' | 'selectionBehavior'> &
-  UseTableProps & {
+const __ELEMENT_TYPE__ = 'table'
+
+type ComponentOwnProps = Omit<TableProps, 'selectionMode' | 'selectionBehavior'> &
+  TableVariantProps & {
     behavior?: 'toggle' | 'replace'
-    mode?: SelectionMode
+    mode?: 'none' | 'single' | 'multiple'
   }
 
-const Table = React.forwardRef<HTMLTableElement, TableProps>((props, ref) => {
-  const { children, className, behavior, mode, size, sticky, striped, headingless, ...rest } = props
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const context = useTable({ size, sticky, striped, headingless })
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      selectionBehavior: behavior,
-      selectionMode: mode,
-      className: clsx(context.slots.table(), className),
-      ...rest,
-    }),
-    [behavior, className, context.slots, mode, ref, rest]
-  )
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, behavior, mode, size, sticky, striped, headingless, ...rest } = props
 
-  return (
-    <TableContext.Provider value={context}>
-      <Component {...getProps()}>{children}</Component>
-    </TableContext.Provider>
-  )
-})
+    const Element = as ?? Table
 
-Table.defaultProps = {
-  behavior: undefined,
-  mode: undefined,
-}
+    const context = useTable({ size, sticky, striped, headingless })
 
-export default Object.assign(Table, {
+    const component = React.useMemo<TableProps>(
+      () => ({
+        selectionBehavior: behavior,
+        selectionMode: mode,
+        className: context.slots.table({ className: className?.toString() }),
+        ...rest,
+      }),
+      [behavior, className, context.slots, mode, rest]
+    )
+
+    return (
+      <TableContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
+      </TableContext.Provider>
+    )
+  }
+)
+
+export type { ComponentOwnProps as TableProps }
+export default Object.assign(Component, {
   Body: TableBody,
   Cell: TableCell,
   Column: TableColumn,

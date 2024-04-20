@@ -1,33 +1,44 @@
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useAvatarContext } from '@/components/avatar/use-avatar.hook'
 
-export type AvatarIconProps = Component<'span'> & {
+const __ELEMENT_TYPE__ = 'span'
+
+type ComponentOwnProps = {
   icon: React.ReactNode
 }
 
-const AvatarIcon = React.forwardRef<HTMLImageElement, AvatarIconProps>((props, ref) => {
-  const { as, className, icon, ...rest } = props
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const Component = as || 'span'
-  const { slots } = useAvatarContext()
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.icon({
-        class: className,
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, className, icon, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const { slots } = useAvatarContext()
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: slots.icon({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [className, rest, slots]
+    )
 
-  return <Component {...getProps()}>{icon}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {icon}
+      </Element>
+    )
+  }
+)
 
-AvatarIcon.displayName = 'Avatar.Icon'
-
-export default AvatarIcon
+export type { ComponentOwnProps as AvatarIconProps }
+export default Component

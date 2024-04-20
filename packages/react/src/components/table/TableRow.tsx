@@ -1,33 +1,47 @@
-import type { RowProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { RowProps } from 'react-aria-components'
 
 import React from 'react'
-import { Collection, Row as Component, useTableOptions } from 'react-aria-components'
+import { Button, Checkbox, Collection, Row, useTableOptions } from 'react-aria-components'
 
-import Button from '@/components/button/Button'
-import Checkbox from '@/components/checkbox/Checkbox'
 import TableCell from '@/components/table/TableCell'
 import { useTableContext } from '@/components/table/use-table.hook'
 
-export type TableRowProps<T extends object> = ComponentProps<T>
+const __ELEMENT_TYPE__ = 'tr'
 
-const TableRow: <T extends object>(props: TableRowProps<T>) => React.ReactNode = (() =>
-  React.forwardRef((props, ref: React.ForwardedRef<HTMLTableRowElement>) => {
-    const { children, className, columns, ...rest } = props
+type ComponentOwnProps<D extends object> = RowProps<D>
+
+type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
+  T,
+  ComponentOwnProps<D>
+>
+
+type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<D, T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<D, T>,
+    ref: Polymophic.Ref<T>
+  ) => {
+    const { as, children, className, columns, ...rest } = props
+
+    const Element = as ?? Row
 
     const { slots } = useTableContext()
     const { selectionBehavior, allowsDragging } = useTableOptions()
 
-    const getProps = React.useCallback(
+    const component = React.useMemo<RowProps<D>>(
       () => ({
-        ref,
-        className: slots.tr(),
+        className: slots.tr({ className: className?.toString() }),
         ...rest,
       }),
-      [ref, rest, slots]
+      [className, rest, slots]
     )
 
     return (
-      <Component {...getProps()}>
+      <Element {...component} ref={ref}>
         {allowsDragging && (
           <TableCell>
             <Button slot="drag">≡</Button>
@@ -41,8 +55,10 @@ const TableRow: <T extends object>(props: TableRowProps<T>) => React.ReactNode =
         )}
 
         <Collection items={columns}>{children}</Collection>
-      </Component>
+      </Element>
     )
-  }))()
+  }
+)
 
-export default TableRow
+export type { ComponentOwnProps as TableRowProps }
+export default Component

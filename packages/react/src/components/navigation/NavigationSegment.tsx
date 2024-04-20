@@ -1,36 +1,42 @@
-import type { UseNavigationProps } from '@/components/navigation/use-navigation.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useNavigationContext } from '@/components/navigation/use-navigation.hook'
 
-export type NavigationSegmentProps = Component<'ul'> & UseNavigationProps
+const __ELEMENT_TYPE__ = 'ul'
 
-const NavigationSegment = React.forwardRef<HTMLUListElement, NavigationSegmentProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+type ComponentOwnProps = {}
 
-  const Component = as || 'ul'
-  const { slots } = useNavigationContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.segment({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const { slots } = useNavigationContext()
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: slots.segment({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [className, rest, slots]
+    )
 
-  return (
-    <Component role="list" {...getProps()}>
-      {children}
-    </Component>
-  )
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-NavigationSegment.displayName = 'Navigation.Segment'
-
-export default NavigationSegment
+export type { ComponentOwnProps as NavigationSegmentProps }
+export default Component

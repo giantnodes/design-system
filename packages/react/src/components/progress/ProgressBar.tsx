@@ -1,39 +1,50 @@
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useProgressContext } from '@/components/progress/use-progress.hook'
 
-export type ProgressBarProps = Omit<Component<'span'>, 'children'> & {
+const __ELEMENT_TYPE__ = 'span'
+
+type ComponentOwnProps = {
   color: string
   width: number
 }
 
-const ProgressBar = React.forwardRef<HTMLSpanElement, ProgressBarProps>((props, ref) => {
-  const { as, className, style, color, width, ...rest } = props
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const Component = as || 'span'
-  const { slots } = useProgressContext()
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.bar({
-        class: className,
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, style, color, width, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const context = useProgressContext()
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: context.slots.bar({ className }),
+        style: {
+          ...style,
+          backgroundColor: color,
+          width: `${width}%`,
+        },
+        ...rest,
       }),
-      style: {
-        ...style,
-        backgroundColor: color,
-        width: `${width}%`,
-      },
-      ...rest,
-    }),
-    [ref, slots, className, style, color, width, rest]
-  )
+      [className, color, context.slots, rest, style, width]
+    )
 
-  return <Component {...getProps()} />
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-ProgressBar.displayName = 'Progress.Bar'
-
-export default ProgressBar
+export type { ComponentOwnProps as ProgressBarProps }
+export default Component

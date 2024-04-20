@@ -1,37 +1,56 @@
-import type { UseBreadcrumbProps } from '@/components/breadcrumb/use-breadcrumb.hook'
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { BreadcrumbsProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { BreadcrumbVariantProps } from '@giantnodes/theme'
+import type { BreadcrumbsProps } from 'react-aria-components'
 
 import React from 'react'
-import { Breadcrumbs as Component } from 'react-aria-components'
+import { Breadcrumbs } from 'react-aria-components'
 
 import BreadcrumbItem from '@/components/breadcrumb/BreadcrumbItem'
 import { BreadcrumbContext, useBreadcrumb } from '@/components/breadcrumb/use-breadcrumb.hook'
 
-export type BreadcrumbProps<T extends object> = ComponentWithoutAs<'ol'> & ComponentProps<T> & UseBreadcrumbProps
+const __ELEMENT_TYPE__ = 'ol'
 
-const Breadcrumb: <T extends object>(props: BreadcrumbProps<T>) => React.ReactNode = (() =>
-  React.forwardRef((props, ref: React.ForwardedRef<HTMLOListElement>) => {
-    const { children, disabled, className, size, separator, ...rest } = props
+type ComponentOwnProps<D extends object> = BreadcrumbsProps<D> & BreadcrumbVariantProps
+
+type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
+  T,
+  ComponentOwnProps<D>
+>
+
+type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<D, T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<D, T>,
+    ref: Polymophic.Ref<T>
+  ) => {
+    const { as, children, className, size, separator, ...rest } = props
+
+    const Element = as ?? Breadcrumbs
 
     const context = useBreadcrumb({ size, separator })
 
-    const getProps = React.useCallback(
+    const component = React.useMemo<BreadcrumbsProps<D>>(
       () => ({
-        ref,
         className: context.slots.base({ className }),
         ...rest,
       }),
-      [ref, context.slots, className, rest]
+      [context.slots, className, rest]
     )
 
     return (
       <BreadcrumbContext.Provider value={context}>
-        <Component {...getProps()}>{children}</Component>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
       </BreadcrumbContext.Provider>
     )
-  }))()
+  }
+)
 
-export default Object.assign(Breadcrumb, {
+export type { ComponentOwnProps as BreadcrumbProps }
+export default Object.assign(Component, {
   Item: BreadcrumbItem,
 })

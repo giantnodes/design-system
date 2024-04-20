@@ -1,36 +1,50 @@
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { InputProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { InputProps } from 'react-aria-components'
 
 import React from 'react'
-import { Input as Component } from 'react-aria-components'
+import { Input } from 'react-aria-components'
 
 import { useFormGroupContext } from '@/components/form/use-form-group.hook'
 import { useInputContext } from '@/components/input/use-input.hook'
 
-export type InputControlProps = ComponentWithoutAs<'input'> & ComponentProps
+const __ELEMENT_TYPE__ = 'input'
 
-const InputControl = React.forwardRef<HTMLInputElement, InputControlProps>((props, ref) => {
-  const { className, ...rest } = props
+type ComponentOwnProps = InputProps
 
-  const { slots } = useInputContext()
-  const group = useFormGroupContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref: group?.ref ?? ref,
-      name: group?.name,
-      onChange: group?.onChange,
-      onBlur: group?.onBlur,
-      className: slots.control({ className }),
-      ...group?.fieldProps,
-      ...rest,
-    }),
-    [group?.ref, group?.name, group?.onChange, group?.onBlur, group?.fieldProps, ref, slots, className, rest]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return <Component {...getProps()} />
-})
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
 
-InputControl.displayName = 'Input.Control'
+    const Element = as ?? Input
 
-export default InputControl
+    const { slots } = useInputContext()
+    const group = useFormGroupContext()
+
+    const component = React.useMemo<InputProps>(
+      () => ({
+        name: group?.name,
+        onChange: group?.onChange,
+        onBlur: group?.onBlur,
+        className: slots.control({ className: className?.toString() }),
+        ...group?.fieldProps,
+        ...rest,
+      }),
+      [className, group?.fieldProps, group?.name, group?.onBlur, group?.onChange, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={(group?.ref as React.RefObject<HTMLInputElement>) ?? ref}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as InputControlProps }
+export default Component

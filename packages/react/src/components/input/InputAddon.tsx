@@ -1,31 +1,42 @@
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useInputContext } from '@/components/input/use-input.hook'
 
-export type InputAddonProps = Component<'div'>
+const __ELEMENT_TYPE__ = 'span'
 
-const InputAddon = React.forwardRef<HTMLDivElement, InputAddonProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+type ComponentOwnProps = {}
 
-  const Component = as || 'div'
-  const { slots } = useInputContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.addon({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const { slots } = useInputContext()
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: slots.addon({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [className, slots, ref, rest]
-  )
+      [className, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-InputAddon.displayName = 'Input.Addon'
-
-export default InputAddon
+export type { ComponentOwnProps as InputAddonProps }
+export default Component

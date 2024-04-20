@@ -1,33 +1,46 @@
-import type { UseNavigationProps } from '@/components/navigation/use-navigation.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { LinkProps } from 'react-aria-components'
 
 import React from 'react'
+import { Link } from 'react-aria-components'
 
 import { useNavigationContext } from '@/components/navigation/use-navigation.hook'
 
-export type NavigationLinkProps = Component<'a'> & UseNavigationProps
+const __ELEMENT_TYPE__ = 'a'
 
-const NavigationLink = React.forwardRef<HTMLAnchorElement, NavigationLinkProps>((props, ref) => {
-  const { as, children, className, isSelected, ...rest } = props
+type ComponentOwnProps = LinkProps & {
+  isSelected?: boolean
+}
 
-  const Component = as || 'a'
-  const { slots } = useNavigationContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.link({
-        class: className,
-        isSelected,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, isSelected, ...rest } = props
+
+    const Element = as ?? Link
+
+    const { slots } = useNavigationContext()
+
+    const component = React.useMemo<LinkProps>(
+      () => ({
+        className: slots.link({ className: className?.toString(), isSelected }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, isSelected, rest]
-  )
+      [className, isSelected, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-NavigationLink.displayName = 'Navigation.Link'
-
-export default NavigationLink
+export type { ComponentOwnProps as NavigationLinkProps }
+export default Component

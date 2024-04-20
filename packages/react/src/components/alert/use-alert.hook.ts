@@ -5,11 +5,13 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseAlertProps = AlertVariantProps
+type UseAlertProps = AlertVariantProps
 
-export type UseAlertReturn = ReturnType<typeof useAlert>
+type UseAlertReturn = ReturnType<typeof useAlert>
 
-export const useAlert = ({ color }: UseAlertProps) => {
+export const useAlert = (props: UseAlertProps) => {
+  const { color } = props
+
   const slots = React.useMemo(() => alert({ color }), [color])
 
   return {

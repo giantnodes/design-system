@@ -5,9 +5,9 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseMenuProps = MenuVariantProps
+type UseMenuProps = MenuVariantProps
 
-export type UseMenuReturn = ReturnType<typeof useMenu>
+type UseMenuReturn = ReturnType<typeof useMenu>
 
 export const useMenu = (props: UseMenuProps) => {
   const { size, status, variant } = props

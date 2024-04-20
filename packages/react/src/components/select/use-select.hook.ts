@@ -7,7 +7,7 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseSelectProps<T extends object> = SelectVariantProps &
+type UseSelectProps<T extends object> = SelectVariantProps &
   Pick<SelectProps<T>, 'onSelectionChange'> & {
     ref?: React.RefObject<HTMLInputElement>
     name?: string
@@ -16,7 +16,7 @@ export type UseSelectProps<T extends object> = SelectVariantProps &
     onChange?: ChangeHandler
   }
 
-export type UseSelectReturn = ReturnType<typeof useSelect>
+type UseSelectReturn = ReturnType<typeof useSelect>
 
 export const useSelect = <T extends object>(props: UseSelectProps<T>) => {
   const { ref, name, status, variant, onChange, onSelectionChange } = props
