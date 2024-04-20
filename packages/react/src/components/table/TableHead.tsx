@@ -2,8 +2,9 @@ import type * as Polymophic from '@/utilities/polymorphic'
 import type { TableHeaderProps } from 'react-aria-components'
 
 import React from 'react'
-import { Checkbox, Collection, TableHeader, useTableOptions } from 'react-aria-components'
+import { Collection, TableHeader, useTableOptions } from 'react-aria-components'
 
+import Checkbox from '@/components/checkbox/Checkbox'
 import TableColumn from '@/components/table/TableColumn'
 import { useTableContext } from '@/components/table/use-table.hook'
 
