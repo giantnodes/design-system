@@ -5,9 +5,9 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseInputProps = InputVariantProps
+type UseInputProps = InputVariantProps
 
-export type UseInputReturn = ReturnType<typeof useInput>
+type UseInputReturn = ReturnType<typeof useInput>
 
 export const useInput = (props: UseInputProps) => {
   const { status, size, transparent, variant } = props
