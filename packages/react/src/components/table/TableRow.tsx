@@ -2,8 +2,9 @@ import type * as Polymophic from '@/utilities/polymorphic'
 import type { RowProps } from 'react-aria-components'
 
 import React from 'react'
-import { Button, Checkbox, Collection, Row, useTableOptions } from 'react-aria-components'
+import { Button, Collection, Row, useTableOptions } from 'react-aria-components'
 
+import Checkbox from '@/components/checkbox/Checkbox'
 import TableCell from '@/components/table/TableCell'
 import { useTableContext } from '@/components/table/use-table.hook'
 

@@ -1,4 +1,5 @@
 import type * as Polymophic from '@/utilities/polymorphic'
+import type { TableVariantProps } from '@giantnodes/theme'
 import type { ColumnProps } from 'react-aria-components'
 
 import React from 'react'
@@ -8,7 +9,7 @@ import { useTableContext } from '@/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'th'
 
-type ComponentOwnProps = ColumnProps
+type ComponentOwnProps = ColumnProps & Pick<TableVariantProps, 'size'>
 
 type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
@@ -18,7 +19,7 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 
 const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, className, ...rest } = props
+    const { as, children, className, size, ...rest } = props
 
     const Element = as ?? Column
 
@@ -26,10 +27,10 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<ColumnProps>(
       () => ({
-        className: slots.th({ className: className?.toString() }),
+        className: slots.th({ className: className?.toString(), size }),
         ...rest,
       }),
-      [className, rest, slots]
+      [className, rest, size, slots]
     )
 
     return (
