@@ -23,6 +23,9 @@ const Component: Meta<typeof Button> = {
     variant: {
       control: { type: 'select' },
     },
+    isLoading: {
+      control: { type: 'boolean' },
+    },
   },
 }
 
@@ -49,6 +52,7 @@ export const Default: StoryFn = (args: ButtonProps) => (
     </Button>
   </div>
 )
+
 Default.args = {
   ...defaultProps,
 }

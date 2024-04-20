@@ -6,9 +6,11 @@ import { button } from '@giantnodes/theme'
 import React from 'react'
 import { Button } from 'react-aria-components'
 
+import Spinner from '@/components/spinner/Spinner'
+
 const __ELEMENT_TYPE__ = 'button'
 
-type ComponentOwnProps = ButtonVariantProps & ButtonProps
+type ComponentOwnProps = ButtonVariantProps & Omit<ButtonProps, 'children'>
 
 type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
@@ -36,6 +38,8 @@ const Component: ComponentType = React.forwardRef(
 
     return (
       <Element {...component} ref={ref}>
+        {isLoading && <Spinner />}
+
         {children}
       </Element>
     )
