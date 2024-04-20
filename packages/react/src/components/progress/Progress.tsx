@@ -1,38 +1,48 @@
-import type { UseProgressProps } from '@/components/progress/use-progress.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { ProgressVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
 import ProgressBar from '@/components/progress/ProgressBar'
 import { ProgressContext, useProgress } from '@/components/progress/use-progress.hook'
 
-export type ProgressProps = Component<'div'> & UseProgressProps
+const __ELEMENT_TYPE__ = 'div'
 
-const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((props, ref) => {
-  const { children, className, radius, size, ...rest } = props
+type ComponentOwnProps = ProgressVariantProps
 
-  const context = useProgress({ radius, size })
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: context.slots.base({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, radius, size, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const context = useProgress({ radius, size })
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: context.slots.base({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [context.slots, ref, className, rest]
-  )
+      [className, context.slots, rest]
+    )
 
-  return (
-    <ProgressContext.Provider value={context}>
-      <div {...getProps()}>{children}</div>
-    </ProgressContext.Provider>
-  )
-})
+    return (
+      <ProgressContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
+      </ProgressContext.Provider>
+    )
+  }
+)
 
-Progress.displayName = 'Progress'
-
-export default Object.assign(Progress, {
+export type { ComponentOwnProps as ProgressProps }
+export default Object.assign(Component, {
   Bar: ProgressBar,
 })
