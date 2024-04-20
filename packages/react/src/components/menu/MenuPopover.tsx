@@ -1,29 +1,44 @@
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { PopoverProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { PopoverProps } from 'react-aria-components'
 
 import React from 'react'
-import { Popover as Component } from 'react-aria-components'
+import { Popover } from 'react-aria-components'
 
 import { useMenuContext } from '@/components/menu/use-menu.hook'
 
-export type MenuPopoverProps = ComponentWithoutAs<'div'> & ComponentProps
+const __ELEMENT_TYPE__ = 'div'
 
-const MenuPopover = React.forwardRef<HTMLDivElement, MenuPopoverProps>((props, ref) => {
-  const { children, className, ...rest } = props
-  const { slots } = useMenuContext()
+type ComponentOwnProps = PopoverProps
 
-  const getPopoverProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.popover({
-        class: className,
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
+
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? Popover
+
+    const { slots } = useMenuContext()
+
+    const component = React.useMemo<PopoverProps>(
+      () => ({
+        className: slots.popover({ className: className?.toString() }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [className, ref, rest, slots]
-  )
+      [className, rest, slots]
+    )
 
-  return <Component {...getPopoverProps()}>{children}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-export default MenuPopover
+export type { ComponentOwnProps as MenuPopoverProps }
+export default Component
