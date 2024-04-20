@@ -1,50 +1,48 @@
-import type { DialogProps, ModalOverlayProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { DialogProps } from 'react-aria-components'
 
 import React from 'react'
 import { Dialog, Modal, ModalOverlay } from 'react-aria-components'
 
-import { useDialogContext } from '@/components/dialog/use-dialog.hook'
+import { useDialogContext } from './use-dialog.hook'
 
-type ComponentProps = DialogProps
+const __ELEMENT_TYPE__ = 'div'
 
-const Component = React.forwardRef<HTMLDivElement, ComponentProps>((props, ref) => {
-  const { children, className, ...rest } = props
+type ComponentOwnProps = DialogProps
 
-  const { slots } = useDialogContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const overlay = React.useMemo<ModalOverlayProps>(
-    () => ({
-      className: slots.overlay(),
-    }),
-    [slots]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const modal = React.useMemo<ModalOverlayProps>(
-    () => ({
-      className: slots.modal(),
-    }),
-    [slots]
-  )
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
 
-  const content = React.useMemo<DialogProps>(
-    () => ({
-      ref,
-      className: slots.content({ className }),
-      ...rest,
-    }),
-    [className, slots, ref, rest]
-  )
+    const Element = as ?? Dialog
 
-  return (
-    <ModalOverlay {...overlay}>
-      <Modal {...modal}>
-        <Dialog {...content}>{children}</Dialog>
-      </Modal>
-    </ModalOverlay>
-  )
-})
+    const { slots } = useDialogContext()
 
-Component.displayName = 'Dialog.Content'
+    const component = React.useMemo<DialogProps>(
+      () => ({
+        className: slots.content({ className }),
+        ...rest,
+      }),
+      [className, rest, slots]
+    )
 
-export { ComponentProps as DialogContentProps }
+    return (
+      <ModalOverlay className={slots.overlay()}>
+        <Modal className={slots.modal()}>
+          <Element {...component} ref={ref}>
+            {children}
+          </Element>
+        </Modal>
+      </ModalOverlay>
+    )
+  }
+)
+
+export type { ComponentOwnProps as DialogContentProps }
 export default Component

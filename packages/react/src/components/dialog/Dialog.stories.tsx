@@ -24,7 +24,7 @@ export const Default: StoryFn = (args: DialogProps) => (
           <Card.Body>Dialog Content</Card.Body>
 
           <Card.Footer>
-            <Button onPress={close}>Close</Button>
+            <Button onClick={close}>Close</Button>
           </Card.Footer>
         </Card>
       )}
