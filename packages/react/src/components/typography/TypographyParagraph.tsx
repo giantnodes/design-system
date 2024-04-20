@@ -1,14 +1,12 @@
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { TypographyVariantProps } from '@giantnodes/theme'
-import type { TextProps } from 'react-aria-components'
 
 import { typography } from '@giantnodes/theme'
 import React from 'react'
-import { Text } from 'react-aria-components'
 
 const __ELEMENT_TYPE__ = 'p'
 
-type ComponentOwnProps = TextProps & TypographyVariantProps
+type ComponentOwnProps = TypographyVariantProps
 
 type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
@@ -20,11 +18,11 @@ const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
     const { as, children, className, variant, ...rest } = props
 
-    const Element = as ?? Text
+    const Element = as ?? __ELEMENT_TYPE__
 
     const slots = React.useMemo(() => typography({ variant }), [variant])
 
-    const component = React.useMemo<TextProps>(
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
         className: slots.paragraph({ className }),
         ...rest,

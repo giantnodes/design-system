@@ -20,7 +20,18 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 
 const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, isLoading = false, isDisabled = false, color, shape, size, variant, ...rest } = props
+    const {
+      as,
+      children,
+      className,
+      isLoading = false,
+      isDisabled = false,
+      color,
+      shape,
+      size,
+      variant,
+      ...rest
+    } = props
 
     const Element = as ?? Button
 
@@ -29,11 +40,11 @@ const Component: ComponentType = React.forwardRef(
     const component = React.useMemo<ButtonProps>(
       () => ({
         'data-loading': isLoading,
-        className: slots.button(),
+        className: slots.button({ className: className?.toString() }),
         isDisabled: isLoading || isDisabled,
         ...rest,
       }),
-      [isDisabled, isLoading, rest, slots]
+      [className, isDisabled, isLoading, rest, slots]
     )
 
     return (

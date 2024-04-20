@@ -1,11 +1,12 @@
 import type * as Polymophic from '@/utilities/polymorphic'
+import type { DividerVariantProps } from '@giantnodes/theme'
 
 import { divider } from '@giantnodes/theme'
 import React from 'react'
 
 const __ELEMENT_TYPE__ = 'hr'
 
-type ComponentOwnProps = {
+type ComponentOwnProps = DividerVariantProps & {
   icon: React.ReactNode
 }
 
