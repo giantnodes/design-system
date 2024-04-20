@@ -5,9 +5,9 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseAlertProps = AlertVariantProps
+type UseAlertProps = AlertVariantProps
 
-export type UseAlertReturn = ReturnType<typeof useAlert>
+type UseAlertReturn = ReturnType<typeof useAlert>
 
 export const useAlert = (props: UseAlertProps) => {
   const { color } = props

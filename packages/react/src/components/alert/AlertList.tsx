@@ -22,7 +22,7 @@ const Component: ComponentType = React.forwardRef(
 
     const { slots } = useAlertContext()
 
-    const component = React.useMemo(
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
         className: slots.list({ className }),
         ...rest,

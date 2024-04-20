@@ -28,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
 
     const context = useAlert({ color })
 
-    const component = React.useMemo(
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
         className: context.slots.base({ className }),
         ...rest,
