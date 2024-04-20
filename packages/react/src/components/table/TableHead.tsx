@@ -1,33 +1,47 @@
-import type { UseTableProps } from '@/components/table/use-table.hook'
-import type { TableHeaderProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { TableHeaderProps } from 'react-aria-components'
 
 import React from 'react'
-import { Collection, TableHeader as Component, useTableOptions } from 'react-aria-components'
+import { Checkbox, Collection, TableHeader, useTableOptions } from 'react-aria-components'
 
-import Checkbox from '@/components/checkbox/Checkbox'
 import TableColumn from '@/components/table/TableColumn'
 import { useTableContext } from '@/components/table/use-table.hook'
 
-export type TableHeadProps<T extends object> = ComponentProps<T> & Pick<UseTableProps, 'size'>
+const __ELEMENT_TYPE__ = 'thead'
 
-const TableHead: <T extends object>(props: TableHeadProps<T>) => React.ReactNode = (() =>
-  React.forwardRef((props, ref: React.ForwardedRef<HTMLTableSectionElement>) => {
-    const { children, className, columns, size, ...rest } = props
+type ComponentOwnProps<D extends object> = TableHeaderProps<D>
+
+type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
+  T,
+  ComponentOwnProps<D>
+>
+
+type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<D, T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<D, T>,
+    ref: Polymophic.Ref<T>
+  ) => {
+    const { as, children, className, columns, ...rest } = props
+
+    const Element = as ?? TableHeader
 
     const { slots } = useTableContext()
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
 
-    const getProps = React.useCallback(
+    const component = React.useMemo<TableHeaderProps<D>>(
       () => ({
-        ref,
-        className: slots.thead({ className, size }),
+        className: slots.thead({ className: className?.toString() }),
         ...rest,
       }),
-      [className, ref, rest, size, slots]
+      [className, rest, slots]
     )
 
     return (
-      <Component {...getProps()}>
+      <Element {...component} ref={ref}>
         {allowsDragging && <TableColumn />}
 
         {selectionBehavior === 'toggle' && (
@@ -35,8 +49,10 @@ const TableHead: <T extends object>(props: TableHeadProps<T>) => React.ReactNode
         )}
 
         <Collection items={columns}>{children}</Collection>
-      </Component>
+      </Element>
     )
-  }))()
+  }
+)
 
-export default TableHead
+export type { ComponentOwnProps as TableHeadProps }
+export default Component

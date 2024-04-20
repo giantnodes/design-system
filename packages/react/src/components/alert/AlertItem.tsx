@@ -1,35 +1,42 @@
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useAlertContext } from '@/components/alert/use-alert.hook'
 
-export type AlertItemProps = Component<'li'>
+const __ELEMENT_TYPE__ = 'li'
 
-const AlertItem = React.forwardRef<HTMLLIElement, AlertItemProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
-  const { slots } = useAlertContext()
+type ComponentOwnProps = {}
 
-  const Component = as || 'li'
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.item({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const { slots } = useAlertContext()
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: slots.item({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [className, rest, slots]
+    )
 
-  return (
-    <Component role="listitem" {...getProps()}>
-      {children}
-    </Component>
-  )
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-AlertItem.displayName = 'Alert.Item'
-
-export default AlertItem
+export type { ComponentOwnProps as AlertItemProps }
+export default Component

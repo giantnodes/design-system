@@ -1,27 +1,44 @@
-import type { CellProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { CellProps } from 'react-aria-components'
 
 import React from 'react'
-import { Cell as Component } from 'react-aria-components'
+import { Cell } from 'react-aria-components'
 
 import { useTableContext } from '@/components/table/use-table.hook'
 
-export type TableCellProps = ComponentProps
+const __ELEMENT_TYPE__ = 'td'
 
-const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>((props, ref) => {
-  const { children, className, ...rest } = props
+type ComponentOwnProps = CellProps
 
-  const { slots } = useTableContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.td(),
-      ...rest,
-    }),
-    [ref, rest, slots]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return <Component {...getProps()}>{children}</Component>
-})
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
 
-export default TableCell
+    const Element = as ?? Cell
+
+    const { slots } = useTableContext()
+
+    const component = React.useMemo<CellProps>(
+      () => ({
+        className: slots.td({ className: className?.toString() }),
+        ...rest,
+      }),
+      [className, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as TableCellProps }
+export default Component

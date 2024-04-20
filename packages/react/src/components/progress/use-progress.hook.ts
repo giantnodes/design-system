@@ -5,9 +5,9 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseProgressProps = ProgressVariantProps
+type UseProgressProps = ProgressVariantProps
 
-export type UseProgressReturn = ReturnType<typeof useProgress>
+type UseProgressReturn = ReturnType<typeof useProgress>
 
 export const useProgress = (props: UseProgressProps) => {
   const { radius, size } = props

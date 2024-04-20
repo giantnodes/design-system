@@ -1,5 +1,5 @@
-import type { UseDialogProps } from '@/components/dialog/use-dialog.hook'
-import type { ComponentWithoutAs } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { DialogVariantProps } from '@giantnodes/theme'
 import type { DialogTriggerProps } from 'react-aria-components'
 
 import React from 'react'
@@ -8,33 +8,41 @@ import { DialogTrigger } from 'react-aria-components'
 import DialogContent from '@/components/dialog/DialogContent'
 import { DialogContext, useDialog } from '@/components/dialog/use-dialog.hook'
 
-type ComponentProps = ComponentWithoutAs<'div'> & Omit<DialogTriggerProps, 'children'> & UseDialogProps
+const __ELEMENT_TYPE__ = 'div'
 
-const Component = React.forwardRef<HTMLDivElement, ComponentProps>((props, ref) => {
-  const { children, className, blur, placement, ...rest } = props
+type ComponentOwnProps = Omit<DialogTriggerProps, 'children'> & DialogVariantProps
 
-  const context = useDialog({ blur, placement })
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const trigger = React.useMemo<DialogTriggerProps>(
-    () => ({
-      ref,
-      children,
-      className: context.slots.dialog({ className }),
-      ...rest,
-    }),
-    [children, className, context.slots, ref, rest]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return (
-    <DialogContext.Provider value={context}>
-      <DialogTrigger {...trigger}>{children}</DialogTrigger>
-    </DialogContext.Provider>
-  )
-})
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>) => {
+    const { as, children, className, blur, placement, ...rest } = props
 
-Component.displayName = 'Dialog'
+    const Element = as ?? DialogTrigger
 
-export { ComponentProps as DialogProps }
+    const context = useDialog({ blur, placement })
+
+    const component = React.useMemo<Omit<DialogTriggerProps, 'children'>>(
+      () => ({
+        className: context.slots.dialog({ className }),
+        ...rest,
+      }),
+      [context.slots, className, rest]
+    )
+
+    return (
+      <DialogContext.Provider value={context}>
+        <Element {...component}>{children}</Element>
+      </DialogContext.Provider>
+    )
+  }
+)
+
+export type { ComponentOwnProps as DialogProps }
 export default Object.assign(Component, {
   Content: DialogContent,
 })

@@ -1,5 +1,5 @@
-import type { UseInputProps } from '@/components/input/use-input.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { InputVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
@@ -7,33 +7,44 @@ import InputAddon from '@/components/input/InputAddon'
 import InputControl from '@/components/input/InputControl'
 import { InputContext, useInput } from '@/components/input/use-input.hook'
 
-export type InputProps = Component<'div'> & UseInputProps
+const __ELEMENT_TYPE__ = 'div'
 
-const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
-  const { as, children, className, status, size, variant, transparent, ...rest } = props
+type ComponentOwnProps = InputVariantProps
 
-  const Component = as || 'div'
-  const context = useInput({ status, size, variant, transparent })
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: context.slots.input({ className }),
-      ...rest,
-    }),
-    [ref, className, context.slots, rest]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return (
-    <InputContext.Provider value={context}>
-      <Component {...getProps()}>{children}</Component>
-    </InputContext.Provider>
-  )
-})
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, status, size, variant, transparent, ...rest } = props
 
-Input.displayName = 'Input'
+    const Element = as ?? __ELEMENT_TYPE__
 
-export default Object.assign(Input, {
+    const context = useInput({ status, size, variant, transparent })
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: context.slots.input({ className }),
+        ...rest,
+      }),
+      [className, context.slots, rest]
+    )
+
+    return (
+      <InputContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
+      </InputContext.Provider>
+    )
+  }
+)
+
+export type { ComponentOwnProps as InputProps }
+export default Object.assign(Component, {
   Addon: InputAddon,
   Control: InputControl,
 })

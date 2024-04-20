@@ -1,31 +1,42 @@
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useNavigationContext } from '@/components/navigation/use-navigation.hook'
 
-export type NavigationBrandProps = Component<'div'>
+const __ELEMENT_TYPE__ = 'div'
 
-const NavigationBrand = React.forwardRef<HTMLDivElement, NavigationBrandProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+type ComponentOwnProps = {}
 
-  const Component = as || 'div'
-  const { slots } = useNavigationContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.brand({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const { slots } = useNavigationContext()
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: slots.brand({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [className, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-NavigationBrand.displayName = 'Navigation.Brand'
-
-export default NavigationBrand
+export type { ComponentOwnProps as NavigationBrandProps }
+export default Component

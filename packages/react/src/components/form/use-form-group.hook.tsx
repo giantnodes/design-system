@@ -8,14 +8,14 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseFormGroupProps = Partial<LabelAria> & {
-  ref?: React.RefObject<HTMLInputElement>
+type UseFormGroupProps = LabelAria & {
+  ref?: React.RefObject<HTMLInputElement | HTMLLabelElement>
   name?: string
   onChange?: ChangeHandler
   onBlur?: ChangeHandler
 }
 
-export type UseFormGroupReturn = ReturnType<typeof useFormGroup>
+type UseFormGroupReturn = ReturnType<typeof useFormGroup>
 
 export const useFormGroup = (props: UseFormGroupProps) => {
   const { ref, name, fieldProps, labelProps, onChange, onBlur } = props

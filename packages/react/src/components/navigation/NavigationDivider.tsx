@@ -1,31 +1,42 @@
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useNavigationContext } from '@/components/navigation/use-navigation.hook'
 
-export type NavigationDividerProps = Component<'hr'>
+const __ELEMENT_TYPE__ = 'hr'
 
-const NavigationDivider = React.forwardRef<HTMLHRElement, NavigationDividerProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+type ComponentOwnProps = {}
 
-  const Component = as || 'hr'
-  const { slots } = useNavigationContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.divider({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const { slots } = useNavigationContext()
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: slots.divider({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [className, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-NavigationDivider.displayName = 'Navigation.Divider'
-
-export default NavigationDivider
+export type { ComponentOwnProps as NavigationDividerProps }
+export default Component

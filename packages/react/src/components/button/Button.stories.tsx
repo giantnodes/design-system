@@ -4,6 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import { button } from '@giantnodes/theme'
 
 import { Button } from '@/components/button'
+import Link from '@/components/link/Link'
 
 const Component: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -49,6 +50,16 @@ export const Default: StoryFn = (args: ButtonProps) => (
   </div>
 )
 Default.args = {
+  ...defaultProps,
+}
+
+export const LinkButton: StoryFn = (args: ButtonProps) => (
+  <Button {...args} as={Link} href="www.giantnodes.com" target="__blank">
+    Button
+  </Button>
+)
+
+LinkButton.args = {
   ...defaultProps,
 }
 

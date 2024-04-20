@@ -1,34 +1,45 @@
-import type { UseDividerProps } from '@/components/divider/use-divider.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
+import { divider } from '@giantnodes/theme'
 import React from 'react'
 
-import { useDivider } from '@/components/divider/use-divider.hook'
+const __ELEMENT_TYPE__ = 'hr'
 
-export type DividerProps = Component<'hr'> & UseDividerProps
+type ComponentOwnProps = {
+  icon: React.ReactNode
+}
 
-const Divider = React.forwardRef<HTMLHRElement, DividerProps>((props, ref) => {
-  const { as, children, className, orientation, ...rest } = props
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const Component = as || 'hr'
-  const { slots } = useDivider({ orientation })
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.divider({ className }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, orientation, ...rest } = props
 
-  return (
-    <Component aria-orientation={orientation} data-orientation={orientation} {...getProps()}>
-      {children}
-    </Component>
-  )
-})
+    const Element = as ?? __ELEMENT_TYPE__
 
-Divider.displayName = 'Divider'
+    const slots = React.useMemo(() => divider({ orientation }), [orientation])
 
-export default Divider
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        'aria-orientation': orientation,
+        'data-orientation': orientation,
+        className: slots.divider({ className }),
+        ...rest,
+      }),
+      [className, orientation, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as DividerProps }
+export default Component

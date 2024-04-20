@@ -1,31 +1,44 @@
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { MenuItemProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { MenuItemProps } from 'react-aria-components'
 
 import React from 'react'
-import { MenuItem as Component } from 'react-aria-components'
+import { MenuItem } from 'react-aria-components'
 
 import { useMenuContext } from '@/components/menu/use-menu.hook'
 
-export type MenuPopoverItemProps = ComponentWithoutAs<'div'> & ComponentProps
+const __ELEMENT_TYPE__ = 'div'
 
-const MenuItem = React.forwardRef<HTMLDivElement, MenuPopoverItemProps>((props, ref) => {
-  const { children, className, ...rest } = props
-  const { slots } = useMenuContext()
+type ComponentOwnProps = MenuItemProps
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.item({
-        class: className,
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
+
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? MenuItem
+
+    const { slots } = useMenuContext()
+
+    const component = React.useMemo<MenuItemProps>(
+      () => ({
+        className: slots.item({ className: className?.toString() }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [className, ref, rest, slots]
-  )
+      [className, rest, slots]
+    )
 
-  return <Component {...getProps()}>{children}</Component>
-})
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-MenuItem.displayName = 'Menu.Item'
-
-export default MenuItem
+export type { ComponentOwnProps as MenuItemProps }
+export default Component

@@ -5,9 +5,9 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseNavigationProps = NavigationVariantProps
+type UseNavigationProps = NavigationVariantProps
 
-export type UseNavigationReturn = ReturnType<typeof useNavigation>
+type UseNavigationReturn = ReturnType<typeof useNavigation>
 
 export const useNavigation = (props: UseNavigationProps) => {
   const { position, size, orientation, variant } = props

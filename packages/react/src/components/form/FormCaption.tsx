@@ -1,33 +1,42 @@
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
 
 import React from 'react'
 
 import { useFormGroupContext } from '@/components/form/use-form-group.hook'
 
-export type FormCaptionProps = Component<'span'>
+const __ELEMENT_TYPE__ = 'span'
 
-const FormCaption = React.forwardRef<HTMLSpanElement, FormCaptionProps>((props, ref) => {
-  const { as, children, className, ...rest } = props
+type ComponentOwnProps = {}
 
-  const Component = as || 'span'
-  const { slots } = useFormGroupContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.caption({ className }),
-      ...rest,
-    }),
-    [ref, className, slots, rest]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return (
-    <Component slot="description" {...getProps()}>
-      {children}
-    </Component>
-  )
-})
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
 
-FormCaption.displayName = 'Form.Caption'
+    const Element = as ?? __ELEMENT_TYPE__
 
-export default FormCaption
+    const { slots } = useFormGroupContext()
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: slots.caption({ className }),
+        ...rest,
+      }),
+      [className, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as FormCaptionProps }
+export default Component
