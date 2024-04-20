@@ -8,7 +8,7 @@ import { Button } from 'react-aria-components'
 
 const __ELEMENT_TYPE__ = 'button'
 
-type ComponentOwnProps = ButtonVariantProps
+type ComponentOwnProps = ButtonVariantProps & ButtonProps
 
 type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
