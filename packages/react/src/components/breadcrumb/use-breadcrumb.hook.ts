@@ -5,11 +5,11 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseBreadcrumbProps = BreadcrumbVariantProps & {
+type UseBreadcrumbProps = BreadcrumbVariantProps & {
   separator?: React.ReactNode
 }
 
-export type UseBreadcrumbReturn = ReturnType<typeof useBreadcrumb>
+type UseBreadcrumbReturn = ReturnType<typeof useBreadcrumb>
 
 export const useBreadcrumb = (props: UseBreadcrumbProps) => {
   const { size, separator = '/' } = props

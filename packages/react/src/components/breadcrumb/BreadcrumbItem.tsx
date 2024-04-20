@@ -1,40 +1,50 @@
-import type { ComponentWithoutAs } from '@/utilities/types'
-import type { BreadcrumbProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { BreadcrumbProps } from 'react-aria-components'
 
 import React from 'react'
-import { Breadcrumb as Component } from 'react-aria-components'
+import { Breadcrumb } from 'react-aria-components'
 
 import { useBreadcrumbContext } from '@/components/breadcrumb/use-breadcrumb.hook'
 
-export type BreadcrumbItemProps = ComponentWithoutAs<'li'> & ComponentProps
+const __ELEMENT_TYPE__ = 'span'
 
-const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>((props, ref) => {
-  const { children, className, ...rest } = props
+type ComponentOwnProps = BreadcrumbProps
 
-  const { slots, separator } = useBreadcrumbContext()
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.item({ className }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
 
-  return (
-    <Component {...getProps()}>
-      {children}
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, ...rest } = props
 
-      {separator && (
-        <span aria-hidden="true" className={slots.separator()}>
-          {separator}
-        </span>
-      )}
-    </Component>
-  )
-})
+    const Element = as ?? Breadcrumb
 
-BreadcrumbItem.displayName = 'Breadcrumb.Item'
+    const { slots, separator } = useBreadcrumbContext()
 
-export default BreadcrumbItem
+    const component = React.useMemo<Omit<BreadcrumbProps, 'children'>>(
+      () => ({
+        className: slots.item({ className }),
+        ...rest,
+      }),
+      [className, rest, slots]
+    )
+
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+
+        {separator && (
+          <span aria-hidden="true" className={slots.separator()}>
+            {separator}
+          </span>
+        )}
+      </Element>
+    )
+  }
+)
+
+export type { ComponentOwnProps as BreadcrumbItemProps }
+export default Component
