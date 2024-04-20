@@ -1,28 +1,50 @@
-import type { TableBodyProps as ComponentProps } from 'react-aria-components'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { TableBodyProps } from 'react-aria-components'
 
 import React from 'react'
-import { TableBody as Component } from 'react-aria-components'
+import { TableBody } from 'react-aria-components'
 
-import { useTableContext } from '@/components/table/use-table.hook'
+import { useTableContext } from './use-table.hook'
 
-export type TableBodyProps<T extends object> = ComponentProps<T>
+const __ELEMENT_TYPE__ = 'tbody'
 
-const TableBody: <T extends object>(props: TableBodyProps<T>) => React.ReactNode = (() =>
-  React.forwardRef((props, ref: React.ForwardedRef<HTMLTableSectionElement>) => {
-    const { children, className, ...rest } = props
+type ComponentOwnProps<D extends object> = TableBodyProps<D>
+
+type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
+  T,
+  ComponentOwnProps<D>
+>
+
+type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<D, T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<D, T>,
+    ref: Polymophic.Ref<T>
+  ) => {
+    const { as, children, className, ...rest } = props
+
+    const Element = as ?? TableBody
 
     const { slots } = useTableContext()
 
-    const getProps = React.useCallback(
+    const component = React.useMemo<TableBodyProps<D>>(
       () => ({
-        ref,
-        className: slots.tbody(),
+        className: slots.tbody({ className: className?.toString() }),
         ...rest,
       }),
-      [ref, rest, slots]
+      [className, rest, slots]
     )
 
-    return <Component {...getProps()}>{children}</Component>
-  }))()
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
-export default TableBody
+export type { ComponentOwnProps as TableBodyProps }
+export default Component
