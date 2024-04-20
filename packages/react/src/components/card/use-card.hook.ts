@@ -5,9 +5,9 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-export type UseCardProps = CardVariantProps
+type UseCardProps = CardVariantProps
 
-export type UseCardReturn = ReturnType<typeof useCard>
+type UseCardReturn = ReturnType<typeof useCard>
 
 export const useCard = (props: UseCardProps) => {
   const { transparent } = props

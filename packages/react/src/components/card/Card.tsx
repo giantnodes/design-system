@@ -1,5 +1,5 @@
-import type { UseCardProps } from '@/components/card/use-card.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { CardVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
@@ -8,35 +8,44 @@ import CardFooter from '@/components/card/CardFooter'
 import CardHeader from '@/components/card/CardHeader'
 import { CardContext, useCard } from '@/components/card/use-card.hook'
 
-export type CardProps = Component<'div'> & UseCardProps
+const __ELEMENT_TYPE__ = 'div'
 
-const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
-  const { as, children, className, transparent, ...rest } = props
+type ComponentOwnProps = CardVariantProps
 
-  const Component = as || 'div'
-  const context = useCard({ transparent })
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: context.slots.base({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, transparent, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const context = useCard({ transparent })
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: context.slots.base({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, context.slots, className, rest]
-  )
+      [context.slots, className, rest]
+    )
 
-  return (
-    <CardContext.Provider value={context}>
-      <Component {...getProps()}>{children}</Component>
-    </CardContext.Provider>
-  )
-})
+    return (
+      <CardContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
+      </CardContext.Provider>
+    )
+  }
+)
 
-Card.displayName = 'Card'
-
-export default Object.assign(Card, {
+export type { ComponentOwnProps as CardProps }
+export default Object.assign(Component, {
   Body: CardBody,
   Footer: CardFooter,
   Header: CardHeader,
