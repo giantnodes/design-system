@@ -1,5 +1,6 @@
-import type { UseSelectProps } from '@/components/select/use-select.hook'
+import type * as Polymophic from '@/utilities/polymorphic'
 import type { Override } from '@/utilities/types'
+import type { SelectVariantProps } from '@giantnodes/theme'
 import type { ButtonProps, ListBoxProps, PopoverProps, SelectProps } from 'react-aria-components'
 
 import React from 'react'
@@ -9,6 +10,8 @@ import { useFormGroupContext } from '@/components/form/use-form-group.hook'
 import SelectOption from '@/components/select/SelectOption'
 import SelectValue from '@/components/select/SelectValue'
 import { SelectContext, useSelect } from '@/components/select/use-select.hook'
+
+const __ELEMENT_TYPE__ = 'select'
 
 type OveriddenSelectProps<T extends object> = Override<
   SelectProps<T>,
@@ -24,15 +27,28 @@ type OveriddenListBoxProps<T extends object> = Override<
   }
 >
 
-type ComponentProps<T extends object> = UseSelectProps<T> &
-  OveriddenSelectProps<T> &
-  OveriddenListBoxProps<T> & {
+type ComponentOwnProps<D extends object> = SelectVariantProps &
+  OveriddenSelectProps<D> &
+  OveriddenListBoxProps<D> & {
     placement?: 'top' | 'bottom'
   }
 
-const Component: <T extends object>(props: ComponentProps<T>) => React.ReactNode = (() =>
-  React.forwardRef((props, ref: React.ForwardedRef<HTMLDivElement>) => {
+type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
+  T,
+  ComponentOwnProps<D>
+>
+
+type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<D, T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<D, T>,
+    ref: Polymophic.Ref<T>
+  ) => {
     const {
+      as,
       children,
       className,
       items,
@@ -46,10 +62,12 @@ const Component: <T extends object>(props: ComponentProps<T>) => React.ReactNode
       ...rest
     } = props
 
+    const Element = as ?? Select
+
     const group = useFormGroupContext()
 
     const context = useSelect({
-      ref: group.ref,
+      ref: group.ref as React.RefObject<HTMLInputElement>,
       name: group?.name,
       behavior,
       mode,
@@ -58,9 +76,8 @@ const Component: <T extends object>(props: ComponentProps<T>) => React.ReactNode
       onChange: group?.onChange ?? onChange,
     })
 
-    const select = React.useMemo<SelectProps<any>>(
+    const select = React.useMemo<SelectProps<D>>(
       () => ({
-        ref: group?.ref ?? ref,
         name: group?.name,
         placeholder,
         onChange: group?.onChange,
@@ -77,9 +94,7 @@ const Component: <T extends object>(props: ComponentProps<T>) => React.ReactNode
         group?.name,
         group?.onBlur,
         group?.onChange,
-        group?.ref,
         placeholder,
-        ref,
         rest,
       ]
     )
@@ -99,7 +114,7 @@ const Component: <T extends object>(props: ComponentProps<T>) => React.ReactNode
       [context.slots, placement]
     )
 
-    const listbox = React.useMemo<ListBoxProps<any>>(
+    const listbox = React.useMemo<ListBoxProps<D>>(
       () => ({
         items: items ?? undefined,
         selectionMode: mode,
@@ -111,7 +126,7 @@ const Component: <T extends object>(props: ComponentProps<T>) => React.ReactNode
 
     return (
       <SelectContext.Provider value={context}>
-        <Select {...select}>
+        <Element {...select} ref={group?.ref ?? ref}>
           <Button {...button}>
             <SelectValue />
 
@@ -136,12 +151,13 @@ const Component: <T extends object>(props: ComponentProps<T>) => React.ReactNode
           <Popover {...popover}>
             <ListBox {...listbox}>{children}</ListBox>
           </Popover>
-        </Select>
+        </Element>
       </SelectContext.Provider>
     )
-  }))()
+  }
+)
 
-export { ComponentProps as SelectProps }
+export type { ComponentOwnProps as SelectProps }
 export default Object.assign(Component, {
   Option: SelectOption,
 })
