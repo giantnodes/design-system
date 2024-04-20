@@ -1,5 +1,5 @@
-import type { UseNavigationProps } from '@/components/navigation/use-navigation.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { NavigationVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
@@ -14,37 +14,44 @@ import NavigationTitle from '@/components/navigation/NavigationTitle'
 import NavigationTrigger from '@/components/navigation/NavigationTrigger'
 import { NavigationContext, useNavigation } from '@/components/navigation/use-navigation.hook'
 
-export type NavigationProps = Component<'nav'> & UseNavigationProps
+const __ELEMENT_TYPE__ = 'nav'
 
-const Navigation = React.forwardRef<HTMLElement, NavigationProps>((props, ref) => {
-  const { as, children, className, position, size, orientation, variant, ...rest } = props
+type ComponentOwnProps = NavigationVariantProps
 
-  const Component = as || 'nav'
-  const context = useNavigation({ position, size, orientation, variant })
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: context.slots.base({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, position, size, orientation, variant, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const context = useNavigation({ position, size, orientation, variant })
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: context.slots.base({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, context.slots, className, rest]
-  )
+      [className, context.slots, rest]
+    )
 
-  return (
-    <NavigationContext.Provider value={context}>
-      <Component {...getProps()}>
-        <div className={context.slots.wrapper()}>{children}</div>
-      </Component>
-    </NavigationContext.Provider>
-  )
-})
+    return (
+      <NavigationContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          <div className={context.slots.wrapper()}>{children}</div>
+        </Element>
+      </NavigationContext.Provider>
+    )
+  }
+)
 
-Navigation.displayName = 'Navigation'
-
-export default Object.assign(Navigation, {
+export type { ComponentOwnProps as NavigationProps }
+export default Object.assign(Component, {
   Brand: NavigationBrand,
   Content: NavigationContent,
   Divider: NavigationDivider,
