@@ -28,7 +28,7 @@ const defaultProps = {
 export const Default: StoryFn = (args: TableProps) => (
   <Table {...args}>
     <Table.Head>
-      <Table.Column>Name</Table.Column>
+      <Table.Column isRowHeader>Name</Table.Column>
       <Table.Column>Title</Table.Column>
       <Table.Column>Email</Table.Column>
       <Table.Column>Role</Table.Column>
