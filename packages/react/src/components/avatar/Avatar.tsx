@@ -1,5 +1,5 @@
-import type { UseAvatarProps } from '@/components/avatar/use-avatar.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { AvatarVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
@@ -7,50 +7,52 @@ import AvatarGroup from '@/components/avatar/AvatarGroup'
 import AvatarIcon from '@/components/avatar/AvatarIcon'
 import AvatarImage from '@/components/avatar/AvatarImage'
 import AvatarNotification from '@/components/avatar/AvatarNotification'
-import { AvatarContext, useAvatar } from '@/components/avatar/use-avatar.hook'
+import { AvatarContext, useAvatar, useAvatarContext } from '@/components/avatar/use-avatar.hook'
 
-export type AvatarProps = Component<'span'> & UseAvatarProps
+const __ELEMENT_TYPE__ = 'span'
 
-const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
-  const { as, className, children, color, radius, size, zoomed, ...rest } = props
+type ComponentOwnProps = AvatarVariantProps
 
-  const Component = as || 'span'
-  const context = useAvatar({ color, radius, size, zoomed })
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: context.slots.base({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, color, radius, size, zoomed, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const parent = useAvatarContext()
+    const context = useAvatar({
+      color: parent?.color ?? color,
+      radius: parent?.radius ?? radius,
+      size: parent?.size ?? size,
+      zoomed: parent?.zoomed ?? zoomed,
+    })
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: context.slots.base({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, context.slots, className, rest]
-  )
+      [context.slots, className, rest]
+    )
 
-  return (
-    <AvatarContext.Provider value={context}>
-      <Component {...getProps()}>
-        {React.Children.map(children, (child) => {
-          if (!React.isValidElement<AvatarProps>(child)) {
-            return child
-          }
+    return (
+      <AvatarContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
+      </AvatarContext.Provider>
+    )
+  }
+)
 
-          return React.cloneElement(child, {
-            color: color ?? child.props.color,
-            radius: radius ?? child.props.radius,
-            size: size ?? child.props.size,
-            zoomed: zoomed ?? child.props.zoomed,
-          })
-        })}
-      </Component>
-    </AvatarContext.Provider>
-  )
-})
-
-Avatar.displayName = 'Avatar'
-
-export default Object.assign(Avatar, {
+export type { ComponentOwnProps as AvatarProps }
+export default Object.assign(Component, {
   Group: AvatarGroup,
   Image: AvatarImage,
   Icon: AvatarIcon,

@@ -1,48 +1,45 @@
-import type { AvatarProps } from '@/components/avatar/Avatar'
-import type { UseAvatarProps } from '@/components/avatar/use-avatar.hook'
-import type { Component } from '@/utilities/types'
+import type * as Polymophic from '@/utilities/polymorphic'
+import type { AvatarVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
-import { useAvatar } from '@/components/avatar/use-avatar.hook'
+import { AvatarContext, useAvatar } from '@/components/avatar/use-avatar.hook'
 
-export type AvatarGroupProps = Component<'div'> & UseAvatarProps
+const __ELEMENT_TYPE__ = 'span'
 
-const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
-  const { as, children, className, color, radius, size, zoomed, ...rest } = props
+type ComponentOwnProps = AvatarVariantProps
 
-  const Component = as || 'div'
-  const { slots } = useAvatar({ color, radius, size, zoomed })
+type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
-  const getProps = React.useCallback(
-    () => ({
-      ref,
-      className: slots.group({
-        class: className,
+type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<T>
+) => React.ReactNode
+
+const Component: ComponentType = React.forwardRef(
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+    const { as, children, className, color, radius, size, zoomed, ...rest } = props
+
+    const Element = as ?? __ELEMENT_TYPE__
+
+    const context = useAvatar({ color, radius, size, zoomed })
+
+    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+      () => ({
+        className: context.slots.group({ className }),
+        ...rest,
       }),
-      ...rest,
-    }),
-    [ref, slots, className, rest]
-  )
+      [context.slots, className, rest]
+    )
 
-  return (
-    <Component {...getProps()}>
-      {React.Children.map(children, (child) => {
-        if (!React.isValidElement<AvatarProps>(child)) {
-          return child
-        }
+    return (
+      <AvatarContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
+      </AvatarContext.Provider>
+    )
+  }
+)
 
-        return React.cloneElement(child, {
-          color: color ?? child.props.color,
-          radius: radius ?? child.props.radius,
-          size: size ?? child.props.size,
-          zoomed: zoomed ?? child.props.zoomed,
-        })
-      })}
-    </Component>
-  )
-})
-
-AvatarGroup.displayName = 'Avatar.Group'
-
-export default AvatarGroup
+export type { ComponentOwnProps as AvatarGroupProps }
+export default Component
