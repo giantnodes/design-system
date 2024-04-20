@@ -4,11 +4,11 @@ import { createContext } from '@/utilities/context'
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 
-export type UseHeadingLevelProps = {
+type UseHeadingLevelProps = {
   level: HeadingLevel
 }
 
-export type UseHeadingLevelReturn = ReturnType<typeof useHeadingLevel>
+type UseHeadingLevelReturn = ReturnType<typeof useHeadingLevel>
 
 export const useHeadingLevel = ({ level }: UseHeadingLevelProps) => {
   const calculated = React.useMemo<HeadingLevel>(() => {
