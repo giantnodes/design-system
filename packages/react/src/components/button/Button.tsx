@@ -51,7 +51,7 @@ const Component: ComponentType = React.forwardRef(
 
     return (
       <Element {...component} ref={ref}>
-        {isLoading && <Spinner />}
+        {isLoading && <Spinner size={size} />}
 
         {children}
       </Element>
