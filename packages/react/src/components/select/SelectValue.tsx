@@ -43,7 +43,7 @@ const Component: ComponentType = React.forwardRef(
       if (selectedItem?.textValue) return selectedItem.textValue
 
       return <Element {...component} ref={ref} />
-    }, [Element, component, ref, selectedItem.textValue])
+    }, [Element, component, ref, selectedItem?.textValue])
 
     return render
   }
