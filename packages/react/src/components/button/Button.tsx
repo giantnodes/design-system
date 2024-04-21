@@ -10,7 +10,9 @@ import Spinner from '@/components/spinner/Spinner'
 
 const __ELEMENT_TYPE__ = 'button'
 
-type ComponentOwnProps = ButtonVariantProps & Omit<ButtonProps, 'children'>
+type ComponentOwnProps = ButtonVariantProps & {
+  isLoading?: boolean
+}
 
 type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 

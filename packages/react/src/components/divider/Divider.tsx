@@ -6,9 +6,7 @@ import React from 'react'
 
 const __ELEMENT_TYPE__ = 'hr'
 
-type ComponentOwnProps = DividerVariantProps & {
-  icon: React.ReactNode
-}
+type ComponentOwnProps = DividerVariantProps
 
 type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
