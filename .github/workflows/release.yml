@@ -111,6 +111,6 @@ jobs:
         with:
           title: 'chore(release): v${{ needs.create-release.outputs.version }}'
           labels: '🏷️ Release, 🥳️ LGTM'
-          github_token: ${{ inputs.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           head: release/${{ needs.create-release.outputs.version }}
           base: main
