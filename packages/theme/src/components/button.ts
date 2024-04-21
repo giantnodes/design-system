@@ -74,9 +74,6 @@ export const button = tv({
       },
     },
     size: {
-      none: {
-        button: ['text-xs'],
-      },
       xs: {
         button: ['text-xs', 'px-2.5', 'py-1'],
       },
