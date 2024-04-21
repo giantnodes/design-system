@@ -63,12 +63,3 @@ runs:
         echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
-
-    - name: '🏷️  Open Pull Request'
-      uses: thomaseizinger/create-pull-request@master
-      with:
-        title: 'chore(release): v${{ steps.version.outputs.version }}'
-        labels: '🏷️ Release, 🥳️ LGTM'
-        github_token: ${{ inputs.GITHUB_TOKEN }}
-        head: release/${{ steps.version.outputs.version }}
-        base: main

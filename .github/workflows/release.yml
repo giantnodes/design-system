@@ -19,7 +19,6 @@ on:
       identifier:
         type: choice
         description: 'Version Prefix'
-        default: ''
         options:
           - canary
 
@@ -96,3 +95,22 @@ jobs:
           pnpm publish --tag ${{ needs.create-release.outputs.tag }} --publish-branch ${{ needs.create-release.outputs.branch }} --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  pull-request:
+    name: '🏷️  Open Pull Request'
+    runs-on: ubuntu-latest
+    needs: [create-release, publish]
+    steps:
+      - name: '🐙️  Checkout'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.create-release.outputs.branch }}
+
+      - name: '🏷️  Open Pull Request'
+        uses: thomaseizinger/create-pull-request@master
+        with:
+          title: 'chore(release): v${{ needs.create-release.outputs.version }}'
+          labels: '🏷️ Release, 🥳️ LGTM'
+          github_token: ${{ inputs.GITHUB_TOKEN }}
+          head: release/${{ needs.create-release.outputs.version }}
+          base: main
