@@ -29,7 +29,7 @@ const defaultProps = {
   ...chip.defaultVariants,
 }
 
-export const Default: StoryFn = (args: ChipProps) => (
+export const Default: StoryFn<ChipProps> = (args) => (
   <div className="flex gap-2">
     <Chip {...args} color="neutral">
       Neutral
@@ -51,6 +51,7 @@ export const Default: StoryFn = (args: ChipProps) => (
     </Chip>
   </div>
 )
+
 Default.args = {
   ...defaultProps,
 }

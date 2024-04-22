@@ -14,7 +14,7 @@ const defaultProps = {
   ...breadcrumb.defaultVariants,
 }
 
-export const Default: StoryFn = (args: BreadcrumbProps<object>) => (
+export const Default: StoryFn<BreadcrumbProps<object>> = (args) => (
   <Breadcrumb {...args}>
     <Breadcrumb.Item>Project</Breadcrumb.Item>
     <Breadcrumb.Item>Giantnodes</Breadcrumb.Item>

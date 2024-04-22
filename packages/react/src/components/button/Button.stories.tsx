@@ -33,7 +33,7 @@ const defaultProps = {
   ...button.defaultVariants,
 }
 
-export const Default: StoryFn = (args: ButtonProps) => (
+export const Default: StoryFn<ButtonProps> = (args) => (
   <div className="flex gap-2">
     <Button {...args} color="brand">
       Button
@@ -57,7 +57,7 @@ Default.args = {
   ...defaultProps,
 }
 
-export const LinkButton: StoryFn = (args: ButtonProps) => (
+export const LinkButton: StoryFn<ButtonProps> = (args) => (
   <Button {...args} as={Link} href="www.giantnodes.com" target="__blank">
     Button
   </Button>

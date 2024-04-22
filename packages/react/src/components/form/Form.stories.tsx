@@ -16,7 +16,7 @@ const defaultProps = {
   ...form.defaultVariants,
 }
 
-export const Default: StoryFn = (args: FormProps) => (
+export const Default: StoryFn<FormProps> = (args) => (
   <Form {...args}>
     <Form.Group name="email-address">
       <Form.Label>Email address</Form.Label>

@@ -12,7 +12,7 @@ const Component: Meta<typeof Dialog> = {
 
 const defaultProps = {}
 
-export const Default: StoryFn = (args: DialogProps) => (
+export const Default: StoryFn<DialogProps> = (args) => (
   <Dialog {...args}>
     <Button>Open</Button>
 

@@ -20,7 +20,7 @@ const defaultProps = {
   ...alert.defaultVariants,
 }
 
-export const Default: StoryFn = (args: AlertProps) => (
+export const Default: StoryFn<AlertProps> = (args) => (
   <Alert {...args}>
     <Alert.Body>
       <Alert.Heading>There were 2 errors with your submission</Alert.Heading>
@@ -31,6 +31,7 @@ export const Default: StoryFn = (args: AlertProps) => (
     </Alert.Body>
   </Alert>
 )
+
 Default.args = {
   ...defaultProps,
 }
