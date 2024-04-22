@@ -26,16 +26,17 @@ const defaultProps = {
   ...avatar.defaultVariants,
 }
 
-export const Default: StoryFn = (args: AvatarProps) => (
+export const Default: StoryFn<AvatarProps> = (args) => (
   <Avatar {...args}>
     <Avatar.Image alt="avatar image" src="https://i.pravatar.cc/150?img=1" />
   </Avatar>
 )
+
 Default.args = {
   ...defaultProps,
 }
 
-export const UsingGroup: StoryFn = (args: AvatarGroupProps) => (
+export const UsingGroup: StoryFn<AvatarGroupProps> = (args) => (
   <Avatar.Group {...args}>
     <Avatar>
       <Avatar.Image alt="avatar image 1" src="https://i.pravatar.cc/150?img=1" />
@@ -59,20 +60,22 @@ export const UsingGroup: StoryFn = (args: AvatarGroupProps) => (
     </Avatar>
   </Avatar.Group>
 )
+
 UsingGroup.args = {
   ...defaultProps,
 }
 
-export const UsingText: StoryFn = (args: AvatarProps) => (
+export const UsingText: StoryFn<AvatarProps> = (args) => (
   <Avatar {...args} className="bg-zinc-100">
     <p>JP</p>
   </Avatar>
 )
+
 UsingText.args = {
   ...defaultProps,
 }
 
-export const UsingIcon: StoryFn = (args: AvatarProps) => (
+export const UsingIcon: StoryFn<AvatarProps> = (args) => (
   <Avatar {...args} className="bg-zinc-100">
     <Avatar.Icon
       icon={
@@ -83,16 +86,18 @@ export const UsingIcon: StoryFn = (args: AvatarProps) => (
     />
   </Avatar>
 )
+
 UsingIcon.args = {
   ...defaultProps,
 }
 
-export const UsingNotification: StoryFn = (args: AvatarProps) => (
+export const UsingNotification: StoryFn<AvatarProps> = (args) => (
   <Avatar {...args}>
     <Avatar.Image alt="avatar image 1" src="https://i.pravatar.cc/150?img=1" />
     <Avatar.Notification />
   </Avatar>
 )
+
 UsingNotification.args = {
   ...defaultProps,
 }

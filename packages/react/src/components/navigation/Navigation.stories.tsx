@@ -39,7 +39,7 @@ const AcmeLogo = () => (
   </svg>
 )
 
-export const Horizontal: StoryFn = (args: NavigationProps) => (
+export const Horizontal: StoryFn<NavigationProps> = (args) => (
   <Navigation {...args} orientation="horizontal">
     <Navigation.Brand>
       <AcmeLogo />
@@ -74,7 +74,7 @@ Horizontal.args = {
   ...defaultProps,
 }
 
-export const Vertical: StoryFn = (args: NavigationProps) => (
+export const Vertical: StoryFn<NavigationProps> = (args) => (
   <Navigation {...args} orientation="vertical" variant="highlight">
     <Navigation.Brand>
       <AcmeLogo />

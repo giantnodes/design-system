@@ -23,7 +23,7 @@ const defaultProps = {
   ...toggle.defaultVariants,
 }
 
-export const Default: StoryFn = (args: SwitchProps) => <Switch {...args} />
+export const Default: StoryFn<SwitchProps> = (args) => <Switch {...args} />
 
 Default.args = {
   ...defaultProps,

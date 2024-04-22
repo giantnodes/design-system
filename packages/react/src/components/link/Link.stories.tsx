@@ -16,7 +16,7 @@ const defaultProps = {
   ...link.defaultVariants,
 }
 
-export const Default: StoryFn = (args: LinkProps) => <Link {...args}>Default Link</Link>
+export const Default: StoryFn<LinkProps> = (args) => <Link {...args}>Default Link</Link>
 
 Default.args = {
   ...defaultProps,

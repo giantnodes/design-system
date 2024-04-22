@@ -25,7 +25,7 @@ const defaultProps = {
   ...table.defaultVariants,
 }
 
-export const Default: StoryFn = (args: TableProps) => (
+export const Default: StoryFn<TableProps> = (args) => (
   <Table {...args}>
     <Table.Head>
       <Table.Column isRowHeader>Name</Table.Column>

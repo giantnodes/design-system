@@ -23,7 +23,7 @@ const defaultProps = {
   ...input.defaultVariants,
 }
 
-export const Default: StoryFn = (args: InputProps) => (
+export const Default: StoryFn<InputProps> = (args) => (
   <Input {...args}>
     <Input.Addon>$</Input.Addon>
     <Input.Control placeholder="Username" type="text" />
@@ -35,7 +35,7 @@ Default.args = {
   ...defaultProps,
 }
 
-export const Disabled: StoryFn = (args: InputProps) => (
+export const Disabled: StoryFn<InputProps> = (args) => (
   <Input {...args}>
     <Input.Addon>$</Input.Addon>
     <Input.Control disabled placeholder="Username" type="text" />

@@ -14,7 +14,7 @@ const defaultProps = {
   ...card.defaultVariants,
 }
 
-export const Default: StoryFn = (args: CardProps) => (
+export const Default: StoryFn<CardProps> = (args) => (
   <Card {...args}>
     <Card.Header>Lorem ipsum dolor sit amet.</Card.Header>
     <Card.Body>
@@ -29,6 +29,7 @@ export const Default: StoryFn = (args: CardProps) => (
     <Card.Footer>Lorem ipsum dolor sit amet.</Card.Footer>
   </Card>
 )
+
 Default.args = {
   ...defaultProps,
 }

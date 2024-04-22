@@ -26,7 +26,7 @@ const defaultProps = {
   ...menu.defaultVariants,
 }
 
-export const Default: StoryFn = (args: MenuProps) => (
+export const Default: StoryFn<MenuProps> = (args) => (
   <Menu {...args}>
     <Button>Open</Button>
 

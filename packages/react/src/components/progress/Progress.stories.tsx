@@ -14,7 +14,7 @@ const defaultProps = {
   ...progress.defaultVariants,
 }
 
-export const Default: StoryFn = (args: ProgressProps) => (
+export const Default: StoryFn<ProgressProps> = (args) => (
   <Progress {...args}>
     <Progress.Bar color="#2cc76a" width={27} />
     <Progress.Bar color="#f85149" width={43} />

@@ -19,7 +19,7 @@ const defaultProps = {
   ...checkbox.defaultVariants,
 }
 
-export const Default: StoryFn = (args: CheckboxProps) => <Checkbox {...args} />
+export const Default: StoryFn<CheckboxProps> = (args) => <Checkbox {...args} />
 
 Default.args = {
   ...defaultProps,
