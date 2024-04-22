@@ -11,7 +11,7 @@ const Component: Meta<typeof Select> = {
 
 const defaultProps = {}
 
-export const Default: StoryFn = (args: SelectProps<object>) => (
+export const Default: StoryFn<SelectProps<object>> = (args) => (
   <Select {...args}>
     <Select.Option>Aardvark</Select.Option>
     <Select.Option>Cat</Select.Option>
@@ -26,7 +26,7 @@ Default.args = {
   ...defaultProps,
 }
 
-export const UsingForm: StoryFn = (args: SelectProps<object>) => (
+export const UsingForm: StoryFn<SelectProps<object>> = (args) => (
   <Form>
     <Form.Group name="name">
       <Form.Label>Name</Form.Label>
