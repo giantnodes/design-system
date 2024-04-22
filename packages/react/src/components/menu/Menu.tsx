@@ -20,29 +20,27 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<T>
 ) => React.ReactNode
 
-const Component: ComponentType = React.forwardRef(
-  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>) => {
-    const { as, children, className, size, status, variant, ...rest } = props
+const Component: ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>) => {
+  const { as, children, className, size, status, variant, ...rest } = props
 
-    const Element = as ?? MenuTrigger
+  const Element = as ?? MenuTrigger
 
-    const context = useMenu({ size, status, variant })
+  const context = useMenu({ size, status, variant })
 
-    const component = React.useMemo<MenuTriggerProps>(
-      () => ({
-        className: context.slots.menu({ className }),
-        ...rest,
-      }),
-      [className, context.slots, rest]
-    )
+  const component = React.useMemo<MenuTriggerProps>(
+    () => ({
+      className: context.slots.menu({ className }),
+      ...rest,
+    }),
+    [className, context.slots, rest]
+  )
 
-    return (
-      <MenuContext.Provider value={context}>
-        <Element {...component}>{children}</Element>
-      </MenuContext.Provider>
-    )
-  }
-)
+  return (
+    <MenuContext.Provider value={context}>
+      <Element {...component}>{children}</Element>
+    </MenuContext.Provider>
+  )
+}
 
 export type { ComponentOwnProps as MenuProps }
 export default Object.assign(Component, {

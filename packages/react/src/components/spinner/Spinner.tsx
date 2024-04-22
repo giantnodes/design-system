@@ -15,7 +15,7 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>) => {
+  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
     const { as, children, className, size, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
@@ -31,7 +31,7 @@ const Component: ComponentType = React.forwardRef(
     )
 
     return (
-      <Element fill="none" viewBox="0 0 24 24" {...component}>
+      <Element fill="none" viewBox="0 0 24 24" {...component} ref={ref}>
         <circle className={slots.circle()} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={2.5} />
         <path
           className={slots.path()}

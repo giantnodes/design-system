@@ -1,4 +1,5 @@
 import type * as Polymophic from '@/utilities/polymorphic'
+import type { FormVariantProps } from '@giantnodes/theme'
 import type { FormProps } from 'react-aria-components'
 
 import { form } from '@giantnodes/theme'
@@ -12,7 +13,7 @@ import FormLabel from '@/components/form/FormLabel'
 
 const __ELEMENT_TYPE__ = 'form'
 
-type ComponentOwnProps = FormProps
+type ComponentOwnProps = FormProps & FormVariantProps
 
 type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
