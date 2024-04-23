@@ -26,11 +26,11 @@ jobs:
       - name: '💽️  Setup'
         uses: ./.github/actions/setup
 
-      - name: '📦  Install'
-        uses: ./.github/actions/install
-
       - name: '🔺️  Cache'
         uses: ./.github/actions/cache
+
+      - name: '📦  Install'
+        uses: ./.github/actions/install
 
       - name: '🏗️  Build'
         uses: ./.github/actions/build
