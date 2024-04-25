@@ -18,6 +18,7 @@ export const semantic = {
     subtitle: shark[300],
 
     brand,
+    shark,
 
     success: {
       ...colors.green,
@@ -45,6 +46,9 @@ export const semantic = {
 
     brand: {
       ...flip(brand),
+    },
+    shark: {
+      ...flip(shark),
     },
 
     success: {
