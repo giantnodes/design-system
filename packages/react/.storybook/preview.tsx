@@ -18,7 +18,7 @@ const preview: Preview = {
       values: [
         {
           name: 'light',
-          value: '#ffffff',
+          value: '#f7f5f6',
         },
         {
           name: 'dark',
@@ -30,13 +30,13 @@ const preview: Preview = {
   decorators: [
     withThemeByClassName<ReactRenderer>({
       themes: {
-        light: '',
+        light: 'light',
         dark: 'dark',
       },
       defaultTheme: 'light',
     }),
     (Story) => (
-      <div className="dark:bg-shark-950">
+      <div className="bg-background">
         <Story />
       </div>
     ),

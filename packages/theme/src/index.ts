@@ -1,3 +1,5 @@
+export * from '@/plugin'
+
 export * from '@/components/alert'
 export * from '@/components/avatar'
 export * from '@/components/breadcrumb'

@@ -25,7 +25,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "tailwind-variants": "^0.2.1"
+    "tailwind-variants": "^0.2.1",
+    "tw-colors": "^3.3.1"
   },
   "peerDependencies": {
     "tailwindcss": ">=3"
