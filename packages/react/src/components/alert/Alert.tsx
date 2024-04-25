@@ -7,7 +7,6 @@ import AlertBody from '@/components/alert/AlertBody'
 import AlertHeading from '@/components/alert/AlertHeading'
 import AlertItem from '@/components/alert/AlertItem'
 import AlertList from '@/components/alert/AlertList'
-import AlertText from '@/components/alert/AlertText'
 import { AlertContext, useAlert } from '@/components/alert/use-alert.hook'
 
 const __ELEMENT_TYPE__ = 'div'
@@ -52,5 +51,4 @@ export default Object.assign(Component, {
   Heading: AlertHeading,
   Item: AlertItem,
   List: AlertList,
-  Text: AlertText,
 })
