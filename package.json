@@ -36,7 +36,7 @@
     "prettier": "^3.2.5",
     "pretty-quick": "^4.0.0",
     "tsup": "^6.6.0",
-    "turbo": "^1.13.2",
+    "turbo": "^1.13.3",
     "typescript": "^5.4.5"
   },
   "engines": {
