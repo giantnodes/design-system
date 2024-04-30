@@ -16,8 +16,8 @@ const defaultProps = {
 
 export const Default: StoryFn<BreadcrumbProps<object>> = (args) => (
   <Breadcrumb {...args}>
-    <Breadcrumb.Item>Project</Breadcrumb.Item>
-    <Breadcrumb.Item>Giantnodes</Breadcrumb.Item>
+    <Breadcrumb.Item href="/">Project</Breadcrumb.Item>
+    <Breadcrumb.Item href="/">Giantnodes</Breadcrumb.Item>
     <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
   </Breadcrumb>
 )

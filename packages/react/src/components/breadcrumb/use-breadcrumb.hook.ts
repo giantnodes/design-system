@@ -5,9 +5,9 @@ import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-type UseBreadcrumbProps = BreadcrumbVariantProps & {
+type UseBreadcrumbProps = {
   separator?: React.ReactNode
-}
+} & BreadcrumbVariantProps
 
 type UseBreadcrumbReturn = ReturnType<typeof useBreadcrumb>
 
