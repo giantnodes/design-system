@@ -16,15 +16,15 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 
 const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, className, color, radius, size, variant, ...rest } = props
+    const { as, children, className, color, size, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const slots = React.useMemo(() => chip({ color, radius, size, variant }), [color, radius, size, variant])
+    const slots = React.useMemo(() => chip({ color, size }), [color, size])
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: slots.base({ className }),
+        className: slots.chip({ className }),
         ...rest,
       }),
       [className, rest, slots]

@@ -4,81 +4,44 @@ import { tv } from 'tailwind-variants'
 
 export const chip = tv({
   slots: {
-    base: ['inline-flex', 'items-center', 'gap-1.5', 'font-medium'],
+    chip: ['inline-flex items-center gap-1.5', 'rounded-md', 'font-medium', 'border'],
   },
   variants: {
     color: {
       neutral: {
-        base: [
-          'bg-shark-400/10',
-          'ring-shark-400/30',
-          'text-shark-400',
-          'dark:bg-shark-200/10',
-          'dark:ring-shark-200/30',
-          'dark:text-shark-200',
-        ],
+        chip: ['text-shark', 'bg-shark/20', 'border-shark'],
       },
       brand: {
-        base: ['bg-brand-400/10', 'ring-brand-400/30', 'text-brand-400'],
+        chip: ['text-brand', 'bg-brand/20', 'border-brand'],
       },
       success: {
-        base: ['bg-green-400/10', 'ring-green-400/30', 'text-green-400'],
+        chip: ['text-success', 'bg-success/20', 'border-success'],
       },
       info: {
-        base: ['bg-blue-400/10', 'ring-blue-400/30', 'text-blue-400'],
+        chip: ['text-info', 'bg-info/20', 'border-info'],
       },
       warning: {
-        base: ['bg-yellow-400/10', 'ring-yellow-400/30', 'text-yellow-400'],
+        chip: ['text-warning', 'bg-warning/20', 'border-warning'],
       },
       danger: {
-        base: ['bg-red-400/10', 'ring-red-400/30', 'text-red-400'],
-      },
-    },
-    radius: {
-      none: {
-        base: ['rounded-none'],
-      },
-      sm: {
-        base: ['rounded-sm'],
-      },
-      md: {
-        base: ['rounded-md'],
-      },
-      lg: {
-        base: ['rounded-lg'],
-      },
-      full: {
-        base: ['rounded-full'],
+        chip: ['text-danger', 'bg-danger/20', 'border-danger'],
       },
     },
     size: {
-      xs: {
-        base: ['px-1', 'py-0.5', 'text-xs'],
-      },
       sm: {
-        base: ['px-1.5', 'py-0.5', 'text-xs'],
+        chip: ['text-xs', 'px-1 py-0.5'],
       },
       md: {
-        base: ['px-2', 'py-1', 'text-xs'],
+        chip: ['text-xs', 'px-2 py-1'],
       },
       lg: {
-        base: ['px-2.5', 'py-1.5', 'text-xs'],
-      },
-    },
-    variant: {
-      flat: {
-        base: '',
-      },
-      bordered: {
-        base: ['ring-1', 'ring-inset'],
+        chip: ['text-xs', 'px-3 py-1.5'],
       },
     },
   },
   defaultVariants: {
     color: 'neutral',
-    radius: 'md',
     size: 'md',
-    variant: 'bordered',
   },
 })
 
