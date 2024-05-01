@@ -67,7 +67,7 @@ const Component: ComponentType = React.forwardRef(
     const group = useFormGroupContext()
 
     const context = useSelect({
-      ref: group.ref as React.RefObject<HTMLInputElement>,
+      ref: (group?.ref as React.RefObject<HTMLInputElement>) ?? ref,
       name: group?.name,
       behavior,
       mode,
