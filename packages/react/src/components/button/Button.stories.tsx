@@ -14,18 +14,6 @@ const Component: Meta<typeof Button> = {
       control: { type: 'select' },
       options: ['brand', 'success', 'info', 'warning', 'danger'],
     },
-    shape: {
-      control: { type: 'select' },
-    },
-    size: {
-      control: { type: 'select' },
-    },
-    variant: {
-      control: { type: 'select' },
-    },
-    isLoading: {
-      control: { type: 'boolean' },
-    },
   },
 }
 
@@ -35,6 +23,9 @@ const defaultProps = {
 
 export const Default: StoryFn<ButtonProps> = (args) => (
   <div className="flex gap-2">
+    <Button {...args} color="neutral">
+      Button
+    </Button>
     <Button {...args} color="brand">
       Button
     </Button>
@@ -57,13 +48,13 @@ Default.args = {
   ...defaultProps,
 }
 
-export const LinkButton: StoryFn<ButtonProps> = (args) => (
+export const UsingLink: StoryFn<ButtonProps> = (args) => (
   <Button {...args} as={Link} href="www.giantnodes.com" target="__blank">
     Button
   </Button>
 )
 
-LinkButton.args = {
+UsingLink.args = {
   ...defaultProps,
 }
 
