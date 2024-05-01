@@ -18,11 +18,11 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 
 const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, className, size, underline, ...rest } = props
+    const { as, children, className, underline, ...rest } = props
 
     const Element = as ?? Link
 
-    const slots = React.useMemo(() => link({ size, underline }), [size, underline])
+    const slots = React.useMemo(() => link({ underline }), [underline])
 
     const component = React.useMemo<LinkProps>(
       () => ({
