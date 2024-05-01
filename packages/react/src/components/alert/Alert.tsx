@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: context.slots.base({ className }),
+        className: context.slots.alert({ className }),
         ...rest,
       }),
       [context.slots, className, rest]

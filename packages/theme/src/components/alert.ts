@@ -4,8 +4,8 @@ import { tv } from 'tailwind-variants'
 
 export const alert = tv({
   slots: {
-    base: ['flex flex-row gap-x-2', 'rounded-lg', 'border', 'p-4'],
-    body: ['flex flex-col gap-y-2'],
+    alert: ['flex flex-row gap-x-2', 'rounded-lg', 'border', 'p-4'],
+    body: ['flex flex-col gap-y-2 grow'],
     heading: ['text-sm', 'font-medium'],
     list: ['pl-5', 'list-disc'],
     item: ['text-sm'],
@@ -13,27 +13,27 @@ export const alert = tv({
   variants: {
     color: {
       neutral: {
-        base: ['bg-middleground', 'text-content', 'border-partition'],
+        alert: ['bg-middleground', 'text-content', 'border-partition'],
         heading: ['text-title'],
       },
       brand: {
-        base: ['bg-brand-50', 'text-brand-700', 'border-brand-400'],
+        alert: ['bg-brand-50', 'text-brand-700', 'border-brand-400'],
         heading: ['text-brand-800'],
       },
       success: {
-        base: ['bg-success-50', 'text-success-700', 'border-success-400'],
+        alert: ['bg-success-50', 'text-success-700', 'border-success-400'],
         heading: ['text-success-800'],
       },
       info: {
-        base: ['bg-info-50', 'text-info-700', 'border-info-400'],
+        alert: ['bg-info-50', 'text-info-700', 'border-info-400'],
         heading: ['text-info-800'],
       },
       warning: {
-        base: ['bg-warning-50', 'text-warning-700', 'border-warning-400'],
+        alert: ['bg-warning-50', 'text-warning-700', 'border-warning-400'],
         heading: ['text-warning-800'],
       },
       danger: {
-        base: ['bg-danger-50', 'text-danger-700', 'border-danger-400'],
+        alert: ['bg-danger-50', 'text-danger-700', 'border-danger-400'],
         heading: ['text-danger-800'],
       },
     },
