@@ -9,8 +9,13 @@ const Component: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
   component: Checkbox,
   argTypes: {
+    color: {
+      control: { type: 'select' },
+      options: ['neutral', 'brand', 'success', 'info', 'warning', 'danger'],
+    },
     size: {
       control: { type: 'select' },
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
   },
 }
