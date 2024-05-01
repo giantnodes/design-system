@@ -12,12 +12,11 @@ const Component: Meta<typeof Menu> = {
   argTypes: {
     size: {
       control: { type: 'select' },
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     status: {
       control: { type: 'select' },
-    },
-    variant: {
-      control: { type: 'select' },
+      options: ['neutral', 'brand', 'success', 'info', 'warning', 'danger'],
     },
   },
 }
@@ -30,7 +29,7 @@ export const Default: StoryFn<MenuProps> = (args) => (
   <Menu {...args}>
     <Button>Open</Button>
 
-    <Menu.Popover placement="bottom right">
+    <Menu.Popover placement="bottom left">
       <Menu.List>
         <Menu.Item>First</Menu.Item>
         <Menu.Item>Second</Menu.Item>
