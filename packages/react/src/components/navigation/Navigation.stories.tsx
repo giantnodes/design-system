@@ -11,15 +11,19 @@ const Component: Meta<typeof Navigation> = {
   argTypes: {
     orientation: {
       control: { type: 'select' },
+      options: ['horizontal', 'vertical'],
     },
     position: {
       control: { type: 'select' },
+      options: ['sticky', 'static', 'floating'],
     },
     size: {
       control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
     },
     variant: {
       control: { type: 'select' },
+      options: ['highlight'],
     },
   },
 }
@@ -47,7 +51,7 @@ export const Horizontal: StoryFn<NavigationProps> = (args) => (
 
     <Navigation.Segment>
       <Navigation.Item>
-        <Navigation.Link>Home</Navigation.Link>
+        <Navigation.Link isSelected>Home</Navigation.Link>
       </Navigation.Item>
       <Navigation.Item>
         <Navigation.Link>About</Navigation.Link>

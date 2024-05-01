@@ -10,14 +10,14 @@ type UseNavigationProps = NavigationVariantProps
 type UseNavigationReturn = ReturnType<typeof useNavigation>
 
 export const useNavigation = (props: UseNavigationProps) => {
-  const { position, size, orientation, variant } = props
+  const { orientation, position, size, variant } = props
 
   const slots = React.useMemo(
     () =>
       navigation({
+        orientation,
         position,
         size,
-        orientation,
         variant,
       }),
     [position, size, orientation, variant]
