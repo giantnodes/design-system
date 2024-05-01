@@ -6,29 +6,29 @@ export const form = tv({
   slots: {
     form: [],
     group: ['group', 'flex flex-col gap-2', 'w-full'],
-    label: ['text-sm', 'font-medium', 'dark:text-white'],
-    caption: ['text-xs'],
+    label: ['text-sm', 'text-title'],
+    caption: ['text-xs', 'text-subtitle'],
     feedback: ['text-xs'],
   },
   variants: {
     status: {
       neutral: {
-        feedback: ['text-shark-500'],
+        feedback: ['text-content'],
       },
       brand: {
-        feedback: ['text-brand-500'],
+        feedback: ['text-brand'],
       },
       success: {
-        feedback: ['text-green-500'],
+        feedback: ['text-green'],
       },
       info: {
-        feedback: ['text-blue-500'],
+        feedback: ['text-blue'],
       },
       warning: {
-        feedback: ['text-yellow-500'],
+        feedback: ['text-yellow'],
       },
       danger: {
-        feedback: ['text-red-500'],
+        feedback: ['text-red'],
       },
     },
   },
