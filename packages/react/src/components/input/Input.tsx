@@ -1,50 +1,68 @@
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { InputVariantProps } from '@giantnodes/theme'
+import type { InputProps } from 'react-aria-components'
 
 import React from 'react'
+import { Input } from 'react-aria-components'
 
+import { useFormGroupContext } from '@/components/form/use-form-group.hook'
 import InputAddon from '@/components/input/InputAddon'
-import InputControl from '@/components/input/InputControl'
-import { InputContext, useInput } from '@/components/input/use-input.hook'
+import InputGroup from '@/components/input/InputGroup'
+import { useInput, useInputContext } from '@/components/input/use-input.hook'
 
-const __ELEMENT_TYPE__ = 'div'
+const __ELEMENT_TYPE__ = 'input'
 
 type ComponentOwnProps = InputVariantProps
 
-type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+  TElement,
+  ComponentOwnProps
+>
 
-type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<T>
+type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, className, status, size, variant, transparent, ...rest } = props
+  <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TElement>,
+    ref: Polymophic.Ref<TElement>
+  ) => {
+    const { as, children, className, status, size, variant, ...rest } = props
 
-    const Element = as ?? __ELEMENT_TYPE__
+    const Element = as || Input
 
-    const context = useInput({ status, size, variant, transparent })
+    const context = useInputContext()
+    const { slots } = useInput({
+      status: status ?? context?.status,
+      size: size ?? context?.size,
+      variant: variant ?? context?.variant,
+    })
 
-    const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
+    const group = useFormGroupContext()
+
+    const component = React.useMemo<InputProps>(
       () => ({
-        className: context.slots.input({ className }),
+        name: group?.name,
+        onChange: group?.onChange,
+        onBlur: group?.onBlur,
+        className: slots.input({ className: className?.toString() }),
+        ...group?.fieldProps,
         ...rest,
       }),
-      [className, context.slots, rest]
+      [className, group?.fieldProps, group?.name, group?.onBlur, group?.onChange, rest, slots]
     )
 
     return (
-      <InputContext.Provider value={context}>
-        <Element {...component} ref={ref}>
-          {children}
-        </Element>
-      </InputContext.Provider>
+      <Element {...component} ref={(group?.ref as React.RefObject<HTMLInputElement>) ?? ref}>
+        {children}
+      </Element>
     )
   }
 )
 
-export type { ComponentOwnProps as InputProps }
+export type { ComponentOwnProps as InputOwnProps, ComponentProps as InputProps }
 export default Object.assign(Component, {
   Addon: InputAddon,
-  Control: InputControl,
+  Group: InputGroup,
 })
