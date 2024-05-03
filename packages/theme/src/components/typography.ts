@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 
 export const typography = tv({
   slots: {
-    paragraph: ['text-content'],
+    paragraph: ['text-content', 'text-inherit'],
   },
   variants: {
     size: {
@@ -26,9 +26,6 @@ export const typography = tv({
         paragraph: ['text-xs', 'text-subtitle'],
       },
     },
-  },
-  defaultVariants: {
-    size: 'sm',
   },
 })
 
