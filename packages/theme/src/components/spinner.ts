@@ -28,7 +28,7 @@ export const spinner = tv({
     },
   },
   defaultVariants: {
-    size: 'sm',
+    size: 'md',
   },
 })
 

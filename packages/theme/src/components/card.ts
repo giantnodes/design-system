@@ -10,7 +10,7 @@ export const card = tv({
       'border border-solid border-partition',
       'divide-y divide-partition',
       'rounded-lg',
-      'overflow-hidden',
+      'overflow-auto',
     ],
     header: ['text-title', 'p-3'],
     body: ['flex-grow', 'text-content', 'p-3'],

@@ -39,7 +39,7 @@ export const progress = tv({
   },
   defaultVariants: {
     radius: 'full',
-    size: 'sm',
+    size: 'md',
   },
 })
 

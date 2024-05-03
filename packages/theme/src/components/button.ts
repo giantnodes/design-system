@@ -8,7 +8,7 @@ export const button = tv({
       'inline-flex items-center justify-center gap-2',
       'rounded-md',
       'border',
-      'transition-all ease-out duration-200',
+      'transition-all duration-200',
       'focus:outline-dashed focus:outline-offset-2 focus:outline-1',
       'disabled:opacity-50',
     ],
