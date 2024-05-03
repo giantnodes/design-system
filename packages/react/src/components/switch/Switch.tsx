@@ -40,7 +40,7 @@ const Component: ComponentType = React.forwardRef(
 
     return (
       <Element {...component} ref={(group?.ref as React.RefObject<HTMLLabelElement>) ?? ref}>
-        <div className={slots.wrapper()}>
+        <div className={slots.container()}>
           <span className={slots.circle()} />
         </div>
       </Element>

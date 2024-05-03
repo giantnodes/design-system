@@ -4,67 +4,76 @@ import { tv } from 'tailwind-variants'
 
 export const toggle = tv({
   slots: {
-    label: ['group', 'relative', 'flex items-center', 'cursor-pointer'],
-    wrapper: ['flex items-center', 'bg-transparent', 'rounded-full', 'duration-200', 'p-1'],
-    circle: ['dot', 'bg-white', 'rounded-full', 'duration-200', 'translate-x-0 group-selected:translate-x-[100%]'],
+    label: [
+      'group',
+      'relative',
+      'inline-flex items-center justify-start',
+      'max-w-fit',
+      'rounded-full',
+      'cursor-pointer',
+      'touch-none',
+      'focus:outline-dashed focus:outline-offset-2 focus:outline-1',
+    ],
+    container: [
+      'relative',
+      'inline-flex items-center justify-start flex-shrink-0',
+      'bg-foreground',
+      'rounded-full',
+      'transition-all',
+      'outline-none',
+      'overflow-hidden',
+      'px-1',
+    ],
+    circle: [
+      'flex items-center justify-center',
+      'bg-white',
+      'shadow-small',
+      'rounded-full',
+      'translate-x-0 group-selected:translate-x-[100%] transition-all duration-200',
+      'z-10',
+    ],
   },
   variants: {
     size: {
       sm: {
-        wrapper: ['w-10', 'h-5'],
+        container: ['h-5 w-10'],
         circle: ['size-4'],
       },
       md: {
-        wrapper: ['w-12', 'h-6'],
+        container: ['h-6 w-12'],
         circle: ['size-5'],
       },
       lg: {
-        wrapper: ['w-14', 'h-7'],
+        container: ['h-7 w-14'],
         circle: ['size-6'],
       },
     },
     color: {
-      neutral: {
-        wrapper: [
-          'bg-shark-100 dark:bg-shark-700',
-          'group-selected:bg-brand-800 group-selected:group-pressed:bg-brand-900',
-        ],
-      },
       brand: {
-        wrapper: [
-          'bg-shark-100 dark:bg-shark-700',
-          'group-selected:bg-brand-800 group-selected:group-pressed:bg-brand-900',
-        ],
+        label: ['focus:outline-brand'],
+        container: ['group-selected:bg-brand group-selected:group-pressed:bg-brand'],
       },
       success: {
-        wrapper: [
-          'bg-shark-100 dark:bg-shark-700',
-          'group-selected:bg-green-800 group-selected:group-pressed:bg-green-900',
-        ],
+        label: ['focus:outline-success'],
+        container: ['group-selected:bg-success group-selected:group-pressed:bg-success'],
       },
       info: {
-        wrapper: [
-          'bg-shark-100 dark:bg-shark-700',
-          'group-selected:bg-blue-800 group-selected:group-pressed:bg-blue-900',
-        ],
+        label: ['focus:outline-info'],
+        container: ['group-selected:bg-info group-selected:group-pressed:bg-info'],
       },
       warning: {
-        wrapper: [
-          'bg-shark-100 dark:bg-shark-700',
-          'group-selected:bg-yellow-800 group-selected:group-pressed:bg-yellow-900',
-        ],
+        label: ['focus:outline-warning'],
+        container: ['group-selected:bg-warning group-selected:group-pressed:bg-warning'],
       },
       danger: {
-        wrapper: [
-          'bg-shark-100 dark:bg-shark-700',
-          'group-selected:bg-red-800 group-selected:group-pressed:bg-red-900',
-        ],
+        label: ['focus:outline-danger'],
+        container: ['group-selected:bg-danger group-selected:group-pressed:bg-danger'],
       },
     },
   },
   defaultVariants: {
+    color: 'brand',
     size: 'md',
-    color: 'neutral',
   },
 })
 
