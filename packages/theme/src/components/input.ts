@@ -4,66 +4,57 @@ import { tv } from 'tailwind-variants'
 
 export const input = tv({
   slots: {
-    input: [
-      'group',
-      'flex flex-row',
-      'items-center',
-      'w-full',
-      'p-1.5',
-      'rounded-md',
-      'text-shark-400 dark:text-shark-200',
-      'has-[:disabled]:opacity-50',
-    ],
-    control: [
-      'grow',
-      'bg-transparent',
-      'text-shark-400 dark:text-shark-200',
-      'focus:outline-none',
-      'disabled:cursor-not-allowed',
-      'placeholder:font-normal placeholder:text-sm',
-    ],
-    addon: ['flex', 'pointer-events-none', 'px-1.5'],
+    group: ['flex gap-px', 'bg-foreground', 'rounded-md', 'overflow-hidden', 'has-[:disabled]:opacity-50'],
+    input: ['flex-1', 'bg-foreground', 'w-full', 'outline-none', 'placeholder-subtitle', 'py-2 px-3'],
+    addon: ['flex items-center', 'bg-foreground', 'px-3'],
   },
   variants: {
     size: {
+      xs: {
+        group: ['text-xs'],
+        input: ['placeholder:text-xs'],
+      },
       sm: {
-        input: ['text-xs'],
+        group: ['text-sm'],
+        input: ['placeholder:text-sm'],
       },
       md: {
-        input: ['text-sm'],
+        group: ['text-md'],
+        input: ['placeholder:text-md'],
       },
       lg: {
-        input: ['text-md'],
+        group: ['text-lg'],
+        input: ['placeholder:text-lg'],
+      },
+      xl: {
+        group: ['text-xl'],
+        input: ['placeholder:text-xl'],
       },
     },
     status: {
       neutral: {
-        input: ['dark:border-shark-500'],
+        group: ['text-content', 'border-partition'],
       },
       brand: {
-        input: ['border-brand-500'],
+        group: ['text-brand', 'border-brand'],
       },
       success: {
-        input: ['border-green-500'],
+        group: ['text-success', 'border-success'],
       },
       info: {
-        input: ['border-blue-500'],
+        group: ['text-info', 'border-info'],
       },
       warning: {
-        input: ['border-yellow-600'],
+        group: ['text-warning', 'border-warning'],
       },
       danger: {
-        input: ['border-red-500'],
+        group: ['text-danger', 'border-danger'],
       },
     },
     variant: {
+      none: {},
       outlined: {
-        input: ['border', 'border-solid'],
-      },
-    },
-    transparent: {
-      false: {
-        input: ['dark:bg-shark-700'],
+        group: ['border', 'border-solid'],
       },
     },
   },
@@ -71,7 +62,6 @@ export const input = tv({
     size: 'md',
     status: 'neutral',
     variant: 'outlined',
-    transparent: false,
   },
 })
 
