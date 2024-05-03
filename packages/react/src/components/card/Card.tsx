@@ -24,7 +24,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useCard({})
+    const context = useCard()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

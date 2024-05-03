@@ -1,15 +1,11 @@
-import type { CardVariantProps } from '@giantnodes/theme'
-
 import { card } from '@giantnodes/theme'
 import React from 'react'
 
 import { createContext } from '@/utilities/context'
 
-type UseCardProps = CardVariantProps
-
 type UseCardReturn = ReturnType<typeof useCard>
 
-export const useCard = (props: UseCardProps) => {
+export const useCard = () => {
   const slots = React.useMemo(() => card({}), [])
 
   return {
