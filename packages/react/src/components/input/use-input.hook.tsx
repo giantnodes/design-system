@@ -10,17 +10,20 @@ type UseInputProps = InputVariantProps
 type UseInputReturn = ReturnType<typeof useInput>
 
 export const useInput = (props: UseInputProps) => {
-  const { status, size, transparent, variant } = props
+  const { status, size, variant } = props
 
-  const slots = React.useMemo(() => input({ status, size, transparent, variant }), [status, size, transparent, variant])
+  const slots = React.useMemo(() => input({ status, size, variant }), [status, size, variant])
 
   return {
     slots,
+    status,
+    size,
+    variant,
   }
 }
 
 export const [InputContext, useInputContext] = createContext<UseInputReturn>({
   name: 'InputContext',
-  strict: true,
+  strict: false,
   errorMessage: 'useInputContext: `context` is undefined. Seems you forgot to wrap component within <Input />',
 })
