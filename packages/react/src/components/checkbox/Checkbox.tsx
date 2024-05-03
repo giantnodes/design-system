@@ -18,11 +18,11 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 
 const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, className, size, ...rest } = props
+    const { as, children, className, color, size, ...rest } = props
 
     const Element = as ?? Checkbox
 
-    const slots = React.useMemo(() => checkbox({ size }), [size])
+    const slots = React.useMemo(() => checkbox({ color, size }), [color, size])
 
     const component = React.useMemo<CheckboxProps>(
       () => ({

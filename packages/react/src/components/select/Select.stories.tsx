@@ -1,15 +1,29 @@
 import type { SelectProps } from '@/components/select'
 import type { Meta, StoryFn } from '@storybook/react'
 
+import { select } from '@giantnodes/theme'
+
 import { Form } from '@/components/form'
 import { Select } from '@/components/select'
 
 const Component: Meta<typeof Select> = {
   title: 'Components/Select',
   component: Select,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
+    status: {
+      control: { type: 'select' },
+      options: ['neutral', 'brand', 'success', 'info', 'warning', 'danger'],
+    },
+  },
 }
 
-const defaultProps = {}
+const defaultProps = {
+  ...select.defaultVariants,
+}
 
 export const Default: StoryFn<SelectProps<object>> = (args) => (
   <Select {...args}>

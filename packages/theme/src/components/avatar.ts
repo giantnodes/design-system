@@ -5,83 +5,89 @@ import { tv } from 'tailwind-variants'
 export const avatar = tv({
   slots: {
     group: ['isolate', 'flex', '-space-x-2'],
-    base: [
+    avatar: [
       'relative',
-      'inline-flex',
-      'items-center',
-      'justify-center',
+      'inline-flex items-center justify-center',
+      'bg-middleground',
+      'text-content',
       'leading-none',
-      'font-medium',
-      'border',
-      'dark:border-shark-500',
+      'border border-transparent',
+      'bg-foreground',
     ],
     img: ['inline-block', 'size-full', 'rounded-[inherit]'],
-    icon: ['flex', 'items-center', 'justify-center', 'text-inherit'],
-    notification: ['absolute', 'top-0', 'right-0', 'block', 'rounded-full'],
+    icon: ['flex items-center justify-center', 'text-inherit', 'rounded-[inherit]', 'overflow-hidden'],
+    notification: ['absolute', 'block', 'rounded-full', 'top-0 right-0'],
   },
   variants: {
     color: {
       neutral: {
-        notification: ['bg-gray-200'],
+        avatar: ['border-partition'],
+        notification: ['bg-partition'],
+      },
+      brand: {
+        avatar: ['border-brand-500'],
+        notification: ['bg-brand-500'],
       },
       success: {
-        notification: ['bg-green-500'],
+        avatar: ['border-success-500'],
+        notification: ['bg-success-500'],
       },
       info: {
-        notification: ['bg-blue-500'],
+        avatar: ['border-info-500'],
+        notification: ['bg-info-500'],
       },
       warning: {
-        notification: ['bg-yellow-300'],
+        avatar: ['border-warning-500'],
+        notification: ['bg-warning-500'],
       },
       danger: {
-        notification: ['bg-red-500'],
+        avatar: ['border-danger-500'],
+        notification: ['bg-danger-500'],
       },
     },
     radius: {
       none: {
-        base: ['rounded-none'],
-        notification: ['-translate-y-1/2', 'translate-x-1/2'],
+        avatar: ['rounded-none'],
+      },
+      xs: {
+        avatar: ['rounded-xs'],
       },
       sm: {
-        base: ['rounded-sm'],
-        notification: ['-translate-y-1/2', 'translate-x-1/2'],
+        avatar: ['rounded-sm'],
       },
       md: {
-        base: ['rounded-md'],
-        notification: ['-translate-y-1/2', 'translate-x-1/2'],
+        avatar: ['rounded-md'],
       },
       lg: {
-        base: ['rounded-lg'],
-        notification: ['-translate-y-1/2', 'translate-x-1/2'],
+        avatar: ['rounded-lg'],
       },
       xl: {
-        base: ['rounded-xl'],
-        notification: ['-translate-y-1/2', 'translate-x-1/2'],
+        avatar: ['rounded-xl'],
       },
       full: {
-        base: ['rounded-full'],
+        avatar: ['rounded-full'],
       },
     },
     size: {
       xs: {
-        base: ['size-6', 'text-xs'],
-        notification: ['size-2'],
+        avatar: ['size-6', 'text-xs'],
+        notification: ['size-1.5'],
       },
       sm: {
-        base: ['size-8', 'text-sm'],
-        notification: ['size-2.5'],
+        avatar: ['size-8', 'text-sm'],
+        notification: ['size-2'],
       },
       md: {
-        base: ['size-10'],
-        notification: ['size-3'],
+        avatar: ['size-10'],
+        notification: ['size-2.5'],
       },
       lg: {
-        base: ['size-12', 'text-lg'],
-        notification: ['size-3.5'],
+        avatar: ['size-12', 'text-lg'],
+        notification: ['size-3'],
       },
       xl: {
-        base: ['size-16', 'text-xl'],
-        notification: ['size-4'],
+        avatar: ['size-16', 'text-xl'],
+        notification: ['size-3.5'],
       },
     },
     zoomed: {

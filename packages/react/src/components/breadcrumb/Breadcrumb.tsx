@@ -37,7 +37,7 @@ const Component: ComponentType = React.forwardRef(
         className: context.slots.base({ className }),
         ...rest,
       }),
-      [context.slots, className, rest]
+      [className, context.slots, rest]
     )
 
     return (

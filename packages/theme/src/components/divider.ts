@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 
 export const divider = tv({
   slots: {
-    divider: ['list-item', 'shrink-0', 'border-none', 'bg-shark-100 dark:bg-shark-500'],
+    divider: ['list-item', 'shrink-0', 'bg-partition', 'border-none'],
   },
   variants: {
     orientation: {

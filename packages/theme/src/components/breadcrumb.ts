@@ -5,32 +5,28 @@ import { tv } from 'tailwind-variants'
 export const breadcrumb = tv({
   slots: {
     base: ['flex flex-wrap', 'list-none'],
-    item: ['group', 'flex items-center', 'cursor-pointer', 'text-shark-600 dark:text-shark-50'],
-    separator: ['group-last:hidden', 'text-shark', 'px-1', 'cursor-default'],
+    item: [
+      'group',
+      'flex items-center',
+      'text-title',
+      'has-[:current]:opacity-80',
+      'has-[:disabled]:opacity-50 has-[:disabled]:pointer-events-none',
+    ],
+    separator: ['group-last:hidden', 'text-subtitle', 'px-1'],
   },
   variants: {
     size: {
-      sm: {
+      xs: {
         item: 'text-xs',
       },
-      md: {
+      sm: {
         item: 'text-sm',
       },
-      lg: {
+      md: {
         item: 'text-md',
       },
-    },
-    active: {
-      true: {
-        item: 'cursor-default',
-      },
-      false: {
-        item: 'opacity-80',
-      },
-    },
-    disabled: {
-      true: {
-        item: '!pointer-events-none',
+      lg: {
+        item: 'text-lg',
       },
     },
   },

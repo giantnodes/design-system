@@ -5,27 +5,33 @@ import { tv } from 'tailwind-variants'
 export const link = tv({
   slots: {
     link: [
-      'text-inherit',
-      'hover:text-sky-600',
-      'disabled:cursor-default disabled:text-shark-200 disabled:hover:text-shark-200',
+      'text-inherit hover:text-sky-600',
+      'transition-all duration-200',
+      'rounded',
+      'disabled:cursor-default disabled:opacity-50',
+      'focus:outline-dashed focus:outline-offset-2 focus:outline-1 focus:outline-sky-600',
     ],
   },
   variants: {
-    size: {
-      sm: 'text-sm',
-      md: 'text-md',
-      lg: 'text-lg',
-    },
     underline: {
-      none: 'no-underline',
-      hover: 'hover:underline disabled:hover:no-underline',
-      always: 'underline',
-      active: 'active:underline',
-      focus: 'focus:underline',
+      none: {
+        link: ['no-underline'],
+      },
+      hover: {
+        link: ['hover:underline disabled:hover:no-underline'],
+      },
+      always: {
+        link: ['underline'],
+      },
+      active: {
+        link: ['active:underline'],
+      },
+      focus: {
+        link: ['focus:underline'],
+      },
     },
   },
   defaultVariants: {
-    size: 'sm',
     underline: 'none',
   },
 })

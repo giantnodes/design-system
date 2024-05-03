@@ -2,13 +2,15 @@ import type * as Polymophic from '@/utilities/polymorphic'
 import type { BreadcrumbProps } from 'react-aria-components'
 
 import React from 'react'
-import { Breadcrumb } from 'react-aria-components'
+import { Breadcrumb, Link } from 'react-aria-components'
 
 import { useBreadcrumbContext } from '@/components/breadcrumb/use-breadcrumb.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
-type ComponentOwnProps = BreadcrumbProps
+type ComponentOwnProps = {
+  href?: string
+} & BreadcrumbProps
 
 type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
 
@@ -18,7 +20,7 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 
 const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, className, ...rest } = props
+    const { as, children, className, href, ...rest } = props
 
     const Element = as ?? Breadcrumb
 
@@ -34,10 +36,10 @@ const Component: ComponentType = React.forwardRef(
 
     return (
       <Element {...component} ref={ref}>
-        {children}
+        <Link href={href}>{children}</Link>
 
         {separator && (
-          <span aria-hidden="true" className={slots.separator()}>
+          <span aria-hidden="true" className={slots.separator()} data-slot="separator">
             {separator}
           </span>
         )}

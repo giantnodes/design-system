@@ -20,15 +20,15 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 
 const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, className, transparent, ...rest } = props
+    const { as, children, className, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useCard({ transparent })
+    const context = useCard()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: context.slots.base({ className }),
+        className: context.slots.card({ className }),
         ...rest,
       }),
       [context.slots, className, rest]

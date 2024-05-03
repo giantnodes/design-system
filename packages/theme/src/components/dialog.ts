@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants'
 export const dialog = tv({
   slots: {
     dialog: [],
-    overlay: ['flex', 'fixed inset-0 z-50', 'bg-black/50', 'min-h-full', 'p-3', 'overflow-y-auto'],
+    overlay: ['flex', 'fixed inset-0 z-50', 'bg-black/50', 'min-h-full', 'overflow-y-auto', 'p-3'],
     modal: ['w-full max-w-2xl', 'overflow-hidden'],
     content: ['relative', 'outline-none'],
   },

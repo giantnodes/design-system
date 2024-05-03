@@ -26,15 +26,15 @@ type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
 
 const Component: ComponentType = React.forwardRef(
   <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
-    const { as, children, className, position, size, orientation, variant, ...rest } = props
+    const { as, children, className, orientation, position, size, variant, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useNavigation({ position, size, orientation, variant })
+    const context = useNavigation({ orientation, position, size, variant })
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: context.slots.base({ className }),
+        className: context.slots.navigation({ className }),
         ...rest,
       }),
       [className, context.slots, rest]

@@ -4,10 +4,13 @@ import { tv } from 'tailwind-variants'
 
 export const typography = tv({
   slots: {
-    paragraph: ['antialiased', 'text-shark-400 dark:text-shark-100'],
+    paragraph: ['text-content', 'text-inherit'],
   },
   variants: {
     size: {
+      xs: {
+        paragraph: ['text-xs'],
+      },
       sm: {
         paragraph: ['text-sm'],
       },
@@ -20,12 +23,9 @@ export const typography = tv({
     },
     variant: {
       subtitle: {
-        paragraph: ['text-xs', 'text-shark-500 dark:text-shark-300'],
+        paragraph: ['text-xs', 'text-subtitle'],
       },
     },
-  },
-  defaultVariants: {
-    size: 'sm',
   },
 })
 

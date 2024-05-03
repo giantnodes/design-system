@@ -4,28 +4,19 @@ import { tv } from 'tailwind-variants'
 
 export const card = tv({
   slots: {
-    base: [
+    card: [
       'flex flex-col',
-      'bg-white dark:bg-shark-800',
-      'border border-solid border-shark-100 dark:border-shark-500',
-      'divide-y divide-shark-100 dark:divide-shark-500',
+      'bg-middleground',
+      'border border-solid border-partition',
+      'divide-y divide-partition',
       'rounded-lg',
-      'overflow-hidden',
+      'overflow-auto',
     ],
-    header: ['text-shark-600 dark:text-shark-50', 'p-3'],
-    body: ['flex-grow', 'text-shark-400 dark:text-shark-200', 'p-3'],
-    footer: ['text-shark-400 dark:text-shark-200', 'p-3'],
+    header: ['text-title', 'p-3'],
+    body: ['flex-grow', 'text-content', 'p-3'],
+    footer: ['text-content', 'p-3'],
   },
-  variants: {
-    transparent: {
-      true: {
-        base: ['!bg-transparent'],
-      },
-    },
-  },
-  defaultVariants: {
-    transparent: false,
-  },
+  variants: {},
 })
 
 export type CardVariantProps = VariantProps<typeof card>

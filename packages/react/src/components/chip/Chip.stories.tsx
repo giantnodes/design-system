@@ -13,14 +13,9 @@ const Component: Meta<typeof Chip> = {
       control: { type: 'select' },
       options: ['neutral', 'brand', 'success', 'info', 'warning', 'danger'],
     },
-    radius: {
-      control: { type: 'select' },
-    },
     size: {
       control: { type: 'select' },
-    },
-    variant: {
-      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
     },
   },
 }

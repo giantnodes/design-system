@@ -8,17 +8,46 @@ export const checkbox = tv({
       'group',
       'relative',
       'flex items-center',
+      'bg-middleground',
+      'border-transparent',
       'rounded',
       'border-2',
       'cursor-pointer',
       'transition-all',
-      'bg-shark-100 dark:bg-shark-500',
-      'border-transparent selected:border-brand-500',
     ],
-    icon: ['size-full', 'group-selected:stroke-brand-500'],
+    icon: ['size-full'],
   },
   variants: {
+    color: {
+      neutral: {
+        label: ['selected:border-partition'],
+        icon: ['group-selected:stroke-partition'],
+      },
+      brand: {
+        label: ['selected:border-brand'],
+        icon: ['group-selected:stroke-brand'],
+      },
+      success: {
+        label: ['selected:border-success'],
+        icon: ['group-selected:stroke-success'],
+      },
+      info: {
+        label: ['selected:border-info'],
+        icon: ['group-selected:stroke-info'],
+      },
+      warning: {
+        label: ['selected:border-warning'],
+        icon: ['group-selected:stroke-warning'],
+      },
+      danger: {
+        label: ['selected:border-danger'],
+        icon: ['group-selected:stroke-danger'],
+      },
+    },
     size: {
+      xs: {
+        label: ['size-3'],
+      },
       sm: {
         label: ['size-4'],
       },
@@ -28,9 +57,13 @@ export const checkbox = tv({
       lg: {
         label: ['size-6'],
       },
+      xl: {
+        label: ['size-7'],
+      },
     },
   },
   defaultVariants: {
+    color: 'brand',
     size: 'md',
   },
 })

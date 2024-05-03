@@ -6,26 +6,28 @@ export const select = tv({
   slots: {
     select: [
       'flex flex-col items-start',
-      'w-full',
+      'bg-foreground',
+      'text-content',
+      'border border-solid',
       'rounded-md',
+      'w-full',
       'cursor-pointer',
-      'text-shark-400 dark:text-shark-200',
       'has-[:disabled]:opacity-50',
     ],
-    placeholder: ['text-shark-400 dark:text-shark-200'],
+    placeholder: ['text-subtitle'],
     button: ['flex flex-row items-center justify-between', 'w-full', 'p-1.5', 'focus:outline-none'],
     icon: [],
-    popover: ['rounded-md', 'dark:bg-shark-700', 'w-[--trigger-width]', 'overflow-y-auto'],
-    list: ['relative', 'flex flex-col gap-1', 'w-full', 'p-1', 'focus:outline-none'],
+    popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md', 'w-[--trigger-width]'],
+    list: ['flex flex-col gap-1', 'p-1', 'outline-none'],
     option: [
-      'group',
       'flex tems-center',
       'px-2 py-1',
       'rounded-md',
       'cursor-pointer',
-      'text-shark-400 dark:text-shark-100',
-      'focus:outline-none',
-      'hover:bg-shark-50 hover:dark:bg-shark-800',
+      'outline-none',
+      'text-content',
+      'overflow-hidden',
+      'disabled:opacity-50 disabled:cursor-default',
     ],
   },
   variants: {
@@ -45,41 +47,34 @@ export const select = tv({
     },
     status: {
       neutral: {
-        select: ['dark:border-shark-500'],
+        select: ['border-partition'],
+        option: ['hover:bg-middleground'],
       },
       brand: {
-        select: ['border-brand-500'],
+        select: ['border-brand'],
+        option: ['hover:bg-brand/20'],
       },
       success: {
-        select: ['border-green-500'],
+        select: ['border-success'],
+        option: ['hover:bg-success/20'],
       },
       info: {
-        select: ['border-blue-500'],
+        select: ['border-info'],
+        option: ['hover:bg-info/20'],
       },
       warning: {
-        select: ['border-yellow-600'],
+        select: ['border-warning'],
+        option: ['hover:bg-warning/20'],
       },
       danger: {
-        select: ['border-red-500'],
-      },
-    },
-    variant: {
-      outlined: {
-        select: ['border', 'border-solid'],
-        popover: ['border', 'border-solid', 'dark:border-shark-500'],
-      },
-    },
-    transparent: {
-      false: {
-        select: ['dark:bg-shark-700'],
+        select: ['border-danger'],
+        option: ['hover:bg-danger/20'],
       },
     },
   },
   defaultVariants: {
     size: 'md',
     status: 'neutral',
-    variant: 'outlined',
-    transparent: false,
   },
 })
 

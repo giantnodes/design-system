@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants'
 export const menu = tv({
   slots: {
     menu: [],
-    popover: ['rounded-md', 'dark:bg-shark-700'],
+    popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md'],
     list: ['flex flex-col gap-1', 'p-1', 'outline-none'],
     item: [
       'flex tems-center',
@@ -13,9 +13,9 @@ export const menu = tv({
       'rounded-md',
       'cursor-pointer',
       'outline-none',
-      'text-shark-400 dark:text-shark-100',
-      'hover:bg-shark-50 hover:dark:bg-shark-800',
-      'disabled:opacity-50 disabled:cursor-not-allowed',
+      'text-content',
+      'overflow-hidden',
+      'disabled:opacity-50 disabled:cursor-default',
     ],
   },
   variants: {
@@ -27,45 +27,39 @@ export const menu = tv({
         item: ['text-sm'],
       },
       md: {
-        item: ['text-sm'],
+        item: ['text-base'],
       },
       lg: {
-        item: ['text-base'],
+        item: ['text-lg'],
       },
       xl: {
-        item: ['text-base'],
+        item: ['text-xl'],
       },
     },
     status: {
       neutral: {
-        popover: ['dark:border-shark-500'],
+        item: ['hover:bg-middleground'],
       },
       brand: {
-        popover: ['border-brand-500'],
+        item: ['hover:bg-brand/20'],
       },
       success: {
-        popover: ['border-green-500'],
+        item: ['hover:bg-success/20'],
       },
       info: {
-        popover: ['border-blue-500'],
+        item: ['hover:bg-info/20'],
       },
       warning: {
-        popover: ['border-yellow-600'],
+        item: ['hover:bg-warning/20'],
       },
       danger: {
-        popover: ['border-red-500'],
-      },
-    },
-    variant: {
-      outlined: {
-        popover: ['border', 'border-solid'],
+        item: ['hover:bg-danger/20'],
       },
     },
   },
   defaultVariants: {
     size: 'md',
     status: 'neutral',
-    variant: 'outlined',
   },
 })
 
