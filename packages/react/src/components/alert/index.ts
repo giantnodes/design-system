@@ -3,6 +3,5 @@ export type { AlertBodyProps } from '@/components/alert/AlertBody'
 export type { AlertHeadingProps } from '@/components/alert/AlertHeading'
 export type { AlertItemProps } from '@/components/alert/AlertItem'
 export type { AlertListProps } from '@/components/alert/AlertList'
-export type { AlertTextProps } from '@/components/alert/AlertText'
 
 export { default as Alert } from '@/components/alert/Alert'

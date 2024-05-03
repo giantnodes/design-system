@@ -10,9 +10,7 @@ type UseCardProps = CardVariantProps
 type UseCardReturn = ReturnType<typeof useCard>
 
 export const useCard = (props: UseCardProps) => {
-  const { transparent } = props
-
-  const slots = React.useMemo(() => card({ transparent }), [transparent])
+  const slots = React.useMemo(() => card({}), [])
 
   return {
     slots,
