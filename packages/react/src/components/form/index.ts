@@ -1,7 +1,7 @@
-export type { FormProps } from '@/components/form/Form'
-export type { FormCaptionProps } from '@/components/form/FormCaption'
-export type { FormFeedbackProps } from '@/components/form/FormFeedback'
-export type { FormGroupProps } from '@/components/form/FormGroup'
-export type { FormLabelProps } from '@/components/form/FormLabel'
+export type * from '@/components/form/Form'
+export type * from '@/components/form/FormCaption'
+export type * from '@/components/form/FormFeedback'
+export type * from '@/components/form/FormGroup'
+export type * from '@/components/form/FormLabel'
 
 export { default as Form } from '@/components/form/Form'

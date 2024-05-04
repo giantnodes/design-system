@@ -16,7 +16,7 @@ export interface CreateContextOptions {
   name?: string
 }
 
-export type CreateContextReturn<T> = [React.Context<T>, () => T]
+export type CreateContextReturn<TElement> = [React.Context<TElement>, () => T]
 
 /**
  * Creates a named context, provider, and hook.

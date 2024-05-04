@@ -9,14 +9,20 @@ const __ELEMENT_TYPE__ = 'span'
 
 type ComponentOwnProps = AvatarVariantProps
 
-type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+  TElement,
+  ComponentOwnProps
+>
 
-type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<T>
+type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+  <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TElement>,
+    ref: Polymophic.Ref<TElement>
+  ) => {
     const { as, children, className, color, radius, size, zoomed, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
@@ -41,5 +47,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as AvatarGroupProps }
+export type { ComponentOwnProps as AvatarGroupOwnProps, ComponentProps as AvatarGroupProps }
 export default Component

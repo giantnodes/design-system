@@ -14,13 +14,18 @@ const __ELEMENT_TYPE__ = 'div'
 
 type ComponentOwnProps = MenuTriggerProps & MenuVariantProps
 
-type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+  TElement,
+  ComponentOwnProps
+>
 
-type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<T>
+type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TElement>
 ) => React.ReactNode
 
-const Component: ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>) => {
+const Component: ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TElement>
+) => {
   const { as, children, className, size, status, ...rest } = props
 
   const Element = as ?? MenuTrigger
@@ -42,7 +47,7 @@ const Component: ComponentType = <T extends React.ElementType = typeof __ELEMENT
   )
 }
 
-export type { ComponentOwnProps as MenuProps }
+export type { ComponentOwnProps as MenuOwnProps, ComponentProps as MenuProps }
 export default Object.assign(Component, {
   Popover: MenuPopover,
   List: MenuList,

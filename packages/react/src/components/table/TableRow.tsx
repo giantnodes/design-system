@@ -10,21 +10,21 @@ import { useTableContext } from '@/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'tr'
 
-type ComponentOwnProps<D extends object> = RowProps<D>
+type ComponentOwnProps<TData extends object> = RowProps<TData>
 
-type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
-  T,
-  ComponentOwnProps<D>
+type ComponentProps<TData extends object, TElement extends React.ElementType> = Polymophic.ComponentPropsWithRef<
+  TElement,
+  ComponentOwnProps<TData>
 >
 
-type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<D, T>
+type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TData, TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-    props: ComponentProps<D, T>,
-    ref: Polymophic.Ref<T>
+  <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TData, TElement>,
+    ref: Polymophic.Ref<TElement>
   ) => {
     const { as, children, className, columns, ...rest } = props
 
@@ -33,7 +33,7 @@ const Component: ComponentType = React.forwardRef(
     const { slots } = useTableContext()
     const { selectionBehavior, allowsDragging } = useTableOptions()
 
-    const component = React.useMemo<RowProps<D>>(
+    const component = React.useMemo<RowProps<TData>>(
       () => ({
         className: slots.tr({ className: className?.toString() }),
         ...rest,
@@ -61,5 +61,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as TableRowProps }
+export type { ComponentOwnProps as TableRowOwnProps, ComponentProps as TableRowProps }
 export default Component

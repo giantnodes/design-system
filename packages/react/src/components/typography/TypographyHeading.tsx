@@ -14,14 +14,20 @@ type ComponentOwnProps = HeadingProps & {
   level?: HeadingLevel
 }
 
-type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+  TElement,
+  ComponentOwnProps
+>
 
-type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<T>
+type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+  <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TElement>,
+    ref: Polymophic.Ref<TElement>
+  ) => {
     const { as, children, className, ...rest } = props
 
     const Element = as ?? Heading
@@ -56,5 +62,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as TypographyHeadingProps }
+export type { ComponentOwnProps as TypographyHeadingOwnProps, ComponentProps as TypographyHeadingProps }
 export default Component
