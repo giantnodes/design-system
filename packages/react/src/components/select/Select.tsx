@@ -33,10 +33,10 @@ type ComponentOwnProps<TData extends object> = SelectVariantProps &
     placement?: 'top' | 'bottom'
   }
 
-type ComponentProps<TData extends object, TElement extends React.ElementType> = Polymophic.ComponentPropsWithRef<
-  TElement,
-  ComponentOwnProps<TData>
->
+type ComponentProps<
+  TData extends object,
+  TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
+> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
 type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>

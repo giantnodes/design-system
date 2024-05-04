@@ -12,10 +12,10 @@ const __ELEMENT_TYPE__ = 'ol'
 
 type ComponentOwnProps<TData extends object> = BreadcrumbsProps<TData> & BreadcrumbVariantProps
 
-type ComponentProps<TData extends object, TElement extends React.ElementType> = Polymophic.ComponentPropsWithRef<
-  TElement,
-  ComponentOwnProps<TData>
->
+type ComponentProps<
+  TData extends object,
+  TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
+> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
 type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
