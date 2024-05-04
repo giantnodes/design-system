@@ -42,7 +42,7 @@ Default.args = {
 
 export const UsingSize: StoryFn<SelectProps<object>> = (args) => (
   <div className="flex flex-col gap-2">
-    <Select {...args} size="sm" placeholder="sm">
+    <Select {...args} placeholder="sm" size="sm">
       <Select.Option>Aardvark</Select.Option>
       <Select.Option>Cat</Select.Option>
       <Select.Option>Dog</Select.Option>
@@ -51,7 +51,7 @@ export const UsingSize: StoryFn<SelectProps<object>> = (args) => (
       <Select.Option>Snake</Select.Option>
     </Select>
 
-    <Select {...args} size="md" placeholder="md">
+    <Select {...args} placeholder="md" size="md">
       <Select.Option>Aardvark</Select.Option>
       <Select.Option>Cat</Select.Option>
       <Select.Option>Dog</Select.Option>
@@ -60,7 +60,7 @@ export const UsingSize: StoryFn<SelectProps<object>> = (args) => (
       <Select.Option>Snake</Select.Option>
     </Select>
 
-    <Select {...args} size="lg" placeholder="lg">
+    <Select {...args} placeholder="lg" size="lg">
       <Select.Option>Aardvark</Select.Option>
       <Select.Option>Cat</Select.Option>
       <Select.Option>Dog</Select.Option>

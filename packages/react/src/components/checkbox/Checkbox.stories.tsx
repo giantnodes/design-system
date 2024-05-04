@@ -3,8 +3,8 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { checkbox } from '@giantnodes/theme'
 
-import { Checkbox } from '@/components/checkbox'
 import Card from '@/components/card/Card'
+import { Checkbox } from '@/components/checkbox'
 
 const Component: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
