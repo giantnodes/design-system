@@ -8,21 +8,21 @@ import { useSelectContext } from '@/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
-type ComponentOwnProps<D extends object> = SelectValueProps<D>
+type ComponentOwnProps<TData extends object> = SelectValueProps<TData>
 
-type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
-  T,
-  ComponentOwnProps<D>
+type ComponentProps<TData extends object, TElement extends React.ElementType> = Polymophic.ComponentPropsWithRef<
+  TElement,
+  ComponentOwnProps<TData>
 >
 
-type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<D, T>
+type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TData, TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-    props: ComponentProps<D, T>,
-    ref: Polymophic.Ref<T>
+  <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TData, TElement>,
+    ref: Polymophic.Ref<TElement>
   ) => {
     const { as, children, className, ...rest } = props
 
@@ -31,7 +31,7 @@ const Component: ComponentType = React.forwardRef(
     const { slots } = useSelectContext()
     const { selectedItem } = React.useContext(SelectStateContext)
 
-    const component = React.useMemo<SelectValueProps<D>>(
+    const component = React.useMemo<SelectValueProps<TData>>(
       () => ({
         className: slots.placeholder({ className: className?.toString() }),
         ...rest,
@@ -49,5 +49,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as SelectValueProps }
+export type { ComponentOwnProps as SelectValueOwnProps, ComponentProps as SelectValueProps }
 export default Component

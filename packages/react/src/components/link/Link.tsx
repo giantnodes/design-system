@@ -10,14 +10,20 @@ const __ELEMENT_TYPE__ = 'a'
 
 type ComponentOwnProps = LinkVariantProps & LinkProps
 
-type ComponentProps<T extends React.ElementType> = Polymophic.ComponentPropsWithRef<T, ComponentOwnProps>
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+  TElement,
+  ComponentOwnProps
+>
 
-type ComponentType = <T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<T>
+type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <T extends React.ElementType = typeof __ELEMENT_TYPE__>(props: ComponentProps<T>, ref: Polymophic.Ref<T>) => {
+  <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TElement>,
+    ref: Polymophic.Ref<TElement>
+  ) => {
     const { as, children, className, underline, ...rest } = props
 
     const Element = as ?? Link
@@ -40,5 +46,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as LinkProps }
+export type { ComponentOwnProps as LinkOwnProps, ComponentProps as LinkProps }
 export default Component

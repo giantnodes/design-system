@@ -13,39 +13,39 @@ import { SelectContext, useSelect } from '@/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'select'
 
-type OveriddenSelectProps<T extends object> = Override<
-  SelectProps<T>,
+type OveriddenSelectProps<TElement extends object> = Override<
+  SelectProps<TElement>,
   {
-    children?: React.ReactNode | ((item: T) => React.ReactNode)
+    children?: React.ReactNode | ((item: TElement) => React.ReactNode)
   }
 >
 
-type OveriddenListBoxProps<T extends object> = Override<
-  ListBoxProps<T>,
+type OveriddenListBoxProps<TElement extends object> = Override<
+  ListBoxProps<TElement>,
   {
-    items?: Iterable<T> | null
+    items?: Iterable<TElement> | null
   }
 >
 
-type ComponentOwnProps<D extends object> = SelectVariantProps &
-  OveriddenSelectProps<D> &
-  OveriddenListBoxProps<D> & {
+type ComponentOwnProps<TData extends object> = SelectVariantProps &
+  OveriddenSelectProps<TData> &
+  OveriddenListBoxProps<TData> & {
     placement?: 'top' | 'bottom'
   }
 
-type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
-  T,
-  ComponentOwnProps<D>
->
+type ComponentProps<
+  TData extends object,
+  TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
+> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
-type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<D, T>
+type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TData, TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-    props: ComponentProps<D, T>,
-    ref: Polymophic.Ref<T>
+  <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TData, TElement>,
+    ref: Polymophic.Ref<TElement>
   ) => {
     const {
       as,
@@ -78,7 +78,7 @@ const Component: ComponentType = React.forwardRef(
       onChange: group?.onChange ?? onChange,
     })
 
-    const select = React.useMemo<SelectProps<D>>(
+    const select = React.useMemo<SelectProps<TData>>(
       () => ({
         name: group?.name,
         placeholder,
@@ -116,7 +116,7 @@ const Component: ComponentType = React.forwardRef(
       [context.slots, placement]
     )
 
-    const listbox = React.useMemo<ListBoxProps<D>>(
+    const listbox = React.useMemo<ListBoxProps<TData>>(
       () => ({
         items: items ?? undefined,
         selectionMode: mode,
@@ -159,7 +159,7 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as SelectProps }
+export type { ComponentOwnProps as SelectOwnProps, ComponentProps as SelectProps }
 export default Object.assign(Component, {
   Option: SelectOption,
 })

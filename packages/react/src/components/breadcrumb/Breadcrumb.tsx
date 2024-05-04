@@ -10,21 +10,21 @@ import { BreadcrumbContext, useBreadcrumb } from '@/components/breadcrumb/use-br
 
 const __ELEMENT_TYPE__ = 'ol'
 
-type ComponentOwnProps<D extends object> = BreadcrumbsProps<D> & BreadcrumbVariantProps
+type ComponentOwnProps<TData extends object> = BreadcrumbsProps<TData> & BreadcrumbVariantProps
 
-type ComponentProps<D extends object, T extends React.ElementType> = Polymophic.ComponentPropsWithRef<
-  T,
-  ComponentOwnProps<D>
->
+type ComponentProps<
+  TData extends object,
+  TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
+> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
-type ComponentType = <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<D, T>
+type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  props: ComponentProps<TData, TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <D extends object, T extends React.ElementType = typeof __ELEMENT_TYPE__>(
-    props: ComponentProps<D, T>,
-    ref: Polymophic.Ref<T>
+  <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TData, TElement>,
+    ref: Polymophic.Ref<TElement>
   ) => {
     const { as, children, className, size, separator, ...rest } = props
 
@@ -32,7 +32,7 @@ const Component: ComponentType = React.forwardRef(
 
     const context = useBreadcrumb({ size, separator })
 
-    const component = React.useMemo<BreadcrumbsProps<D>>(
+    const component = React.useMemo<BreadcrumbsProps<TData>>(
       () => ({
         className: context.slots.base({ className }),
         ...rest,
@@ -50,7 +50,7 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as BreadcrumbProps }
+export type { ComponentOwnProps as BreadcrumbOwnProps, ComponentProps as BreadcrumbProps }
 export default Object.assign(Component, {
   Item: BreadcrumbItem,
 })

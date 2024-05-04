@@ -7,7 +7,7 @@ export type Component<
 
 export type Override<T, R> = Omit<T, keyof R> & R
 
-export type ComponentWithoutAs<T extends React.ElementType> = Omit<Component<T>, 'as'>
+export type ComponentWithoutAs<TElement extends React.ElementType> = Omit<Component<TElement>, 'as'>
 
 export type Selection = 'all' | Set<string | number>
 
