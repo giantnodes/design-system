@@ -33,16 +33,19 @@ export const select = tv({
   variants: {
     size: {
       sm: {
-        select: ['text-xs'],
-        option: ['text-xs'],
-      },
-      md: {
         select: ['text-sm'],
+        button: ['h-8 min-h-8'],
         option: ['text-sm'],
       },
-      lg: {
+      md: {
         select: ['text-base'],
+        button: ['h-10 min-h-10'],
         option: ['text-base'],
+      },
+      lg: {
+        select: ['text-lg'],
+        button: ['h-12 min-h-12'],
+        option: ['text-lg'],
       },
     },
     status: {

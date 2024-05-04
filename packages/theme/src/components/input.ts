@@ -4,51 +4,50 @@ import { tv } from 'tailwind-variants'
 
 export const input = tv({
   slots: {
-    group: ['flex gap-px', 'bg-foreground', 'rounded-md', 'overflow-hidden', 'has-[:disabled]:opacity-50'],
-    input: ['flex-1', 'bg-foreground', 'w-full', 'outline-none', 'placeholder-subtitle', 'py-2 px-3'],
+    group: [
+      'flex gap-px',
+      'bg-foreground',
+      'rounded-md',
+      'overflow-hidden',
+      'has-[:disabled]:opacity-50',
+      'focus-within:outline-dashed focus-within:outline-offset-2 focus-within:outline-1',
+    ],
+    input: ['flex-1', 'bg-foreground', 'w-full', 'font-normal', 'placeholder-subtitle', 'outline-none', 'py-2 px-1'],
     addon: ['flex items-center', 'bg-foreground', 'px-3'],
   },
   variants: {
-    size: {
-      xs: {
-        group: ['text-xs'],
-        input: ['placeholder:text-xs'],
+    color: {
+      neutral: {
+        group: ['text-content', 'border-partition', 'focus-within:outline-partition'],
       },
+      brand: {
+        group: ['text-brand', 'border-brand', 'focus-within:outline-brand'],
+      },
+      success: {
+        group: ['text-success', 'border-success', 'focus-within:outline-success'],
+      },
+      info: {
+        group: ['text-info', 'border-info', 'focus-within:outline-info'],
+      },
+      warning: {
+        group: ['text-warning', 'border-warning', 'focus-within:outline-danger'],
+      },
+      danger: {
+        group: ['text-danger', 'border-danger', 'focus-within:outline-warning'],
+      },
+    },
+    size: {
       sm: {
         group: ['text-sm'],
-        input: ['placeholder:text-sm'],
+        input: ['h-8 min-h-8', 'placeholder:text-sm'],
       },
       md: {
         group: ['text-base'],
-        input: ['placeholder:text-base'],
+        input: ['h-10 min-h-10', 'placeholder:text-base'],
       },
       lg: {
-        group: ['text-lg'],
+        group: ['h-12 min-h-12', 'text-lg'],
         input: ['placeholder:text-lg'],
-      },
-      xl: {
-        group: ['text-xl'],
-        input: ['placeholder:text-xl'],
-      },
-    },
-    status: {
-      neutral: {
-        group: ['text-content', 'border-partition'],
-      },
-      brand: {
-        group: ['text-brand', 'border-brand'],
-      },
-      success: {
-        group: ['text-success', 'border-success'],
-      },
-      info: {
-        group: ['text-info', 'border-info'],
-      },
-      warning: {
-        group: ['text-warning', 'border-warning'],
-      },
-      danger: {
-        group: ['text-danger', 'border-danger'],
       },
     },
     variant: {
@@ -60,7 +59,7 @@ export const input = tv({
   },
   defaultVariants: {
     size: 'md',
-    status: 'neutral',
+    color: 'neutral',
     variant: 'outlined',
   },
 })

@@ -9,7 +9,7 @@ export const navigation = tv({
     brand: ['flex flex-row justify-center flex-nowrap shrink-0'],
     segment: ['flex gap-2', 'list-none'],
     title: ['font-semibold'],
-    item: ['grow', 'select-none'],
+    item: ['flex grow', 'select-none'],
     link: [
       'flex items-center gap-x-3 grow',
       'p-2',

@@ -3,6 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { checkbox } from '@giantnodes/theme'
 
+import Card from '@/components/card/Card'
 import { Checkbox } from '@/components/checkbox'
 
 const Component: Meta<typeof Checkbox> = {
@@ -27,6 +28,18 @@ const defaultProps = {
 export const Default: StoryFn<CheckboxProps> = (args) => <Checkbox {...args} />
 
 Default.args = {
+  ...defaultProps,
+}
+
+export const UsingCard: StoryFn<CheckboxProps> = (args) => (
+  <Card>
+    <Card.Body>
+      <Checkbox {...args} />
+    </Card.Body>
+  </Card>
+)
+
+UsingCard.args = {
   ...defaultProps,
 }
 

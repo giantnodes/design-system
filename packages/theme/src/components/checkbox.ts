@@ -8,7 +8,7 @@ export const checkbox = tv({
       'group',
       'relative',
       'flex items-center',
-      'bg-middleground',
+      'bg-shark',
       'border-transparent',
       'rounded',
       'border-2',

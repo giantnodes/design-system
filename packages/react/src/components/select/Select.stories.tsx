@@ -40,6 +40,41 @@ Default.args = {
   ...defaultProps,
 }
 
+export const UsingSize: StoryFn<SelectProps<object>> = (args) => (
+  <div className="flex flex-col gap-2">
+    <Select {...args} placeholder="sm" size="sm">
+      <Select.Option>Aardvark</Select.Option>
+      <Select.Option>Cat</Select.Option>
+      <Select.Option>Dog</Select.Option>
+      <Select.Option>Kangaroo</Select.Option>
+      <Select.Option>Panda</Select.Option>
+      <Select.Option>Snake</Select.Option>
+    </Select>
+
+    <Select {...args} placeholder="md" size="md">
+      <Select.Option>Aardvark</Select.Option>
+      <Select.Option>Cat</Select.Option>
+      <Select.Option>Dog</Select.Option>
+      <Select.Option>Kangaroo</Select.Option>
+      <Select.Option>Panda</Select.Option>
+      <Select.Option>Snake</Select.Option>
+    </Select>
+
+    <Select {...args} placeholder="lg" size="lg">
+      <Select.Option>Aardvark</Select.Option>
+      <Select.Option>Cat</Select.Option>
+      <Select.Option>Dog</Select.Option>
+      <Select.Option>Kangaroo</Select.Option>
+      <Select.Option>Panda</Select.Option>
+      <Select.Option>Snake</Select.Option>
+    </Select>
+  </div>
+)
+
+UsingSize.args = {
+  ...defaultProps,
+}
+
 export const UsingForm: StoryFn<SelectProps<object>> = (args) => (
   <Form>
     <Form.Group name="name">

@@ -19,9 +19,9 @@ type UseSelectProps<T extends object> = SelectVariantProps &
 type UseSelectReturn = ReturnType<typeof useSelect>
 
 export const useSelect = <T extends object>(props: UseSelectProps<T>) => {
-  const { ref, name, status, onChange, onSelectionChange } = props
+  const { ref, name, size, status, onChange, onSelectionChange } = props
 
-  const slots = React.useMemo(() => select({ status }), [status])
+  const slots = React.useMemo(() => select({ size, status }), [size, status])
 
   const onSelect = (key: Key) => {
     onSelectionChange?.(key)
