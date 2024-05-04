@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@giantnodes/theme": "workspace:*",
-    "@react-aria/utils": "^3.23.2",
+    "@react-aria/utils": "^3.24.0",
     "clsx": "^2.1.1",
     "react-aria": "^3.33.0",
     "react-aria-components": "^1.2.0",

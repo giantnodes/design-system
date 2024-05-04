@@ -72,8 +72,8 @@ importers:
         specifier: workspace:*
         version: link:../theme
       '@react-aria/utils':
-        specifier: ^3.23.2
-        version: 3.23.2(react@18.3.1)
+        specifier: ^3.24.0
+        version: 3.24.0(react@18.3.1)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -3323,16 +3323,6 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /@react-aria/ssr@3.9.2(react@18.3.1):
-    resolution: {integrity: sha512-0gKkgDYdnq1w+ey8KzG9l+H5Z821qh9vVjztk55rUg71vTk/Eaebeir+WtzcLLwTjw3m/asIjx8Y59y1lJZhBw==}
-    engines: {node: '>= 12'}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@swc/helpers': 0.5.3
-      react: 18.3.1
-    dev: false
-
   /@react-aria/ssr@3.9.3(react@18.3.1):
     resolution: {integrity: sha512-5bUZ93dmvHFcmfUcEN7qzYe8yQQ8JY+nHN6m9/iSDCQ/QmCiE0kWXYwhurjw5ch6I8WokQzx66xKIMHBAa4NNA==}
     engines: {node: '>= 12'}
@@ -3494,19 +3484,6 @@ packages:
       '@swc/helpers': 0.5.3
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-    dev: false
-
-  /@react-aria/utils@3.23.2(react@18.3.1):
-    resolution: {integrity: sha512-yznR9jJ0GG+YJvTMZxijQwVp+ahP66DY0apZf7X+dllyN+ByEDW+yaL1ewYPIpugxVzH5P8jhnBXsIyHKN411g==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-aria/ssr': 3.9.2(react@18.3.1)
-      '@react-stately/utils': 3.9.1(react@18.3.1)
-      '@react-types/shared': 3.22.1(react@18.3.1)
-      '@swc/helpers': 0.5.3
-      clsx: 2.1.1
-      react: 18.3.1
     dev: false
 
   /@react-aria/utils@3.24.0(react@18.3.1):
@@ -3855,15 +3832,6 @@ packages:
       react: 18.3.1
     dev: false
 
-  /@react-stately/utils@3.9.1(react@18.3.1):
-    resolution: {integrity: sha512-yzw75GE0iUWiyps02BOAPTrybcsMIxEJlzXqtvllAb01O9uX5n0i3X+u2eCpj2UoDF4zS08Ps0jPgWxg8xEYtA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@swc/helpers': 0.5.3
-      react: 18.3.1
-    dev: false
-
   /@react-stately/virtualizer@3.7.0(react@18.3.1):
     resolution: {integrity: sha512-Wkh502y6mzUvjJJr30p5FLRwBaphnfmnoSnGwidamwo3HuyrDICBSlwFGPl0AmUHo1afSaLXl6j8smU48VcClA==}
     peerDependencies:
@@ -4061,14 +4029,6 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
       '@react-types/shared': 3.23.0(react@18.3.1)
-      react: 18.3.1
-    dev: false
-
-  /@react-types/shared@3.22.1(react@18.3.1):
-    resolution: {integrity: sha512-PCpa+Vo6BKnRMuOEzy5zAZ3/H5tnQg1e80khMhK2xys0j6ZqzkgQC+fHMNZ7VDFNLqqNMj/o0eVeSBDh2POjkw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
       react: 18.3.1
     dev: false
 
