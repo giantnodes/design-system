@@ -27,7 +27,7 @@ const Component: ComponentType = <T extends React.ElementType = typeof __ELEMENT
 
   const context = useMenu({ size, status })
 
-  const component = React.useMemo<MenuTriggerProps>(
+  const component = React.useMemo<Omit<MenuTriggerProps, 'children'>>(
     () => ({
       className: context.slots.menu({ className }),
       ...rest,
