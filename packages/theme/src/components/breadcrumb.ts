@@ -23,7 +23,7 @@ export const breadcrumb = tv({
         item: 'text-sm',
       },
       md: {
-        item: 'text-md',
+        item: 'text-base',
       },
       lg: {
         item: 'text-lg',

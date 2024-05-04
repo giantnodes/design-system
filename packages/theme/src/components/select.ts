@@ -41,8 +41,8 @@ export const select = tv({
         option: ['text-sm'],
       },
       lg: {
-        select: ['text-md'],
-        option: ['text-md'],
+        select: ['text-base'],
+        option: ['text-base'],
       },
     },
     status: {

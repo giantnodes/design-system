@@ -18,8 +18,8 @@ export const table = tv({
         td: ['text-sm', 'p-2'],
       },
       md: {
-        th: ['text-md', 'px-3', 'py-4'],
-        td: ['text-md', 'p-3'],
+        th: ['text-base', 'px-3', 'py-4'],
+        td: ['text-base', 'p-3'],
       },
       lg: {
         th: ['text-lg', 'px-4 py-5'],

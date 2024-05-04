@@ -15,7 +15,7 @@ export const typography = tv({
         paragraph: ['text-sm'],
       },
       md: {
-        paragraph: ['text-md'],
+        paragraph: ['text-base'],
       },
       lg: {
         paragraph: ['text-lg'],
