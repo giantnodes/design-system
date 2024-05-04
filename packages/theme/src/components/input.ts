@@ -19,8 +19,8 @@ export const input = tv({
         input: ['placeholder:text-sm'],
       },
       md: {
-        group: ['text-md'],
-        input: ['placeholder:text-md'],
+        group: ['text-base'],
+        input: ['placeholder:text-base'],
       },
       lg: {
         group: ['text-lg'],
