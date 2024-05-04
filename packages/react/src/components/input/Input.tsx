@@ -28,13 +28,13 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, status, size, variant, ...rest } = props
+    const { as, children, className, color, size, variant, ...rest } = props
 
     const Element = as || Input
 
     const context = useInputContext()
     const { slots } = useInput({
-      status: status ?? context?.status,
+      color: color ?? context?.color,
       size: size ?? context?.size,
       variant: variant ?? context?.variant,
     })

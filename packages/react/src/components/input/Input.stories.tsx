@@ -44,4 +44,30 @@ UsingGroup.args = {
   ...defaultProps,
 }
 
+export const UsingSize: StoryFn<InputGroupProps> = (args) => (
+  <div className="flex flex-col gap-2">
+    <Input.Group {...args} size="sm">
+      <Input.Addon>$</Input.Addon>
+      <Input placeholder="sm" type="text" />
+      <Input.Addon>USD</Input.Addon>
+    </Input.Group>
+
+    <Input.Group {...args} size="md">
+      <Input.Addon>$</Input.Addon>
+      <Input placeholder="md" type="text" />
+      <Input.Addon>USD</Input.Addon>
+    </Input.Group>
+
+    <Input.Group {...args} size="lg">
+      <Input.Addon>$</Input.Addon>
+      <Input placeholder="lg" type="text" />
+      <Input.Addon>USD</Input.Addon>
+    </Input.Group>
+  </div>
+)
+
+UsingSize.args = {
+  ...defaultProps,
+}
+
 export default Component
