@@ -10,9 +10,9 @@ export type UseDialogProps = DialogVariantProps
 export type UseDialogReturn = ReturnType<typeof useDialog>
 
 export const useDialog = (props: UseDialogProps) => {
-  const { blur, placement } = props
+  const { size, blur, placement } = props
 
-  const slots = React.useMemo(() => dialog({ blur, placement }), [blur, placement])
+  const slots = React.useMemo(() => dialog({ size, blur, placement }), [size, blur, placement])
 
   return {
     slots,

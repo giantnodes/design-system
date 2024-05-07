@@ -24,11 +24,11 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
 const Component: ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TElement>
 ) => {
-  const { as, children, className, blur, placement, ...rest } = props
+  const { as, children, className, size, blur, placement, ...rest } = props
 
   const Element = as ?? DialogTrigger
 
-  const context = useDialog({ blur, placement })
+  const context = useDialog({ size, blur, placement })
 
   const component = React.useMemo<Omit<DialogTriggerProps, 'children'>>(
     () => ({
