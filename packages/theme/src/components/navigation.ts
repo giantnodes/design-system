@@ -18,10 +18,8 @@ export const navigation = tv({
       'focus:outline-dashed focus:outline-offset-2 focus:outline-1 focus:outline-partition',
       '[&_svg]:hover:text-brand',
     ],
-    content: [],
     divider: ['bg-partition', 'border-partition'],
     trigger: ['flex items-center'],
-    viewport: [],
   },
   variants: {
     orientation: {
