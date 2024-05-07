@@ -8,9 +8,7 @@ import { useNavigationContext } from '@/components/navigation/use-navigation.hoo
 
 const __ELEMENT_TYPE__ = 'a'
 
-type ComponentOwnProps = LinkProps & {
-  isSelected?: boolean
-}
+type ComponentOwnProps = LinkProps
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -26,7 +24,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, isSelected, ...rest } = props
+    const { as, children, className, ...rest } = props
 
     const Element = as ?? Link
 
@@ -34,10 +32,10 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<LinkProps>(
       () => ({
-        className: slots.link({ className: className?.toString(), isSelected }),
+        className: slots.link({ className: className?.toString() }),
         ...rest,
       }),
-      [className, isSelected, rest, slots]
+      [className, rest, slots]
     )
 
     return (

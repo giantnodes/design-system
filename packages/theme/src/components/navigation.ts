@@ -61,7 +61,7 @@ export const navigation = tv({
     },
     isSelected: {
       true: {
-        link: ['bg-foreground', 'font-semibold', '[&_svg]:text-brand'],
+        item: ['bg-foreground', 'font-semibold', '[&_svg]:text-brand'],
       },
     },
   },
