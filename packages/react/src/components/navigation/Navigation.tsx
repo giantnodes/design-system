@@ -30,11 +30,11 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, orientation, position, size, variant, ...rest } = props
+    const { as, children, className, orientation, position, size, variant, isBordered, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useNavigation({ orientation, position, size, variant })
+    const context = useNavigation({ orientation, position, size, variant, isBordered })
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

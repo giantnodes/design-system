@@ -25,6 +25,9 @@ const Component: Meta<typeof Navigation> = {
       control: { type: 'select' },
       options: ['highlight'],
     },
+    isBordered: {
+      control: { type: 'boolean' },
+    },
   },
 }
 
