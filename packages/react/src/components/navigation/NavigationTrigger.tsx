@@ -32,7 +32,7 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<ButtonProps>(
       () => ({
-        className: slots.title({ className: className?.toString() }),
+        className: slots.trigger({ className: className?.toString() }),
         ...rest,
       }),
       [className, rest, slots]

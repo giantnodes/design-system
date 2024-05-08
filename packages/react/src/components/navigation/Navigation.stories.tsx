@@ -50,27 +50,25 @@ export const Horizontal: StoryFn<NavigationProps> = (args) => (
     </Navigation.Brand>
 
     <Navigation.Segment>
-      <Navigation.Item>
-        <Navigation.Link isSelected>Home</Navigation.Link>
+      <Navigation.Item isSelected>
+        <Navigation.Trigger>Home</Navigation.Trigger>
       </Navigation.Item>
       <Navigation.Item>
-        <Navigation.Link>About</Navigation.Link>
+        <Navigation.Trigger>About</Navigation.Trigger>
       </Navigation.Item>
       <Navigation.Item>
-        <Navigation.Link>Features</Navigation.Link>
+        <Navigation.Trigger>Features</Navigation.Trigger>
       </Navigation.Item>
     </Navigation.Segment>
 
     <Navigation.Segment>
       <Navigation.Item>
-        <Navigation.Link>Login</Navigation.Link>
+        <Navigation.Trigger>Login</Navigation.Trigger>
       </Navigation.Item>
       <Navigation.Item>
-        <Navigation.Link>Logout</Navigation.Link>
+        <Navigation.Trigger>Logout</Navigation.Trigger>
       </Navigation.Item>
     </Navigation.Segment>
-
-    <Navigation.Portal />
   </Navigation>
 )
 
@@ -88,26 +86,24 @@ export const Vertical: StoryFn<NavigationProps> = (args) => (
       <Navigation.Title>Your Teams</Navigation.Title>
 
       <Navigation.Item>
-        <Navigation.Link>Home</Navigation.Link>
+        <Navigation.Trigger>Home</Navigation.Trigger>
       </Navigation.Item>
       <Navigation.Item>
-        <Navigation.Link>About</Navigation.Link>
+        <Navigation.Trigger>About</Navigation.Trigger>
       </Navigation.Item>
       <Navigation.Item>
-        <Navigation.Link>Features</Navigation.Link>
+        <Navigation.Trigger>Features</Navigation.Trigger>
       </Navigation.Item>
     </Navigation.Segment>
 
     <Navigation.Segment>
       <Navigation.Item>
-        <Navigation.Link>Login</Navigation.Link>
+        <Navigation.Trigger>Login</Navigation.Trigger>
       </Navigation.Item>
       <Navigation.Item>
-        <Navigation.Link>Logout</Navigation.Link>
+        <Navigation.Trigger>Logout</Navigation.Trigger>
       </Navigation.Item>
     </Navigation.Segment>
-
-    <Navigation.Portal />
   </Navigation>
 )
 

@@ -4,11 +4,9 @@ import type { NavigationVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
 import NavigationBrand from '@/components/navigation/NavigationBrand'
-import NavigationContent from '@/components/navigation/NavigationContent'
 import NavigationDivider from '@/components/navigation/NavigationDivider'
 import NavigationItem from '@/components/navigation/NavigationItem'
 import NavigationLink from '@/components/navigation/NavigationLink'
-import NavigationPortal from '@/components/navigation/NavigationPortal'
 import NavigationSegment from '@/components/navigation/NavigationSegment'
 import NavigationTitle from '@/components/navigation/NavigationTitle'
 import NavigationTrigger from '@/components/navigation/NavigationTrigger'
@@ -59,11 +57,9 @@ const Component: ComponentType = React.forwardRef(
 export type { ComponentOwnProps as NavigationOwnProps, ComponentProps as NavigationProps }
 export default Object.assign(Component, {
   Brand: NavigationBrand,
-  Content: NavigationContent,
   Divider: NavigationDivider,
   Item: NavigationItem,
   Link: NavigationLink,
-  Portal: NavigationPortal,
   Segment: NavigationSegment,
   Title: NavigationTitle,
   Trigger: NavigationTrigger,
