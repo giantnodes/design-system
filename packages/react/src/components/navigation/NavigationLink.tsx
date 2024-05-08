@@ -32,7 +32,7 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<LinkProps>(
       () => ({
-        className: slots.link({ className: className?.toString() }),
+        className: slots.trigger({ className: className?.toString() }),
         ...rest,
       }),
       [className, rest, slots]

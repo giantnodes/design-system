@@ -9,23 +9,19 @@ export const navigation = tv({
     brand: ['flex flex-row justify-center flex-nowrap shrink-0'],
     segment: ['flex gap-3', 'list-none'],
     title: ['font-semibold'],
-    item: [
-      'flex items-center gap-x-3 grow',
-      'select-none',
-      'transition-all duration-200',
-      'focus:outline-dashed focus:outline-offset-2 focus:outline-1 focus:outline-partition',
-      '[&_svg]:hover:text-brand',
-    ],
-    link: [],
+    item: ['flex', 'select-none', 'transition-all duration-200', '[&_svg]:hover:text-brand'],
     divider: ['bg-partition', 'border-partition'],
-    trigger: ['flex items-center'],
+    trigger: [
+      'flex items-center grow gap-x-3',
+      'p-2',
+      'focus:outline-dashed focus:outline-offset-2 focus:outline-1 focus:outline-partition',
+    ],
   },
   variants: {
     orientation: {
       horizontal: {
         wrapper: ['flex-row items-center', 'w-full', 'px-4 md:px-6'],
         segment: ['items-center'],
-        link: ['py-2 px-6'],
         divider: ['h-full', 'w-px', 'mx-2'],
         trigger: ['py-2 px-6'],
       },
@@ -56,7 +52,8 @@ export const navigation = tv({
     },
     variant: {
       highlight: {
-        item: ['rounded-md', 'hover:bg-foreground'],
+        item: ['rounded-md hover:bg-foreground'],
+        trigger: ['rounded-md'],
       },
     },
     isBordered: {
