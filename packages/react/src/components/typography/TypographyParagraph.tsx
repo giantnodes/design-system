@@ -22,11 +22,11 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, variant, ...rest } = props
+    const { as, children, className, size, variant, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const slots = React.useMemo(() => typography({ variant }), [variant])
+    const slots = React.useMemo(() => typography({ size, variant }), [size, variant])
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
