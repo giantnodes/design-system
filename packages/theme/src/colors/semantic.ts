@@ -3,7 +3,7 @@ import colors from 'tailwindcss/colors'
 import { brand } from '@/colors/brand'
 import { seashell } from '@/colors/seashell'
 import { shark } from '@/colors/shark'
-import { flip } from '@/utils/flip'
+import { flip } from '@/utilities/flip'
 
 export const semantic = {
   light: {
