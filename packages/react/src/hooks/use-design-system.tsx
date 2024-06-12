@@ -1,4 +1,7 @@
+import type { ThemeProviderProps } from 'next-themes/dist/types'
+
 import { RouterProvider } from '@react-aria/utils'
+import { ThemeProvider } from 'next-themes'
 
 export type UseDesignSystemProps = React.PropsWithChildren & {
   /**
@@ -16,14 +19,14 @@ export type UseDesignSystemProps = React.PropsWithChildren & {
    * @returns The converted native HTML href.
    */
   useHref?: (href: string) => string
-}
+} & ThemeProviderProps
 
-export const DesignSystemProvider: React.FC<UseDesignSystemProps> = ({ navigate, children }) => {
+export const DesignSystemProvider: React.FC<UseDesignSystemProps> = ({ navigate, children, ...rest }) => {
   let contents = children
 
   if (navigate) {
     contents = <RouterProvider navigate={navigate}>{contents}</RouterProvider>
   }
 
-  return contents
+  return <ThemeProvider {...rest}>{contents}</ThemeProvider>
 }
