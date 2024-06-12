@@ -72,8 +72,8 @@ importers:
         specifier: workspace:*
         version: link:../theme
       '@react-aria/utils':
-        specifier: ^3.24.0
-        version: 3.24.0(react@18.3.1)
+        specifier: ^3.24.1
+        version: 3.24.1(react@18.3.1)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -4123,19 +4123,6 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /@react-aria/utils@3.24.0(react@18.3.1):
-    resolution: {integrity: sha512-JAxkPhK5fCvFVNY2YG3TW3m1nTzwRcbz7iyTSkUzLFat4N4LZ7Kzh7NMHsgeE/oMOxd8zLY+XsUxMu/E/2GujA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-aria/ssr': 3.9.3(react@18.3.1)
-      '@react-stately/utils': 3.10.0(react@18.3.1)
-      '@react-types/shared': 3.23.0(react@18.3.1)
-      '@swc/helpers': 0.5.3
-      clsx: 2.1.1
-      react: 18.3.1
-    dev: false
-
   /@react-aria/utils@3.24.1(react@18.3.1):
     resolution: {integrity: sha512-O3s9qhPMd6n42x9sKeJ3lhu5V1Tlnzhu6Yk8QOvDuXf7UGuUjXf9mzfHJt1dYzID4l9Fwm8toczBzPM9t0jc8Q==}
     peerDependencies:
@@ -4481,15 +4468,6 @@ packages:
       '@react-stately/selection': 3.15.1(react@18.3.1)
       '@react-stately/utils': 3.10.1(react@18.3.1)
       '@react-types/shared': 3.23.1(react@18.3.1)
-      '@swc/helpers': 0.5.3
-      react: 18.3.1
-    dev: false
-
-  /@react-stately/utils@3.10.0(react@18.3.1):
-    resolution: {integrity: sha512-nji2i9fTYg65ZWx/3r11zR1F2tGya+mBubRCbMTwHyRnsSLFZaeq/W6lmrOyIy1uMJKBNKLJpqfmpT4x7rw6pg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
       '@swc/helpers': 0.5.3
       react: 18.3.1
     dev: false
@@ -11782,7 +11760,7 @@ packages:
       '@react-aria/tag': 3.4.0(react-dom@18.3.1)(react@18.3.1)
       '@react-aria/textfield': 3.14.4(react@18.3.1)
       '@react-aria/tooltip': 3.7.3(react@18.3.1)
-      '@react-aria/utils': 3.24.0(react@18.3.1)
+      '@react-aria/utils': 3.24.1(react@18.3.1)
       '@react-aria/visually-hidden': 3.8.11(react@18.3.1)
       '@react-types/shared': 3.23.0(react@18.3.1)
       react: 18.3.1
