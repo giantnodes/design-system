@@ -1,3 +1,5 @@
+'use client'
+
 import type { InputVariantProps } from '@giantnodes/theme'
 
 import { input } from '@giantnodes/theme'

@@ -4,4 +4,4 @@ export type * from '@/components/avatar/AvatarIcon'
 export type * from '@/components/avatar/AvatarImage'
 export type * from '@/components/avatar/AvatarNotification'
 
-export { default as Avatar } from '@/components/avatar/Avatar'
+export * as Avatar from '@/components/avatar/component.parts'

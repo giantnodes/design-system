@@ -1,0 +1,5 @@
+export { default as Root } from '@/components/alert/Alert'
+export { default as Body } from '@/components/alert/AlertBody'
+export { default as Heading } from '@/components/alert/AlertHeading'
+export { default as Item } from '@/components/alert/AlertItem'
+export { default as List } from '@/components/alert/AlertList'

@@ -4,4 +4,4 @@ export type * from '@/components/form/FormFeedback'
 export type * from '@/components/form/FormGroup'
 export type * from '@/components/form/FormLabel'
 
-export { default as Form } from '@/components/form/Form'
+export * as Form from '@/components/form/component.parts'

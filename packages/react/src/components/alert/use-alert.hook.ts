@@ -1,3 +1,5 @@
+'use client'
+
 import type { AlertVariantProps } from '@giantnodes/theme'
 
 import { alert } from '@giantnodes/theme'

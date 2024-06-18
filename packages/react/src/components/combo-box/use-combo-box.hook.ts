@@ -1,3 +1,5 @@
+'use client'
+
 import type { ComboBoxVariantProps } from '@giantnodes/theme'
 
 import { combobox } from '@giantnodes/theme'

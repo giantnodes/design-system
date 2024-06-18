@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { LinkVariantProps } from '@giantnodes/theme'
 import type { LinkProps } from 'react-aria-components'

@@ -1,24 +1,22 @@
 import type { DialogProps } from '@/components/dialog'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { Button } from '@/components/button'
-import { Card } from '@/components/card'
-import { Dialog } from '@/components/dialog'
+import { Button, Card, Dialog } from '@/components'
 
-const Component: Meta<typeof Dialog> = {
+const Component: Meta<typeof Dialog.Root> = {
   title: 'Components/Dialog',
-  component: Dialog,
+  component: Dialog.Root,
 }
 
 const defaultProps = {}
 
 export const Default: StoryFn<DialogProps> = (args) => (
-  <Dialog {...args}>
+  <Dialog.Root {...args}>
     <Button>Open</Button>
 
     <Dialog.Content>
       {({ close }) => (
-        <Card>
+        <Card.Root>
           <Card.Header>Dialog</Card.Header>
 
           <Card.Body>Dialog Content</Card.Body>
@@ -26,10 +24,10 @@ export const Default: StoryFn<DialogProps> = (args) => (
           <Card.Footer>
             <Button onClick={close}>Close</Button>
           </Card.Footer>
-        </Card>
+        </Card.Root>
       )}
     </Dialog.Content>
-  </Dialog>
+  </Dialog.Root>
 )
 
 Default.args = {

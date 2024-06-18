@@ -1,12 +1,10 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { AlertVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
-import AlertBody from '@/components/alert/AlertBody'
-import AlertHeading from '@/components/alert/AlertHeading'
-import AlertItem from '@/components/alert/AlertItem'
-import AlertList from '@/components/alert/AlertList'
 import { AlertContext, useAlert } from '@/components/alert/use-alert.hook'
 
 const __ELEMENT_TYPE__ = 'div'
@@ -52,9 +50,4 @@ const Component: ComponentType = React.forwardRef(
 )
 
 export type { ComponentOwnProps as AlertOwnProps, ComponentProps as AlertProps }
-export default Object.assign(Component, {
-  Body: AlertBody,
-  Heading: AlertHeading,
-  Item: AlertItem,
-  List: AlertList,
-})
+export default Component

@@ -1,4 +1,7 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
+import type { NavigationVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
@@ -6,7 +9,7 @@ import { useNavigationContext } from '@/components/navigation/use-navigation.hoo
 
 const __ELEMENT_TYPE__ = 'li'
 
-type ComponentOwnProps = {
+type ComponentOwnProps = Pick<NavigationVariantProps, 'variant'> & {
   isSelected?: boolean
 }
 
@@ -24,7 +27,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, isSelected, ...rest } = props
+    const { as, children, className, variant, isSelected, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
@@ -32,10 +35,10 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: slots.item({ className, isSelected }),
+        className: slots.item({ className, variant, isSelected }),
         ...rest,
       }),
-      [className, isSelected, rest, slots]
+      [className, isSelected, rest, slots, variant]
     )
 
     return (

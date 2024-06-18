@@ -1,3 +1,5 @@
+'use client'
+
 import type { MenuVariantProps } from '@giantnodes/theme'
 
 import { menu } from '@giantnodes/theme'

@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { MenuVariantProps } from '@giantnodes/theme'
 import type { MenuTriggerProps } from 'react-aria-components'
@@ -5,9 +7,6 @@ import type { MenuTriggerProps } from 'react-aria-components'
 import React from 'react'
 import { MenuTrigger } from 'react-aria-components'
 
-import MenuItem from '@/components/menu/MenuItem'
-import MenuList from '@/components/menu/MenuList'
-import MenuPopover from '@/components/menu/MenuPopover'
 import { MenuContext, useMenu } from '@/components/menu/use-menu.hook'
 
 const __ELEMENT_TYPE__ = 'div'
@@ -48,8 +47,4 @@ const Component: ComponentType = <TElement extends React.ElementType = typeof __
 }
 
 export type { ComponentOwnProps as MenuOwnProps, ComponentProps as MenuProps }
-export default Object.assign(Component, {
-  Popover: MenuPopover,
-  List: MenuList,
-  Item: MenuItem,
-})
+export default Component

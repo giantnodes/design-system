@@ -3,11 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { avatar } from '@giantnodes/theme'
 
-import { Avatar } from '@/components/avatar'
+import { Avatar } from '@/components'
 
-const Component: Meta<typeof Avatar> = {
+const Component: Meta<typeof Avatar.Root> = {
   title: 'Components/Avatar',
-  component: Avatar,
+  component: Avatar.Root,
   argTypes: {
     color: {
       control: { type: 'select' },
@@ -27,9 +27,9 @@ const defaultProps = {
 }
 
 export const Default: StoryFn<AvatarProps> = (args) => (
-  <Avatar {...args}>
+  <Avatar.Root {...args}>
     <Avatar.Image alt="avatar image" src="https://api.dicebear.com/8.x/personas/svg" />
-  </Avatar>
+  </Avatar.Root>
 )
 
 Default.args = {
@@ -38,26 +38,26 @@ Default.args = {
 
 export const UsingGroup: StoryFn<AvatarGroupProps> = (args) => (
   <Avatar.Group {...args}>
-    <Avatar>
+    <Avatar.Root>
       <Avatar.Image alt="avatar 1" src="https://api.dicebear.com/8.x/personas/svg?seed=avatar-1" />
       <Avatar.Notification />
-    </Avatar>
-    <Avatar>
+    </Avatar.Root>
+    <Avatar.Root>
       <Avatar.Image alt="avatar 2" src="https://api.dicebear.com/8.x/personas/svg?seed=avatar-2" />
       <Avatar.Notification />
-    </Avatar>
-    <Avatar>
+    </Avatar.Root>
+    <Avatar.Root>
       <Avatar.Image alt="avatar 3" src="https://api.dicebear.com/8.x/personas/svg?seed=avatar-3" />
       <Avatar.Notification />
-    </Avatar>
-    <Avatar>
+    </Avatar.Root>
+    <Avatar.Root>
       <Avatar.Image alt="avatar 4" src="https://api.dicebear.com/8.x/personas/svg?seed=avatar-4" />
       <Avatar.Notification />
-    </Avatar>
-    <Avatar>
+    </Avatar.Root>
+    <Avatar.Root>
       <Avatar.Image alt="avatar 5" src="https://api.dicebear.com/8.x/personas/svg?seed=avatar-5" />
       <Avatar.Notification />
-    </Avatar>
+    </Avatar.Root>
   </Avatar.Group>
 )
 
@@ -65,14 +65,14 @@ UsingGroup.args = {
   ...defaultProps,
 }
 
-export const UsingText: StoryFn<AvatarProps> = (args) => <Avatar {...args}>JP</Avatar>
+export const UsingText: StoryFn<AvatarProps> = (args) => <Avatar.Root {...args}>JP</Avatar.Root>
 
 UsingText.args = {
   ...defaultProps,
 }
 
 export const UsingIcon: StoryFn<AvatarProps> = (args) => (
-  <Avatar {...args}>
+  <Avatar.Root {...args}>
     <Avatar.Icon
       icon={
         <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
@@ -81,7 +81,7 @@ export const UsingIcon: StoryFn<AvatarProps> = (args) => (
       }
     />
     <Avatar.Notification />
-  </Avatar>
+  </Avatar.Root>
 )
 
 UsingIcon.args = {
@@ -89,10 +89,10 @@ UsingIcon.args = {
 }
 
 export const UsingNotification: StoryFn<AvatarProps> = (args) => (
-  <Avatar {...args}>
+  <Avatar.Root {...args}>
     <Avatar.Image alt="avatar image 1" src="https://api.dicebear.com/8.x/personas/svg" />
     <Avatar.Notification />
-  </Avatar>
+  </Avatar.Root>
 )
 
 UsingNotification.args = {

@@ -1,12 +1,10 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { AvatarVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
-import AvatarGroup from '@/components/avatar/AvatarGroup'
-import AvatarIcon from '@/components/avatar/AvatarIcon'
-import AvatarImage from '@/components/avatar/AvatarImage'
-import AvatarNotification from '@/components/avatar/AvatarNotification'
 import { AvatarContext, useAvatar, useAvatarContext } from '@/components/avatar/use-avatar.hook'
 
 const __ELEMENT_TYPE__ = 'span'
@@ -58,9 +56,4 @@ const Component: ComponentType = React.forwardRef(
 )
 
 export type { ComponentOwnProps as AvatarOwnProps, ComponentProps as AvatarProps }
-export default Object.assign(Component, {
-  Group: AvatarGroup,
-  Image: AvatarImage,
-  Icon: AvatarIcon,
-  Notification: AvatarNotification,
-})
+export default Component

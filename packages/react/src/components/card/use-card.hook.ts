@@ -1,3 +1,5 @@
+'use client'
+
 import { card } from '@giantnodes/theme'
 import React from 'react'
 

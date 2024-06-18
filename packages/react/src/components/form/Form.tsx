@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { FormVariantProps } from '@giantnodes/theme'
 import type { FormProps } from 'react-aria-components'
@@ -5,11 +7,6 @@ import type { FormProps } from 'react-aria-components'
 import { form } from '@giantnodes/theme'
 import React from 'react'
 import { Form } from 'react-aria-components'
-
-import FormCaption from '@/components/form/FormCaption'
-import FormFeedback from '@/components/form/FormFeedback'
-import FormGroup from '@/components/form/FormGroup'
-import FormLabel from '@/components/form/FormLabel'
 
 const __ELEMENT_TYPE__ = 'form'
 
@@ -52,9 +49,4 @@ const Component: ComponentType = React.forwardRef(
 )
 
 export type { ComponentOwnProps as FormOwnProps, ComponentProps as FormProps }
-export default Object.assign(Component, {
-  Caption: FormCaption,
-  Feedback: FormFeedback,
-  Group: FormGroup,
-  Label: FormLabel,
-})
+export default Component

@@ -4,13 +4,15 @@ import { defineConfig } from 'tsup'
 
 const config: Options = {
   clean: true,
+  bundle: false,
+  minify: false,
+  splitting: false,
+  sourcemap: true,
   dts: true,
-  minify: true,
   outDir: 'dist',
-  target: 'es2019',
-  entry: ['src/**/*.ts?(x)'],
+  target: 'es2020',
+  entry: ['src/**/*.ts*', '!src/**/*.stories.*'],
   format: ['cjs', 'esm'],
-  banner: { js: '"use client";' },
 }
 
 export { config }

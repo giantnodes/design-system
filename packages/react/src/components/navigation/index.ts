@@ -7,4 +7,4 @@ export type * from '@/components/navigation/NavigationSegment'
 export type * from '@/components/navigation/NavigationTitle'
 export type * from '@/components/navigation/NavigationTrigger'
 
-export { default as Navigation } from '@/components/navigation/Navigation'
+export * as Navigation from '@/components/navigation/component.parts'

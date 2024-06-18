@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { TypographyVariantProps } from '@giantnodes/theme'
 

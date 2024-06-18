@@ -1,3 +1,5 @@
+'use client'
+
 import type { ProgressVariantProps } from '@giantnodes/theme'
 
 import { progress } from '@giantnodes/theme'

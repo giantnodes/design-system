@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { BreadcrumbVariantProps } from '@giantnodes/theme'
 import type { BreadcrumbsProps } from 'react-aria-components'
@@ -5,7 +7,6 @@ import type { BreadcrumbsProps } from 'react-aria-components'
 import React from 'react'
 import { Breadcrumbs } from 'react-aria-components'
 
-import BreadcrumbItem from '@/components/breadcrumb/BreadcrumbItem'
 import { BreadcrumbContext, useBreadcrumb } from '@/components/breadcrumb/use-breadcrumb.hook'
 
 const __ELEMENT_TYPE__ = 'ol'
@@ -51,6 +52,4 @@ const Component: ComponentType = React.forwardRef(
 )
 
 export type { ComponentOwnProps as BreadcrumbOwnProps, ComponentProps as BreadcrumbProps }
-export default Object.assign(Component, {
-  Item: BreadcrumbItem,
-})
+export default Component

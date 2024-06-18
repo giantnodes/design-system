@@ -1,3 +1,5 @@
+'use client'
+
 import type { NavigationVariantProps } from '@giantnodes/theme'
 
 import { navigation } from '@giantnodes/theme'

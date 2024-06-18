@@ -3,12 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { select } from '@giantnodes/theme'
 
-import { Form } from '@/components/form'
-import { Select } from '@/components/select'
+import { Form, Select } from '@/components'
 
-const Component: Meta<typeof Select> = {
+const Component: Meta<typeof Select.Root> = {
   title: 'Components/Select',
-  component: Select,
+  component: Select.Root,
   argTypes: {
     size: {
       control: { type: 'select' },
@@ -26,14 +25,14 @@ const defaultProps = {
 }
 
 export const Default: StoryFn<SelectProps<object>> = (args) => (
-  <Select {...args}>
+  <Select.Root {...args}>
     <Select.Option>Aardvark</Select.Option>
     <Select.Option>Cat</Select.Option>
     <Select.Option>Dog</Select.Option>
     <Select.Option>Kangaroo</Select.Option>
     <Select.Option>Panda</Select.Option>
     <Select.Option>Snake</Select.Option>
-  </Select>
+  </Select.Root>
 )
 
 Default.args = {
@@ -42,32 +41,32 @@ Default.args = {
 
 export const UsingSize: StoryFn<SelectProps<object>> = (args) => (
   <div className="flex flex-col gap-2">
-    <Select {...args} placeholder="sm" size="sm">
+    <Select.Root {...args} placeholder="sm" size="sm">
       <Select.Option>Aardvark</Select.Option>
       <Select.Option>Cat</Select.Option>
       <Select.Option>Dog</Select.Option>
       <Select.Option>Kangaroo</Select.Option>
       <Select.Option>Panda</Select.Option>
       <Select.Option>Snake</Select.Option>
-    </Select>
+    </Select.Root>
 
-    <Select {...args} placeholder="md" size="md">
+    <Select.Root {...args} placeholder="md" size="md">
       <Select.Option>Aardvark</Select.Option>
       <Select.Option>Cat</Select.Option>
       <Select.Option>Dog</Select.Option>
       <Select.Option>Kangaroo</Select.Option>
       <Select.Option>Panda</Select.Option>
       <Select.Option>Snake</Select.Option>
-    </Select>
+    </Select.Root>
 
-    <Select {...args} placeholder="lg" size="lg">
+    <Select.Root {...args} placeholder="lg" size="lg">
       <Select.Option>Aardvark</Select.Option>
       <Select.Option>Cat</Select.Option>
       <Select.Option>Dog</Select.Option>
       <Select.Option>Kangaroo</Select.Option>
       <Select.Option>Panda</Select.Option>
       <Select.Option>Snake</Select.Option>
-    </Select>
+    </Select.Root>
   </div>
 )
 
@@ -76,20 +75,20 @@ UsingSize.args = {
 }
 
 export const UsingForm: StoryFn<SelectProps<object>> = (args) => (
-  <Form>
+  <Form.Root>
     <Form.Group name="name">
       <Form.Label>Name</Form.Label>
-      <Select {...args}>
+      <Select.Root {...args}>
         <Select.Option>Aardvark</Select.Option>
         <Select.Option>Cat</Select.Option>
         <Select.Option>Dog</Select.Option>
         <Select.Option>Kangaroo</Select.Option>
         <Select.Option>Panda</Select.Option>
         <Select.Option>Snake</Select.Option>
-      </Select>
+      </Select.Root>
       <Form.Feedback type="error">an error occured</Form.Feedback>
     </Form.Group>
-  </Form>
+  </Form.Root>
 )
 
 UsingForm.args = {

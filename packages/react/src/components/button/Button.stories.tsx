@@ -3,8 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { button } from '@giantnodes/theme'
 
-import { Button } from '@/components/button'
-import Link from '@/components/link/Link'
+import { Button, Link } from '@/components'
 
 const Component: Meta<typeof Button> = {
   title: 'Components/Button',
