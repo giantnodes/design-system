@@ -1,3 +1,5 @@
+'use client'
+
 import type { DialogVariantProps } from '@giantnodes/theme'
 
 import { dialog } from '@giantnodes/theme'

@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { InputVariantProps } from '@giantnodes/theme'
 import type { InputProps } from 'react-aria-components'
@@ -6,8 +8,6 @@ import React from 'react'
 import { Input } from 'react-aria-components'
 
 import { useFormGroupContext } from '@/components/form/use-form-group.hook'
-import InputAddon from '@/components/input/InputAddon'
-import InputGroup from '@/components/input/InputGroup'
 import { useInput, useInputContext } from '@/components/input/use-input.hook'
 
 const __ELEMENT_TYPE__ = 'input'
@@ -28,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, size, variant, ...rest } = props
+    const { as, children, className, color, size, shape, variant, ...rest } = props
 
     const Element = as || Input
 
@@ -36,6 +36,7 @@ const Component: ComponentType = React.forwardRef(
     const { slots } = useInput({
       color: color ?? context?.color,
       size: size ?? context?.size,
+      shape: shape ?? context.shape,
       variant: variant ?? context?.variant,
     })
 
@@ -62,7 +63,4 @@ const Component: ComponentType = React.forwardRef(
 )
 
 export type { ComponentOwnProps as InputOwnProps, ComponentProps as InputProps }
-export default Object.assign(Component, {
-  Addon: InputAddon,
-  Group: InputGroup,
-})
+export default Component

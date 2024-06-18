@@ -3,11 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { alert } from '@giantnodes/theme'
 
-import { Alert } from '@/components/alert'
+import { Alert } from '@/components'
 
-const Component: Meta<typeof Alert> = {
+const Component: Meta<typeof Alert.Root> = {
   title: 'Components/Alert',
-  component: Alert,
+  component: Alert.Root,
   argTypes: {
     color: {
       control: { type: 'select' },
@@ -21,7 +21,7 @@ const defaultProps = {
 }
 
 export const Default: StoryFn<AlertProps> = (args) => (
-  <Alert {...args}>
+  <Alert.Root {...args}>
     <Alert.Body>
       <Alert.Heading>There were 2 errors with your submission</Alert.Heading>
       <Alert.List>
@@ -29,7 +29,7 @@ export const Default: StoryFn<AlertProps> = (args) => (
         <Alert.Item>Your password must include at least one pro wrestling finishing move</Alert.Item>
       </Alert.List>
     </Alert.Body>
-  </Alert>
+  </Alert.Root>
 )
 
 Default.args = {

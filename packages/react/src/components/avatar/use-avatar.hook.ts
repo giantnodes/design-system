@@ -1,3 +1,5 @@
+'use client'
+
 import type { AvatarVariantProps } from '@giantnodes/theme'
 
 import { avatar } from '@giantnodes/theme'

@@ -3,11 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { navigation } from '@giantnodes/theme'
 
-import { Navigation } from '@/components/navigation'
+import { Navigation } from '@/components'
 
-const Component: Meta<typeof Navigation> = {
+const Component: Meta<typeof Navigation.Root> = {
   title: 'Components/Navigation',
-  component: Navigation,
+  component: Navigation.Root,
   argTypes: {
     orientation: {
       control: { type: 'select' },
@@ -47,7 +47,7 @@ const AcmeLogo = () => (
 )
 
 export const Horizontal: StoryFn<NavigationProps> = (args) => (
-  <Navigation {...args} orientation="horizontal">
+  <Navigation.Root {...args} orientation="horizontal">
     <Navigation.Brand>
       <AcmeLogo />
     </Navigation.Brand>
@@ -72,7 +72,7 @@ export const Horizontal: StoryFn<NavigationProps> = (args) => (
         <Navigation.Trigger>Logout</Navigation.Trigger>
       </Navigation.Item>
     </Navigation.Segment>
-  </Navigation>
+  </Navigation.Root>
 )
 
 Horizontal.args = {
@@ -80,7 +80,7 @@ Horizontal.args = {
 }
 
 export const Vertical: StoryFn<NavigationProps> = (args) => (
-  <Navigation {...args} orientation="vertical" variant="highlight">
+  <Navigation.Root {...args} orientation="vertical" variant="highlight">
     <Navigation.Brand>
       <AcmeLogo />
     </Navigation.Brand>
@@ -107,7 +107,7 @@ export const Vertical: StoryFn<NavigationProps> = (args) => (
         <Navigation.Trigger>Logout</Navigation.Trigger>
       </Navigation.Item>
     </Navigation.Segment>
-  </Navigation>
+  </Navigation.Root>
 )
 
 Vertical.args = {

@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { Override } from '@/utilities/types'
 import type { SelectVariantProps } from '@giantnodes/theme'
@@ -7,7 +9,6 @@ import React from 'react'
 import { Button, ListBox, Popover, Select } from 'react-aria-components'
 
 import { useFormGroupContext } from '@/components/form/use-form-group.hook'
-import SelectOption from '@/components/select/SelectOption'
 import SelectValue from '@/components/select/SelectValue'
 import { SelectContext, useSelect } from '@/components/select/use-select.hook'
 
@@ -31,6 +32,7 @@ type ComponentOwnProps<TData extends object> = SelectVariantProps &
   OveriddenSelectProps<TData> &
   OveriddenListBoxProps<TData> & {
     placement?: 'top' | 'bottom'
+    icon?: React.ReactNode
   }
 
 type ComponentProps<
@@ -51,6 +53,7 @@ const Component: ComponentType = React.forwardRef(
       as,
       children,
       className,
+      icon,
       items,
       placeholder,
       behavior,
@@ -132,22 +135,24 @@ const Component: ComponentType = React.forwardRef(
           <Button {...button}>
             <SelectValue />
 
-            <svg
-              aria-hidden="true"
-              className={context.slots.icon()}
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 0h24v24H0z" fill="none" stroke="none" />
-              <path d="M6 9l6 6l6 -6" />
-            </svg>
+            {icon ?? (
+              <svg
+                aria-hidden="true"
+                className={context.slots.icon()}
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h24v24H0z" fill="none" stroke="none" />
+                <path d="M6 9l6 6l6 -6" />
+              </svg>
+            )}
           </Button>
 
           <Popover {...popover}>
@@ -160,6 +165,4 @@ const Component: ComponentType = React.forwardRef(
 )
 
 export type { ComponentOwnProps as SelectOwnProps, ComponentProps as SelectProps }
-export default Object.assign(Component, {
-  Option: SelectOption,
-})
+export default Component

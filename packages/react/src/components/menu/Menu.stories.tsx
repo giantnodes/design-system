@@ -3,12 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { menu } from '@giantnodes/theme'
 
-import { Button } from '@/components/button'
-import { Menu } from '@/components/menu'
+import { Button, Menu } from '@/components'
 
-const Component: Meta<typeof Menu> = {
+const Component: Meta<typeof Menu.Root> = {
   title: 'Components/Menu',
-  component: Menu,
+  component: Menu.Root,
   argTypes: {
     size: {
       control: { type: 'select' },
@@ -26,7 +25,7 @@ const defaultProps = {
 }
 
 export const Default: StoryFn<MenuProps> = (args) => (
-  <Menu {...args}>
+  <Menu.Root {...args}>
     <Button>Open</Button>
 
     <Menu.Popover placement="bottom left">
@@ -36,7 +35,7 @@ export const Default: StoryFn<MenuProps> = (args) => (
         <Menu.Item>Third</Menu.Item>
       </Menu.List>
     </Menu.Popover>
-  </Menu>
+  </Menu.Root>
 )
 
 Default.args = {

@@ -1,3 +1,5 @@
+'use client'
+
 import type { BreadcrumbVariantProps } from '@giantnodes/theme'
 
 import { breadcrumb } from '@giantnodes/theme'

@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 
 import { HeadingLevelContext, useHeadingLevel } from './use-heading-level.hook'

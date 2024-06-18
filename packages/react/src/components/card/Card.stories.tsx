@@ -3,11 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { card } from '@giantnodes/theme'
 
-import { Card } from '@/components/card'
+import { Card } from '@/components'
 
-const Component: Meta<typeof Card> = {
+const Component: Meta<typeof Card.Root> = {
   title: 'Components/Card',
-  component: Card,
+  component: Card.Root,
 }
 
 const defaultProps = {
@@ -15,7 +15,7 @@ const defaultProps = {
 }
 
 export const Default: StoryFn<CardProps> = (args) => (
-  <Card {...args}>
+  <Card.Root {...args}>
     <Card.Header>Lorem ipsum dolor sit amet.</Card.Header>
     <Card.Body>
       Quisque in purus elit. Vivamus tincidunt eget leo ac consectetur. Cras non est nec nibh cursus malesuada. Sed id
@@ -27,7 +27,7 @@ export const Default: StoryFn<CardProps> = (args) => (
       hac habitasse platea dictumst.
     </Card.Body>
     <Card.Footer>Lorem ipsum dolor sit amet.</Card.Footer>
-  </Card>
+  </Card.Root>
 )
 
 Default.args = {

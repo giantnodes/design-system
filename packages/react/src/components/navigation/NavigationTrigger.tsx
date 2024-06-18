@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { ButtonProps } from 'react-aria-components'
 

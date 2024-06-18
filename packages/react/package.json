@@ -15,7 +15,7 @@
     "url": "ssh://git@github.com/giantnodes/design-system.git"
   },
   "scripts": {
-    "build": "tsup src",
+    "build": "tsup src && resolve-tspaths -o dist",
     "---": "",
     "lint:eslint": "eslint src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
     "lint:prettier": "pretty-quick 'src/**/*.{cjs,js,jsx,mjs,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}'",
@@ -59,6 +59,7 @@
     "prop-types": "15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "resolve-tspaths": "^0.8.19",
     "storybook": "^8.0.10",
     "tailwindcss": "^3.4.3",
     "ts-jest": "^29.1.2",

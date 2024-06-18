@@ -1,3 +1,5 @@
+'use client'
+
 import type { FeedbackType } from '@/components/form/FormFeedback'
 import type { ChangeHandler } from '@/utilities/types'
 import type { FormVariantProps } from '@giantnodes/theme'

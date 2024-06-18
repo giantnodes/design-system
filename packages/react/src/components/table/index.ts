@@ -5,4 +5,4 @@ export type * from '@/components/table/TableColumn'
 export type * from '@/components/table/TableHead'
 export type * from '@/components/table/TableRow'
 
-export { default as Table } from '@/components/table/Table'
+export * as Table from '@/components/table/component.parts'

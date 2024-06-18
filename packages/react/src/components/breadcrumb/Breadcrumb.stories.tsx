@@ -3,11 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { breadcrumb } from '@giantnodes/theme'
 
-import { Breadcrumb } from '@/components/breadcrumb'
+import { Breadcrumb } from '@/components'
 
-const Component: Meta<typeof Breadcrumb> = {
+const Component: Meta<typeof Breadcrumb.Root> = {
   title: 'Components/Breadcrumb',
-  component: Breadcrumb,
+  component: Breadcrumb.Root,
 }
 
 const defaultProps = {
@@ -15,11 +15,11 @@ const defaultProps = {
 }
 
 export const Default: StoryFn<BreadcrumbProps<object>> = (args) => (
-  <Breadcrumb {...args}>
+  <Breadcrumb.Root {...args}>
     <Breadcrumb.Item href="/">Project</Breadcrumb.Item>
     <Breadcrumb.Item href="/">Giantnodes</Breadcrumb.Item>
     <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
-  </Breadcrumb>
+  </Breadcrumb.Root>
 )
 
 Default.args = {

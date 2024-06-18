@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { typography } from '@giantnodes/theme'
 
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components'
 
 const Component: Meta<typeof Typography> = {
   title: 'Components/Typography',

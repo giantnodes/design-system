@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { ToggleVariantProps } from '@giantnodes/theme'
 import type { SwitchProps } from 'react-aria-components'

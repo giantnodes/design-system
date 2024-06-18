@@ -1,3 +1,5 @@
+'use client'
+
 import type { TableVariantProps } from '@giantnodes/theme'
 
 import { table } from '@giantnodes/theme'

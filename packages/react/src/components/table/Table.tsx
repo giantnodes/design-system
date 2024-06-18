@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { TableVariantProps } from '@giantnodes/theme'
 import type { TableProps } from 'react-aria-components'
@@ -5,11 +7,6 @@ import type { TableProps } from 'react-aria-components'
 import React from 'react'
 import { Table } from 'react-aria-components'
 
-import TableBody from '@/components/table/TableBody'
-import TableCell from '@/components/table/TableCell'
-import TableColumn from '@/components/table/TableColumn'
-import TableHead from '@/components/table/TableHead'
-import TableRow from '@/components/table/TableRow'
 import { TableContext, useTable } from '@/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'table'
@@ -61,10 +58,4 @@ const Component: ComponentType = React.forwardRef(
 )
 
 export type { ComponentOwnProps as TableOwnProps, ComponentProps as TableProps }
-export default Object.assign(Component, {
-  Body: TableBody,
-  Cell: TableCell,
-  Column: TableColumn,
-  Head: TableHead,
-  Row: TableRow,
-})
+export default Component

@@ -1,3 +1,5 @@
+'use client'
+
 import type { InputVariantProps } from '@giantnodes/theme'
 
 import { input } from '@giantnodes/theme'
@@ -10,14 +12,15 @@ type UseInputProps = InputVariantProps
 type UseInputReturn = ReturnType<typeof useInput>
 
 export const useInput = (props: UseInputProps) => {
-  const { color, size, variant } = props
+  const { color, size, shape, variant } = props
 
-  const slots = React.useMemo(() => input({ color, size, variant }), [color, size, variant])
+  const slots = React.useMemo(() => input({ color, size, shape, variant }), [color, size, shape, variant])
 
   return {
     slots,
     color,
     size,
+    shape,
     variant,
   }
 }

@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { toggle } from '@giantnodes/theme'
 
-import { Switch } from '@/components/switch'
+import { Switch } from '@/components'
 
 const Component: Meta<typeof Switch> = {
   title: 'Components/Switch',

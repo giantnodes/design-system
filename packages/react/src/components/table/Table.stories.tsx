@@ -3,11 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react'
 
 import { table } from '@giantnodes/theme'
 
-import { Table } from '@/components/table'
+import { Table } from '@/components'
 
-const Component: Meta<typeof Table> = {
+const Component: Meta<typeof Table.Root> = {
   title: 'Components/Table',
-  component: Table,
+  component: Table.Root,
   argTypes: {
     size: {
       control: { type: 'select' },
@@ -26,7 +26,7 @@ const defaultProps = {
 }
 
 export const Default: StoryFn<TableProps> = (args) => (
-  <Table {...args}>
+  <Table.Root {...args}>
     <Table.Head>
       <Table.Column isRowHeader>Name</Table.Column>
       <Table.Column>Title</Table.Column>
@@ -71,7 +71,7 @@ export const Default: StoryFn<TableProps> = (args) => (
         <Table.Cell>Member</Table.Cell>
       </Table.Row>
     </Table.Body>
-  </Table>
+  </Table.Root>
 )
 
 Default.args = {

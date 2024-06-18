@@ -1,3 +1,5 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { TableVariantProps } from '@giantnodes/theme'
 import type { ColumnProps } from 'react-aria-components'

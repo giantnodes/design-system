@@ -1,3 +1,5 @@
+'use client'
+
 import type { ChangeHandler } from '@/utilities/types'
 import type { SelectVariantProps } from '@giantnodes/theme'
 import type { Key, SelectProps, SelectionMode } from 'react-aria-components'

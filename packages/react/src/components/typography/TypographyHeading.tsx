@@ -1,3 +1,5 @@
+'use client'
+
 import type { HeadingLevel } from '@/components/typography/use-heading-level.hook'
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { HeadingProps } from 'react-aria-components'

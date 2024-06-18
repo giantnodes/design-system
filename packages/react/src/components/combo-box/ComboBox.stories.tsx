@@ -5,13 +5,11 @@ import { combobox } from '@giantnodes/theme'
 
 import { Typography } from '../typography'
 
-import { Avatar } from '@/components/avatar'
-import { ComboBox } from '@/components/combo-box'
-import { Input } from '@/components/input'
+import { Avatar, ComboBox, Input } from '@/components'
 
-const Component: Meta<typeof ComboBox> = {
+const Component: Meta<typeof ComboBox.Root> = {
   title: 'Components/ComboBox',
-  component: ComboBox,
+  component: ComboBox.Root,
   argTypes: {
     size: {
       control: { type: 'select' },
@@ -38,15 +36,15 @@ const people = [
 ]
 
 export const Default: StoryFn<ComboBoxProps<object>> = (args) => (
-  <ComboBox {...args}>
+  <ComboBox.Root {...args}>
     <Input.Group>
-      <Input placeholder="People" type="text" />
+      <Input.Root placeholder="People" type="text" />
     </Input.Group>
 
     <ComboBox.Popover>
       <ComboBox.List items={people}>{(item) => <ComboBox.Item key={item.id}>{item.name}</ComboBox.Item>}</ComboBox.List>
     </ComboBox.Popover>
-  </ComboBox>
+  </ComboBox.Root>
 )
 
 Default.args = {
@@ -54,25 +52,25 @@ Default.args = {
 }
 
 export const Custom: StoryFn<ComboBoxProps<object>> = (args) => (
-  <ComboBox {...args}>
+  <ComboBox.Root {...args}>
     <Input.Group>
-      <Input placeholder="People" type="text" />
+      <Input.Root placeholder="People" type="text" />
     </Input.Group>
 
     <ComboBox.Popover>
       <ComboBox.List items={people}>
         {(item) => (
           <ComboBox.Item key={item.id} className="flex items-center gap-2" textValue={item.name}>
-            <Avatar size="xs">
+            <Avatar.Root size="xs">
               <Avatar.Image alt={item.name} src={`https://api.dicebear.com/8.x/personas/svg?seed=${item.name}`} />
-            </Avatar>
+            </Avatar.Root>
 
             <Typography.Text slot="label">{item.name}</Typography.Text>
           </ComboBox.Item>
         )}
       </ComboBox.List>
     </ComboBox.Popover>
-  </ComboBox>
+  </ComboBox.Root>
 )
 
 Custom.args = {

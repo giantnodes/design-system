@@ -1,11 +1,10 @@
+'use client'
+
 import type * as Polymophic from '@/utilities/polymorphic'
 import type { CardVariantProps } from '@giantnodes/theme'
 
 import React from 'react'
 
-import CardBody from '@/components/card/CardBody'
-import CardFooter from '@/components/card/CardFooter'
-import CardHeader from '@/components/card/CardHeader'
 import { CardContext, useCard } from '@/components/card/use-card.hook'
 
 const __ELEMENT_TYPE__ = 'div'
@@ -51,8 +50,4 @@ const Component: ComponentType = React.forwardRef(
 )
 
 export type { ComponentOwnProps as CardOwnProps, ComponentProps as CardProps }
-export default Object.assign(Component, {
-  Body: CardBody,
-  Footer: CardFooter,
-  Header: CardHeader,
-})
+export default Component
