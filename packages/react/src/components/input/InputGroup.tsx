@@ -27,11 +27,11 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, size, variant, ...rest } = props
+    const { as, children, className, color, size, shape, variant, ...rest } = props
 
     const Element = as || Group
 
-    const context = useInput({ color, size, variant })
+    const context = useInput({ color, size, shape, variant })
 
     const component = React.useMemo<GroupProps>(
       () => ({
