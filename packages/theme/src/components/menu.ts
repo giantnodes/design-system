@@ -17,6 +17,7 @@ export const menu = tv({
       'overflow-hidden',
       'disabled:opacity-50 disabled:cursor-default',
     ],
+    trigger: ['flex', 'focus:outline-none'],
   },
   variants: {
     size: {
