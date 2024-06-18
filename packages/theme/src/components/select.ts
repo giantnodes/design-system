@@ -14,9 +14,9 @@ export const select = tv({
       'cursor-pointer',
       'has-[:disabled]:opacity-50',
     ],
-    placeholder: ['text-subtitle'],
+    placeholder: [],
     button: ['flex flex-row items-center justify-between', 'w-full', 'p-1.5', 'focus:outline-none'],
-    icon: [],
+    icon: ['shrink-0'],
     popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md', 'w-[--trigger-width]'],
     list: ['flex flex-col gap-1', 'p-1', 'outline-none'],
     option: [

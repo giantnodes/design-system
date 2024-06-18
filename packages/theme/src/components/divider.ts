@@ -4,15 +4,15 @@ import { tv } from 'tailwind-variants'
 
 export const divider = tv({
   slots: {
-    divider: ['list-item', 'shrink-0', 'bg-partition', 'border-none'],
+    divider: ['shrink-0', 'bg-partition', 'border-none'],
   },
   variants: {
     orientation: {
       horizontal: {
-        divider: ['w-px', 'h-full'],
+        divider: ['h-px', 'w-full'],
       },
       vertical: {
-        divider: ['h-px', 'w-full'],
+        divider: ['w-px', 'h-full'],
       },
     },
   },
