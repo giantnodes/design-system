@@ -13,7 +13,6 @@ export const navigation = tv({
     divider: ['bg-partition', 'border-partition'],
     trigger: [
       'flex items-center grow gap-x-3',
-      'p-2',
       'focus:outline-dashed focus:outline-offset-2 focus:outline-1 focus:outline-partition',
     ],
   },
@@ -23,7 +22,7 @@ export const navigation = tv({
         wrapper: ['flex-row items-center', 'w-full', 'px-4 md:px-6'],
         segment: ['items-center'],
         divider: ['h-full', 'w-px', 'mx-2'],
-        trigger: ['py-2 px-6'],
+        trigger: ['p-2'],
       },
       vertical: {
         wrapper: ['flex-col', 'h-full', 'p-4'],
@@ -51,6 +50,7 @@ export const navigation = tv({
       lg: {},
     },
     variant: {
+      none: {},
       highlight: {
         item: ['rounded-md hover:bg-foreground'],
         trigger: ['rounded-md'],
