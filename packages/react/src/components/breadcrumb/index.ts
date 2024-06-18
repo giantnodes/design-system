@@ -1,4 +1,4 @@
-export type * from '@/components/breadcrumb/Breadcrumb'
-export type * from '@/components/breadcrumb/BreadcrumbItem'
+export type * from '~/components/breadcrumb/Breadcrumb'
+export type * from '~/components/breadcrumb/BreadcrumbItem'
 
-export * as Breadcrumb from '@/components/breadcrumb/component.parts'
+export * as Breadcrumb from '~/components/breadcrumb/component.parts'

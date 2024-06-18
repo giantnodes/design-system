@@ -3,7 +3,6 @@
   "version": "1.0.0-canary.19",
   "description": "A collection Giantnodes React components",
   "license": "AGPL-3.0",
-  "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -16,20 +15,18 @@
   },
   "scripts": {
     "build": "tsup src && resolve-tspaths -o dist",
-    "---": "",
-    "lint:eslint": "eslint src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
-    "lint:prettier": "pretty-quick 'src/**/*.{cjs,js,jsx,mjs,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}'",
-    "lint:fix": "pnpm run lint:eslint --fix && pnpm run lint:prettier --write",
-    "lint": "pnpm run lint:prettier && pnpm run lint:eslint",
+    "-": "",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "--": "",
     "storybook": "concurrently 'pnpm:sb:watch:*'",
     "sb:watch:sb": "storybook dev -p 6006",
     "sb:watch:css": "npx tailwindcss -i ./.storybook/style.css -o ./.storybook/tailwind.css --watch",
     "sb:build:css": "npx tailwindcss -i ./.storybook/style.css -o ./.storybook/tailwind.css",
     "sb:build": "pnpm run sb:build:css && storybook build",
-    "-": "",
-    "test": "jest --passWithNoTests",
-    "type-check": "tsc --noEmit"
+    "---": "",
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "@giantnodes/theme": "workspace:*",
@@ -41,15 +38,18 @@
     "tailwindcss-react-aria-components": "^1.1.3"
   },
   "devDependencies": {
+    "@giantnodes/eslint-config": "workspace:*",
+    "@giantnodes/prettier-config": "workspace:*",
+    "@giantnodes/tsconfig": "workspace:*",
     "@jest/types": "^29.6.3",
-    "@storybook/addon-backgrounds": "^8.0.10",
-    "@storybook/addon-essentials": "^8.0.10",
-    "@storybook/addon-interactions": "^8.1.5",
-    "@storybook/addon-links": "^8.0.10",
-    "@storybook/addon-themes": "^8.1.5",
-    "@storybook/blocks": "^8.1.5",
-    "@storybook/react": "^8.1.5",
-    "@storybook/react-vite": "^8.1.6",
+    "@storybook/addon-backgrounds": "^8.1.10",
+    "@storybook/addon-essentials": "^8.1.10",
+    "@storybook/addon-interactions": "^8.1.10",
+    "@storybook/addon-links": "^8.1.10",
+    "@storybook/addon-themes": "^8.1.10",
+    "@storybook/blocks": "^8.1.10",
+    "@storybook/react": "^8.1.10",
+    "@storybook/react-vite": "^8.1.10",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
@@ -60,11 +60,11 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "resolve-tspaths": "^0.8.19",
-    "storybook": "^8.0.10",
+    "storybook": "^8.1.10",
     "tailwindcss": "^3.4.3",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "vite": "^5.2.13"
+    "vite": "^5.3.1"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -73,5 +73,6 @@
   },
   "engines": {
     "node": ">=16.x"
-  }
+  },
+  "prettier": "@giantnodes/prettier-config"
 }

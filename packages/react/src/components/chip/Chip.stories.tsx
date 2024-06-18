@@ -1,9 +1,8 @@
-import type { ChipProps } from '@/components/chip'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { chip } from '@giantnodes/theme'
 
-import { Chip } from '@/components'
+import type { ChipProps } from '~/components/chip'
+import { Chip } from '~/components'
 
 const Component: Meta<typeof Chip> = {
   title: 'Components/Chip',

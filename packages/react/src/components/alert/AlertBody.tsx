@@ -1,14 +1,13 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
 import React from 'react'
 
-import { useAlertContext } from '@/components/alert/use-alert.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useAlertContext } from '~/components/alert/use-alert.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
-type ComponentOwnProps = {}
+type ComponentOwnProps = unknown
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,

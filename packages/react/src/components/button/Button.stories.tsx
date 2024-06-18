@@ -1,9 +1,8 @@
-import type { ButtonProps } from '@/components/button'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { button } from '@giantnodes/theme'
 
-import { Button, Link } from '@/components'
+import type { ButtonProps } from '~/components/button'
+import { Button, Link } from '~/components'
 
 const Component: Meta<typeof Button> = {
   title: 'Components/Button',

@@ -2,12 +2,16 @@
 
 import React from 'react'
 
-import { HeadingLevelContext, useHeadingLevel } from './use-heading-level.hook'
+import {
+  HeadingLevelContext,
+  useHeadingLevel,
+  useHeadingLevelContext,
+} from '~/components/typography/use-heading-level.hook'
 
 export type TypographyHeadingLevelProps = React.PropsWithChildren
 
 const TypographyHeadingLevel: React.FC<TypographyHeadingLevelProps> = ({ children }) => {
-  const context = React.useContext(HeadingLevelContext)
+  const context = useHeadingLevelContext()
 
   const value = useHeadingLevel({ level: context?.level })
 

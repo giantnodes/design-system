@@ -1,9 +1,8 @@
-import type { ProgressProps } from '@/components/progress'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { progress } from '@giantnodes/theme'
 
-import { Progress } from '@/components'
+import type { ProgressProps } from '~/components/progress'
+import { Progress } from '~/components'
 
 const Component: Meta<typeof Progress.Root> = {
   title: 'Components/Progress',

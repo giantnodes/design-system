@@ -1,12 +1,12 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { LinkVariantProps } from '@giantnodes/theme'
 import type { LinkProps } from 'react-aria-components'
-
-import { link } from '@giantnodes/theme'
 import React from 'react'
+import { link } from '@giantnodes/theme'
 import { Link } from 'react-aria-components'
+
+import type * as Polymophic from '~/utilities/polymorphic'
 
 const __ELEMENT_TYPE__ = 'a'
 

@@ -1,7 +1,7 @@
 import plugin from 'tailwindcss/plugin'
 import { resolveTwcConfig } from 'tw-colors'
 
-import { semantic } from '@/colors/semantic'
+import { semantic } from '~/colors/semantic'
 
 export const giantnodes = () => {
   const theme = {
@@ -24,7 +24,7 @@ export const giantnodes = () => {
     {
       theme: {
         extend: {
-          // @ts-ignore tailwind types are broken
+          // @ts-expect-error tailwind types are broken
           colors: config.colors,
         },
       },

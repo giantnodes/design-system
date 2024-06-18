@@ -1,11 +1,10 @@
 'use client'
 
 import type { NavigationVariantProps } from '@giantnodes/theme'
-
-import { navigation } from '@giantnodes/theme'
 import React from 'react'
+import { navigation } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseNavigationProps = NavigationVariantProps
 

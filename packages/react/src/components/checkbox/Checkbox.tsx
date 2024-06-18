@@ -1,12 +1,12 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { CheckboxVariantProps } from '@giantnodes/theme'
 import type { CheckboxProps } from 'react-aria-components'
-
-import { checkbox } from '@giantnodes/theme'
 import React from 'react'
+import { checkbox } from '@giantnodes/theme'
 import { Checkbox } from 'react-aria-components'
+
+import type * as Polymophic from '~/utilities/polymorphic'
 
 const __ELEMENT_TYPE__ = 'label'
 
@@ -26,7 +26,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, size, ...rest } = props
+    const { as, className, color, size, ...rest } = props
 
     const Element = as ?? Checkbox
 

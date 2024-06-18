@@ -1,12 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { SelectValueProps } from 'react-aria-components'
-
 import React from 'react'
 import { SelectStateContext, SelectValue } from 'react-aria-components'
 
-import { useSelectContext } from '@/components/select/use-select.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useSelectContext } from '~/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -26,7 +26,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TData, TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, ...rest } = props
+    const { as, className, ...rest } = props
 
     const Element = as ?? SelectValue
 

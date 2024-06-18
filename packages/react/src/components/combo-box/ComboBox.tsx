@@ -1,13 +1,12 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ComboBoxVariantProps } from '@giantnodes/theme'
 import type { ComboBoxProps } from 'react-aria-components'
-
 import React from 'react'
 import { ComboBox } from 'react-aria-components'
 
-import { ComboBoxContext, useComboBox } from '@/components/combo-box/use-combo-box.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { ComboBoxContext, useComboBox } from '~/components/combo-box/use-combo-box.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -29,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
   ) => {
     const { as, children, className, size, status, ...rest } = props
 
-    const Element = as || ComboBox
+    const Element = as ?? ComboBox
 
     const context = useComboBox({ size, status })
 

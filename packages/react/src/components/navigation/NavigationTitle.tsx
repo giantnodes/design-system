@@ -1,14 +1,13 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
 import React from 'react'
 
-import { useNavigationContext } from '@/components/navigation/use-navigation.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useNavigationContext } from '~/components/navigation/use-navigation.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
-type ComponentOwnProps = {}
+type ComponentOwnProps = unknown
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,

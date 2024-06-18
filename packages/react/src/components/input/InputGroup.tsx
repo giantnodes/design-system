@@ -1,13 +1,12 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { InputVariantProps } from '@giantnodes/theme'
 import type { GroupProps } from 'react-aria-components'
-
 import React from 'react'
 import { Group } from 'react-aria-components'
 
-import { InputContext, useInput } from '@/components/input/use-input.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { InputContext, useInput } from '~/components/input/use-input.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -29,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
   ) => {
     const { as, children, className, color, size, shape, variant, ...rest } = props
 
-    const Element = as || Group
+    const Element = as ?? Group
 
     const context = useInput({ color, size, shape, variant })
 

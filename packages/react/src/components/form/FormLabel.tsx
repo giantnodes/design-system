@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { LabelProps } from 'react-aria-components'
-
 import React from 'react'
 import { Label } from 'react-aria-components'
 
-import { useFormGroupContext } from './use-form-group.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useFormGroupContext } from '~/components/form/use-form-group.hook'
 
 const __ELEMENT_TYPE__ = 'label'
 
@@ -26,19 +25,19 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, radius, size, variant, ...rest } = props
+    const { as, children, className, ...rest } = props
 
     const Element = as ?? Label
 
-    const { slots, labelProps, status } = useFormGroupContext()
+    const context = useFormGroupContext()
 
     const component = React.useMemo<LabelProps>(
       () => ({
-        className: slots.label({ className, status }),
-        ...labelProps,
+        className: context?.slots.label({ className, status: context.status }),
+        ...context?.labelProps,
         ...rest,
       }),
-      [className, labelProps, rest, slots, status]
+      [className, context?.labelProps, context?.slots, context?.status, rest]
     )
 
     return (

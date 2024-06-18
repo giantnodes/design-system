@@ -1,11 +1,10 @@
 'use client'
 
 import type { ComboBoxVariantProps } from '@giantnodes/theme'
-
-import { combobox } from '@giantnodes/theme'
 import React from 'react'
+import { combobox } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseComboBoxProps = ComboBoxVariantProps
 

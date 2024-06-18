@@ -1,0 +1,30 @@
+{
+  "name": "@giantnodes/eslint-config",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./base": "./base.js",
+    "./react": "./react.js"
+  },
+  "scripts": {
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "rc",
+    "eslint-plugin-turbo": "^2.0.3",
+    "typescript-eslint": "rc-v8"
+  },
+  "devDependencies": {
+    "@giantnodes/prettier-config": "workspace:*",
+    "@giantnodes/tsconfig": "workspace:*",
+    "eslint": "^9.4.0",
+    "prettier": "^3.3.1",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@giantnodes/prettier-config"
+}

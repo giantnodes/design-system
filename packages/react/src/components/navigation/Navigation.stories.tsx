@@ -1,9 +1,8 @@
-import type { NavigationProps } from '@/components/navigation'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { navigation } from '@giantnodes/theme'
 
-import { Navigation } from '@/components'
+import type { NavigationProps } from '~/components/navigation'
+import { Navigation } from '~/components'
 
 const Component: Meta<typeof Navigation.Root> = {
   title: 'Components/Navigation',

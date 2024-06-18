@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { HeadingProps } from 'react-aria-components'
-
 import React from 'react'
 import { Heading } from 'react-aria-components'
 
-import { useAlertContext } from '@/components/alert/use-alert.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useAlertContext } from '~/components/alert/use-alert.hook'
 
 const __ELEMENT_TYPE__ = 'h1'
 

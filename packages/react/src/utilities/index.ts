@@ -1,1 +1,1 @@
-export * from '@/utilities/types'
+export * from '~/utilities/types'

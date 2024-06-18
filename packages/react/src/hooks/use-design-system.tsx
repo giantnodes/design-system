@@ -1,7 +1,6 @@
 'use client'
 
 import type { ThemeProviderProps } from 'next-themes/dist/types'
-
 import { RouterProvider } from '@react-aria/utils'
 import { ThemeProvider } from 'next-themes'
 

@@ -1,14 +1,13 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
 import React from 'react'
 
-import { useFormGroupContext } from '@/components/form/use-form-group.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useFormGroupContext } from '~/components/form/use-form-group.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
-type ComponentOwnProps = {}
+type ComponentOwnProps = unknown
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -28,14 +27,14 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const { slots } = useFormGroupContext()
+    const context = useFormGroupContext()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: slots.caption({ className }),
+        className: context?.slots.caption({ className }),
         ...rest,
       }),
-      [className, rest, slots]
+      [className, context?.slots, rest]
     )
 
     return (

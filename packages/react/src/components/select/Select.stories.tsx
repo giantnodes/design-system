@@ -1,9 +1,8 @@
-import type { SelectProps } from '@/components/select'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { select } from '@giantnodes/theme'
 
-import { Form, Select } from '@/components'
+import type { SelectProps } from '~/components/select'
+import { Form, Select } from '~/components'
 
 const Component: Meta<typeof Select.Root> = {
   title: 'Components/Select',

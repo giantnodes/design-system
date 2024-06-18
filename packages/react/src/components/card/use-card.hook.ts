@@ -1,9 +1,9 @@
 'use client'
 
-import { card } from '@giantnodes/theme'
 import React from 'react'
+import { card } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseCardReturn = ReturnType<typeof useCard>
 

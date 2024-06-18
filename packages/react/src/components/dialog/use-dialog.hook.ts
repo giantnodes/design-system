@@ -1,11 +1,10 @@
 'use client'
 
 import type { DialogVariantProps } from '@giantnodes/theme'
-
-import { dialog } from '@giantnodes/theme'
 import React from 'react'
+import { dialog } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 export type UseDialogProps = DialogVariantProps
 

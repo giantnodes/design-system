@@ -1,6 +1,6 @@
 export type Component<
   TElementType extends React.ElementType = 'div',
-  TProps = any,
+  TProps = unknown,
 > = React.ComponentPropsWithRef<TElementType> & {
   as?: React.ElementType<TProps>
 }
@@ -11,4 +11,4 @@ export type ComponentWithoutAs<TElement extends React.ElementType> = Omit<Compon
 
 export type Selection = 'all' | Set<string | number>
 
-export type ChangeHandler = (event: { target: any; type?: any }) => Promise<void | boolean>
+export type ChangeHandler = (event: { target: unknown; type?: unknown }) => void | boolean

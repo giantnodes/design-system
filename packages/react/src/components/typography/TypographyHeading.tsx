@@ -1,14 +1,13 @@
 'use client'
 
-import type { HeadingLevel } from '@/components/typography/use-heading-level.hook'
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { HeadingProps } from 'react-aria-components'
-
-import { heading } from '@giantnodes/theme'
 import React from 'react'
+import { heading } from '@giantnodes/theme'
 import { Heading } from 'react-aria-components'
 
-import { HeadingLevelContext } from '@/components/typography/use-heading-level.hook'
+import type { HeadingLevel } from '~/components/typography/use-heading-level.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { HeadingLevelContext } from '~/components/typography/use-heading-level.hook'
 
 const __ELEMENT_TYPE__ = 'h1'
 
@@ -30,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, ...rest } = props
+    const { as, children, className, level, ...rest } = props
 
     const Element = as ?? Heading
 
@@ -44,16 +43,14 @@ const Component: ComponentType = React.forwardRef(
       throw new Error(`<Typography.HeadingLevel /> cannot be nested ${context.level} times. The maximum is 6 levels.`)
     }
 
-    const level = React.useMemo(() => rest.level ?? context.level ?? 1, [context.level, rest.level])
-
     const slots = React.useMemo(() => heading({ level }), [level])
 
     const component = React.useMemo<HeadingProps>(
       () => ({
-        className: slots.heading({ className, level }),
+        className: slots.heading({ className, level: level ?? context.level }),
         ...rest,
       }),
-      [className, level, rest, slots]
+      [className, context.level, level, rest, slots]
     )
 
     return (

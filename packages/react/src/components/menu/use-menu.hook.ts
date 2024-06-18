@@ -1,11 +1,10 @@
 'use client'
 
 import type { MenuVariantProps } from '@giantnodes/theme'
-
-import { menu } from '@giantnodes/theme'
 import React from 'react'
+import { menu } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseMenuProps = MenuVariantProps
 

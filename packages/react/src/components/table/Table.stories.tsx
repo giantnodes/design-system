@@ -1,9 +1,8 @@
-import type { TableProps } from '@/components/table'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { table } from '@giantnodes/theme'
 
-import { Table } from '@/components'
+import type { TableProps } from '~/components/table'
+import { Table } from '~/components'
 
 const Component: Meta<typeof Table.Root> = {
   title: 'Components/Table',

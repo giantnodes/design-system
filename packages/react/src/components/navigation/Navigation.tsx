@@ -1,11 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { NavigationVariantProps } from '@giantnodes/theme'
-
 import React from 'react'
 
-import { NavigationContext, useNavigation } from '@/components/navigation/use-navigation.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { NavigationContext, useNavigation } from '~/components/navigation/use-navigation.hook'
 
 const __ELEMENT_TYPE__ = 'nav'
 
@@ -29,7 +28,13 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useNavigation({ orientation, position, size, variant, isBordered })
+    const context = useNavigation({
+      orientation,
+      position,
+      size,
+      variant,
+      isBordered,
+    })
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

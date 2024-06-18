@@ -2,12 +2,12 @@
 
 import React from 'react'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 
 type UseHeadingLevelProps = {
-  level: HeadingLevel
+  level?: HeadingLevel
 }
 
 type UseHeadingLevelReturn = ReturnType<typeof useHeadingLevel>
@@ -24,9 +24,9 @@ export const useHeadingLevel = ({ level }: UseHeadingLevelProps) => {
   }
 }
 
-export const [HeadingLevelContext, useHeadingLevelContext] = createContext<UseHeadingLevelReturn>({
+export const [HeadingLevelContext, useHeadingLevelContext] = createContext<UseHeadingLevelReturn | undefined>({
   name: 'HeadingLevelContext',
-  strict: true,
+  strict: false,
   errorMessage:
-    'useHeadingLevelContext: `context` is undefined. Seems you forgot to wrap component within <HeadingLevel />',
+    'useHeadingLevelContext: `context` is undefined. Seems you forgot to wrap component within <Typography.HeadingLevel />',
 })

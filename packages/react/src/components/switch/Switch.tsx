@@ -1,14 +1,13 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ToggleVariantProps } from '@giantnodes/theme'
 import type { SwitchProps } from 'react-aria-components'
-
-import { toggle } from '@giantnodes/theme'
 import React from 'react'
+import { toggle } from '@giantnodes/theme'
 import { Switch } from 'react-aria-components'
 
-import { useFormGroupContext } from '@/components/form/use-form-group.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useFormGroupContext } from '~/components/form/use-form-group.hook'
 
 const __ELEMENT_TYPE__ = 'label'
 
@@ -28,7 +27,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, size, ...rest } = props
+    const { as, className, color, size, ...rest } = props
 
     const Element = as ?? Switch
 
@@ -47,7 +46,7 @@ const Component: ComponentType = React.forwardRef(
     )
 
     return (
-      <Element {...component} ref={(group?.ref as React.RefObject<HTMLLabelElement>) ?? ref}>
+      <Element {...component} ref={(group?.ref as React.RefObject<HTMLLabelElement> | undefined) ?? ref}>
         <div className={slots.container()}>
           <span className={slots.circle()} />
         </div>

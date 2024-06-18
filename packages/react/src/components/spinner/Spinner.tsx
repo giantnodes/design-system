@@ -1,10 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { SpinnerVariantProps } from '@giantnodes/theme'
-
-import { spinner } from '@giantnodes/theme'
 import React from 'react'
+import { spinner } from '@giantnodes/theme'
+
+import type * as Polymophic from '~/utilities/polymorphic'
 
 const __ELEMENT_TYPE__ = 'svg'
 
@@ -24,7 +24,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, size, ...rest } = props
+    const { as, className, size, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 

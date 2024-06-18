@@ -1,9 +1,8 @@
-import type { LinkProps } from '@/components/link'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { link } from '@giantnodes/theme'
 
-import { Link } from '@/components'
+import type { LinkProps } from '~/components/link'
+import { Link } from '~/components'
 
 const Component: Meta<typeof Link> = {
   title: 'Components/Link',

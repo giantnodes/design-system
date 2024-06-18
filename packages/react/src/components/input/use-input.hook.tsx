@@ -1,11 +1,10 @@
 'use client'
 
 import type { InputVariantProps } from '@giantnodes/theme'
-
-import { input } from '@giantnodes/theme'
 import React from 'react'
+import { input } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseInputProps = InputVariantProps
 
@@ -25,7 +24,7 @@ export const useInput = (props: UseInputProps) => {
   }
 }
 
-export const [InputContext, useInputContext] = createContext<UseInputReturn>({
+export const [InputContext, useInputContext] = createContext<UseInputReturn | undefined>({
   name: 'InputContext',
   strict: false,
   errorMessage: 'useInputContext: `context` is undefined. Seems you forgot to wrap component within <Input />',

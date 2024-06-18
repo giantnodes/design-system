@@ -1,14 +1,13 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
 import React from 'react'
 
-import { useInputContext } from '@/components/input/use-input.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useInputContext } from '~/components/input/use-input.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
-type ComponentOwnProps = {}
+type ComponentOwnProps = unknown
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -26,16 +25,16 @@ const Component: ComponentType = React.forwardRef(
   ) => {
     const { as, children, className, ...rest } = props
 
-    const Element = as || __ELEMENT_TYPE__
+    const Element = as ?? __ELEMENT_TYPE__
 
-    const { slots } = useInputContext()
+    const context = useInputContext()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: slots.addon({ className }),
+        className: context?.slots.addon({ className }),
         ...rest,
       }),
-      [className, rest, slots]
+      [className, context?.slots, rest]
     )
 
     return (

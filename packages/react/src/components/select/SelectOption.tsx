@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ListBoxItemProps } from 'react-aria-components'
-
 import React from 'react'
 import { ListBoxItem } from 'react-aria-components'
 
-import { useSelectContext } from './use-select.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useSelectContext } from '~/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'option'
 

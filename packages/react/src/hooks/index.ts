@@ -1,1 +1,1 @@
-export * from '@/hooks/use-design-system'
+export * from '~/hooks/use-design-system'

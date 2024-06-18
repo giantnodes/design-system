@@ -1,9 +1,8 @@
-import type { AvatarGroupProps, AvatarProps } from '@/components/avatar'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { avatar } from '@giantnodes/theme'
 
-import { Avatar } from '@/components'
+import type { AvatarGroupProps, AvatarProps } from '~/components/avatar'
+import { Avatar } from '~/components'
 
 const Component: Meta<typeof Avatar.Root> = {
   title: 'Components/Avatar',

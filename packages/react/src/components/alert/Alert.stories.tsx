@@ -1,9 +1,8 @@
-import type { AlertProps } from '@/components/alert'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { alert } from '@giantnodes/theme'
 
-import { Alert } from '@/components'
+import type { AlertProps } from '~/components/alert'
+import { Alert } from '~/components'
 
 const Component: Meta<typeof Alert.Root> = {
   title: 'Components/Alert',

@@ -1,10 +1,9 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
 import React from 'react'
 
-import { useAvatarContext } from '@/components/avatar/use-avatar.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useAvatarContext } from '~/components/avatar/use-avatar.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -30,14 +29,14 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const { slots } = useAvatarContext()
+    const context = useAvatarContext()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: slots.icon({ className }),
+        className: context?.slots.icon({ className }),
         ...rest,
       }),
-      [className, rest, slots]
+      [className, context?.slots, rest]
     )
 
     return (

@@ -1,11 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ProgressVariantProps } from '@giantnodes/theme'
-
 import React from 'react'
 
-import { ProgressContext, useProgress } from '@/components/progress/use-progress.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { ProgressContext, useProgress } from '~/components/progress/use-progress.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 

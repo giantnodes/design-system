@@ -1,11 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
-import clsx from 'clsx'
 import React from 'react'
+import clsx from 'clsx'
 
-import { useFormGroupContext } from '@/components/form/use-form-group.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useFormGroupContext } from '~/components/form/use-form-group.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -33,17 +32,17 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const { slots, status, feedback } = useFormGroupContext()
+    const context = useFormGroupContext()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: slots.feedback({
-          class: clsx(className, { hidden: type !== feedback }),
-          status,
+        className: context?.slots.feedback({
+          class: clsx(className, { hidden: type !== context.feedback }),
+          status: context.status,
         }),
         ...rest,
       }),
-      [className, feedback, rest, slots, status, type]
+      [className, context?.feedback, context?.slots, context?.status, rest, type]
     )
 
     return (

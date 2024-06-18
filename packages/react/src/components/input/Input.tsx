@@ -1,14 +1,14 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { InputVariantProps } from '@giantnodes/theme'
 import type { InputProps } from 'react-aria-components'
-
 import React from 'react'
+import clsx from 'clsx'
 import { Input } from 'react-aria-components'
 
-import { useFormGroupContext } from '@/components/form/use-form-group.hook'
-import { useInput, useInputContext } from '@/components/input/use-input.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useFormGroupContext } from '~/components/form/use-form-group.hook'
+import { useInput, useInputContext } from '~/components/input/use-input.hook'
 
 const __ELEMENT_TYPE__ = 'input'
 
@@ -30,13 +30,13 @@ const Component: ComponentType = React.forwardRef(
   ) => {
     const { as, children, className, color, size, shape, variant, ...rest } = props
 
-    const Element = as || Input
+    const Element = as ?? Input
 
     const context = useInputContext()
     const { slots } = useInput({
       color: color ?? context?.color,
       size: size ?? context?.size,
-      shape: shape ?? context.shape,
+      shape: shape ?? context?.shape,
       variant: variant ?? context?.variant,
     })
 
@@ -47,7 +47,7 @@ const Component: ComponentType = React.forwardRef(
         name: group?.name,
         onChange: group?.onChange,
         onBlur: group?.onBlur,
-        className: slots.input({ className: className?.toString() }),
+        className: slots.input({ className: clsx(className) }),
         ...group?.fieldProps,
         ...rest,
       }),
@@ -55,7 +55,7 @@ const Component: ComponentType = React.forwardRef(
     )
 
     return (
-      <Element {...component} ref={(group?.ref as React.RefObject<HTMLInputElement>) ?? ref}>
+      <Element {...component} ref={(group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref}>
         {children}
       </Element>
     )

@@ -1,13 +1,12 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { BreadcrumbVariantProps } from '@giantnodes/theme'
 import type { BreadcrumbsProps } from 'react-aria-components'
-
 import React from 'react'
 import { Breadcrumbs } from 'react-aria-components'
 
-import { BreadcrumbContext, useBreadcrumb } from '@/components/breadcrumb/use-breadcrumb.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { BreadcrumbContext, useBreadcrumb } from '~/components/breadcrumb/use-breadcrumb.hook'
 
 const __ELEMENT_TYPE__ = 'ol'
 
