@@ -7,7 +7,6 @@ export const input = tv({
     group: [
       'flex gap-px',
       'bg-foreground',
-      'rounded-md',
       'overflow-hidden',
       'has-[:disabled]:opacity-50',
       'focus-within:outline-dashed focus-within:outline-offset-2 focus-within:outline-1',
@@ -50,6 +49,14 @@ export const input = tv({
         input: ['placeholder:text-lg'],
       },
     },
+    shape: {
+      none: {
+        group: ['rounded-md'],
+      },
+      pill: {
+        group: ['rounded-full'],
+      },
+    },
     variant: {
       none: {},
       outlined: {
@@ -60,6 +67,7 @@ export const input = tv({
   defaultVariants: {
     size: 'md',
     color: 'neutral',
+    shape: 'none',
     variant: 'outlined',
   },
 })
