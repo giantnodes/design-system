@@ -28,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, size, shape, variant, ...rest } = props
+    const { as, children, className, color, size, variant, ...rest } = props
 
     const Element = as || Input
 
@@ -36,7 +36,6 @@ const Component: ComponentType = React.forwardRef(
     const { slots } = useInput({
       color: color ?? context?.color,
       size: size ?? context?.size,
-      shape: shape ?? context.shape,
       variant: variant ?? context?.variant,
     })
 

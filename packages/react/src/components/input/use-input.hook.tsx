@@ -12,15 +12,14 @@ type UseInputProps = InputVariantProps
 type UseInputReturn = ReturnType<typeof useInput>
 
 export const useInput = (props: UseInputProps) => {
-  const { color, size, shape, variant } = props
+  const { color, size, variant } = props
 
-  const slots = React.useMemo(() => input({ color, size, shape, variant }), [color, size, shape, variant])
+  const slots = React.useMemo(() => input({ color, size, variant }), [color, size, variant])
 
   return {
     slots,
     color,
     size,
-    shape,
     variant,
   }
 }
