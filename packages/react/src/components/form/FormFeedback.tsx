@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import clsx from 'clsx'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import { useFormGroupContext } from '~/components/form/use-form-group.hook'
+import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -37,7 +37,7 @@ const Component: ComponentType = React.forwardRef(
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
         className: context?.slots.feedback({
-          class: clsx(className, { hidden: type !== context.feedback }),
+          class: cn(className, { hidden: type !== context.feedback }),
           status: context.status,
         }),
         ...rest,

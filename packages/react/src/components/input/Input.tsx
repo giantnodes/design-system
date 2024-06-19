@@ -3,12 +3,12 @@
 import type { InputVariantProps } from '@giantnodes/theme'
 import type { InputProps } from 'react-aria-components'
 import React from 'react'
-import clsx from 'clsx'
 import { Input } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import { useFormGroupContext } from '~/components/form/use-form-group.hook'
 import { useInput, useInputContext } from '~/components/input/use-input.hook'
+import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'input'
 
@@ -47,7 +47,7 @@ const Component: ComponentType = React.forwardRef(
         name: group?.name,
         onChange: group?.onChange,
         onBlur: group?.onBlur,
-        className: slots.input({ className: clsx(className) }),
+        className: slots.input({ className: cn(className) }),
         ...group?.fieldProps,
         ...rest,
       }),
