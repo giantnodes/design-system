@@ -1,8 +1,8 @@
 'use client'
 
 import type { ThemeProviderProps } from 'next-themes/dist/types'
-import { RouterProvider } from '@react-aria/utils'
 import { ThemeProvider } from 'next-themes'
+import { RouterProvider } from 'react-aria-components'
 
 export type UseDesignSystemProps = Omit<ThemeProviderProps, 'children'> & {
   /**
