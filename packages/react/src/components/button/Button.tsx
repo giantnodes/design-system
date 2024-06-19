@@ -1,14 +1,13 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ButtonVariantProps } from '@giantnodes/theme'
 import type { ButtonProps } from 'react-aria-components'
-
-import { button } from '@giantnodes/theme'
 import React from 'react'
+import { button } from '@giantnodes/theme'
 import { Button } from 'react-aria-components'
 
-import Spinner from '@/components/spinner/Spinner'
+import type * as Polymophic from '~/utilities/polymorphic'
+import Spinner from '~/components/spinner/Spinner'
 
 const __ELEMENT_TYPE__ = 'button'
 

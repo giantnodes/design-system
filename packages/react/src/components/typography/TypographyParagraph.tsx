@@ -1,10 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { TypographyVariantProps } from '@giantnodes/theme'
-
-import { typography } from '@giantnodes/theme'
 import React from 'react'
+import { typography } from '@giantnodes/theme'
+
+import type * as Polymophic from '~/utilities/polymorphic'
 
 const __ELEMENT_TYPE__ = 'p'
 

@@ -1,10 +1,9 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
 import React from 'react'
 
-import { useProgressContext } from '@/components/progress/use-progress.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useProgressContext } from '~/components/progress/use-progress.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 

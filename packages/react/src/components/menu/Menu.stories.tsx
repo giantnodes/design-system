@@ -1,9 +1,8 @@
-import type { MenuProps } from '@/components/menu'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { menu } from '@giantnodes/theme'
 
-import { Button, Menu } from '@/components'
+import type { MenuProps } from '~/components/menu'
+import { Button, Menu } from '~/components'
 
 const Component: Meta<typeof Menu.Root> = {
   title: 'Components/Menu',

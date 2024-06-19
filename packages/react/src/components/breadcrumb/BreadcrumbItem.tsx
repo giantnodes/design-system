@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { BreadcrumbProps } from 'react-aria-components'
-
 import React from 'react'
 import { Breadcrumb, Link } from 'react-aria-components'
 
-import { useBreadcrumbContext } from '@/components/breadcrumb/use-breadcrumb.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useBreadcrumbContext } from '~/components/breadcrumb/use-breadcrumb.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 

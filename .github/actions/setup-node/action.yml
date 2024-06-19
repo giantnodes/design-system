@@ -25,3 +25,7 @@ runs:
         node-version: ${{ inputs.node-version }}
         cache: 'pnpm'
         cache-dependency-path: pnpm-lock.yaml
+
+    - name: '⚡️  Turbo'
+      shell: bash
+      run: pnpm add -g turbo

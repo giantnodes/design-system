@@ -1,10 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ChipVariantProps } from '@giantnodes/theme'
-
-import { chip } from '@giantnodes/theme'
 import React from 'react'
+import { chip } from '@giantnodes/theme'
+
+import type * as Polymophic from '~/utilities/polymorphic'
 
 const __ELEMENT_TYPE__ = 'span'
 

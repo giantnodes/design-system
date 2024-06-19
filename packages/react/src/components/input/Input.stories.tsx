@@ -1,9 +1,8 @@
-import type { InputGroupProps, InputProps } from '@/components/input'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { input } from '@giantnodes/theme'
 
-import { Input } from '@/components'
+import type { InputGroupProps, InputProps } from '~/components/input'
+import { Input } from '~/components'
 
 type InputComponentProps = React.ComponentProps<typeof Input.Root>
 

@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { DialogProps } from 'react-aria-components'
-
 import React from 'react'
 import { Dialog, Modal, ModalOverlay } from 'react-aria-components'
 
-import { useDialogContext } from './use-dialog.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useDialogContext } from '~/components/dialog/use-dialog.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 

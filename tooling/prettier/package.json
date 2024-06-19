@@ -1,0 +1,22 @@
+{
+  "name": "@giantnodes/prettier-config",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+    "prettier": "^3.3.1"
+  },
+  "devDependencies": {
+    "@giantnodes/tsconfig": "workspace:*",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@giantnodes/prettier-config"
+}

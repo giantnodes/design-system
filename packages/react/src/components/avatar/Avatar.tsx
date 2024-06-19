@@ -1,11 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { AvatarVariantProps } from '@giantnodes/theme'
-
 import React from 'react'
 
-import { AvatarContext, useAvatar, useAvatarContext } from '@/components/avatar/use-avatar.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { AvatarContext, useAvatar, useAvatarContext } from '~/components/avatar/use-avatar.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 

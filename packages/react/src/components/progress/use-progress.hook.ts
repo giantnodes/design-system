@@ -1,11 +1,10 @@
 'use client'
 
 import type { ProgressVariantProps } from '@giantnodes/theme'
-
-import { progress } from '@giantnodes/theme'
 import React from 'react'
+import { progress } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseProgressProps = ProgressVariantProps
 

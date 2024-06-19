@@ -1,11 +1,10 @@
 'use client'
 
 import type { AlertVariantProps } from '@giantnodes/theme'
-
-import { alert } from '@giantnodes/theme'
 import React from 'react'
+import { alert } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseAlertProps = AlertVariantProps
 

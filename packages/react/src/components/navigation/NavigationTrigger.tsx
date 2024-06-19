@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ButtonProps } from 'react-aria-components'
-
 import React from 'react'
 import { Button } from 'react-aria-components'
 
-import { useNavigationContext } from '@/components/navigation/use-navigation.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useNavigationContext } from '~/components/navigation/use-navigation.hook'
 
 const __ELEMENT_TYPE__ = 'button'
 

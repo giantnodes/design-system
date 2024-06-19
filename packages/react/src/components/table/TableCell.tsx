@@ -1,13 +1,12 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { TableVariantProps } from '@giantnodes/theme'
 import type { CellProps } from 'react-aria-components'
-
 import React from 'react'
 import { Cell } from 'react-aria-components'
 
-import { useTableContext } from '@/components/table/use-table.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useTableContext } from '~/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'td'
 

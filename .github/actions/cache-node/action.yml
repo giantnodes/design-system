@@ -1,14 +1,14 @@
-name: '🔺️  '
+name: "🔺️  "
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: '🔺️  Cache (store directory)'
+    - name: "🔺️  Cache (store directory)"
       shell: bash
       run: |
         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-    - name: '🔺️  Cache'
+    - name: "🔺️  Cache"
       uses: actions/cache@v4
       with:
         path: ${{ env.STORE_PATH }}

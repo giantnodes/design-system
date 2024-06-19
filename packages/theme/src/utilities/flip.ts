@@ -1,12 +1,16 @@
-export const flip = (colors: Record<number, string>) => {
+export const flip = (colors: Record<number, string>): Record<number, string> => {
   const flipped: Record<number, string> = {}
 
-  const keys = Object.keys(colors) as unknown as number[]
+  const keys = Object.keys(colors).map((key) => parseInt(key))
 
   Object.values(colors)
     .reverse()
     .forEach((color, index) => {
-      flipped[keys[index]] = color
+      const key = keys[index]
+
+      if (key !== undefined) {
+        flipped[key] = color
+      }
     })
 
   return flipped

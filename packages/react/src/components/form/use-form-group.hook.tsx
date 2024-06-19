@@ -1,14 +1,13 @@
 'use client'
 
-import type { FeedbackType } from '@/components/form/FormFeedback'
-import type { ChangeHandler } from '@/utilities/types'
 import type { FormVariantProps } from '@giantnodes/theme'
 import type { LabelAria } from 'react-aria'
-
-import { form } from '@giantnodes/theme'
 import React from 'react'
+import { form } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import type { FeedbackType } from '~/components/form/FormFeedback'
+import type { ChangeHandler } from '~/utilities/types'
+import { createContext } from '~/utilities/context'
 
 type UseFormGroupProps = LabelAria & {
   ref?: React.RefObject<HTMLInputElement | HTMLLabelElement>
@@ -53,7 +52,7 @@ export const useFormGroup = (props: UseFormGroupProps) => {
   }
 }
 
-export const [FormGroupContext, useFormGroupContext] = createContext<UseFormGroupReturn>({
+export const [FormGroupContext, useFormGroupContext] = createContext<UseFormGroupReturn | undefined>({
   name: 'FormGroupContext',
   strict: false,
   errorMessage: 'useFormGroupContext: `context` is undefined. Seems you forgot to wrap component within <Form.Group />',

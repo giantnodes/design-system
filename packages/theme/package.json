@@ -3,7 +3,6 @@
   "version": "1.0.0-canary.19",
   "description": "A collection default Giantnodes Tailwind CSS components",
   "license": "AGPL-3.0",
-  "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -16,22 +15,25 @@
   },
   "scripts": {
     "build": "tsup src",
-    "--": "",
-    "lint:eslint": "eslint src --ext cjs,js,jsx,mjs,ts,tsx --max-warnings=0",
-    "lint:prettier": "pretty-quick 'src/**/*.{cjs,js,jsx,mjs,ts,tsx,json,md,mdx,css,html,yml,yaml,scss}'",
-    "lint:fix": "pnpm run lint:eslint --fix && pnpm run lint:prettier --write",
-    "lint": "pnpm run lint:prettier && pnpm run lint:eslint",
     "-": "",
-    "type-check": "tsc --noEmit"
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "tailwind-variants": "^0.2.1",
     "tw-colors": "^3.3.1"
+  },
+  "devDependencies": {
+    "@giantnodes/eslint-config": "workspace:*",
+    "@giantnodes/prettier-config": "workspace:*",
+    "@giantnodes/tsconfig": "workspace:*"
   },
   "peerDependencies": {
     "tailwindcss": ">=3"
   },
   "engines": {
     "node": ">=16.x"
-  }
+  },
+  "prettier": "@giantnodes/prettier-config"
 }

@@ -1,13 +1,12 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { DialogVariantProps } from '@giantnodes/theme'
 import type { DialogTriggerProps } from 'react-aria-components'
-
 import React from 'react'
 import { DialogTrigger } from 'react-aria-components'
 
-import { DialogContext, useDialog } from '@/components/dialog/use-dialog.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { DialogContext, useDialog } from '~/components/dialog/use-dialog.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 

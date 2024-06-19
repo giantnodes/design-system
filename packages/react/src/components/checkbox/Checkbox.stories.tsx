@@ -1,9 +1,8 @@
-import type { CheckboxProps } from '@/components/checkbox'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { checkbox } from '@giantnodes/theme'
 
-import { Card, Checkbox } from '@/components'
+import type { CheckboxProps } from '~/components/checkbox'
+import { Card, Checkbox } from '~/components'
 
 const Component: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',

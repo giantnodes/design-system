@@ -1,10 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { DividerVariantProps } from '@giantnodes/theme'
-
-import { divider } from '@giantnodes/theme'
 import React from 'react'
+import { divider } from '@giantnodes/theme'
+
+import type * as Polymophic from '~/utilities/polymorphic'
 
 const __ELEMENT_TYPE__ = 'hr'
 

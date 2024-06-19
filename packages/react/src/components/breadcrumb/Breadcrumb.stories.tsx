@@ -1,9 +1,8 @@
-import type { BreadcrumbProps } from '@/components/breadcrumb'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { breadcrumb } from '@giantnodes/theme'
 
-import { Breadcrumb } from '@/components'
+import type { BreadcrumbProps } from '~/components/breadcrumb'
+import { Breadcrumb } from '~/components'
 
 const Component: Meta<typeof Breadcrumb.Root> = {
   title: 'Components/Breadcrumb',

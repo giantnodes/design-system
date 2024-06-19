@@ -1,14 +1,13 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
 import React from 'react'
 
-import { useCardContext } from '@/components/card/use-card.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useCardContext } from '~/components/card/use-card.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
-type ComponentOwnProps = {}
+type ComponentOwnProps = unknown
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,

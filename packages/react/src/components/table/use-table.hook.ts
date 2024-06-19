@@ -1,11 +1,10 @@
 'use client'
 
 import type { TableVariantProps } from '@giantnodes/theme'
-
-import { table } from '@giantnodes/theme'
 import React from 'react'
+import { table } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseTableProps = TableVariantProps
 

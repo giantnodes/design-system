@@ -1,11 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-
 import React from 'react'
 import { useField } from 'react-aria'
 
-import { FormGroupContext, useFormGroup } from './use-form-group.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { FormGroupContext, useFormGroup } from '~/components/form/use-form-group.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -35,7 +34,14 @@ const Component: ComponentType = React.forwardRef(
     const Element = as ?? __ELEMENT_TYPE__
 
     const { labelProps, fieldProps } = useField({ ...props, label: name })
-    const context = useFormGroup({ ref, name, labelProps, fieldProps, onChange, onBlur })
+    const context = useFormGroup({
+      ref,
+      name,
+      labelProps,
+      fieldProps,
+      onChange,
+      onBlur,
+    })
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

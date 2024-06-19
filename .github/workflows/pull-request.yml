@@ -2,7 +2,6 @@ name: '🔀  Pull Request'
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
 
 concurrency:
   group: pull-request-${{ github.event.pull_request.number }}
@@ -20,28 +19,23 @@ jobs:
         uses: actions/checkout@v4
 
       - name: '💽️  Setup'
-        uses: ./.github/actions/setup
+        uses: ./.github/actions/setup-node
 
       - name: '🔺️  Cache'
-        uses: ./.github/actions/cache
+        uses: ./.github/actions/cache-node
 
       - name: '📦  Install'
-        uses: ./.github/actions/install
-
-      - name: '🏗️  Build'
-        uses: ./.github/actions/build
-        with:
-          COMMAND: 'build'
+        shell: bash
+        run: pnpm install --frozen-lockfile
 
       - name: '🚨️  Lint'
-        uses: ./.github/actions/lint
+        shell: bash
+        run: pnpm lint
+
+      - name: '🎨  Format'
+        shell: bash
+        run: pnpm format
 
       - name: '🦺  Type Check'
-        uses: ./.github/actions/type-check
-        with:
-          COMMAND: 'type-check'
-
-      - name: '🧪  Test'
-        uses: ./.github/actions/test
-        with:
-          COMMAND: 'test'
+        shell: bash
+        run: pnpm typecheck

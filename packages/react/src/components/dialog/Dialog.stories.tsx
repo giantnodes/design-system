@@ -1,7 +1,7 @@
-import type { DialogProps } from '@/components/dialog'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { Button, Card, Dialog } from '@/components'
+import type { DialogProps } from '~/components/dialog'
+import { Button, Card, Dialog } from '~/components'
 
 const Component: Meta<typeof Dialog.Root> = {
   title: 'Components/Dialog',

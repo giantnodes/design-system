@@ -1,11 +1,9 @@
-import type { ComboBoxProps } from '@/components/combo-box'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { combobox } from '@giantnodes/theme'
 
+import type { ComboBoxProps } from '~/components/combo-box'
+import { Avatar, ComboBox, Input } from '~/components'
 import { Typography } from '../typography'
-
-import { Avatar, ComboBox, Input } from '@/components'
 
 const Component: Meta<typeof ComboBox.Root> = {
   title: 'Components/ComboBox',
@@ -60,7 +58,7 @@ export const Custom: StoryFn<ComboBoxProps<object>> = (args) => (
     <ComboBox.Popover>
       <ComboBox.List items={people}>
         {(item) => (
-          <ComboBox.Item key={item.id} className="flex items-center gap-2" textValue={item.name}>
+          <ComboBox.Item className="flex items-center gap-2" key={item.id} textValue={item.name}>
             <Avatar.Root size="xs">
               <Avatar.Image alt={item.name} src={`https://api.dicebear.com/8.x/personas/svg?seed=${item.name}`} />
             </Avatar.Root>

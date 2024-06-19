@@ -1,13 +1,12 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { MenuVariantProps } from '@giantnodes/theme'
 import type { MenuTriggerProps } from 'react-aria-components'
-
 import React from 'react'
 import { MenuTrigger } from 'react-aria-components'
 
-import { MenuContext, useMenu } from '@/components/menu/use-menu.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { MenuContext, useMenu } from '~/components/menu/use-menu.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 

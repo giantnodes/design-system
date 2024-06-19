@@ -1,9 +1,8 @@
-import type { FormProps } from '@/components/form'
 import type { Meta, StoryFn } from '@storybook/react'
-
 import { form } from '@giantnodes/theme'
 
-import { Form, Input } from '@/components'
+import type { FormProps } from '~/components/form'
+import { Form, Input } from '~/components'
 
 const Component: Meta<typeof Form.Root> = {
   title: 'Components/Form',

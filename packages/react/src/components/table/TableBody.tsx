@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { TableBodyProps } from 'react-aria-components'
-
 import React from 'react'
 import { TableBody } from 'react-aria-components'
 
-import { useTableContext } from './use-table.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useTableContext } from '~/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'tbody'
 

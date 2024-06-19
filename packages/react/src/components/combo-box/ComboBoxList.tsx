@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ListBoxProps } from 'react-aria-components'
-
 import React from 'react'
 import { ListBox } from 'react-aria-components'
 
-import { useComboBoxContext } from '@/components/combo-box/use-combo-box.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useComboBoxContext } from '~/components/combo-box/use-combo-box.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -28,7 +27,7 @@ const Component: ComponentType = React.forwardRef(
   ) => {
     const { as, children, className, ...rest } = props
 
-    const Element = as || ListBox
+    const Element = as ?? ListBox
 
     const { slots } = useComboBoxContext()
 

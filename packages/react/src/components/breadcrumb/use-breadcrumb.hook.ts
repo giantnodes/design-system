@@ -1,11 +1,10 @@
 'use client'
 
 import type { BreadcrumbVariantProps } from '@giantnodes/theme'
-
-import { breadcrumb } from '@giantnodes/theme'
 import React from 'react'
+import { breadcrumb } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseBreadcrumbProps = {
   separator?: React.ReactNode

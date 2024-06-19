@@ -1,16 +1,15 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
-import type { Override } from '@/utilities/types'
 import type { SelectVariantProps } from '@giantnodes/theme'
 import type { ButtonProps, ListBoxProps, PopoverProps, SelectProps } from 'react-aria-components'
-
 import React from 'react'
 import { Button, ListBox, Popover, Select } from 'react-aria-components'
 
-import { useFormGroupContext } from '@/components/form/use-form-group.hook'
-import SelectValue from '@/components/select/SelectValue'
-import { SelectContext, useSelect } from '@/components/select/use-select.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import type { Override } from '~/utilities/types'
+import { useFormGroupContext } from '~/components/form/use-form-group.hook'
+import SelectValue from '~/components/select/SelectValue'
+import { SelectContext, useSelect } from '~/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'select'
 
@@ -71,7 +70,7 @@ const Component: ComponentType = React.forwardRef(
     const group = useFormGroupContext()
 
     const context = useSelect({
-      ref: (group?.ref as React.RefObject<HTMLInputElement>) ?? ref,
+      ref: (group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref,
       name: group?.name,
       behavior,
       mode,
@@ -88,11 +87,12 @@ const Component: ComponentType = React.forwardRef(
         onChange: group?.onChange,
         onBlur: group?.onBlur,
         onSelectionChange: context.onSelect,
-        className: context.slots.select(),
+        className: context.slots.select({ className: className?.toString() }),
         ...group?.fieldProps,
         ...rest,
       }),
       [
+        className,
         context.onSelect,
         context.slots,
         group?.fieldProps,

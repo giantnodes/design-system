@@ -1,12 +1,12 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "../../tsconfig.json",
+  "extends": "@giantnodes/tsconfig/base.json",
   "compilerOptions": {
-    "baseUrl": "./",
+    "lib": ["dom", "dom.iterable", "ES2022"],
+    "jsx": "preserve",
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@react-types/shared": ["../../node_modules/@react-types/shared"],
-      "tailwind-variants": ["../../node_modules/tailwind-variants"]
+      "~/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],

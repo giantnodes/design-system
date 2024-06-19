@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { ButtonProps } from 'react-aria-components'
-
 import React from 'react'
 import { Button } from 'react-aria-components'
 
-import { useMenuContext } from '@/components/menu/use-menu.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useMenuContext } from '~/components/menu/use-menu.hook'
 
 const __ELEMENT_TYPE__ = 'button'
 

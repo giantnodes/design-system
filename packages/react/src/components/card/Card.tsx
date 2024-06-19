@@ -1,11 +1,10 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { CardVariantProps } from '@giantnodes/theme'
-
 import React from 'react'
 
-import { CardContext, useCard } from '@/components/card/use-card.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { CardContext, useCard } from '~/components/card/use-card.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 

@@ -1,11 +1,10 @@
 'use client'
 
 import type { AvatarVariantProps } from '@giantnodes/theme'
-
-import { avatar } from '@giantnodes/theme'
 import React from 'react'
+import { avatar } from '@giantnodes/theme'
 
-import { createContext } from '@/utilities/context'
+import { createContext } from '~/utilities/context'
 
 type UseAvatarProps = AvatarVariantProps
 
@@ -34,7 +33,7 @@ export const useAvatar = (props: UseAvatarProps) => {
   }
 }
 
-export const [AvatarContext, useAvatarContext] = createContext<UseAvatarReturn>({
+export const [AvatarContext, useAvatarContext] = createContext<UseAvatarReturn | undefined>({
   name: 'AvatarContext',
   strict: false,
   errorMessage: 'useAvatarContext: `context` is undefined. Seems you forgot to wrap component within <Avatar />',

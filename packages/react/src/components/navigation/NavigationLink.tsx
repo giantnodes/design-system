@@ -1,12 +1,11 @@
 'use client'
 
-import type * as Polymophic from '@/utilities/polymorphic'
 import type { LinkProps } from 'react-aria-components'
-
 import React from 'react'
 import { Link } from 'react-aria-components'
 
-import { useNavigationContext } from '@/components/navigation/use-navigation.hook'
+import type * as Polymophic from '~/utilities/polymorphic'
+import { useNavigationContext } from '~/components/navigation/use-navigation.hook'
 
 const __ELEMENT_TYPE__ = 'a'
 

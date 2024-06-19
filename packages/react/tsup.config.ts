@@ -1,5 +1,4 @@
 import type { Options } from 'tsup'
-
 import { defineConfig } from 'tsup'
 
 const config: Options = {
@@ -10,7 +9,7 @@ const config: Options = {
   sourcemap: true,
   dts: true,
   outDir: 'dist',
-  target: 'es2020',
+  target: 'es2022',
   entry: ['src/**/*.ts*', '!src/**/*.stories.*'],
   format: ['cjs', 'esm'],
 }
