@@ -31,18 +31,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: '💽️  Setup'
-        uses: ./.github/actions/setup
+        uses: ./.github/actions/setup-node
 
       - name: '🔺️  Cache'
-        uses: ./.github/actions/cache
+        uses: ./.github/actions/cache-node
 
       - name: '📦  Install'
-        uses: ./.github/actions/install
+        shell: bash
+        run: pnpm install --frozen-lockfile
 
       - name: '🏗️  Build'
-        uses: ./.github/actions/build
-        with:
-          COMMAND: 'build'
+        shell: bash
+        run: pnpm build
 
       - name: '🏷️  Release'
         id: release
@@ -67,18 +67,18 @@ jobs:
           ref: ${{ needs.create-release.outputs.branch }}
 
       - name: '💽️  Setup'
-        uses: ./.github/actions/setup
+        uses: ./.github/actions/setup-node
 
       - name: '🔺️  Cache'
-        uses: ./.github/actions/cache
+        uses: ./.github/actions/cache-node
 
       - name: '📦  Install'
-        uses: ./.github/actions/install
+        shell: bash
+        run: pnpm install --frozen-lockfile
 
       - name: '🏗️  Build'
-        uses: ./.github/actions/build
-        with:
-          COMMAND: 'build'
+        shell: bash
+        run: pnpm build
 
       - name: '🏷️  Publish @giantnodes/theme'
         working-directory: packages/theme
@@ -110,7 +110,7 @@ jobs:
         uses: thomaseizinger/create-pull-request@master
         with:
           title: 'chore(release): v${{ needs.create-release.outputs.version }}'
-          labels: '🏷️ Release, 🥳️ LGTM'
+          labels: '🏷️ Release'
           github_token: ${{ secrets.GITHUB_TOKEN }}
           head: release/${{ needs.create-release.outputs.version }}
           base: main

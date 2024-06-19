@@ -1,9 +1,0 @@
-name: '📦️  '
-
-runs:
-  using: 'composite'
-  steps:
-    - name: '📦️  Dependencies'
-      shell: bash
-      run: |
-        pnpm install --frozen-lockfile
