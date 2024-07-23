@@ -24,11 +24,11 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
 const Component: ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TElement>
 ) => {
-  const { as, children, className, size, status, ...rest } = props
+  const { as, children, className, size, color, ...rest } = props
 
   const Element = as ?? MenuTrigger
 
-  const context = useMenu({ size, status })
+  const context = useMenu({ size, color })
 
   const component = React.useMemo<Omit<MenuTriggerProps, 'children'>>(
     () => ({

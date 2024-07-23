@@ -38,16 +38,16 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
-        className: context.slots.navigation({ className }),
+        className: context.slots.navigation(),
         ...rest,
       }),
-      [className, context.slots, rest]
+      [context.slots, rest]
     )
 
     return (
       <NavigationContext.Provider value={context}>
         <Element {...component} ref={ref}>
-          <div className={context.slots.wrapper()}>{children}</div>
+          <div className={context.slots.wrapper({ className })}>{children}</div>
         </Element>
       </NavigationContext.Provider>
     )

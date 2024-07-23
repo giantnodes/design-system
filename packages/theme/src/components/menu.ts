@@ -4,10 +4,10 @@ import { tv } from 'tailwind-variants'
 export const menu = tv({
   slots: {
     menu: [],
-    popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md'],
-    list: ['flex flex-col gap-1', 'p-1', 'outline-none'],
+    popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md', 'p-1'],
+    list: ['flex flex-col gap-1', 'outline-none'],
     item: [
-      'flex tems-center',
+      'flex flex-row items-center gap-2',
       'px-2 py-1',
       'rounded-md',
       'cursor-pointer',
@@ -36,7 +36,7 @@ export const menu = tv({
         item: ['text-xl'],
       },
     },
-    status: {
+    color: {
       neutral: {
         item: ['hover:bg-middleground'],
       },
@@ -59,7 +59,7 @@ export const menu = tv({
   },
   defaultVariants: {
     size: 'md',
-    status: 'neutral',
+    color: 'neutral',
   },
 })
 

@@ -13,13 +13,14 @@ export const select = tv({
       'cursor-pointer',
       'has-[:disabled]:opacity-50',
     ],
-    placeholder: [],
+    value: ['flex items-center gap-2'],
     button: ['flex flex-row items-center justify-between', 'w-full', 'p-1.5', 'focus:outline-none'],
     icon: ['shrink-0'],
+    check: ['text-inherit', 'h-5 w-5', 'ml-auto', 'shrink-0'],
     popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md', 'w-[--trigger-width]'],
     list: ['flex flex-col gap-1', 'p-1', 'outline-none'],
     option: [
-      'flex tems-center',
+      'flex items-center gap-2',
       'px-2 py-1',
       'rounded-md',
       'cursor-pointer',
@@ -50,27 +51,27 @@ export const select = tv({
     status: {
       neutral: {
         select: ['border-partition'],
-        option: ['hover:bg-middleground'],
+        option: ['hover:bg-middleground', 'data-[selected=true]:bg-middleground'],
       },
       brand: {
         select: ['border-brand'],
-        option: ['hover:bg-brand/20'],
+        option: ['hover:bg-brand/20', 'data-[selected=true]:bg-brand/20'],
       },
       success: {
         select: ['border-success'],
-        option: ['hover:bg-success/20'],
+        option: ['hover:bg-success/20', 'data-[selected=true]:bg-success/20'],
       },
       info: {
         select: ['border-info'],
-        option: ['hover:bg-info/20'],
+        option: ['hover:bg-info/20', 'data-[selected=true]:g-info/20'],
       },
       warning: {
         select: ['border-warning'],
-        option: ['hover:bg-warning/20'],
+        option: ['hover:bg-warning/20', 'data-[selected=true]:bg-warning/20'],
       },
       danger: {
         select: ['border-danger'],
-        option: ['hover:bg-danger/20'],
+        option: ['hover:bg-danger/20', 'data-[selected=true]:bg-danger/20'],
       },
     },
   },

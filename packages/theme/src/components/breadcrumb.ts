@@ -7,7 +7,7 @@ export const breadcrumb = tv({
     item: [
       'group',
       'flex items-center',
-      'text-title',
+      'text-inherit',
       'has-[:current]:opacity-80',
       'has-[:disabled]:opacity-50 has-[:disabled]:pointer-events-none',
     ],
