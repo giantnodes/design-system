@@ -32,15 +32,15 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Input
 
+    const group = useFormGroupContext()
     const context = useInputContext()
+
     const { slots } = useInput({
-      color: color ?? context?.color,
+      color: color ?? group?.status ?? context?.color,
       size: size ?? context?.size,
       shape: shape ?? context?.shape,
       variant: variant ?? context?.variant,
     })
-
-    const group = useFormGroupContext()
 
     const component = React.useMemo<InputProps>(
       () => ({
@@ -62,5 +62,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as InputOwnProps, ComponentProps as InputProps }
+export type { ComponentOwnProps as InputTextOwnProps, ComponentProps as InputTextProps }
 export default Component
