@@ -5,13 +5,15 @@ import type { LabelAria } from 'react-aria'
 import React from 'react'
 import { form } from '@giantnodes/theme'
 
-import type { FeedbackType } from '~/components/form/FormFeedback'
 import type { ChangeHandler } from '~/utilities/types'
 import { createContext } from '~/utilities/context'
+
+export type FeedbackType = 'success' | 'info' | 'warning' | 'error'
 
 type UseFormGroupProps = LabelAria & {
   ref?: React.RefObject<HTMLInputElement | HTMLLabelElement>
   name?: string
+  color?: FormVariantProps['color']
   onChange?: ChangeHandler
   onBlur?: ChangeHandler
 }
@@ -23,10 +25,12 @@ export const useFormGroup = (props: UseFormGroupProps) => {
 
   const [feedback, setFeedback] = React.useState<FeedbackType | null>(null)
 
-  const status = React.useMemo<FormVariantProps['status']>(() => {
+  const status = React.useMemo<FormVariantProps['color']>(() => {
     switch (feedback) {
       case 'success':
         return 'success'
+      case 'info':
+        return 'info'
       case 'warning':
         return 'warning'
       case 'error':
@@ -36,7 +40,7 @@ export const useFormGroup = (props: UseFormGroupProps) => {
     }
   }, [feedback])
 
-  const slots = React.useMemo(() => form({ status }), [status])
+  const slots = React.useMemo(() => form({ color: status }), [status])
 
   return {
     ref,

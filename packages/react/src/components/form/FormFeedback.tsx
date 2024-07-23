@@ -2,13 +2,12 @@
 
 import React from 'react'
 
+import type { FeedbackType } from '~/components/form/use-form-group.hook'
 import type * as Polymophic from '~/utilities/polymorphic'
 import { useFormGroupContext } from '~/components/form/use-form-group.hook'
 import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'span'
-
-type FeedbackType = 'success' | 'warning' | 'error'
 
 type ComponentOwnProps = {
   type: FeedbackType
@@ -38,7 +37,7 @@ const Component: ComponentType = React.forwardRef(
       () => ({
         className: context?.slots.feedback({
           class: cn(className, { hidden: type !== context.feedback }),
-          status: context.status,
+          color: context.status,
         }),
         ...rest,
       }),
@@ -53,5 +52,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as FormFeedbackOwnProps, ComponentProps as FormFeedbackProps, FeedbackType }
+export type { ComponentOwnProps as FormFeedbackOwnProps, ComponentProps as FormFeedbackProps }
 export default Component
