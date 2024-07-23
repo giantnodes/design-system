@@ -6,6 +6,7 @@ import React from 'react'
 import { Group } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
+import { useFormGroupContext } from '~/components/form/use-form-group.hook'
 import { InputContext, useInput } from '~/components/input/use-input.hook'
 
 const __ELEMENT_TYPE__ = 'div'
@@ -30,7 +31,8 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Group
 
-    const context = useInput({ color, size, shape, variant })
+    const group = useFormGroupContext()
+    const context = useInput({ color: color ?? group?.status, size, shape, variant })
 
     const component = React.useMemo<GroupProps>(
       () => ({
@@ -50,5 +52,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentProps as InputGroupProps, ComponentOwnProps as InputGroupOwnProps }
+export type { ComponentProps as InputProps, ComponentOwnProps as InputOwnProps }
 export default Component

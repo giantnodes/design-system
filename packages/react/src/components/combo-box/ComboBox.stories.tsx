@@ -35,9 +35,9 @@ const people = [
 
 export const Default: StoryFn<ComboBoxProps<object>> = (args) => (
   <ComboBox.Root {...args}>
-    <Input.Group>
-      <Input.Root placeholder="People" type="text" />
-    </Input.Group>
+    <Input.Root>
+      <Input.Text placeholder="People" type="text" />
+    </Input.Root>
 
     <ComboBox.Popover>
       <ComboBox.List items={people}>{(item) => <ComboBox.Item key={item.id}>{item.name}</ComboBox.Item>}</ComboBox.List>
@@ -51,9 +51,9 @@ Default.args = {
 
 export const Custom: StoryFn<ComboBoxProps<object>> = (args) => (
   <ComboBox.Root {...args}>
-    <Input.Group>
-      <Input.Root placeholder="People" type="text" />
-    </Input.Group>
+    <Input.Root>
+      <Input.Text placeholder="People" type="text" />
+    </Input.Root>
 
     <ComboBox.Popover>
       <ComboBox.List items={people}>

@@ -1,3 +1,5 @@
-export { default as Root } from '~/components/input/Input'
+export { default as Root } from '~/components/input/InputGroup'
 export { default as Addon } from '~/components/input/InputAddon'
-export { default as Group } from '~/components/input/InputGroup'
+export { default as Phone } from '~/components/input/InputPhone'
+export { default as Text } from '~/components/input/InputText'
+export { default as TextArea } from '~/components/input/InputTextArea'
