@@ -22,7 +22,7 @@ export const typography = tv({
     },
     variant: {
       subtitle: {
-        paragraph: ['text-xs', 'text-subtitle'],
+        paragraph: ['text-subtitle'],
       },
     },
   },

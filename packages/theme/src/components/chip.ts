@@ -8,7 +8,7 @@ export const chip = tv({
   variants: {
     color: {
       neutral: {
-        chip: ['text-subtitle', 'bg-shark/20', 'border-subtitle'],
+        chip: ['text-subtitle', 'bg-shark/20', 'border-partition'],
       },
       brand: {
         chip: ['text-brand', 'bg-brand/20', 'border-brand'],
@@ -24,6 +24,9 @@ export const chip = tv({
       },
       danger: {
         chip: ['text-danger', 'bg-danger/20', 'border-danger'],
+      },
+      amber: {
+        chip: ['text-amber-500', 'bg-amber-500/20', 'border-amber-500'],
       },
       emerald: {
         chip: ['text-emerald-500', 'bg-emerald-500/20', 'border-emerald-500'],
