@@ -6,6 +6,7 @@ import { Breadcrumb, Link } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import { useBreadcrumbContext } from '~/components/breadcrumb/use-breadcrumb.hook'
+import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -35,7 +36,7 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<Omit<BreadcrumbProps, 'children'>>(
       () => ({
-        className: slots.item({ className }),
+        className: slots.item({ className: cn(className) }),
         ...rest,
       }),
       [className, rest, slots]
