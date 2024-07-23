@@ -28,23 +28,23 @@ export const input = tv({
         group: ['text-info', 'border-info', 'focus-within:outline-info'],
       },
       warning: {
-        group: ['text-warning', 'border-warning', 'focus-within:outline-danger'],
+        group: ['text-warning', 'border-warning', 'focus-within:outline-warning'],
       },
       danger: {
-        group: ['text-danger', 'border-danger', 'focus-within:outline-warning'],
+        group: ['text-danger', 'border-danger', 'focus-within:outline-danger'],
       },
     },
     size: {
       sm: {
         group: ['text-sm'],
-        input: ['h-8 min-h-8', 'placeholder:text-sm'],
+        input: ['min-h-8', 'placeholder:text-sm'],
       },
       md: {
         group: ['text-base'],
-        input: ['h-10 min-h-10', 'placeholder:text-base'],
+        input: ['min-h-10', 'placeholder:text-base'],
       },
       lg: {
-        group: ['h-12 min-h-12', 'text-lg'],
+        group: ['min-h-12', 'text-lg'],
         input: ['placeholder:text-lg'],
       },
     },

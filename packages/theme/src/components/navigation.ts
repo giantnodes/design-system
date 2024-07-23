@@ -4,9 +4,9 @@ import { tv } from 'tailwind-variants'
 export const navigation = tv({
   slots: {
     navigation: ['relative', 'flex', 'text-sm text-content', 'z-10'],
-    wrapper: ['relative', 'flex gap-3 md:gap-6', 'bg-middleground', 'z-10'],
+    wrapper: ['relative', 'flex gap-3 md:gap-4', 'bg-middleground', 'z-10'],
     brand: ['flex flex-row justify-center flex-nowrap shrink-0'],
-    segment: ['flex gap-3', 'list-none'],
+    segment: ['flex gap-2', 'list-none'],
     title: ['font-semibold'],
     item: ['flex', 'select-none', 'transition-all duration-200', '[&_svg]:hover:text-brand'],
     divider: ['bg-partition', 'border-partition'],
@@ -47,6 +47,7 @@ export const navigation = tv({
       },
       md: {},
       lg: {},
+      xl: {},
     },
     variant: {
       none: {},
@@ -90,6 +91,13 @@ export const navigation = tv({
       },
     },
     {
+      size: 'xl',
+      orientation: 'horizontal',
+      class: {
+        wrapper: ['h-24'],
+      },
+    },
+    {
       size: 'sm',
       orientation: 'vertical',
       class: {
@@ -108,6 +116,13 @@ export const navigation = tv({
       orientation: 'vertical',
       class: {
         wrapper: ['w-72'],
+      },
+    },
+    {
+      size: 'xl',
+      orientation: 'vertical',
+      class: {
+        wrapper: ['w-80'],
       },
     },
 

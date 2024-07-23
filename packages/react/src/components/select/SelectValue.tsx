@@ -35,7 +35,7 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<SelectValueProps<TData>>(
       () => ({
-        className: slots.placeholder({ className: className?.toString() }),
+        className: slots.value({ className: className?.toString() }),
         ...rest,
       }),
       [className, rest, slots]

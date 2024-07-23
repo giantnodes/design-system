@@ -11,9 +11,9 @@ type UseMenuProps = MenuVariantProps
 type UseMenuReturn = ReturnType<typeof useMenu>
 
 export const useMenu = (props: UseMenuProps) => {
-  const { size, status } = props
+  const { size, color } = props
 
-  const slots = React.useMemo(() => menu({ size, status }), [size, status])
+  const slots = React.useMemo(() => menu({ size, color }), [size, color])
 
   return {
     slots,
