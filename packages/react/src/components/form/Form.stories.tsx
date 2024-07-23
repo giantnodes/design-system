@@ -18,11 +18,11 @@ export const Default: StoryFn<FormProps> = (args) => (
   <Form.Root {...args}>
     <Form.Group name="email-address">
       <Form.Label>Email address</Form.Label>
-      <Input.Group>
+      <Input.Root>
         <Input.Addon>$</Input.Addon>
-        <Input.Root placeholder="Username" type="text" />
+        <Input.Text placeholder="Username" type="text" />
         <Input.Addon>USD</Input.Addon>
-      </Input.Group>
+      </Input.Root>
 
       <Form.Caption>A unique string of characters that identifies an email account</Form.Caption>
     </Form.Group>

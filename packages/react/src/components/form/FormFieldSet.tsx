@@ -1,16 +1,13 @@
 'use client'
 
-import type { FormVariantProps } from '@giantnodes/theme'
-import type { FormProps } from 'react-aria-components'
 import React from 'react'
 import { form } from '@giantnodes/theme'
-import { Form } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 
-const __ELEMENT_TYPE__ = 'form'
+const __ELEMENT_TYPE__ = 'fieldset'
 
-type ComponentOwnProps = FormProps & FormVariantProps
+type ComponentOwnProps = unknown
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -26,18 +23,18 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, ...rest } = props
+    const { as, children, className, ...rest } = props
 
-    const Element = as ?? Form
+    const Element = as ?? __ELEMENT_TYPE__
 
-    const slots = React.useMemo(() => form({ color }), [color])
+    const slots = React.useMemo(() => form({}), [])
 
-    const component = React.useMemo<FormProps>(
+    const component = React.useMemo(
       () => ({
-        className: slots.form({ className }),
+        className: slots.fieldset({ className }),
         ...rest,
       }),
-      [className, rest, slots]
+      [className, slots, rest]
     )
 
     return (
@@ -48,5 +45,5 @@ const Component: ComponentType = React.forwardRef(
   }
 )
 
-export type { ComponentOwnProps as FormOwnProps, ComponentProps as FormProps }
+export type { ComponentOwnProps as FormFieldSetOwnProps, ComponentProps as FormFieldSetProps }
 export default Component

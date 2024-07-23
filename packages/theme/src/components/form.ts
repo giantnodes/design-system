@@ -4,35 +4,49 @@ import { tv } from 'tailwind-variants'
 export const form = tv({
   slots: {
     form: [],
-    group: ['group', 'flex flex-col gap-2', 'w-full'],
-    label: ['text-sm', 'text-title'],
+    group: ['group', 'flex flex-col gap-1', 'w-full'],
+    label: ['text-sm'],
+    legend: ['w-full', 'mb-1'],
+    fieldset: ['flex flex-row gap-2', 'text-sm'],
     caption: ['text-xs', 'text-subtitle'],
     feedback: ['text-xs'],
   },
   variants: {
-    status: {
+    color: {
       neutral: {
+        label: ['text-title'],
+        fieldset: ['text-title'],
         feedback: ['text-content'],
       },
       brand: {
+        label: ['text-brand'],
+        fieldset: ['text-brand'],
         feedback: ['text-brand'],
       },
       success: {
-        feedback: ['text-green'],
+        label: ['text-success'],
+        fieldset: ['text-success'],
+        feedback: ['text-success'],
       },
       info: {
-        feedback: ['text-blue'],
+        label: ['text-info'],
+        fieldset: ['text-info'],
+        feedback: ['text-info'],
       },
       warning: {
-        feedback: ['text-yellow'],
+        label: ['text-warning'],
+        fieldset: ['text-warning'],
+        feedback: ['text-warning'],
       },
       danger: {
-        feedback: ['text-red'],
+        label: ['text-danger'],
+        fieldset: ['text-danger'],
+        feedback: ['text-danger'],
       },
     },
   },
   defaultVariants: {
-    status: 'neutral',
+    color: 'neutral',
   },
 })
 

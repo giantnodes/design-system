@@ -33,7 +33,7 @@ const Component: ComponentType = React.forwardRef(
 
     const component = React.useMemo<LabelProps>(
       () => ({
-        className: context?.slots.label({ className, status: context.status }),
+        className: context?.slots.label({ className, color: context.status }),
         ...context?.labelProps,
         ...rest,
       }),
