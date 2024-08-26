@@ -28,7 +28,7 @@
     "@giantnodes/prettier-config": "workspace:*",
     "husky": "^9.1.5",
     "prettier": "catalog:",
-    "tsup": "^6.6.0",
+    "tsup": "^8.2.4",
     "turbo": "^2.0.14",
     "typescript": "catalog:"
   },
