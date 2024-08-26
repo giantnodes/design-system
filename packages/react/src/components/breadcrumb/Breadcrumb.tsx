@@ -6,7 +6,7 @@ import React from 'react'
 import { Breadcrumbs } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { BreadcrumbContext, useBreadcrumb } from '~/components/breadcrumb/use-breadcrumb.hook'
+import { BreadcrumbContext, useBreadcrumbValue } from '~/components/breadcrumb/use-breadcrumb.hook'
 
 const __ELEMENT_TYPE__ = 'ol'
 
@@ -30,7 +30,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Breadcrumbs
 
-    const context = useBreadcrumb({ size, separator })
+    const context = useBreadcrumbValue({ size, separator })
 
     const component = React.useMemo<BreadcrumbsProps<TData>>(
       () => ({

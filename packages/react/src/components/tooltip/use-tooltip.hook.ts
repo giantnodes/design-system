@@ -4,13 +4,13 @@ import type { TooltipVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { tooltip } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 type UseTooltipProps = TooltipVariantProps
 
-type UseTooltipReturn = ReturnType<typeof useTooltip>
+type TooltipContextType = ReturnType<typeof useTooltipValue>
 
-export const useTooltip = (_: UseTooltipProps) => {
+export const useTooltipValue = (_: UseTooltipProps) => {
   const slots = React.useMemo(() => tooltip(), [])
 
   return {
@@ -18,8 +18,8 @@ export const useTooltip = (_: UseTooltipProps) => {
   }
 }
 
-export const [TooltipContext, useTooltipContext] = createContext<UseTooltipReturn>({
+export const [TooltipContext, useTooltip] = create<TooltipContextType>({
   name: 'TooltipContext',
   strict: true,
-  errorMessage: 'useTooltipContext: `context` is undefined. Seems you forgot to wrap component within <Tooltip.Root />',
+  errorMessage: 'useTooltip: `context` is undefined. Seems you forgot to wrap component within <Tooltip.Root />',
 })

@@ -4,13 +4,13 @@ import type { ComboBoxVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { combobox } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 type UseComboBoxProps = ComboBoxVariantProps
 
-type UseComboBoxReturn = ReturnType<typeof useComboBox>
+type ComboBoxContextType = ReturnType<typeof useComboBoxValue>
 
-export const useComboBox = (props: UseComboBoxProps) => {
+export const useComboBoxValue = (props: UseComboBoxProps) => {
   const { size, status } = props
 
   const slots = React.useMemo(() => combobox({ size, status }), [size, status])
@@ -20,8 +20,8 @@ export const useComboBox = (props: UseComboBoxProps) => {
   }
 }
 
-export const [ComboBoxContext, useComboBoxContext] = createContext<UseComboBoxReturn>({
+export const [ComboBoxContext, useComboBox] = create<ComboBoxContextType>({
   name: 'ComboBoxContext',
   strict: true,
-  errorMessage: 'useComboBox: `context` is undefined. Seems you forgot to wrap component within <ComboBox />',
+  errorMessage: 'useComboBox: `context` is undefined. Seems you forgot to wrap component within <ComboBox.Root />',
 })

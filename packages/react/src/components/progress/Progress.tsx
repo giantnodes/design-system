@@ -4,7 +4,7 @@ import type { ProgressVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { ProgressContext, useProgress } from '~/components/progress/use-progress.hook'
+import { ProgressContext, useProgressValue } from '~/components/progress/use-progress.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -28,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useProgress({ radius, size })
+    const context = useProgressValue({ radius, size })
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

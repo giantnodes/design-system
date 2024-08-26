@@ -5,7 +5,7 @@ import React from 'react'
 import { Label } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useFormGroupContext } from '~/components/form/use-form-group.hook'
+import { useFormGroup } from '~/components/form/use-form-group.hook'
 
 const __ELEMENT_TYPE__ = 'label'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Label
 
-    const context = useFormGroupContext()
+    const context = useFormGroup()
 
     const component = React.useMemo<LabelProps>(
       () => ({

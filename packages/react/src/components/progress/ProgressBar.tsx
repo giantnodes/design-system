@@ -3,7 +3,7 @@
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useProgressContext } from '~/components/progress/use-progress.hook'
+import { useProgress } from '~/components/progress/use-progress.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -30,7 +30,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useProgressContext()
+    const context = useProgress()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

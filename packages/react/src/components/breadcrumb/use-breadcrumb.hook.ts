@@ -4,15 +4,15 @@ import type { BreadcrumbVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { breadcrumb } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
-type UseBreadcrumbProps = {
+type UseBreadcrumbProps = BreadcrumbVariantProps & {
   separator?: React.ReactNode
-} & BreadcrumbVariantProps
+}
 
-type UseBreadcrumbReturn = ReturnType<typeof useBreadcrumb>
+type BreadcrumbContextType = ReturnType<typeof useBreadcrumbValue>
 
-export const useBreadcrumb = (props: UseBreadcrumbProps) => {
+export const useBreadcrumbValue = (props: UseBreadcrumbProps) => {
   const { size, separator = '/' } = props
 
   const slots = React.useMemo(() => breadcrumb({ size }), [size])
@@ -23,9 +23,8 @@ export const useBreadcrumb = (props: UseBreadcrumbProps) => {
   }
 }
 
-export const [BreadcrumbContext, useBreadcrumbContext] = createContext<UseBreadcrumbReturn>({
+export const [BreadcrumbContext, useBreadcrumb] = create<BreadcrumbContextType>({
   name: 'BreadcrumbContext',
   strict: true,
-  errorMessage:
-    'useBreadcrumbContext: `context` is undefined. Seems you forgot to wrap component within <Breadcrumb />',
+  errorMessage: 'useBreadcrumb: `context` is undefined. Seems you forgot to wrap component within <Breadcrumb.Root />',
 })

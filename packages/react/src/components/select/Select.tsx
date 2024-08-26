@@ -7,9 +7,9 @@ import { Button, ListBox, Popover, Select } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import type { Override } from '~/utilities/types'
-import { useFormGroupContext } from '~/components/form/use-form-group.hook'
+import { useFormGroup } from '~/components/form/use-form-group.hook'
 import SelectValue from '~/components/select/SelectValue'
-import { SelectContext, useSelect } from '~/components/select/use-select.hook'
+import { SelectContext, useSelectValue } from '~/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'select'
 
@@ -67,9 +67,9 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Select
 
-    const group = useFormGroupContext()
+    const group = useFormGroup()
 
-    const context = useSelect({
+    const context = useSelectValue({
       ref: (group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref,
       name: group?.name,
       behavior,

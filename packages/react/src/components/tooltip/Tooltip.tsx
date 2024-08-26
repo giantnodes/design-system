@@ -6,7 +6,7 @@ import React from 'react'
 import { TooltipTrigger } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { TooltipContext, useTooltip } from '~/components/tooltip/use-tooltip.hook'
+import { TooltipContext, useTooltipValue } from '~/components/tooltip/use-tooltip.hook'
 import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'div'
@@ -29,7 +29,7 @@ const Component: ComponentType = <TElement extends React.ElementType = typeof __
 
   const Element = as ?? TooltipTrigger
 
-  const context = useTooltip({})
+  const context = useTooltipValue({})
 
   const component = React.useMemo<Omit<TooltipTriggerComponentProps, 'children'>>(
     () => ({

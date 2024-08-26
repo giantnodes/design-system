@@ -24,10 +24,7 @@ type CreateContextOptions = {
   name?: string
 }
 
-type CreateContextReturn<ContextType, ContextProps> = readonly [
-  React.FC<React.PropsWithChildren<ContextProps>>,
-  () => ContextType,
-]
+type CreateContextReturn<ContextType> = readonly [React.Context<ContextType>, () => ContextType]
 
 /**
  * A utility function to create a React context with improved type safety, error handling, and state management.
@@ -39,35 +36,32 @@ type CreateContextReturn<ContextType, ContextProps> = readonly [
  * @returns A readonly tuple containing the Provider component and a custom useContext hook.
  *
  * @example
- * type SessionContextType {
- *   id: string
- * }
- *
  * type UseSessionProps {
  *   id: User
  * }
+ *
+ * type SessionContextType = ReturnType<typeof useAlertValue>
  *
  * const useSessionValue = ({ id }: UseSessionProps) => {
  *   const [id, setId] = React.useState<string>(id);
  *   return { id };
  * };
  *
- * const [SessionProvider, useSession] = create<SessionContextType, UseSessionProps>(useSessionValue, {
+ * const [SessionContext, useSession] = create<SessionContextType>({
  *   name: 'SessionContext',
  * });
  *
  * // In the root component:
- * <SessionProvider id="cbf3d503-4af5-4502-8a36-9b6b99a9364d">
+ * const context = useSessionValue({ id: "cbf3d503-4af5-4502-8a36-9b6b99a9364d" })
+ *
+ * <SessionContext.Provider value={context}>
  *   <App />
- * </SessionProvider>
+ * </SessionContext.Provider>
  *
  * // In a consumer component:
  * const { id } = useSession();
  */
-export const create = <ContextType, ContextProps extends object>(
-  useValue: (props: ContextProps) => ContextType,
-  options: CreateContextOptions
-): CreateContextReturn<ContextType, ContextProps> => {
+export function create<ContextType>(options: CreateContextOptions = {}) {
   const {
     strict = true,
     errorMessage = 'useContext: `context` is undefined. Seems you forgot to wrap component within the Provider',
@@ -90,11 +84,5 @@ export const create = <ContextType, ContextProps extends object>(
     return context as ContextType
   }
 
-  const Provider: React.FC<React.PropsWithChildren<ContextProps>> = ({ children, ...props }) => {
-    const value = useValue(props as ContextProps)
-
-    return <Context.Provider value={value}>{children}</Context.Provider>
-  }
-
-  return [Provider, useContext] as const
+  return [Context, useContext] as CreateContextReturn<ContextType>
 }

@@ -3,7 +3,7 @@
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useInputContext } from '~/components/input/use-input.hook'
+import { useInput } from '~/components/input/use-input.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -27,7 +27,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useInputContext()
+    const context = useInput()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

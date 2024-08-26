@@ -5,7 +5,7 @@ import React from 'react'
 import { OverlayArrow } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useTooltipContext } from '~/components/tooltip/use-tooltip.hook'
+import { useTooltip } from '~/components/tooltip/use-tooltip.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? OverlayArrow
 
-    const { slots } = useTooltipContext()
+    const { slots } = useTooltip()
 
     return (
       <Element {...rest} ref={ref}>

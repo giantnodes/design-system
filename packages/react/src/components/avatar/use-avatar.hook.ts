@@ -4,13 +4,13 @@ import type { AvatarVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { avatar } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 type UseAvatarProps = AvatarVariantProps
 
-type UseAvatarReturn = ReturnType<typeof useAvatar>
+type AvatarContextType = ReturnType<typeof useAvatarValue>
 
-export const useAvatar = (props: UseAvatarProps) => {
+export const useAvatarValue = (props: UseAvatarProps) => {
   const { color, radius, size, zoomed } = props
 
   const slots = React.useMemo(
@@ -33,8 +33,8 @@ export const useAvatar = (props: UseAvatarProps) => {
   }
 }
 
-export const [AvatarContext, useAvatarContext] = createContext<UseAvatarReturn | undefined>({
+export const [AvatarContext, useAvatar] = create<AvatarContextType | undefined>({
   name: 'AvatarContext',
   strict: false,
-  errorMessage: 'useAvatarContext: `context` is undefined. Seems you forgot to wrap component within <Avatar />',
+  errorMessage: 'useAvatar: `context` is undefined. Seems you forgot to wrap component within <Avatar.Root />',
 })

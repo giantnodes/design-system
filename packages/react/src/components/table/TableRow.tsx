@@ -7,7 +7,7 @@ import { Button, Collection, Row, useTableOptions } from 'react-aria-components'
 import type * as Polymophic from '~/utilities/polymorphic'
 import Checkbox from '~/components/checkbox/Checkbox'
 import TableCell from '~/components/table/TableCell'
-import { useTableContext } from '~/components/table/use-table.hook'
+import { useTable } from '~/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'tr'
 
@@ -31,7 +31,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Row
 
-    const { slots } = useTableContext()
+    const { slots } = useTable()
     const { selectionBehavior, allowsDragging } = useTableOptions()
 
     const component = React.useMemo<RowProps<TData>>(

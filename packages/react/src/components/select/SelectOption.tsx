@@ -5,7 +5,7 @@ import React from 'react'
 import { ListBoxItem } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useSelectContext } from '~/components/select/use-select.hook'
+import { useSelect } from '~/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'option'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? ListBoxItem
 
-    const { slots } = useSelectContext()
+    const { slots } = useSelect()
 
     const component = React.useMemo<ListBoxItemProps>(
       () => ({

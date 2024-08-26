@@ -5,7 +5,7 @@ import React from 'react'
 import { Button } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useMenuContext } from '~/components/menu/use-menu.hook'
+import { useMenu } from '~/components/menu/use-menu.hook'
 
 const __ELEMENT_TYPE__ = 'button'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Button
 
-    const { slots } = useMenuContext()
+    const { slots } = useMenu()
 
     const component = React.useMemo<ButtonProps>(
       () => ({

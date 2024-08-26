@@ -5,7 +5,7 @@ import React from 'react'
 import { Heading } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useAlertContext } from '~/components/alert/use-alert.hook'
+import { useAlert } from '~/components/alert/use-alert.hook'
 
 const __ELEMENT_TYPE__ = 'h1'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Heading
 
-    const { slots } = useAlertContext()
+    const { slots } = useAlert()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

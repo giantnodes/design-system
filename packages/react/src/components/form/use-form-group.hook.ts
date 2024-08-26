@@ -6,7 +6,7 @@ import React from 'react'
 import { form } from '@giantnodes/theme'
 
 import type { ChangeHandler } from '~/utilities/types'
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 export type FeedbackType = 'success' | 'info' | 'warning' | 'error'
 
@@ -18,9 +18,9 @@ type UseFormGroupProps = LabelAria & {
   onBlur?: ChangeHandler
 }
 
-type UseFormGroupReturn = ReturnType<typeof useFormGroup>
+type FormGroupContextType = ReturnType<typeof useFormGroupValue>
 
-export const useFormGroup = (props: UseFormGroupProps) => {
+export const useFormGroupValue = (props: UseFormGroupProps) => {
   const { ref, name, fieldProps, labelProps, onChange, onBlur } = props
 
   const [feedback, setFeedback] = React.useState<FeedbackType | null>(null)
@@ -56,8 +56,8 @@ export const useFormGroup = (props: UseFormGroupProps) => {
   }
 }
 
-export const [FormGroupContext, useFormGroupContext] = createContext<UseFormGroupReturn | undefined>({
+export const [FormGroupContext, useFormGroup] = create<FormGroupContextType | undefined>({
   name: 'FormGroupContext',
   strict: false,
-  errorMessage: 'useFormGroupContext: `context` is undefined. Seems you forgot to wrap component within <Form.Group />',
+  errorMessage: 'useFormGroup: `context` is undefined. Seems you forgot to wrap component within <Form.Group />',
 })

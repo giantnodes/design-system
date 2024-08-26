@@ -3,11 +3,11 @@
 import React from 'react'
 import { card } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
-type UseCardReturn = ReturnType<typeof useCard>
+type CardContextType = ReturnType<typeof useCardValue>
 
-export const useCard = () => {
+export const useCardValue = () => {
   const slots = React.useMemo(() => card({}), [])
 
   return {
@@ -15,8 +15,8 @@ export const useCard = () => {
   }
 }
 
-export const [CardContext, useCardContext] = createContext<UseCardReturn>({
+export const [CardContext, useCard] = create<CardContextType>({
   name: 'CardContext',
   strict: true,
-  errorMessage: 'useCardContext: `context` is undefined. Seems you forgot to wrap component within <Card />',
+  errorMessage: 'useCard: `context` is undefined. Seems you forgot to wrap component within <Card.Root />',
 })

@@ -6,7 +6,7 @@ import React from 'react'
 import { Modal } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useModalContext } from '~/components/modal/use-modal.hook'
+import { useModal } from '~/components/modal/use-modal.hook'
 import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'div'
@@ -29,7 +29,7 @@ const Component: ComponentType = <TElement extends React.ElementType = typeof __
 
   const Element = as ?? Modal
 
-  const { slots } = useModalContext()
+  const { slots } = useModal()
 
   const component = React.useMemo<ModalOverlayProps>(
     () => ({

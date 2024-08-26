@@ -4,13 +4,13 @@ import type { DialogVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { dialog } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
-export type UseDialogProps = DialogVariantProps
+type UseDialogProps = DialogVariantProps
 
-export type UseDialogReturn = ReturnType<typeof useDialog>
+type DialogContextType = ReturnType<typeof useDialogValue>
 
-export const useDialog = (_: UseDialogProps) => {
+export const useDialogValue = (_: UseDialogProps) => {
   const slots = React.useMemo(() => dialog(), [])
 
   return {
@@ -18,8 +18,8 @@ export const useDialog = (_: UseDialogProps) => {
   }
 }
 
-export const [DialogContext, useDialogContext] = createContext<UseDialogReturn>({
+export const [DialogContext, useDialog] = create<DialogContextType>({
   name: 'DialogContext',
   strict: true,
-  errorMessage: 'useDialogContext: `context` is undefined. Seems you forgot to wrap component within <Dialog.Root />',
+  errorMessage: 'useDialog: `context` is undefined. Seems you forgot to wrap component within <Dialog.Root />',
 })

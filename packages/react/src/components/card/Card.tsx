@@ -4,7 +4,7 @@ import type { CardVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { CardContext, useCard } from '~/components/card/use-card.hook'
+import { CardContext, useCardValue } from '~/components/card/use-card.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -28,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useCard()
+    const context = useCardValue()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

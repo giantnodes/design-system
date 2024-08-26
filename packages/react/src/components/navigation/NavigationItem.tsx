@@ -4,7 +4,7 @@ import type { NavigationVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useNavigationContext } from '~/components/navigation/use-navigation.hook'
+import { useNavigation } from '~/components/navigation/use-navigation.hook'
 
 const __ELEMENT_TYPE__ = 'li'
 
@@ -30,7 +30,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const { slots } = useNavigationContext()
+    const { slots } = useNavigation()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

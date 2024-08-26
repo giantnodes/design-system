@@ -5,7 +5,7 @@ import React from 'react'
 import { TableBody } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useTableContext } from '~/components/table/use-table.hook'
+import { useTable } from '~/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'tbody'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? TableBody
 
-    const { slots } = useTableContext()
+    const { slots } = useTable()
 
     const component = React.useMemo<TableBodyProps<TData>>(
       () => ({

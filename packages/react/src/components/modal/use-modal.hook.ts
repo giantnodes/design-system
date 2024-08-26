@@ -4,13 +4,13 @@ import type { ModalVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { modal } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
-export type UseModalProps = ModalVariantProps
+type UseModalProps = ModalVariantProps
 
-export type UseModalReturn = ReturnType<typeof useModal>
+type ModalContextType = ReturnType<typeof useModalValue>
 
-export const useModal = (props: UseModalProps) => {
+export const useModalValue = (props: UseModalProps) => {
   const { blur, placement, position } = props
 
   const slots = React.useMemo(() => modal({ blur, placement, position }), [blur, placement, position])
@@ -20,8 +20,8 @@ export const useModal = (props: UseModalProps) => {
   }
 }
 
-export const [ModalContext, useModalContext] = createContext<UseModalReturn>({
+export const [ModalContext, useModal] = create<ModalContextType>({
   name: 'ModalContext',
   strict: true,
-  errorMessage: 'useModalContext: `context` is undefined. Seems you forgot to wrap component within <Modal.Root />',
+  errorMessage: 'useModal: `context` is undefined. Seems you forgot to wrap component within <Modal.Root />',
 })

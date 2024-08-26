@@ -6,7 +6,7 @@ import React from 'react'
 import { MenuTrigger } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { MenuContext, useMenu } from '~/components/menu/use-menu.hook'
+import { MenuContext, useMenuValue } from '~/components/menu/use-menu.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -28,7 +28,7 @@ const Component: ComponentType = <TElement extends React.ElementType = typeof __
 
   const Element = as ?? MenuTrigger
 
-  const context = useMenu({ size, color })
+  const context = useMenuValue({ size, color })
 
   const component = React.useMemo<Omit<MenuTriggerProps, 'children'>>(
     () => ({

@@ -6,7 +6,7 @@ import { Tooltip } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import TooltipArrow from '~/components/tooltip/TooltipArrow'
-import { useTooltipContext } from '~/components/tooltip/use-tooltip.hook'
+import { useTooltip } from '~/components/tooltip/use-tooltip.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -30,7 +30,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Tooltip
 
-    const { slots } = useTooltipContext()
+    const { slots } = useTooltip()
 
     const component = React.useMemo<TooltipProps>(
       () => ({

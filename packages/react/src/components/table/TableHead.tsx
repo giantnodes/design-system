@@ -7,7 +7,7 @@ import { Collection, TableHeader, useTableOptions } from 'react-aria-components'
 import type * as Polymophic from '~/utilities/polymorphic'
 import Checkbox from '~/components/checkbox/Checkbox'
 import TableColumn from '~/components/table/TableColumn'
-import { useTableContext } from '~/components/table/use-table.hook'
+import { useTable } from '~/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'thead'
 
@@ -31,7 +31,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? TableHeader
 
-    const { slots } = useTableContext()
+    const { slots } = useTable()
     const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
 
     const component = React.useMemo<TableHeaderProps<TData>>(

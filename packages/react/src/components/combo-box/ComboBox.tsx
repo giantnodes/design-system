@@ -6,7 +6,7 @@ import React from 'react'
 import { ComboBox } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { ComboBoxContext, useComboBox } from '~/components/combo-box/use-combo-box.hook'
+import { ComboBoxContext, useComboBoxValue } from '~/components/combo-box/use-combo-box.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -30,7 +30,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? ComboBox
 
-    const context = useComboBox({ size, status })
+    const context = useComboBoxValue({ size, status })
 
     const component = React.useMemo<ComboBoxProps<TData>>(
       () => ({

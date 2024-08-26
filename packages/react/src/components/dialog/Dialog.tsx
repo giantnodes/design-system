@@ -5,7 +5,7 @@ import React from 'react'
 import { Dialog } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { DialogContext, useDialog } from '~/components/dialog/use-dialog.hook'
+import { DialogContext, useDialogValue } from '~/components/dialog/use-dialog.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Dialog
 
-    const context = useDialog({})
+    const context = useDialogValue({})
 
     const component = React.useMemo<DialogProps>(
       () => ({

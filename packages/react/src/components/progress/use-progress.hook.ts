@@ -4,13 +4,13 @@ import type { ProgressVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { progress } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 type UseProgressProps = ProgressVariantProps
 
-type UseProgressReturn = ReturnType<typeof useProgress>
+type ProgressContextType = ReturnType<typeof useProgressValue>
 
-export const useProgress = (props: UseProgressProps) => {
+export const useProgressValue = (props: UseProgressProps) => {
   const { radius, size } = props
 
   const slots = React.useMemo(() => progress({ radius, size }), [radius, size])
@@ -20,8 +20,8 @@ export const useProgress = (props: UseProgressProps) => {
   }
 }
 
-export const [ProgressContext, useProgressContext] = createContext<UseProgressReturn>({
+export const [ProgressContext, useProgress] = create<ProgressContextType>({
   name: 'ProgressContext',
   strict: true,
-  errorMessage: 'useProgressContext: `context` is undefined. Seems you forgot to wrap component within <Progress />',
+  errorMessage: 'useProgress: `context` is undefined. Seems you forgot to wrap component within <Progress.Root />',
 })

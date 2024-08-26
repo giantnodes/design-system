@@ -5,7 +5,7 @@ import React from 'react'
 import { Button } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useTooltipContext } from '~/components/tooltip/use-tooltip.hook'
+import { useTooltip } from '~/components/tooltip/use-tooltip.hook'
 
 const __ELEMENT_TYPE__ = 'button'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Button
 
-    const { slots } = useTooltipContext()
+    const { slots } = useTooltip()
 
     const component = React.useMemo<ButtonProps>(
       () => ({

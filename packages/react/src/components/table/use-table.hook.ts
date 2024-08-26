@@ -4,13 +4,13 @@ import type { TableVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { table } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 type UseTableProps = TableVariantProps
 
-type UseTableReturn = ReturnType<typeof useTable>
+type TableContextType = ReturnType<typeof useTableValue>
 
-export const useTable = (props: UseTableProps) => {
+export const useTableValue = (props: UseTableProps) => {
   const { size, sticky, striped, headingless } = props
 
   const slots = React.useMemo(() => table({ size, sticky, striped, headingless }), [size, sticky, striped, headingless])
@@ -20,8 +20,8 @@ export const useTable = (props: UseTableProps) => {
   }
 }
 
-export const [TableContext, useTableContext] = createContext<UseTableReturn>({
+export const [TableContext, useTable] = create<TableContextType>({
   name: 'TableContext',
   strict: true,
-  errorMessage: 'useTableContext: `context` is undefined. Seems you forgot to wrap component within <Table />',
+  errorMessage: 'useTable: `context` is undefined. Seems you forgot to wrap component within <Table.Root />',
 })

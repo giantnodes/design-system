@@ -9,9 +9,9 @@ import examples from 'libphonenumber-js/mobile/examples'
 import { Input } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useFormGroupContext } from '~/components/form/use-form-group.hook'
+import { useFormGroup } from '~/components/form/use-form-group.hook'
 import { Addon } from '~/components/input/component.parts'
-import { useInput, useInputContext } from '~/components/input/use-input.hook'
+import { useInput, useInputValue } from '~/components/input/use-input.hook'
 import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'input'
@@ -38,10 +38,10 @@ const Component: ComponentType = React.forwardRef(
     const { as, children, className, country, color, size, shape, variant, onTemplateChange, ...rest } = props
 
     const Element = as ?? Input
-    const group = useFormGroupContext()
-    const context = useInputContext()
+    const group = useFormGroup()
+    const context = useInput()
 
-    const { slots } = useInput({
+    const { slots } = useInputValue({
       color: color ?? group?.status ?? context?.color,
       size: size ?? context?.size,
       shape: shape ?? context?.shape,

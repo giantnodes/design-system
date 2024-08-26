@@ -4,7 +4,7 @@ import type { AvatarVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { AvatarContext, useAvatar, useAvatarContext } from '~/components/avatar/use-avatar.hook'
+import { AvatarContext, useAvatar, useAvatarValue } from '~/components/avatar/use-avatar.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -28,8 +28,8 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const parent = useAvatarContext()
-    const context = useAvatar({
+    const parent = useAvatar()
+    const context = useAvatarValue({
       color: parent?.color ?? color,
       radius: parent?.radius ?? radius,
       size: parent?.size ?? size,

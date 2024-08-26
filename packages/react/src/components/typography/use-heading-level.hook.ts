@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 
@@ -10,9 +10,9 @@ type UseHeadingLevelProps = {
   level?: HeadingLevel
 }
 
-type UseHeadingLevelReturn = ReturnType<typeof useHeadingLevel>
+type HeadingLevelContext = ReturnType<typeof useHeadingLevelValue>
 
-export const useHeadingLevel = ({ level }: UseHeadingLevelProps) => {
+export const useHeadingLevelValue = ({ level }: UseHeadingLevelProps) => {
   const calculated = React.useMemo<HeadingLevel>(() => {
     const value = level ?? 0
 
@@ -24,9 +24,9 @@ export const useHeadingLevel = ({ level }: UseHeadingLevelProps) => {
   }
 }
 
-export const [HeadingLevelContext, useHeadingLevelContext] = createContext<UseHeadingLevelReturn | undefined>({
+export const [HeadingLevelContext, useHeadingLevel] = create<HeadingLevelContext | undefined>({
   name: 'HeadingLevelContext',
   strict: false,
   errorMessage:
-    'useHeadingLevelContext: `context` is undefined. Seems you forgot to wrap component within <Typography.HeadingLevel />',
+    'useHeadingLevel: `context` is undefined. Seems you forgot to wrap component within <Typography.HeadingLevel />',
 })

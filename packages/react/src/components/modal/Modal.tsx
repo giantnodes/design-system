@@ -6,7 +6,7 @@ import React from 'react'
 import { ModalOverlay } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { ModalContext, useModal } from '~/components/modal/use-modal.hook'
+import { ModalContext, useModalValue } from '~/components/modal/use-modal.hook'
 import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'div'
@@ -29,7 +29,7 @@ const Component: ComponentType = <TElement extends React.ElementType = typeof __
 
   const Element = as ?? ModalOverlay
 
-  const context = useModal({ blur, placement, position })
+  const context = useModalValue({ blur, placement, position })
 
   const component = React.useMemo<ModalOverlayProps>(
     () => ({

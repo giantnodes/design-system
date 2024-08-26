@@ -6,7 +6,7 @@ import React from 'react'
 import { Column } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useTableContext } from '~/components/table/use-table.hook'
+import { useTable } from '~/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'th'
 
@@ -30,7 +30,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Column
 
-    const { slots } = useTableContext()
+    const { slots } = useTable()
 
     const component = React.useMemo<ColumnProps>(
       () => ({
