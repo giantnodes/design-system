@@ -207,8 +207,8 @@ importers:
         specifier: rc
         version: 5.1.0-rc-b57d2823-20240822(eslint@9.9.1(jiti@1.21.0))
       eslint-plugin-turbo:
-        specifier: ^2.0.9
-        version: 2.0.9(eslint@9.9.1(jiti@1.21.0))
+        specifier: ^2.0.14
+        version: 2.0.14(eslint@9.9.1(jiti@1.21.0))
       typescript-eslint:
         specifier: rc-v8
         version: 8.0.0-alpha.62(eslint@9.9.1(jiti@1.21.0))(typescript@5.5.4)
@@ -3346,8 +3346,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
 
-  eslint-plugin-turbo@2.0.9:
-    resolution: {integrity: sha512-q4s4mg6JcXzz5zK4LC3c6FcWehGAWjGj7kIM76ZvG0KiR9Ks0znzjnAKW0NoiDP4s/gt3r4YPOpI357qWt167Q==}
+  eslint-plugin-turbo@2.0.14:
+    resolution: {integrity: sha512-E++MSAEeWZTU0FYARrfakMPq+7XeltqeY4JBDQTzbGEWG3kgYJPeYBMWsypcvBujVihQLlMu0S6ImnfV692mHg==}
     peerDependencies:
       eslint: '>6.6.0'
 
@@ -9723,7 +9723,7 @@ snapshots:
       string.prototype.matchall: 4.0.11
       string.prototype.repeat: 1.0.0
 
-  eslint-plugin-turbo@2.0.9(eslint@9.9.1(jiti@1.21.0)):
+  eslint-plugin-turbo@2.0.14(eslint@9.9.1(jiti@1.21.0)):
     dependencies:
       dotenv: 16.0.3
       eslint: 9.9.1(jiti@1.21.0)
