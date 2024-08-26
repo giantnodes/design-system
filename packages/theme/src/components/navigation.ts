@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 export const navigation = tv({
   slots: {
     navigation: ['relative', 'flex', 'text-sm text-content', 'z-10'],
-    wrapper: ['relative', 'flex gap-3 md:gap-4', 'bg-middleground', 'z-10'],
+    wrapper: ['relative', 'flex gap-3', 'bg-middleground', 'z-10'],
     brand: ['flex flex-row justify-center flex-nowrap shrink-0'],
     segment: ['flex gap-2', 'list-none'],
     title: ['font-semibold'],

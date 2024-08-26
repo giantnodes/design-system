@@ -10,10 +10,8 @@ export type UseDialogProps = DialogVariantProps
 
 export type UseDialogReturn = ReturnType<typeof useDialog>
 
-export const useDialog = (props: UseDialogProps) => {
-  const { size, blur, placement } = props
-
-  const slots = React.useMemo(() => dialog({ size, blur, placement }), [size, blur, placement])
+export const useDialog = (_: UseDialogProps) => {
+  const slots = React.useMemo(() => dialog(), [])
 
   return {
     slots,
@@ -23,5 +21,5 @@ export const useDialog = (props: UseDialogProps) => {
 export const [DialogContext, useDialogContext] = createContext<UseDialogReturn>({
   name: 'DialogContext',
   strict: true,
-  errorMessage: 'useDialogContext: `context` is undefined. Seems you forgot to wrap component within <Dialog />',
+  errorMessage: 'useDialogContext: `context` is undefined. Seems you forgot to wrap component within <Dialog.Root />',
 })
