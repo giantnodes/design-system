@@ -3,7 +3,7 @@
   "version": "1.0.0-canary.20",
   "description": "",
   "license": "AGPL-3.0",
-  "packageManager": "pnpm@8.7.0",
+  "packageManager": "pnpm@9.6.0",
   "author": {
     "name": "Jordan Phillips",
     "email": "jordan@giantnodes.com"
@@ -23,14 +23,14 @@
     "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.3.0",
+    "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@giantnodes/prettier-config": "workspace:*",
-    "husky": "^9.1.1",
-    "prettier": "^3.3.3",
+    "husky": "^9.1.5",
+    "prettier": "catalog:",
     "tsup": "^6.6.0",
-    "turbo": "^2.0.9",
-    "typescript": "^5.5.4"
+    "turbo": "^2.0.14",
+    "typescript": "catalog:"
   },
   "engines": {
     "node": ">=16.x",

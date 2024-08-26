@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@giantnodes/tsconfig": "workspace:*",
-    "typescript": "^5.4.5"
+    "typescript": "catalog:"
   },
   "prettier": "@giantnodes/prettier-config"
 }

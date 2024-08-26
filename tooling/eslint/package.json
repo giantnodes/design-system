@@ -22,9 +22,9 @@
   "devDependencies": {
     "@giantnodes/prettier-config": "workspace:*",
     "@giantnodes/tsconfig": "workspace:*",
-    "eslint": "^9.7.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   },
   "prettier": "@giantnodes/prettier-config"
 }
