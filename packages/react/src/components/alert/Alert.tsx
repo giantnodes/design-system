@@ -4,7 +4,7 @@ import type { AlertVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { AlertContext, useAlert } from '~/components/alert/use-alert.hook'
+import { AlertContext, useAlertValue } from '~/components/alert/use-alert.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -28,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useAlert({ color })
+    const context = useAlertValue({ color })
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

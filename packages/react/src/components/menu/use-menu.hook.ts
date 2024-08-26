@@ -4,13 +4,13 @@ import type { MenuVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { menu } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context.jsx'
 
 type UseMenuProps = MenuVariantProps
 
-type UseMenuReturn = ReturnType<typeof useMenu>
+type MenuContextType = ReturnType<typeof useMenuValue>
 
-export const useMenu = (props: UseMenuProps) => {
+export const useMenuValue = (props: UseMenuProps) => {
   const { size, color } = props
 
   const slots = React.useMemo(() => menu({ size, color }), [size, color])
@@ -20,8 +20,8 @@ export const useMenu = (props: UseMenuProps) => {
   }
 }
 
-export const [MenuContext, useMenuContext] = createContext<UseMenuReturn>({
+export const [MenuContext, useMenu] = create<MenuContextType>({
   name: 'MenuContext',
   strict: true,
-  errorMessage: 'useMenuContext: `context` is undefined. Seems you forgot to wrap component within <Menu />',
+  errorMessage: 'useMenu: `context` is undefined. Seems you forgot to wrap component within <Menu.Root />',
 })

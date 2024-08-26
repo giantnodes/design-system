@@ -4,7 +4,7 @@ import type { AvatarVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useAvatarContext } from '~/components/avatar/use-avatar.hook'
+import { useAvatar } from '~/components/avatar/use-avatar.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -28,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useAvatarContext()
+    const context = useAvatar()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

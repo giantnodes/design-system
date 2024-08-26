@@ -4,7 +4,7 @@ import type { NavigationVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { NavigationContext, useNavigation } from '~/components/navigation/use-navigation.hook'
+import { NavigationContext, useNavigationValue } from '~/components/navigation/use-navigation.hook'
 
 const __ELEMENT_TYPE__ = 'nav'
 
@@ -28,7 +28,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useNavigation({
+    const context = useNavigationValue({
       orientation,
       position,
       size,

@@ -6,8 +6,8 @@ import React from 'react'
 import { Input } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useFormGroupContext } from '~/components/form/use-form-group.hook'
-import { useInput, useInputContext } from '~/components/input/use-input.hook'
+import { useFormGroup } from '~/components/form/use-form-group.hook'
+import { useInput, useInputValue } from '~/components/input/use-input.hook'
 import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'input'
@@ -32,10 +32,10 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Input
 
-    const group = useFormGroupContext()
-    const context = useInputContext()
+    const group = useFormGroup()
+    const context = useInput()
 
-    const { slots } = useInput({
+    const { slots } = useInputValue({
       color: color ?? group?.status ?? context?.color,
       size: size ?? context?.size,
       shape: shape ?? context?.shape,

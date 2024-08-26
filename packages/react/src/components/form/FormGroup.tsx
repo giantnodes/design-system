@@ -4,7 +4,7 @@ import React from 'react'
 import { useField } from 'react-aria'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { FormGroupContext, useFormGroup } from '~/components/form/use-form-group.hook'
+import { FormGroupContext, useFormGroupValue } from '~/components/form/use-form-group.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -34,7 +34,7 @@ const Component: ComponentType = React.forwardRef(
     const Element = as ?? __ELEMENT_TYPE__
 
     const { labelProps, fieldProps } = useField({ ...props, label: name })
-    const context = useFormGroup({
+    const context = useFormGroupValue({
       ref,
       name,
       labelProps,

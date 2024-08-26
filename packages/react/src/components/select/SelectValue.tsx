@@ -5,7 +5,7 @@ import React from 'react'
 import { SelectStateContext, SelectValue } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useSelectContext } from '~/components/select/use-select.hook'
+import { useSelect } from '~/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'span'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? SelectValue
 
-    const { slots } = useSelectContext()
+    const { slots } = useSelect()
     const { selectedItem } = React.useContext(SelectStateContext)
 
     const component = React.useMemo<SelectValueProps<TData>>(

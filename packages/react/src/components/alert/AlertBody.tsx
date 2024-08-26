@@ -3,7 +3,7 @@
 import React from 'react'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useAlertContext } from '~/components/alert/use-alert.hook'
+import { useAlert } from '~/components/alert/use-alert.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -27,7 +27,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const { slots } = useAlertContext()
+    const { slots } = useAlert()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

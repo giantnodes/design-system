@@ -5,7 +5,7 @@ import React from 'react'
 import { ListBox } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useComboBoxContext } from '~/components/combo-box/use-combo-box.hook'
+import { useComboBox } from '~/components/combo-box/use-combo-box.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? ListBox
 
-    const { slots } = useComboBoxContext()
+    const { slots } = useComboBox()
 
     const component = React.useMemo<ListBoxProps<D>>(
       () => ({

@@ -6,8 +6,8 @@ import React from 'react'
 import { TextArea } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useFormGroupContext } from '~/components/form/use-form-group.hook'
-import { useInput, useInputContext } from '~/components/input/use-input.hook'
+import { useFormGroup } from '~/components/form/use-form-group.hook'
+import { useInput, useInputValue } from '~/components/input/use-input.hook'
 import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'textarea'
@@ -32,15 +32,15 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? TextArea
 
-    const context = useInputContext()
-    const { slots } = useInput({
+    const context = useInput()
+    const { slots } = useInputValue({
       color: color ?? context?.color,
       size: size ?? context?.size,
       shape: shape ?? context?.shape,
       variant: variant ?? context?.variant,
     })
 
-    const group = useFormGroupContext()
+    const group = useFormGroup()
 
     const component = React.useMemo<TextAreaProps>(
       () => ({

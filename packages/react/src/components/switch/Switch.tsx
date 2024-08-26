@@ -7,7 +7,7 @@ import { toggle } from '@giantnodes/theme'
 import { Switch } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useFormGroupContext } from '~/components/form/use-form-group.hook'
+import { useFormGroup } from '~/components/form/use-form-group.hook'
 
 const __ELEMENT_TYPE__ = 'label'
 
@@ -31,7 +31,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Switch
 
-    const group = useFormGroupContext()
+    const group = useFormGroup()
 
     const slots = React.useMemo(() => toggle({ color, size }), [color, size])
 

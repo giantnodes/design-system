@@ -5,7 +5,7 @@ import React from 'react'
 import { Button } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useNavigationContext } from '~/components/navigation/use-navigation.hook'
+import { useNavigation } from '~/components/navigation/use-navigation.hook'
 
 const __ELEMENT_TYPE__ = 'button'
 
@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Button
 
-    const { slots } = useNavigationContext()
+    const { slots } = useNavigation()
 
     const component = React.useMemo<ButtonProps>(
       () => ({

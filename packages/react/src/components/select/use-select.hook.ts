@@ -6,7 +6,7 @@ import React from 'react'
 import { select } from '@giantnodes/theme'
 
 import type { ChangeHandler } from '~/utilities/types'
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 type UseSelectProps<TElement extends object> = SelectVariantProps &
   Pick<SelectProps<TElement>, 'onSelectionChange'> & {
@@ -17,9 +17,9 @@ type UseSelectProps<TElement extends object> = SelectVariantProps &
     onChange?: ChangeHandler
   }
 
-type UseSelectReturn = ReturnType<typeof useSelect>
+type SelectContextType = ReturnType<typeof useSelectValue>
 
-export const useSelect = <TElement extends object>(props: UseSelectProps<TElement>) => {
+export const useSelectValue = <TElement extends object>(props: UseSelectProps<TElement>) => {
   const { ref, name, size, status, onChange, onSelectionChange } = props
 
   const slots = React.useMemo(() => select({ size, status }), [size, status])
@@ -45,8 +45,8 @@ export const useSelect = <TElement extends object>(props: UseSelectProps<TElemen
   }
 }
 
-export const [SelectContext, useSelectContext] = createContext<UseSelectReturn>({
+export const [SelectContext, useSelect] = create<SelectContextType>({
   name: 'SelectContext',
   strict: true,
-  errorMessage: 'useSelectContext: `context` is undefined. Seems you forgot to wrap component within <Select />',
+  errorMessage: 'useSelect: `context` is undefined. Seems you forgot to wrap component within <Select.Root />',
 })

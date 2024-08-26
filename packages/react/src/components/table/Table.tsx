@@ -6,7 +6,7 @@ import React from 'react'
 import { Table } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
-import { TableContext, useTable } from '~/components/table/use-table.hook'
+import { TableContext, useTableValue } from '~/components/table/use-table.hook'
 
 const __ELEMENT_TYPE__ = 'table'
 
@@ -34,7 +34,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Table
 
-    const context = useTable({ size, sticky, striped, headingless })
+    const context = useTableValue({ size, sticky, striped, headingless })
 
     const component = React.useMemo<TableProps>(
       () => ({

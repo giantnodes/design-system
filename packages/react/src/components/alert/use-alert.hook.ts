@@ -4,13 +4,13 @@ import type { AlertVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { alert } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 type UseAlertProps = AlertVariantProps
 
-type UseAlertReturn = ReturnType<typeof useAlert>
+type AlertContextType = ReturnType<typeof useAlertValue>
 
-export const useAlert = (props: UseAlertProps) => {
+export const useAlertValue = (props: UseAlertProps) => {
   const { color } = props
 
   const slots = React.useMemo(() => alert({ color }), [color])
@@ -20,8 +20,8 @@ export const useAlert = (props: UseAlertProps) => {
   }
 }
 
-export const [AlertContext, useAlertContext] = createContext<UseAlertReturn>({
+export const [AlertContext, useAlert] = create<AlertContextType>({
   name: 'AlertContext',
   strict: true,
-  errorMessage: 'useAlertContext: `context` is undefined. Seems you forgot to wrap component within <Alert />',
+  errorMessage: 'useAlert: `context` is undefined. Seems you forgot to wrap component within <Alert.Root />',
 })

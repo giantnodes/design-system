@@ -4,7 +4,7 @@ import React from 'react'
 
 import type { FeedbackType } from '~/components/form/use-form-group.hook'
 import type * as Polymophic from '~/utilities/polymorphic'
-import { useFormGroupContext } from '~/components/form/use-form-group.hook'
+import { useFormGroup } from '~/components/form/use-form-group.hook'
 import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'span'
@@ -31,7 +31,7 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useFormGroupContext()
+    const context = useFormGroup()
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

@@ -4,13 +4,13 @@ import type { NavigationVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { navigation } from '@giantnodes/theme'
 
-import { createContext } from '~/utilities/context'
+import { create } from '~/utilities/create-context'
 
 type UseNavigationProps = NavigationVariantProps
 
-type UseNavigationReturn = ReturnType<typeof useNavigation>
+type NavigationContextType = ReturnType<typeof useNavigationValue>
 
-export const useNavigation = (props: UseNavigationProps) => {
+export const useNavigationValue = (props: UseNavigationProps) => {
   const { orientation, position, size, variant, isBordered } = props
 
   const slots = React.useMemo(
@@ -30,9 +30,8 @@ export const useNavigation = (props: UseNavigationProps) => {
   }
 }
 
-export const [NavigationContext, useNavigationContext] = createContext<UseNavigationReturn>({
+export const [NavigationContext, useNavigation] = create<NavigationContextType>({
   name: 'NavigationContext',
   strict: true,
-  errorMessage:
-    'useNavigationContext: `context` is undefined. Seems you forgot to wrap component within <Navigation />',
+  errorMessage: 'useNavigation: `context` is undefined. Seems you forgot to wrap component within <Navigation.Root />',
 })
