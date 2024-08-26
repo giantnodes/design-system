@@ -11,10 +11,10 @@ const Component: Meta<typeof Dialog.Root> = {
 const defaultProps = {}
 
 export const Default: StoryFn<DialogProps> = (args) => (
-  <Dialog.Root {...args}>
+  <Dialog.Trigger>
     <Button>Open</Button>
 
-    <Dialog.Content>
+    <Dialog.Root {...args}>
       {({ close }) => (
         <Card.Root>
           <Card.Header>Dialog</Card.Header>
@@ -26,8 +26,8 @@ export const Default: StoryFn<DialogProps> = (args) => (
           </Card.Footer>
         </Card.Root>
       )}
-    </Dialog.Content>
-  </Dialog.Root>
+    </Dialog.Root>
+  </Dialog.Trigger>
 )
 
 Default.args = {

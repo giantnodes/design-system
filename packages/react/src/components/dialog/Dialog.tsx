@@ -1,16 +1,15 @@
 'use client'
 
-import type { DialogVariantProps } from '@giantnodes/theme'
-import type { DialogTriggerProps } from 'react-aria-components'
+import type { DialogProps } from 'react-aria-components'
 import React from 'react'
-import { DialogTrigger } from 'react-aria-components'
+import { Dialog } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import { DialogContext, useDialog } from '~/components/dialog/use-dialog.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
-type ComponentOwnProps = DialogTriggerProps & DialogVariantProps
+type ComponentOwnProps = DialogProps
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -21,29 +20,34 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
   props: ComponentProps<TElement>
 ) => React.ReactNode
 
-const Component: ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<TElement>
-) => {
-  const { as, children, className, size, blur, placement, ...rest } = props
+const Component: ComponentType = React.forwardRef(
+  <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+    props: ComponentProps<TElement>,
+    ref: Polymophic.Ref<TElement>
+  ) => {
+    const { as, children, className, ...rest } = props
 
-  const Element = as ?? DialogTrigger
+    const Element = as ?? Dialog
 
-  const context = useDialog({ size, blur, placement })
+    const context = useDialog({})
 
-  const component = React.useMemo<Omit<DialogTriggerProps, 'children'>>(
-    () => ({
-      className: context.slots.dialog({ className }),
-      ...rest,
-    }),
-    [context.slots, className, rest]
-  )
+    const component = React.useMemo<DialogProps>(
+      () => ({
+        className: context.slots.root({ className }),
+        ...rest,
+      }),
+      [context.slots, className, rest]
+    )
 
-  return (
-    <DialogContext.Provider value={context}>
-      <Element {...component}>{children}</Element>
-    </DialogContext.Provider>
-  )
-}
+    return (
+      <DialogContext.Provider value={context}>
+        <Element {...component} ref={ref}>
+          {children}
+        </Element>
+      </DialogContext.Provider>
+    )
+  }
+)
 
 export type { ComponentOwnProps as DialogOwnProps, ComponentProps as DialogProps }
 export default Component
