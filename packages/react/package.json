@@ -63,7 +63,7 @@
     "resolve-tspaths": "^0.8.19",
     "storybook": "^8.2.9",
     "tailwindcss": "catalog:",
-    "ts-jest": "^29.2.3",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "vite": "^5.4.2"
   },
