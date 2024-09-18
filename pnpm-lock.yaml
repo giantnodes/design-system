@@ -46,8 +46,8 @@ importers:
         specifier: workspace:*
         version: link:tooling/prettier
       husky:
-        specifier: ^9.1.5
-        version: 9.1.5
+        specifier: ^9.1.6
+        version: 9.1.6
       prettier:
         specifier: 'catalog:'
         version: 3.3.3
@@ -205,7 +205,7 @@ importers:
         version: 7.35.0(eslint@9.9.1(jiti@1.21.0))
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-94e652d5-20240912(eslint@9.9.1(jiti@1.21.0))
+        version: 5.1.0-rc-a99d8e8d-20240916(eslint@9.9.1(jiti@1.21.0))
       eslint-plugin-turbo:
         specifier: ^2.1.2
         version: 2.1.2(eslint@9.9.1(jiti@1.21.0))
@@ -3334,8 +3334,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-hooks@5.1.0-rc-94e652d5-20240912:
-    resolution: {integrity: sha512-m9GVeutJUdvfTIC/1f21NurvYm4daYbVZRfNOJEhL6oFB42uxrOBU2LJQSfixzm1px5QskS6rKInuadut4BYtQ==}
+  eslint-plugin-react-hooks@5.1.0-rc-a99d8e8d-20240916:
+    resolution: {integrity: sha512-8sJ7eyk9p+Ph7hde05UPm0FGp1TCcEqPQ0EndQpxHrpo3O4PEq178dWmtVs9Ys9ym3+zNijv3b/SryF65R5SJQ==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -3704,8 +3704,8 @@ packages:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
 
-  husky@9.1.5:
-    resolution: {integrity: sha512-rowAVRUBfI0b4+niA4SJMhfQwc107VLkBUgEYYAOQAbqDCnra1nYh83hF/MDmhYs9t9n1E3DuKOrs2LYNC+0Ag==}
+  husky@9.1.6:
+    resolution: {integrity: sha512-sqbjZKK7kf44hfdE94EoX8MZNk0n7HeW37O4YrVGCF4wzgQjp+akPAkfUK5LZ6KuR/6sqeAVuXHji+RzQgOn5A==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -9702,7 +9702,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-94e652d5-20240912(eslint@9.9.1(jiti@1.21.0)):
+  eslint-plugin-react-hooks@5.1.0-rc-a99d8e8d-20240916(eslint@9.9.1(jiti@1.21.0)):
     dependencies:
       eslint: 9.9.1(jiti@1.21.0)
 
@@ -10182,7 +10182,7 @@ snapshots:
 
   human-signals@5.0.0: {}
 
-  husky@9.1.5: {}
+  husky@9.1.6: {}
 
   iconv-lite@0.4.24:
     dependencies:
