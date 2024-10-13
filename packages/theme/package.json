@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "tailwind-variants": "^0.2.1",
-    "tw-colors": "^3.3.1"
+    "tw-colors": "^3.3.2"
   },
   "devDependencies": {
     "@giantnodes/eslint-config": "workspace:*",
