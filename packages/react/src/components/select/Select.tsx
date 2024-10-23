@@ -129,30 +129,42 @@ const Component: ComponentType = React.forwardRef(
       [behavior, context.slots, items, mode]
     )
 
+    const IconComponent = React.useMemo(() => {
+      if (!icon) {
+        return (
+          <svg
+            aria-hidden="true"
+            className={context.slots.icon()}
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none" stroke="none" />
+            <path d="M6 9l6 6l6 -6" />
+          </svg>
+        )
+      }
+
+      if (!React.isValidElement(icon)) {
+        return icon
+      }
+
+      return React.cloneElement(icon as React.ReactElement, { className: context.slots.icon() })
+    }, [icon])
+
     return (
       <SelectContext.Provider value={context}>
         <Element {...select} ref={group?.ref ?? ref}>
           <Button {...button}>
             <SelectValue />
 
-            {icon ?? (
-              <svg
-                aria-hidden="true"
-                className={context.slots.icon()}
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M0 0h24v24H0z" fill="none" stroke="none" />
-                <path d="M6 9l6 6l6 -6" />
-              </svg>
-            )}
+            {IconComponent}
           </Button>
 
           <Popover {...popover}>

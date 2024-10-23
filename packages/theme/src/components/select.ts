@@ -13,7 +13,7 @@ export const select = tv({
       'cursor-pointer',
       'has-[:disabled]:opacity-50',
     ],
-    value: ['flex items-center gap-2'],
+    value: ['flex items-center grow gap-1', 'overflow-hidden'],
     button: ['flex flex-row items-center justify-between', 'w-full', 'p-1.5', 'focus:outline-none'],
     icon: ['shrink-0'],
     check: ['text-inherit', 'h-5 w-5', 'ml-auto', 'shrink-0'],
