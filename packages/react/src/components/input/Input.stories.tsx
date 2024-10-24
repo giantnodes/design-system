@@ -12,9 +12,9 @@ const Component: Meta<InputComponentProps> = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['xs', 'sm', 'md', 'lg'],
     },
-    status: {
+    color: {
       control: { type: 'select' },
       options: ['neutral', 'brand', 'success', 'info', 'warning', 'danger'],
     },
