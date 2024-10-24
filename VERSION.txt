@@ -1,2 +1,2 @@
-1.0.0-canary.23
+1.0.0-canary.24
 canary
