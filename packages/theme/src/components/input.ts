@@ -35,6 +35,10 @@ export const input = tv({
       },
     },
     size: {
+      xs: {
+        group: ['text-xs'],
+        input: ['min-h-6', 'placeholder:text-xs'],
+      },
       sm: {
         group: ['text-sm'],
         input: ['min-h-8', 'placeholder:text-sm'],
@@ -44,8 +48,8 @@ export const input = tv({
         input: ['min-h-10', 'placeholder:text-base'],
       },
       lg: {
-        group: ['min-h-12', 'text-lg'],
-        input: ['placeholder:text-lg'],
+        group: ['text-lg'],
+        input: ['min-h-12', 'placeholder:text-lg'],
       },
     },
     shape: {
