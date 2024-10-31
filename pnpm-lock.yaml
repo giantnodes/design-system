@@ -110,8 +110,8 @@ importers:
         specifier: ^8.3.5
         version: 8.3.5(react@18.3.1)(storybook@8.3.5)
       '@storybook/addon-themes':
-        specifier: ^8.3.5
-        version: 8.3.5(storybook@8.3.5)
+        specifier: ^8.4.0
+        version: 8.4.0(storybook@8.3.5)
       '@storybook/blocks':
         specifier: ^8.3.5
         version: 8.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.5)
@@ -202,7 +202,7 @@ importers:
         version: 7.37.1(eslint@9.9.1(jiti@1.21.0))
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-45804af1-20241021(eslint@9.9.1(jiti@1.21.0))
+        version: 5.1.0-rc-603e6108-20241029(eslint@9.9.1(jiti@1.21.0))
       eslint-plugin-turbo:
         specifier: ^2.2.3
         version: 2.2.3(eslint@9.9.1(jiti@1.21.0))
@@ -1669,10 +1669,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@storybook/addon-themes@8.3.5':
-    resolution: {integrity: sha512-kXHKAZvAtMoOR1XFGTo5/T8anE9x7W8Ddpof2wyi+du5HscFiEW7TesWdvNgBUR7wAaiR21aW2S4jC72a6gTCw==}
+  '@storybook/addon-themes@8.4.0':
+    resolution: {integrity: sha512-hgNcSI3SBJXZkxbOz36lmapxA9HAFILZlkCptRLMMSKbJsHwMLbn6Zc66Gyr8lP3Pv5SZ0OVy5AzLezr2d6f1w==}
     peerDependencies:
-      storybook: ^8.3.5
+      storybook: ^8.4.0
 
   '@storybook/addon-toolbars@8.3.5':
     resolution: {integrity: sha512-Ml2gc9q8WbteDvmuAZGgBxt5SqWMXzuTkMjlsA8EB53hlkN1w9esX4s8YtBeNqC3HKoUzcdq8uexSBqU8fDbSA==}
@@ -2772,8 +2772,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-react-hooks@5.1.0-rc-45804af1-20241021:
-    resolution: {integrity: sha512-q8MQ4OQ0TYmKT6eS2ZObxmA+OvUrd27MN72zU5b3ib7Q+1I78C9aUzy1GelM8ttgkEkwSxE+qDBgV+K84tjt+Q==}
+  eslint-plugin-react-hooks@5.1.0-rc-603e6108-20241029:
+    resolution: {integrity: sha512-btivWAKpwyymHoOUyoc3evCcmAWSZw+qlDe/nhtFKDs0agXQrqfLBfmfwZb7sY1VWiKVaqEKPhhK19WNOxssNw==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -6770,7 +6770,7 @@ snapshots:
       storybook: 8.3.5
       ts-dedent: 2.2.0
 
-  '@storybook/addon-themes@8.3.5(storybook@8.3.5)':
+  '@storybook/addon-themes@8.4.0(storybook@8.3.5)':
     dependencies:
       storybook: 8.3.5
       ts-dedent: 2.2.0
@@ -8147,7 +8147,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-45804af1-20241021(eslint@9.9.1(jiti@1.21.0)):
+  eslint-plugin-react-hooks@5.1.0-rc-603e6108-20241029(eslint@9.9.1(jiti@1.21.0)):
     dependencies:
       eslint: 9.9.1(jiti@1.21.0)
 
