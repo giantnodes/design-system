@@ -44,7 +44,7 @@
     "@giantnodes/tsconfig": "workspace:*",
     "@jest/types": "^29.6.3",
     "@storybook/addon-backgrounds": "^8.3.5",
-    "@storybook/addon-essentials": "^8.3.5",
+    "@storybook/addon-essentials": "^8.4.1",
     "@storybook/addon-interactions": "^8.3.5",
     "@storybook/addon-links": "^8.3.5",
     "@storybook/addon-themes": "^8.3.5",
