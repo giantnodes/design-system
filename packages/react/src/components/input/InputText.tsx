@@ -1,9 +1,9 @@
 'use client'
 
 import type { InputVariantProps } from '@giantnodes/theme'
-import type { InputProps } from 'react-aria-components'
+import type { InputProps, TextFieldProps } from 'react-aria-components'
 import React from 'react'
-import { Input } from 'react-aria-components'
+import { Input, TextField } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import { useFormGroup } from '~/components/form/use-form-group.hook'
@@ -12,7 +12,7 @@ import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'input'
 
-type ComponentOwnProps = InputVariantProps
+type ComponentOwnProps = InputVariantProps & Omit<TextFieldProps, 'children'>
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -28,9 +28,9 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, size, shape, variant, ...rest } = props
+    const { as, className, color, size, shape, variant, ...rest } = props
 
-    const Element = as ?? Input
+    const Element = as ?? TextField
 
     const group = useFormGroup()
     const context = useInput()
@@ -42,21 +42,31 @@ const Component: ComponentType = React.forwardRef(
       variant: variant ?? context?.variant,
     })
 
-    const component = React.useMemo<InputProps>(
+    const component = React.useMemo<TextFieldProps>(
       () => ({
         name: group?.name,
-        onChange: group?.onChange,
+        onChange: (value: string) =>
+          group?.onChange?.({
+            target: { value },
+            type: 'change',
+          }),
         onBlur: group?.onBlur,
-        className: slots.input({ className: cn(className) }),
         ...group?.fieldProps,
         ...rest,
       }),
-      [className, group?.fieldProps, group?.name, group?.onBlur, group?.onChange, rest, slots]
+      [group, rest]
+    )
+
+    const input = React.useMemo<InputProps>(
+      () => ({
+        className: slots.input({ className: cn(className) }),
+      }),
+      [className, slots]
     )
 
     return (
-      <Element {...component} ref={(group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref}>
-        {children}
+      <Element {...component}>
+        <Input {...input} ref={(group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref} />
       </Element>
     )
   }

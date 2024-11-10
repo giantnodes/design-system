@@ -1,9 +1,9 @@
 'use client'
 
 import type { InputVariantProps } from '@giantnodes/theme'
-import type { TextAreaProps } from 'react-aria-components'
+import type { TextAreaProps, TextFieldProps } from 'react-aria-components'
 import React from 'react'
-import { TextArea } from 'react-aria-components'
+import { TextArea, TextField } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import { useFormGroup } from '~/components/form/use-form-group.hook'
@@ -28,9 +28,9 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, color, size, shape, variant, ...rest } = props
+    const { as, className, color, size, shape, variant, ...rest } = props
 
-    const Element = as ?? TextArea
+    const Element = as ?? TextField
 
     const context = useInput()
     const { slots } = useInputValue({
@@ -42,21 +42,31 @@ const Component: ComponentType = React.forwardRef(
 
     const group = useFormGroup()
 
-    const component = React.useMemo<TextAreaProps>(
+    const component = React.useMemo<TextFieldProps>(
       () => ({
         name: group?.name,
-        onChange: group?.onChange,
+        onChange: (value: string) =>
+          group?.onChange?.({
+            target: { value },
+            type: 'change',
+          }),
         onBlur: group?.onBlur,
-        className: slots.input({ className: cn(className) }),
         ...group?.fieldProps,
         ...rest,
       }),
-      [className, group?.fieldProps, group?.name, group?.onBlur, group?.onChange, rest, slots]
+      [group, rest]
+    )
+
+    const input = React.useMemo<TextAreaProps>(
+      () => ({
+        className: slots.input({ className: cn(className) }),
+      }),
+      [className, slots]
     )
 
     return (
-      <Element {...component} ref={(group?.ref as React.RefObject<HTMLTextAreaElement> | undefined) ?? ref}>
-        {children}
+      <Element {...component}>
+        <TextArea {...input} ref={(group?.ref as React.RefObject<HTMLTextAreaElement> | undefined) ?? ref} />
       </Element>
     )
   }
