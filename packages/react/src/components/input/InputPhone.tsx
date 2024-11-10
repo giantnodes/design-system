@@ -2,11 +2,11 @@
 
 import type { InputVariantProps } from '@giantnodes/theme'
 import type { CountryCode } from 'libphonenumber-js'
-import type { InputProps } from 'react-aria-components'
+import type { InputProps, TextFieldProps } from 'react-aria-components'
 import React from 'react'
 import { getExampleNumber, parsePhoneNumber } from 'libphonenumber-js/min'
 import examples from 'libphonenumber-js/mobile/examples'
-import { Input } from 'react-aria-components'
+import { Input, TextField } from 'react-aria-components'
 
 import type * as Polymophic from '~/utilities/polymorphic'
 import { useFormGroup } from '~/components/form/use-form-group.hook'
@@ -16,10 +16,11 @@ import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'input'
 
-type ComponentOwnProps = InputVariantProps & {
-  country: CountryCode
-  onTemplateChange?: (template: string) => void
-}
+type ComponentOwnProps = InputVariantProps &
+  Omit<TextFieldProps, 'children'> & {
+    country: CountryCode
+    onTemplateChange?: (template: string) => void
+  }
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -35,9 +36,9 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, country, color, size, shape, variant, onTemplateChange, ...rest } = props
+    const { as, className, country, color, size, shape, variant, onTemplateChange, ...rest } = props
 
-    const Element = as ?? Input
+    const Element = as ?? TextField
     const group = useFormGroup()
     const context = useInput()
 
@@ -68,9 +69,7 @@ const Component: ComponentType = React.forwardRef(
 
       const parsed = parsePhoneNumber(example.number, country)
       const formatted = parsed.format('NATIONAL')
-      const template = formatted.replace(/\d/g, '#')
-
-      return template
+      return formatted.replace(/\d/g, '#')
     }, [country])
 
     /**
@@ -113,16 +112,22 @@ const Component: ComponentType = React.forwardRef(
       [format, group]
     )
 
-    const component = React.useMemo<InputProps>(
+    const component = React.useMemo<TextFieldProps>(
       () => ({
         name: group?.name,
         onChange: onChange,
         onBlur: group?.onBlur,
-        className: slots.input({ className: cn(className) }),
         ...group?.fieldProps,
         ...rest,
       }),
-      [className, group?.fieldProps, group?.name, group?.onBlur, onChange, rest, slots]
+      [group?.fieldProps, group?.name, group?.onBlur, onChange, rest]
+    )
+
+    const input = React.useMemo<InputProps>(
+      () => ({
+        className: slots.input({ className: cn(className) }),
+      }),
+      [className, slots]
     )
 
     React.useEffect(() => {
@@ -135,8 +140,8 @@ const Component: ComponentType = React.forwardRef(
           <CountryFlag country={country} />
         </Addon>
 
-        <Element {...component} ref={(group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref}>
-          {children}
+        <Element {...component}>
+          <Input {...input} ref={(group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref} />
         </Element>
       </>
     )

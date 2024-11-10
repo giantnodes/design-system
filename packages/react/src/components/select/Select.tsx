@@ -156,7 +156,7 @@ const Component: ComponentType = React.forwardRef(
       }
 
       return React.cloneElement(icon as React.ReactElement, { className: context.slots.icon() })
-    }, [icon])
+    }, [context.slots, icon])
 
     return (
       <SelectContext.Provider value={context}>
