@@ -104,8 +104,8 @@ importers:
         specifier: ^8.3.5
         version: 8.3.5(storybook@8.3.5)
       '@storybook/addon-interactions':
-        specifier: ^8.3.5
-        version: 8.3.5(storybook@8.3.5)
+        specifier: ^8.4.5
+        version: 8.4.5(storybook@8.3.5)
       '@storybook/addon-links':
         specifier: ^8.3.5
         version: 8.3.5(react@18.3.1)(storybook@8.3.5)
@@ -202,7 +202,7 @@ importers:
         version: 7.37.1(eslint@9.9.1(jiti@1.21.0))
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-45804af1-20241021(eslint@9.9.1(jiti@1.21.0))
+        version: 5.1.0-rc.1(eslint@9.9.1(jiti@1.21.0))
       eslint-plugin-turbo:
         specifier: ^2.2.3
         version: 2.2.3(eslint@9.9.1(jiti@1.21.0))
@@ -1645,10 +1645,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@storybook/addon-interactions@8.3.5':
-    resolution: {integrity: sha512-GtTy/A+mG7vDOahQr2avT4dpWtCRiFDSYcWyuQOZm10y8VDDw157HQM+FuhxjV9Owrrohy9F24oBUwRG8H3b5A==}
+  '@storybook/addon-interactions@8.4.5':
+    resolution: {integrity: sha512-s6R8XVD8LTp+LQTDbhtDjDLE6S44I7FtMLxPdMNwN9VEJjBk01NONLDuGDpNq5o/0bnybA3rMHk9+3afsgzidQ==}
     peerDependencies:
-      storybook: ^8.3.5
+      storybook: ^8.4.5
 
   '@storybook/addon-links@8.3.5':
     resolution: {integrity: sha512-giRCpn6cfJMYPnVJkojoQDO5ae6098fgY9YgAhwaJej/9dufNcioFdbiyfK1vyzbG6TGeTmJ9ncWCXgWRtzxPQ==}
@@ -1743,6 +1743,11 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
+  '@storybook/instrumenter@8.4.5':
+    resolution: {integrity: sha512-8qM35FkueuRpJr0zA6ENvhQICbo+iKL1ln450DwV1kKJtc41KdbA3CuCvtZ/FnoPsFnwdtPjhhICFtRt8LRTSg==}
+    peerDependencies:
+      storybook: ^8.4.5
+
   '@storybook/manager-api@8.3.5':
     resolution: {integrity: sha512-fEQoKKi7h7pzh2z9RfuzatJxubrsfL/CB99fNXQ0wshMSY/7O4ckd18pK4fzG9ErnCtLAO9qsim4N/4eQC+/8Q==}
     peerDependencies:
@@ -1788,6 +1793,11 @@ packages:
     resolution: {integrity: sha512-1BXWsUGWk9FiKKelZZ55FDJdeoL8uRBHbjTYBRM2xJLhdNSvGzI4Tb3bkmxPpGn72Ua6AyldhlTxr2BpUFKOHA==}
     peerDependencies:
       storybook: ^8.3.5
+
+  '@storybook/test@8.4.5':
+    resolution: {integrity: sha512-mHsRc6m60nfcEBsjvUkKz+Jnz0or4WH5jmJ1VL2pGKO4VzESCPqAwDnwDqP2YyeSQ0b/MAKUT5kdoLE2RE2eVw==}
+    peerDependencies:
+      storybook: ^8.4.5
 
   '@storybook/theming@8.3.5':
     resolution: {integrity: sha512-9HmDDyC691oqfg4RziIM9ElsS2HITaxmH7n/yeUPtuirkPdAQzqOzhvH/Sa0qOhifzs8VjR+Gd/a/ZQ+S38r7w==}
@@ -2772,8 +2782,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-react-hooks@5.1.0-rc-45804af1-20241021:
-    resolution: {integrity: sha512-q8MQ4OQ0TYmKT6eS2ZObxmA+OvUrd27MN72zU5b3ib7Q+1I78C9aUzy1GelM8ttgkEkwSxE+qDBgV+K84tjt+Q==}
+  eslint-plugin-react-hooks@5.1.0-rc.1:
+    resolution: {integrity: sha512-nAD017D/00XFwjP4F7cXaIbCxQ9A4pGaqjLs5347px37w/WclOtPqz8bBiTQFoj+teVQei6Ahr1h1aZiuaXMSw==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -6740,11 +6750,11 @@ snapshots:
       '@storybook/global': 5.0.0
       storybook: 8.3.5
 
-  '@storybook/addon-interactions@8.3.5(storybook@8.3.5)':
+  '@storybook/addon-interactions@8.4.5(storybook@8.3.5)':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.3.5(storybook@8.3.5)
-      '@storybook/test': 8.3.5(storybook@8.3.5)
+      '@storybook/instrumenter': 8.4.5(storybook@8.3.5)
+      '@storybook/test': 8.4.5(storybook@8.3.5)
       polished: 4.2.2
       storybook: 8.3.5
       ts-dedent: 2.2.0
@@ -6869,6 +6879,13 @@ snapshots:
       '@vitest/utils': 2.1.2
       storybook: 8.3.5
       util: 0.12.5
+    optional: true
+
+  '@storybook/instrumenter@8.4.5(storybook@8.3.5)':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@vitest/utils': 2.1.2
+      storybook: 8.3.5
 
   '@storybook/manager-api@8.3.5(storybook@8.3.5)':
     dependencies:
@@ -6948,6 +6965,19 @@ snapshots:
       '@vitest/spy': 2.0.5
       storybook: 8.3.5
       util: 0.12.5
+    optional: true
+
+  '@storybook/test@8.4.5(storybook@8.3.5)':
+    dependencies:
+      '@storybook/csf': 0.1.11
+      '@storybook/global': 5.0.0
+      '@storybook/instrumenter': 8.4.5(storybook@8.3.5)
+      '@testing-library/dom': 10.4.0
+      '@testing-library/jest-dom': 6.5.0
+      '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
+      '@vitest/expect': 2.0.5
+      '@vitest/spy': 2.0.5
+      storybook: 8.3.5
 
   '@storybook/theming@8.3.5(storybook@8.3.5)':
     dependencies:
@@ -8147,7 +8177,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-45804af1-20241021(eslint@9.9.1(jiti@1.21.0)):
+  eslint-plugin-react-hooks@5.1.0-rc.1(eslint@9.9.1(jiti@1.21.0)):
     dependencies:
       eslint: 9.9.1(jiti@1.21.0)
 
