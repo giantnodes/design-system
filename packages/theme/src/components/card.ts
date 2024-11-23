@@ -11,11 +11,32 @@ export const card = tv({
       'rounded-lg',
       'overflow-auto',
     ],
-    header: ['text-title', 'p-3'],
-    body: ['flex-grow', 'text-content', 'p-3', 'overflow-auto'],
-    footer: ['text-content', 'p-3'],
+    header: ['text-title'],
+    body: ['flex-grow', 'text-content', 'overflow-auto'],
+    footer: ['text-content'],
   },
-  variants: {},
+  variants: {
+    size: {
+      sm: {
+        header: ['py-1', 'px-2'],
+        body: ['p-2'],
+        footer: ['py-1', 'px-2'],
+      },
+      md: {
+        header: ['py-2', 'px-3'],
+        body: ['p-2'],
+        footer: ['py-2', 'px-3'],
+      },
+      lg: {
+        header: ['py-3', 'px-4'],
+        body: ['p-3'],
+        footer: ['py-3', 'px-4'],
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
 })
 
 export type CardVariantProps = VariantProps<typeof card>

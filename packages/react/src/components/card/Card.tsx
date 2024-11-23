@@ -24,11 +24,11 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, children, className, ...rest } = props
+    const { as, children, className, size, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const context = useCardValue()
+    const context = useCardValue({ size })
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
