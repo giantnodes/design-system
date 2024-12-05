@@ -1,5 +1,6 @@
-type PropsOf<C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<unknown>> =
-  JSX.LibraryManagedAttributes<C, React.ComponentPropsWithoutRef<C>>
+import React from 'react'
+
+type PropsOf<C extends React.ElementType> = React.ComponentPropsWithoutRef<C>
 
 type AsProp<C extends React.ElementType> = {
   as?: C

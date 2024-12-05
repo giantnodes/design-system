@@ -33,10 +33,10 @@
     "class-variance-authority": "^0.7.0",
     "libphonenumber-js": "^1.11.11",
     "next-themes": "^0.3.0",
-    "react-aria": "^3.35.0",
-    "react-aria-components": "^1.4.0",
+    "react-aria": "^3.36.0",
+    "react-aria-components": "^1.5.0",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-react-aria-components": "^1.1.6"
+    "tailwindcss-react-aria-components": "^1.2.0"
   },
   "devDependencies": {
     "@giantnodes/eslint-config": "workspace:*",

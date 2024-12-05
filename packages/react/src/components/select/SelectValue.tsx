@@ -30,7 +30,7 @@ const Component: ComponentType = React.forwardRef(
     const Element = as ?? SelectValue
 
     const { slots } = useSelect()
-    const { selectedItem } = React.useContext(SelectStateContext)
+    const state = React.useContext(SelectStateContext)
 
     const component = React.useMemo<SelectValueProps<TData>>(
       () => ({
@@ -41,10 +41,10 @@ const Component: ComponentType = React.forwardRef(
     )
 
     const render = React.useMemo(() => {
-      if (selectedItem?.textValue) return selectedItem.textValue
+      if (state?.selectedItem?.textValue) return state?.selectedItem.textValue
 
       return <Element {...component} ref={ref} />
-    }, [Element, component, ref, selectedItem?.textValue])
+    }, [Element, component, ref, state?.selectedItem?.textValue])
 
     return render
   }
