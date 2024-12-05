@@ -10,6 +10,7 @@ export const input = tv({
       'has-[:disabled]:opacity-50',
       'focus-within:outline-dashed focus-within:outline-offset-2 focus-within:outline-1',
     ],
+    field: ['flex-grow'],
     input: ['flex-1', 'bg-foreground', 'w-full', 'font-normal', 'placeholder-subtitle', 'outline-none', 'p-1.5'],
     addon: ['flex items-center', 'bg-foreground', 'px-3'],
   },

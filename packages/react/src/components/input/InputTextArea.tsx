@@ -51,17 +51,18 @@ const Component: ComponentType = React.forwardRef(
             type: 'change',
           }),
         onBlur: group?.onBlur,
+        className: slots.field(),
         ...group?.fieldProps,
-        ...rest,
       }),
-      [group, rest]
+      [group, slots]
     )
 
     const input = React.useMemo<TextAreaProps>(
       () => ({
         className: slots.input({ className: cn(className) }),
+        ...rest,
       }),
-      [className, slots]
+      [className, rest, slots]
     )
 
     return (

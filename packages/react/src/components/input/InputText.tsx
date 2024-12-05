@@ -12,7 +12,10 @@ import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'input'
 
-type ComponentOwnProps = InputVariantProps & Omit<TextFieldProps, 'children'>
+type ComponentOwnProps = InputVariantProps &
+  Omit<TextFieldProps, 'children'> & {
+    directory?: boolean
+  }
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -28,7 +31,7 @@ const Component: ComponentType = React.forwardRef(
     props: ComponentProps<TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
-    const { as, className, color, size, shape, variant, ...rest } = props
+    const { as, className, color, size, shape, variant, directory, ...rest } = props
 
     const Element = as ?? TextField
 
@@ -51,17 +54,20 @@ const Component: ComponentType = React.forwardRef(
             type: 'change',
           }),
         onBlur: group?.onBlur,
+        className: slots.field(),
         ...group?.fieldProps,
-        ...rest,
       }),
-      [group, rest]
+      [group, slots]
     )
 
     const input = React.useMemo<InputProps>(
       () => ({
         className: slots.input({ className: cn(className) }),
+        directory: directory ? 'true' : undefined,
+        webkitdirectory: directory ? 'true' : undefined,
+        ...rest,
       }),
-      [className, slots]
+      [className, directory, rest, slots]
     )
 
     return (

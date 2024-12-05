@@ -3,25 +3,25 @@ import { tv } from 'tailwind-variants'
 
 export const progress = tv({
   slots: {
-    base: ['flex', '[&>*:not(:first-child)]:ml-0.5'],
+    base: ['flex', '[&>*:not(:first-child)]:ml-0.5', 'overflow-hidden'],
     bar: [],
   },
   variants: {
     radius: {
       none: {
-        bar: ['first:rounded-l-none', 'last:rounded-r-none'],
+        base: [],
       },
       sm: {
-        bar: ['first:rounded-l-sm', 'last:rounded-r-sm'],
+        base: ['rounded-sm'],
       },
       md: {
-        bar: ['first:rounded-l-md', 'last:rounded-r-md'],
+        base: ['rounded-md'],
       },
       lg: {
-        bar: ['first:rounded-l-lg', 'last:rounded-r-lg'],
+        base: ['rounded-lg'],
       },
       full: {
-        bar: ['first:rounded-l-full', 'last:rounded-r-full'],
+        base: ['rounded-full'],
       },
     },
     size: {

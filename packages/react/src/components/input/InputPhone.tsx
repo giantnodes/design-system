@@ -103,12 +103,12 @@ const Component: ComponentType = React.forwardRef(
       [template]
     )
 
-    const onChange: React.ChangeEventHandler<HTMLInputElement> = React.useCallback(
-      (event) => {
-        event.target.value = format(event.target.value)
-
-        return group?.onChange?.({ ...event })
-      },
+    const onChange = React.useCallback(
+      (value: string) =>
+        group?.onChange?.({
+          target: { value: format(value) },
+          type: 'change',
+        }),
       [format, group]
     )
 
@@ -117,17 +117,18 @@ const Component: ComponentType = React.forwardRef(
         name: group?.name,
         onChange: onChange,
         onBlur: group?.onBlur,
+        className: slots.field(),
         ...group?.fieldProps,
-        ...rest,
       }),
-      [group?.fieldProps, group?.name, group?.onBlur, onChange, rest]
+      [group?.fieldProps, group?.name, group?.onBlur, onChange, slots]
     )
 
     const input = React.useMemo<InputProps>(
       () => ({
         className: slots.input({ className: cn(className) }),
+        ...rest,
       }),
-      [className, slots]
+      [className, rest, slots]
     )
 
     React.useEffect(() => {
