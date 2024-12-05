@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 type PropsOf<C extends React.ElementType> = React.ComponentPropsWithoutRef<C>
 

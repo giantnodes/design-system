@@ -41,7 +41,7 @@ const Component: ComponentType = React.forwardRef(
     )
 
     const render = React.useMemo(() => {
-      if (state?.selectedItem?.textValue) return state?.selectedItem.textValue
+      if (state?.selectedItem?.textValue) return state.selectedItem.textValue
 
       return <Element {...component} ref={ref} />
     }, [Element, component, ref, state?.selectedItem?.textValue])
