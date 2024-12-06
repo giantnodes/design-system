@@ -21,7 +21,7 @@ type ComponentType = <TData extends object, TElement extends React.ElementType =
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <D extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  <D extends object, TElement extends React.ElementType>(
     props: ComponentProps<D, TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {

@@ -11,17 +11,17 @@ const __ELEMENT_TYPE__ = 'span'
 
 type ComponentOwnProps<TData extends object> = SelectValueProps<TData>
 
-type ComponentProps<TData extends object, TElement extends React.ElementType> = Polymophic.ComponentPropsWithRef<
-  TElement,
-  ComponentOwnProps<TData>
->
+type ComponentProps<
+  TData extends object,
+  TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
+> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
 type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  <TData extends object, TElement extends React.ElementType>(
     props: ComponentProps<TData, TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {
@@ -30,7 +30,7 @@ const Component: ComponentType = React.forwardRef(
     const Element = as ?? SelectValue
 
     const { slots } = useSelect()
-    const { selectedItem } = React.useContext(SelectStateContext)
+    const state = React.useContext(SelectStateContext)
 
     const component = React.useMemo<SelectValueProps<TData>>(
       () => ({
@@ -41,10 +41,10 @@ const Component: ComponentType = React.forwardRef(
     )
 
     const render = React.useMemo(() => {
-      if (selectedItem?.textValue) return selectedItem.textValue
+      if (state?.selectedItem?.textValue) return state.selectedItem.textValue
 
       return <Element {...component} ref={ref} />
-    }, [Element, component, ref, selectedItem?.textValue])
+    }, [Element, component, ref, state?.selectedItem?.textValue])
 
     return render
   }

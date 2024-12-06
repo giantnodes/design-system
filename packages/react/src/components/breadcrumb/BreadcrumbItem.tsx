@@ -10,9 +10,9 @@ import { cn } from '~/utilities'
 
 const __ELEMENT_TYPE__ = 'span'
 
-type ComponentOwnProps = {
+type ComponentOwnProps = BreadcrumbProps & {
   href?: string
-} & BreadcrumbProps
+}
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -23,11 +23,8 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
   props: ComponentProps<TElement>
 ) => React.ReactNode
 
-const Component: ComponentType = React.forwardRef(
-  <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
-    props: ComponentProps<TElement>,
-    ref: Polymophic.Ref<TElement>
-  ) => {
+const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
     const { as, children, className, href, ...rest } = props
 
     const Element = as ?? Breadcrumb

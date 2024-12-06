@@ -1,10 +1,11 @@
 'use client'
 
-import type { ThemeProviderProps } from 'next-themes/dist/types'
+import type { ThemeProviderProps } from 'next-themes'
+import React from 'react'
 import { ThemeProvider } from 'next-themes'
 import { RouterProvider } from 'react-aria-components'
 
-export type UseDesignSystemProps = Omit<ThemeProviderProps, 'children'> & {
+export type UseDesignSystemProps = ThemeProviderProps & {
   /**
    * Function to perform client-side navigation.
    *
@@ -20,7 +21,7 @@ export type UseDesignSystemProps = Omit<ThemeProviderProps, 'children'> & {
    * @returns The converted native HTML href.
    */
   useHref?: (href: string) => string
-} & React.PropsWithChildren
+}
 
 export const DesignSystemProvider: React.FC<UseDesignSystemProps> = ({ navigate, children, ...rest }) => {
   let contents = children

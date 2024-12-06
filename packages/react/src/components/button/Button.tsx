@@ -11,10 +11,10 @@ import Spinner from '~/components/spinner/Spinner'
 
 const __ELEMENT_TYPE__ = 'button'
 
-type ComponentOwnProps = {
-  isLoading?: boolean
-} & ButtonProps &
-  ButtonVariantProps
+type ComponentOwnProps = ButtonProps &
+  ButtonVariantProps & {
+    isLoading?: boolean
+  }
 
 type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
   TElement,
@@ -25,11 +25,8 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
   props: ComponentProps<TElement>
 ) => React.ReactNode
 
-const Component: ComponentType = React.forwardRef(
-  <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
-    props: ComponentProps<TElement>,
-    ref: Polymophic.Ref<TElement>
-  ) => {
+const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
     const { as, children, className, isLoading = false, isDisabled = false, color, size, ...rest } = props
 
     const Element = as ?? Button

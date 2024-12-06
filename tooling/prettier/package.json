@@ -11,8 +11,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
-    "prettier": "^3.3.1"
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "prettier": "catalog:"
   },
   "devDependencies": {
     "@giantnodes/tsconfig": "workspace:*",
