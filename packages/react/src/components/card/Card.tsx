@@ -3,24 +3,25 @@
 import type { CardVariantProps } from '@giantnodes/theme'
 import React from 'react'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import { CardContext, useCardValue } from '~/components/card/use-card.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
 type ComponentOwnProps = CardVariantProps
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymorphic.ComponentPropsWithRef<
   TElement,
   ComponentOwnProps
 >
 
-type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
-  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
     const { as, children, className, size, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
@@ -44,6 +45,8 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
     )
   }
 )
+
+Component.displayName = 'Card.Root'
 
 export type { ComponentOwnProps as CardOwnProps, ComponentProps as CardProps }
 export default Component

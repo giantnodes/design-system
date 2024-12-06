@@ -5,7 +5,7 @@ import type { ButtonProps, ListBoxProps, PopoverProps, SelectProps } from 'react
 import React from 'react'
 import { Button, ListBox, Popover, Select } from 'react-aria-components'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import type { Override } from '~/utilities/types'
 import { useFormGroup } from '~/components/form/use-form-group.hook'
 import SelectValue from '~/components/select/SelectValue'
@@ -37,16 +37,17 @@ type ComponentOwnProps<TData extends object> = SelectVariantProps &
 type ComponentProps<
   TData extends object,
   TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
-> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
+> = Polymorphic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
-type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
 const Component: ComponentType = React.forwardRef(
   <TData extends object, TElement extends React.ElementType>(
     props: ComponentProps<TData, TElement>,
-    ref: Polymophic.Ref<TElement>
+    ref: Polymorphic.Ref<TElement>
   ) => {
     const {
       as,
@@ -175,6 +176,8 @@ const Component: ComponentType = React.forwardRef(
     )
   }
 )
+
+Component.displayName = 'Select.Root'
 
 export type { ComponentOwnProps as SelectOwnProps, ComponentProps as SelectProps }
 export default Component

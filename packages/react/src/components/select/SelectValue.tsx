@@ -4,7 +4,7 @@ import type { SelectValueProps } from 'react-aria-components'
 import React from 'react'
 import { SelectStateContext, SelectValue } from 'react-aria-components'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import { useSelect } from '~/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'span'
@@ -14,16 +14,17 @@ type ComponentOwnProps<TData extends object> = SelectValueProps<TData>
 type ComponentProps<
   TData extends object,
   TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
-> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
+> = Polymorphic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
-type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
 const Component: ComponentType = React.forwardRef(
   <TData extends object, TElement extends React.ElementType>(
     props: ComponentProps<TData, TElement>,
-    ref: Polymophic.Ref<TElement>
+    ref: Polymorphic.Ref<TElement>
   ) => {
     const { as, className, ...rest } = props
 
@@ -49,6 +50,8 @@ const Component: ComponentType = React.forwardRef(
     return render
   }
 )
+
+Component.displayName = 'Select.Value'
 
 export type { ComponentOwnProps as SelectValueOwnProps, ComponentProps as SelectValueProps }
 export default Component
