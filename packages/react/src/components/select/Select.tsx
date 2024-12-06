@@ -152,11 +152,11 @@ const Component: ComponentType = React.forwardRef(
         )
       }
 
-      if (!React.isValidElement(icon)) {
+      if (!React.isValidElement<HTMLElement>(icon)) {
         return icon
       }
 
-      return React.cloneElement(icon as React.ReactElement, { className: context.slots.icon() })
+      return React.cloneElement(icon, { className: context.slots.icon() })
     }, [context.slots, icon])
 
     return (
