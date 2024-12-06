@@ -4,7 +4,7 @@ import type { BreadcrumbProps } from 'react-aria-components'
 import React from 'react'
 import { Breadcrumb, Link } from 'react-aria-components'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import { useBreadcrumb } from '~/components/breadcrumb/use-breadcrumb.hook'
 import { cn } from '~/utilities'
 
@@ -14,7 +14,7 @@ type ComponentOwnProps = BreadcrumbProps & {
   href?: string
 }
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymorphic.ComponentPropsWithRef<
   TElement,
   ComponentOwnProps
 >
@@ -24,7 +24,7 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
-  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
     const { as, children, className, href, ...rest } = props
 
     const Element = as ?? Breadcrumb

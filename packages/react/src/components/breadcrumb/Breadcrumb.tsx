@@ -5,7 +5,7 @@ import type { BreadcrumbsProps } from 'react-aria-components'
 import React from 'react'
 import { Breadcrumbs } from 'react-aria-components'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import { BreadcrumbContext, useBreadcrumbValue } from '~/components/breadcrumb/use-breadcrumb.hook'
 
 const __ELEMENT_TYPE__ = 'ol'
@@ -15,7 +15,7 @@ type ComponentOwnProps<TData extends object> = BreadcrumbsProps<TData> & Breadcr
 type ComponentProps<
   TData extends object,
   TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
-> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
+> = Polymorphic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
 type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
@@ -24,7 +24,7 @@ type ComponentType = <TData extends object, TElement extends React.ElementType =
 const Component: ComponentType = React.forwardRef(
   <TData extends object, TElement extends React.ElementType>(
     props: ComponentProps<TData, TElement>,
-    ref: Polymophic.Ref<TElement>
+    ref: Polymorphic.Ref<TElement>
   ) => {
     const { as, children, className, size, separator, ...rest } = props
 

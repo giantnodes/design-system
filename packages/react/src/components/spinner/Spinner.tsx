@@ -4,13 +4,13 @@ import type { SpinnerVariantProps } from '@giantnodes/theme'
 import React from 'react'
 import { spinner } from '@giantnodes/theme'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 
 const __ELEMENT_TYPE__ = 'svg'
 
 type ComponentOwnProps = SpinnerVariantProps
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymorphic.ComponentPropsWithRef<
   TElement,
   ComponentOwnProps
 >
@@ -20,7 +20,7 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
-  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
     const { as, className, size, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__

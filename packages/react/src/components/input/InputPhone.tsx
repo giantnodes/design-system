@@ -8,7 +8,7 @@ import { getExampleNumber, parsePhoneNumber } from 'libphonenumber-js/min'
 import examples from 'libphonenumber-js/mobile/examples'
 import { Input, TextField } from 'react-aria-components'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import { useFormGroup } from '~/components/form/use-form-group.hook'
 import { Addon } from '~/components/input/component.parts'
 import { useInput, useInputValue } from '~/components/input/use-input.hook'
@@ -22,7 +22,7 @@ type ComponentOwnProps = InputVariantProps &
     onTemplateChange?: (template: string) => void
   }
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymorphic.ComponentPropsWithRef<
   TElement,
   ComponentOwnProps
 >
@@ -32,7 +32,7 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
-  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
     const { as, className, country, color, size, shape, variant, onTemplateChange, ...rest } = props
 
     const Element = as ?? TextField

@@ -5,14 +5,14 @@ import type { MenuTriggerProps } from 'react-aria-components'
 import React from 'react'
 import { MenuTrigger } from 'react-aria-components'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import { MenuContext, useMenuValue } from '~/components/menu/use-menu.hook'
 
 const __ELEMENT_TYPE__ = 'div'
 
 type ComponentOwnProps = MenuTriggerProps & MenuVariantProps
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentProps<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymorphic.ComponentProps<
   TElement,
   ComponentOwnProps
 >

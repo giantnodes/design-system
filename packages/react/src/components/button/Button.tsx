@@ -6,7 +6,7 @@ import React from 'react'
 import { button } from '@giantnodes/theme'
 import { Button } from 'react-aria-components'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import Spinner from '~/components/spinner/Spinner'
 
 const __ELEMENT_TYPE__ = 'button'
@@ -16,7 +16,7 @@ type ComponentOwnProps = ButtonProps &
     isLoading?: boolean
   }
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymorphic.ComponentPropsWithRef<
   TElement,
   ComponentOwnProps
 >
@@ -26,7 +26,7 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
-  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
     const { as, children, className, isLoading = false, isDisabled = false, color, size, ...rest } = props
 
     const Element = as ?? Button

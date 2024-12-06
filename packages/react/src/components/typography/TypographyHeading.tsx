@@ -6,7 +6,7 @@ import { heading } from '@giantnodes/theme'
 import { Heading } from 'react-aria-components'
 
 import type { HeadingLevel } from '~/components/typography/use-heading-level.hook'
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 import { HeadingLevelContext } from '~/components/typography/use-heading-level.hook'
 
 const __ELEMENT_TYPE__ = 'h1'
@@ -15,7 +15,7 @@ type ComponentOwnProps = HeadingProps & {
   level?: HeadingLevel
 }
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymorphic.ComponentPropsWithRef<
   TElement,
   ComponentOwnProps
 >
@@ -25,7 +25,7 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
-  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
     const { as, children, className, level, ...rest } = props
 
     const Element = as ?? Heading

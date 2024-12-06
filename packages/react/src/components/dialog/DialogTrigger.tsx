@@ -5,13 +5,13 @@ import type { DialogTriggerProps } from 'react-aria-components'
 import React from 'react'
 import { DialogTrigger } from 'react-aria-components'
 
-import type * as Polymophic from '~/utilities/polymorphic'
+import type * as Polymorphic from '~/utilities/polymorphic'
 
 const __ELEMENT_TYPE__ = 'div'
 
 type ComponentOwnProps = DialogTriggerProps & DialogVariantProps
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentProps<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymorphic.ComponentProps<
   TElement,
   ComponentOwnProps
 >
