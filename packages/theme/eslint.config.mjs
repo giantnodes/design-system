@@ -4,7 +4,7 @@ import react from '@giantnodes/eslint-config/react'
 /** @type {import('typescript-eslint').Config} */
 export default [
   {
-    ignores: ['dist/**'],
+    ignores: ['dist/**', '.tsup/**', '.turbo/**'],
   },
   ...base,
   ...react,
