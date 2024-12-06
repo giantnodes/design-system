@@ -13,14 +13,14 @@ import { SelectContext, useSelectValue } from '~/components/select/use-select.ho
 
 const __ELEMENT_TYPE__ = 'select'
 
-type OveriddenSelectProps<TElement extends object> = Override<
+type OverriddenSelectProps<TElement extends object> = Override<
   SelectProps<TElement>,
   {
     children?: React.ReactNode | ((item: TElement) => React.ReactNode)
   }
 >
 
-type OveriddenListBoxProps<TElement extends object> = Override<
+type OverriddenListBoxProps<TElement extends object> = Override<
   ListBoxProps<TElement>,
   {
     items?: Iterable<TElement> | null
@@ -28,8 +28,8 @@ type OveriddenListBoxProps<TElement extends object> = Override<
 >
 
 type ComponentOwnProps<TData extends object> = SelectVariantProps &
-  OveriddenSelectProps<TData> &
-  OveriddenListBoxProps<TData> & {
+  OverriddenSelectProps<TData> &
+  OverriddenListBoxProps<TData> & {
     placement?: 'top' | 'bottom'
     icon?: React.ReactNode
   }
@@ -44,7 +44,7 @@ type ComponentType = <TData extends object, TElement extends React.ElementType =
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  <TData extends object, TElement extends React.ElementType>(
     props: ComponentProps<TData, TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {

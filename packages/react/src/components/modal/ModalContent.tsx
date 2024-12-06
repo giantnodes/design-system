@@ -22,25 +22,29 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
   props: ComponentProps<TElement>
 ) => React.ReactNode
 
-const Component: ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<TElement>
-) => {
-  const { as, children, className, ...rest } = props
+const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymophic.Ref<TElement>) => {
+    const { as, children, className, ...rest } = props
 
-  const Element = as ?? Modal
+    const Element = as ?? Modal
 
-  const { slots } = useModal()
+    const { slots } = useModal()
 
-  const component = React.useMemo<ModalOverlayProps>(
-    () => ({
-      className: slots.content({ className: cn(className) }),
-      ...rest,
-    }),
-    [slots, className, rest]
-  )
+    const component = React.useMemo<ModalOverlayProps>(
+      () => ({
+        className: slots.content({ className: cn(className) }),
+        ...rest,
+      }),
+      [slots, className, rest]
+    )
 
-  return <Element {...component}>{children}</Element>
-}
+    return (
+      <Element {...component} ref={ref}>
+        {children}
+      </Element>
+    )
+  }
+)
 
 export type { ComponentOwnProps as ModalContentOwnProps, ComponentProps as ModalContentProps }
 export default Component

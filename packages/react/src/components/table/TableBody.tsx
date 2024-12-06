@@ -11,17 +11,17 @@ const __ELEMENT_TYPE__ = 'tbody'
 
 type ComponentOwnProps<TData extends object> = TableBodyProps<TData>
 
-type ComponentProps<TData extends object, TElement extends React.ElementType> = Polymophic.ComponentPropsWithRef<
-  TElement,
-  ComponentOwnProps<TData>
->
+type ComponentProps<
+  TData extends object,
+  TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
+> = Polymophic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
 type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
 ) => React.ReactNode
 
 const Component: ComponentType = React.forwardRef(
-  <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+  <TData extends object, TElement extends React.ElementType>(
     props: ComponentProps<TData, TElement>,
     ref: Polymophic.Ref<TElement>
   ) => {

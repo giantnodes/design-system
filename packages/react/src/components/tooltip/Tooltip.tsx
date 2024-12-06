@@ -13,7 +13,7 @@ const __ELEMENT_TYPE__ = 'div'
 
 type ComponentOwnProps = TooltipVariantProps & TooltipTriggerComponentProps
 
-type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentPropsWithRef<
+type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__> = Polymophic.ComponentProps<
   TElement,
   ComponentOwnProps
 >
@@ -22,9 +22,7 @@ type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE
   props: ComponentProps<TElement>
 ) => React.ReactNode
 
-const Component: ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
-  props: ComponentProps<TElement>
-) => {
+const Component: ComponentType = <TElement extends React.ElementType>(props: ComponentProps<TElement>) => {
   const { as, children, className, ...rest } = props
 
   const Element = as ?? TooltipTrigger
