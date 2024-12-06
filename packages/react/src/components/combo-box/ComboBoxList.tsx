@@ -16,9 +16,10 @@ type ComponentProps<
   TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
 > = Polymorphic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
-type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
 const Component: ComponentType = React.forwardRef(
   <D extends object, TElement extends React.ElementType>(
@@ -46,6 +47,8 @@ const Component: ComponentType = React.forwardRef(
     )
   }
 )
+
+Component.displayName = 'ComboBox.List'
 
 export type { ComponentOwnProps as ComboBoxListOwnProps, ComponentProps as ComboBoxListProps }
 export default Component

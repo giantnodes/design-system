@@ -18,9 +18,10 @@ type ComponentProps<
   TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
 > = Polymorphic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
-type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
 const Component: ComponentType = React.forwardRef(
   <TData extends object, TElement extends React.ElementType>(
@@ -61,6 +62,8 @@ const Component: ComponentType = React.forwardRef(
     )
   }
 )
+
+Component.displayName = 'Table.Row'
 
 export type { ComponentOwnProps as TableRowOwnProps, ComponentProps as TableRowProps }
 export default Component

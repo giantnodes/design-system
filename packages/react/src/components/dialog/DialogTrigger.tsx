@@ -16,17 +16,22 @@ type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__
   ComponentOwnProps
 >
 
-type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
-const Component: ComponentType = <TElement extends React.ElementType>(props: ComponentProps<TElement>) => {
-  const { as, children, ...component } = props
+const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, _: Polymorphic.Ref<TElement>) => {
+    const { as, children, ...component } = props
 
-  const Element = as ?? DialogTrigger
+    const Element = as ?? DialogTrigger
 
-  return <Element {...component}>{children}</Element>
-}
+    return <Element {...component}>{children}</Element>
+  }
+)
+
+Component.displayName = 'Dialog.Trigger'
 
 export type { ComponentOwnProps as DialogTriggerOwnProps, ComponentProps as DialogTriggerProps }
 export default Component

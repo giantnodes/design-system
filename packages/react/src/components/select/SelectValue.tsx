@@ -16,9 +16,10 @@ type ComponentProps<
   TElement extends React.ElementType = typeof __ELEMENT_TYPE__,
 > = Polymorphic.ComponentPropsWithRef<TElement, ComponentOwnProps<TData>>
 
-type ComponentType = <TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TData extends object, TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TData, TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
 const Component: ComponentType = React.forwardRef(
   <TData extends object, TElement extends React.ElementType>(
@@ -49,6 +50,8 @@ const Component: ComponentType = React.forwardRef(
     return render
   }
 )
+
+Component.displayName = 'Select.Value'
 
 export type { ComponentOwnProps as SelectValueOwnProps, ComponentProps as SelectValueProps }
 export default Component

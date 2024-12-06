@@ -18,31 +18,36 @@ type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__
   ComponentOwnProps
 >
 
-type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
-const Component: ComponentType = <TElement extends React.ElementType>(props: ComponentProps<TElement>) => {
-  const { as, children, className, ...rest } = props
+const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
+  <TElement extends React.ElementType>(props: ComponentProps<TElement>, _: Polymorphic.Ref<TElement>) => {
+    const { as, children, className, ...rest } = props
 
-  const Element = as ?? TooltipTrigger
+    const Element = as ?? TooltipTrigger
 
-  const context = useTooltipValue({})
+    const context = useTooltipValue({})
 
-  const component = React.useMemo<Omit<TooltipTriggerComponentProps, 'children'>>(
-    () => ({
-      className: context.slots.root({ className: cn(className) }),
-      ...rest,
-    }),
-    [className, context.slots, rest]
-  )
+    const component = React.useMemo<Omit<TooltipTriggerComponentProps, 'children'>>(
+      () => ({
+        className: context.slots.root({ className: cn(className) }),
+        ...rest,
+      }),
+      [className, context.slots, rest]
+    )
 
-  return (
-    <TooltipContext.Provider value={context}>
-      <Element {...component}>{children}</Element>
-    </TooltipContext.Provider>
-  )
-}
+    return (
+      <TooltipContext.Provider value={context}>
+        <Element {...component}>{children}</Element>
+      </TooltipContext.Provider>
+    )
+  }
+)
+
+Component.displayName = 'Tooltip.Root'
 
 export type { ComponentOwnProps as TooltipOwnProps, ComponentProps as TooltipProps }
 export default Component

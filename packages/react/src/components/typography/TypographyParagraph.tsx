@@ -15,9 +15,10 @@ type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__
   ComponentOwnProps
 >
 
-type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
@@ -42,6 +43,8 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
     )
   }
 )
+
+Component.displayName = 'Typography.Paragraph'
 
 export type { ComponentOwnProps as TypographyParagraphOwnProps, ComponentProps as TypographyParagraphProps }
 export default Component

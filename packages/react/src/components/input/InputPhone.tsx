@@ -27,9 +27,10 @@ type ComponentProps<TElement extends React.ElementType = typeof __ELEMENT_TYPE__
   ComponentOwnProps
 >
 
-type ComponentType = <TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
+type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYPE__>(
   props: ComponentProps<TElement>
-) => React.ReactNode
+) => Polymorphic.ExoticComponentReturn) &
+  Polymorphic.NamedExoticComponentType
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
@@ -186,6 +187,9 @@ const CountryFlag: React.FC<PhoneFlagProps> = ({ country }) => {
 
   return <img alt={`${country.toLowerCase()}-flag-icon`} height={24} src={source} width={24} />
 }
+
+CountryFlag.displayName = 'Input.PhoneCountryFlag'
+Component.displayName = 'Input.Phone'
 
 export type { ComponentOwnProps as InputPhoneOwnProps, ComponentProps as InputPhoneProps }
 export default Component
