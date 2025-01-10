@@ -5,22 +5,23 @@ import type { LabelAria } from 'react-aria'
 import React from 'react'
 import { form } from '@giantnodes/theme'
 
-import type { ChangeHandler } from '~/utilities/types'
 import { create } from '~/utilities/create-context'
 
 export type FeedbackType = 'success' | 'info' | 'warning' | 'error'
 
-type UseFormGroupProps = LabelAria & {
-  ref?: React.RefObject<HTMLInputElement | HTMLLabelElement>
+type UseFormElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+
+type UseFormGroupProps<T extends UseFormElement = UseFormElement> = LabelAria & {
+  ref?: React.RefObject<T>
   name?: string
   color?: FormVariantProps['color']
-  onChange?: ChangeHandler
-  onBlur?: ChangeHandler
+  onChange?: React.ChangeEventHandler<T>
+  onBlur?: React.FocusEventHandler<T>
 }
 
-type FormGroupContextType = ReturnType<typeof useFormGroupValue>
+type FormGroupContextType<T extends UseFormElement = UseFormElement> = ReturnType<typeof useFormGroupValue<T>>
 
-export const useFormGroupValue = (props: UseFormGroupProps) => {
+export const useFormGroupValue = <T extends UseFormElement = UseFormElement>(props: UseFormGroupProps<T>) => {
   const { ref, name, fieldProps, labelProps, onChange, onBlur } = props
 
   const [feedback, setFeedback] = React.useState<FeedbackType | null>(null)
@@ -56,8 +57,13 @@ export const useFormGroupValue = (props: UseFormGroupProps) => {
   }
 }
 
-export const [FormGroupContext, useFormGroup] = create<FormGroupContextType | undefined>({
+export const [FormGroupContext, useFormGroupBase] = create<FormGroupContextType | undefined>({
   name: 'FormGroupContext',
   strict: false,
   errorMessage: 'useFormGroup: `context` is undefined. Seems you forgot to wrap component within <Form.Group />',
 })
+
+export const useFormGroup = <T extends UseFormElement = UseFormElement>() => {
+  const context = useFormGroupBase()
+  return context as FormGroupContextType<T> | undefined
+}

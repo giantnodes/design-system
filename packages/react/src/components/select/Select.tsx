@@ -68,10 +68,10 @@ const Component: ComponentType = React.forwardRef(
 
     const Element = as ?? Select
 
-    const group = useFormGroup()
+    const group = useFormGroup<HTMLSelectElement>()
 
     const context = useSelectValue({
-      ref: (group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref,
+      ref: group?.ref ?? ref,
       name: group?.name,
       behavior,
       mode,
@@ -87,22 +87,11 @@ const Component: ComponentType = React.forwardRef(
         placeholder,
         onChange: group?.onChange,
         onBlur: group?.onBlur,
-        onSelectionChange: context.onSelect,
         className: context.slots.select({ className: className?.toString() }),
         ...group?.fieldProps,
         ...rest,
       }),
-      [
-        className,
-        context.onSelect,
-        context.slots,
-        group?.fieldProps,
-        group?.name,
-        group?.onBlur,
-        group?.onChange,
-        placeholder,
-        rest,
-      ]
+      [className, context.slots, group?.fieldProps, group?.name, group?.onBlur, group?.onChange, placeholder, rest]
     )
 
     const button = React.useMemo<ButtonProps>(

@@ -2,11 +2,11 @@
 
 import type { InputVariantProps } from '@giantnodes/theme'
 import type { CountryCode } from 'libphonenumber-js'
-import type { InputProps, TextFieldProps } from 'react-aria-components'
+import type { InputProps } from 'react-aria-components'
 import React from 'react'
 import { getExampleNumber, parsePhoneNumber } from 'libphonenumber-js/min'
 import examples from 'libphonenumber-js/mobile/examples'
-import { Input, TextField } from 'react-aria-components'
+import { Input } from 'react-aria-components'
 
 import type * as Polymorphic from '~/utilities/polymorphic'
 import { useFormGroup } from '~/components/form/use-form-group.hook'
@@ -17,7 +17,7 @@ import { cn } from '~/utilities'
 const __ELEMENT_TYPE__ = 'input'
 
 type ComponentOwnProps = InputVariantProps &
-  Omit<TextFieldProps, 'children'> & {
+  Omit<InputProps, 'size'> & {
     country: CountryCode
     onTemplateChange?: (template: string) => void
   }
@@ -34,11 +34,12 @@ type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYP
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
-    const { as, className, country, color, size, shape, variant, onTemplateChange, ...rest } = props
+    const { className, country, color, size, shape, variant, onChange, onBlur, onTemplateChange, ...rest } = props
 
-    const Element = as ?? TextField
-    const group = useFormGroup()
+    const group = useFormGroup<HTMLInputElement>()
     const context = useInput()
+
+    const [value, setValue] = React.useState<string>('')
 
     const { slots } = useInputValue({
       color: color ?? group?.status ?? context?.color,
@@ -101,32 +102,36 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
       [template]
     )
 
-    const onChange = React.useCallback(
-      (value: string) =>
-        group?.onChange?.({
-          target: { value: format(value) },
-          type: 'change',
-        }),
-      [format, group]
+    const onInputChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        const formatted = format(event.target.value)
+
+        const synthetic = {
+          ...event,
+          target: {
+            ...event.target,
+            value: formatted,
+          },
+        }
+
+        setValue(formatted)
+
+        return (group?.onChange ?? onChange)?.(synthetic)
+      },
+      [format, group?.onChange, onChange]
     )
 
-    const component = React.useMemo<TextFieldProps>(
+    const component = React.useMemo<InputProps>(
       () => ({
         name: group?.name,
-        onChange: onChange,
-        onBlur: group?.onBlur,
-        className: slots.field(),
-        ...group?.fieldProps,
-      }),
-      [group?.fieldProps, group?.name, group?.onBlur, onChange, slots]
-    )
-
-    const input = React.useMemo<InputProps>(
-      () => ({
+        onChange: onInputChange,
+        onBlur: group?.onBlur ?? onBlur,
         className: slots.input({ className: cn(className) }),
+        value,
+        ...group?.fieldProps,
         ...rest,
       }),
-      [className, rest, slots]
+      [className, group?.fieldProps, group?.name, group?.onBlur, onBlur, onInputChange, rest, slots, value]
     )
 
     React.useEffect(() => {
@@ -139,9 +144,7 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
           <CountryFlag country={country} />
         </Addon>
 
-        <Element {...component}>
-          <Input {...input} ref={(group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref} />
-        </Element>
+        <Input {...component} ref={group?.ref ?? ref} />
       </>
     )
   }

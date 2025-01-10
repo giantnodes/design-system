@@ -1,9 +1,9 @@
 'use client'
 
 import type { InputVariantProps } from '@giantnodes/theme'
-import type { InputProps, TextFieldProps } from 'react-aria-components'
+import type { InputProps } from 'react-aria-components'
 import React from 'react'
-import { Input, TextField } from 'react-aria-components'
+import { Input } from 'react-aria-components'
 
 import type * as Polymorphic from '~/utilities/polymorphic'
 import { useFormGroup } from '~/components/form/use-form-group.hook'
@@ -13,7 +13,7 @@ import { cn } from '~/utilities'
 const __ELEMENT_TYPE__ = 'input'
 
 type ComponentOwnProps = InputVariantProps &
-  Omit<TextFieldProps, 'children'> & {
+  Omit<InputProps, 'size'> & {
     directory?: boolean
   }
 
@@ -29,11 +29,9 @@ type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYP
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
-    const { as, className, color, size, shape, variant, directory, ...rest } = props
+    const { className, color, size, shape, variant, directory, ...rest } = props
 
-    const Element = as ?? TextField
-
-    const group = useFormGroup()
+    const group = useFormGroup<HTMLInputElement>()
     const context = useInput()
 
     const { slots } = useInputValue({
@@ -43,36 +41,21 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
       variant: variant ?? context?.variant,
     })
 
-    const component = React.useMemo<TextFieldProps>(
+    const component = React.useMemo<InputProps>(
       () => ({
         name: group?.name,
-        onChange: (value: string) =>
-          group?.onChange?.({
-            target: { value },
-            type: 'change',
-          }),
+        onChange: group?.onChange,
         onBlur: group?.onBlur,
-        className: slots.field(),
-        ...group?.fieldProps,
-      }),
-      [group, slots]
-    )
-
-    const input = React.useMemo<InputProps>(
-      () => ({
         className: slots.input({ className: cn(className) }),
         directory: directory ? 'true' : undefined,
         webkitdirectory: directory ? 'true' : undefined,
+        ...group?.fieldProps,
         ...rest,
       }),
-      [className, directory, rest, slots]
+      [className, directory, group?.fieldProps, group?.name, group?.onBlur, group?.onChange, rest, slots]
     )
 
-    return (
-      <Element {...component}>
-        <Input {...input} ref={(group?.ref as React.RefObject<HTMLInputElement> | undefined) ?? ref} />
-      </Element>
-    )
+    return <Input {...component} ref={group?.ref ?? ref} />
   }
 )
 
