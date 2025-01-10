@@ -47,8 +47,8 @@ runs:
     - name: '🏷️  Configure Git'
       shell: bash
       run: |
-        git config --global user.name 'giantnodes-bot'
-        git config --global user.email 'bot@giantnodes.com'
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: '🏷️  Tag, Commit & Release'
       shell: bash
