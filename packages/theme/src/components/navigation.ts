@@ -11,6 +11,7 @@ export const navigation = tv({
     item: ['flex', 'select-none', 'transition-all duration-200', '[&_svg]:hover:text-brand'],
     divider: ['bg-partition', 'border-partition'],
     trigger: [
+      'min-w-0',
       'flex items-center grow gap-x-3',
       'focus:outline-dashed focus:outline-offset-2 focus:outline-1 focus:outline-partition',
     ],
