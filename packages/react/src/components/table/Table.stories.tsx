@@ -13,9 +13,11 @@ const Component: Meta<typeof Table.Root> = {
     },
     mode: {
       control: { type: 'select' },
+      options: ['none', 'single', 'multiple'],
     },
     behavior: {
       control: { type: 'select' },
+      options: ['toggle', 'replace'],
     },
   },
 }
