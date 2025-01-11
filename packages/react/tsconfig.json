@@ -2,7 +2,7 @@
   "extends": "@giantnodes/tsconfig/base.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "ES2022"],
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
     "baseUrl": ".",
     "paths": {
