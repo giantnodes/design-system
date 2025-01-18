@@ -1,6 +1,6 @@
 {
   "name": "@giantnodes/theme",
-  "version": "1.0.0-canary.28",
+  "version": "1.0.0-canary.29",
   "description": "A collection default Giantnodes Tailwind CSS components",
   "license": "AGPL-3.0",
   "main": "dist/index.js",
