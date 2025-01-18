@@ -14,9 +14,15 @@ export const select = tv({
       'has-[:disabled]:opacity-50',
     ],
     value: ['flex items-center grow gap-1', 'overflow-hidden'],
-    button: ['flex flex-row items-center justify-between', 'w-full', 'p-1.5', 'focus:outline-none'],
+    button: [
+      'flex items-center justify-between gap-2',
+      'w-full px-3 py-2',
+      'whitespace-nowrap',
+      'focus:outline-none',
+      'disabled:cursor-default disabled:opacity-50',
+    ],
     icon: ['shrink-0'],
-    check: ['text-inherit', 'h-5 w-5', 'ml-auto', 'shrink-0'],
+    check: ['text-inherit', 'ml-auto', 'shrink-0'],
     popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md', 'w-[--trigger-width]'],
     list: ['flex flex-col gap-1', 'p-1', 'outline-none'],
     option: [
@@ -32,20 +38,33 @@ export const select = tv({
   },
   variants: {
     size: {
+      xs: {
+        select: ['text-xs'],
+        button: ['h-6'],
+        option: ['text-xs'],
+        check: ['size-4'],
+        icon: ['size-4'],
+      },
       sm: {
         select: ['text-sm'],
-        button: ['h-8 min-h-8'],
+        button: ['h-8'],
         option: ['text-sm'],
+        check: ['size-5'],
+        icon: ['size-5'],
       },
       md: {
         select: ['text-base'],
-        button: ['h-10 min-h-10'],
+        button: ['h-10'],
         option: ['text-base'],
+        check: ['size-6'],
+        icon: ['size-6'],
       },
       lg: {
         select: ['text-lg'],
-        button: ['h-12 min-h-12'],
+        button: ['h-12'],
         option: ['text-lg'],
+        check: ['size-7'],
+        icon: ['size-7'],
       },
     },
     status: {

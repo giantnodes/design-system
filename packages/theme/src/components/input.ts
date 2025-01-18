@@ -4,14 +4,15 @@ import { tv } from 'tailwind-variants'
 export const input = tv({
   slots: {
     group: [
-      'flex gap-px',
+      'flex gap-x-2',
+      'px-3',
       'bg-foreground',
       'overflow-hidden',
       'has-[:disabled]:opacity-50',
       'focus-within:outline-dashed focus-within:outline-offset-2 focus-within:outline-1',
     ],
-    input: ['flex-1', 'bg-foreground', 'w-full', 'font-normal', 'placeholder-subtitle', 'outline-none', 'p-1.5'],
-    addon: ['flex items-center', 'bg-foreground', 'px-3'],
+    input: ['flex-1', 'bg-foreground', 'w-full', 'font-normal', 'placeholder-subtitle', 'outline-none'],
+    addon: ['flex items-center', 'bg-foreground'],
   },
   variants: {
     color: {
@@ -37,19 +38,19 @@ export const input = tv({
     size: {
       xs: {
         group: ['text-xs'],
-        input: ['min-h-6', 'placeholder:text-xs'],
+        input: ['h-6', 'placeholder:text-xs'],
       },
       sm: {
         group: ['text-sm'],
-        input: ['min-h-8', 'placeholder:text-sm'],
+        input: ['h-8', 'placeholder:text-sm'],
       },
       md: {
         group: ['text-base'],
-        input: ['min-h-10', 'placeholder:text-base'],
+        input: ['h-10', 'placeholder:text-base'],
       },
       lg: {
         group: ['text-lg'],
-        input: ['min-h-12', 'placeholder:text-lg'],
+        input: ['h-12', 'placeholder:text-lg'],
       },
     },
     shape: {

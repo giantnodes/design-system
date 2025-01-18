@@ -85,13 +85,23 @@ const Component: ComponentType = React.forwardRef(
       () => ({
         name: group?.name,
         placeholder,
-        onChange: group?.onChange,
+        onChange: group?.onChange ?? onChange,
         onBlur: group?.onBlur,
         className: context.slots.select({ className: className?.toString() }),
         ...group?.fieldProps,
         ...rest,
       }),
-      [className, context.slots, group?.fieldProps, group?.name, group?.onBlur, group?.onChange, placeholder, rest]
+      [
+        className,
+        context.slots,
+        group?.fieldProps,
+        group?.name,
+        group?.onBlur,
+        group?.onChange,
+        onChange,
+        placeholder,
+        rest,
+      ]
     )
 
     const button = React.useMemo<ButtonProps>(
