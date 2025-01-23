@@ -25,6 +25,11 @@ export const typography = tv({
         paragraph: ['text-subtitle'],
       },
     },
+    truncate: {
+      true: {
+        paragraph: ['truncate', 'w-full'],
+      },
+    },
   },
 })
 

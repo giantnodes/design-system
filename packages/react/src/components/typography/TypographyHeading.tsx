@@ -27,7 +27,7 @@ type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYP
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
-    const { as, children, className, level, ...rest } = props
+    const { as, children, className, level, truncate, ...rest } = props
 
     const Element = as ?? Heading
 
@@ -45,10 +45,10 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
 
     const component = React.useMemo<HeadingProps>(
       () => ({
-        className: slots.heading({ className, level: level ?? context.level }),
+        className: slots.heading({ className, level: level ?? context.level, truncate }),
         ...rest,
       }),
-      [className, context.level, level, rest, slots]
+      [className, context.level, level, rest, slots, truncate]
     )
 
     return (
