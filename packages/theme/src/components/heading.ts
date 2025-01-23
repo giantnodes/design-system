@@ -26,6 +26,11 @@ export const heading = tv({
         heading: ['text-lg'],
       },
     },
+    truncate: {
+      true: {
+        heading: ['truncate', 'w-full'],
+      },
+    },
   },
   defaultVariants: {
     level: 1,

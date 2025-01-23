@@ -22,11 +22,11 @@ type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYP
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
-    const { as, children, className, size, variant, ...rest } = props
+    const { as, children, className, size, truncate, variant, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const slots = React.useMemo(() => typography({ size, variant }), [size, variant])
+    const slots = React.useMemo(() => typography({ size, truncate, variant }), [size, truncate, variant])
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({
