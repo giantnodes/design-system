@@ -9,7 +9,7 @@ import { create } from '~/utilities/create-context'
 
 export type FeedbackType = 'success' | 'info' | 'warning' | 'error'
 
-type UseFormElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+type UseFormElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | HTMLLabelElement
 
 type UseFormGroupProps<T extends UseFormElement = UseFormElement> = LabelAria & {
   ref?: React.RefObject<T>
