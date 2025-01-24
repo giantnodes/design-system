@@ -11,7 +11,7 @@ export const SIZE = {
     sm: 'px-3 py-2',
     md: 'px-4 py-2',
     lg: 'px-4 py-2',
-    xl: 'px-2 py-3',
+    xl: 'px-6 py-3',
   },
   height: {
     xs: 'h-[26px]',
@@ -20,16 +20,23 @@ export const SIZE = {
     lg: 'h-[42px]',
     xl: 'h-[50px]',
   },
+  space: {
+    xs: 'space-x-2.5',
+    sm: 'space-x-3',
+    md: 'space-x-4',
+    lg: 'space-x-4',
+    xl: 'space-x-6',
+  },
 }
 
 type Size = keyof typeof SIZE_VARIANTS
 
 export const SIZE_VARIANTS = {
-  xs: `${SIZE.text.xs} ${SIZE.padding.xs} ${SIZE.height.xs}`,
-  sm: `${SIZE.text.sm} ${SIZE.padding.sm} ${SIZE.height.sm}`,
-  md: `${SIZE.text.md} ${SIZE.padding.md} ${SIZE.height.md}`,
-  lg: `${SIZE.text.lg} ${SIZE.padding.lg} ${SIZE.height.lg}`,
-  xl: `${SIZE.text.xl} ${SIZE.padding.xl} ${SIZE.height.xl}`,
+  xs: `${SIZE.text.xs} ${SIZE.height.xs} ${SIZE.padding.xs} ${SIZE.space.xs}`,
+  sm: `${SIZE.text.sm} ${SIZE.height.sm} ${SIZE.padding.sm} ${SIZE.space.sm}`,
+  md: `${SIZE.text.md} ${SIZE.height.md} ${SIZE.padding.md} ${SIZE.space.md}`,
+  lg: `${SIZE.text.lg} ${SIZE.height.lg} ${SIZE.padding.lg} ${SIZE.space.lg}`,
+  xl: `${SIZE.text.xl} ${SIZE.height.xl} ${SIZE.padding.xl} ${SIZE.space.xl}`,
 }
 
 export const using = (slot: string, sizes: Record<Size, string>) => ({

@@ -7,7 +7,7 @@ export const button = tv({
   slots: {
     button: [
       'relative',
-      'inline-flex justify-center items-center space-x-2',
+      'inline-flex justify-center items-center',
       'text-center font-regular',
       'cursor-pointer',
       'rounded-md',
