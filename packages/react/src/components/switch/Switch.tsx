@@ -29,7 +29,7 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
 
     const Element = as ?? Switch
 
-    const group = useFormGroup()
+    const group = useFormGroup<HTMLLabelElement>()
 
     const slots = React.useMemo(() => toggle({ color, size }), [color, size])
 
@@ -44,10 +44,8 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
     )
 
     return (
-      <Element {...component} ref={(group?.ref as React.RefObject<HTMLLabelElement> | undefined) ?? ref}>
-        <div className={slots.container()}>
-          <span className={slots.circle()} />
-        </div>
+      <Element {...component} ref={group?.ref ?? ref}>
+        <span className={slots.circle()} />
       </Element>
     )
   }
