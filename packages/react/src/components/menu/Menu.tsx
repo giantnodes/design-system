@@ -24,11 +24,11 @@ type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYP
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, _: Polymorphic.Ref<TElement>) => {
-    const { as, children, className, size, color, ...rest } = props
+    const { as, children, className, size, ...rest } = props
 
     const Element = as ?? MenuTrigger
 
-    const context = useMenuValue({ size, color })
+    const context = useMenuValue({ size })
 
     const component = React.useMemo<Omit<MenuTriggerProps, 'children'>>(
       () => ({
