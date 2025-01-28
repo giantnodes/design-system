@@ -24,7 +24,7 @@ export const button = tv({
       },
     },
     color: {
-      transparent: {
+      none: {
         button: ['text-white', 'focus:outline-shark'],
       },
       neutral: {

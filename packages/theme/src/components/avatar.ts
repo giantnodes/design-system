@@ -19,6 +19,10 @@ export const avatar = tv({
   },
   variants: {
     color: {
+      none: {
+        avatar: ['border-transparent'],
+        notification: ['bg-transparent'],
+      },
       neutral: {
         avatar: ['border-partition'],
         notification: ['bg-partition'],
