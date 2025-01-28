@@ -41,25 +41,26 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
       <Element {...component} ref={ref}>
         {({ isSelected }: { isSelected: boolean }) => (
           <>
-            {children}
+            <span className="truncate">
+              <>{children}</>
+            </span>
 
-            {isSelected && (
-              <svg
-                aria-hidden="true"
-                className={slots.check()}
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <path d="M0 0h24v24H0z" fill="none" stroke="none" />
-                <path d="M5 12l5 5l10 -10" />
-              </svg>
-            )}
+            <span className={slots.check()}>
+              {isSelected && (
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" stroke="none" />
+                  <path d="M5 12l5 5l10 -10" />
+                </svg>
+              )}
+            </span>
           </>
         )}
       </Element>

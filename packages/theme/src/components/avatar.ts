@@ -49,10 +49,10 @@ export const avatar = tv({
         avatar: ['rounded-none'],
       },
       xs: {
-        avatar: ['rounded-xs'],
+        avatar: ['rounded-sm'],
       },
       sm: {
-        avatar: ['rounded-sm'],
+        avatar: ['rounded'],
       },
       md: {
         avatar: ['rounded-md'],
@@ -99,7 +99,7 @@ export const avatar = tv({
   defaultVariants: {
     color: 'neutral',
     radius: 'full',
-    size: 'md',
+    size: 'sm',
   },
 })
 

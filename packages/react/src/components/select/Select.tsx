@@ -162,7 +162,7 @@ const Component: ComponentType = React.forwardRef(
       <SelectContext.Provider value={context}>
         <Element {...select} ref={group?.ref ?? ref}>
           <Button {...button}>
-            <SelectValue />
+            <SelectValue className={context.slots.value()} />
 
             {IconComponent}
           </Button>

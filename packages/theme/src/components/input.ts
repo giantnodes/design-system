@@ -1,23 +1,24 @@
 import type { VariantProps } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
+import { SIZE_VARIANTS, SIZE_VARIANTS_DEFAULT, using } from '~/constants/sizes'
+
 export const input = tv({
   slots: {
     group: [
-      'flex gap-x-2',
-      'px-3',
+      'inline-flex items-center',
       'bg-foreground',
-      'overflow-hidden',
-      'has-[:disabled]:opacity-50',
+      'w-full',
+      'has-[:disabled]:opacity-50 has-[:disabled]:cursor-not-allowed has-[:disabled]:pointer-events-none',
       'focus-within:outline-dashed focus-within:outline-offset-2 focus-within:outline-1',
     ],
-    input: ['flex-1', 'bg-foreground', 'w-full', 'font-normal', 'placeholder-subtitle', 'outline-none'],
-    addon: ['flex items-center', 'bg-foreground'],
+    input: ['flex-grow', 'bg-transparent', 'font-normal', 'placeholder-subtitle', 'outline-none'],
+    addon: ['inline-flex items-center'],
   },
   variants: {
     color: {
       neutral: {
-        group: ['text-content', 'border-partition', 'focus-within:outline-partition'],
+        group: ['text-content', 'border-shark', 'focus-within:outline-shark'],
       },
       brand: {
         group: ['text-brand', 'border-brand', 'focus-within:outline-brand'],
@@ -35,24 +36,6 @@ export const input = tv({
         group: ['text-danger', 'border-danger', 'focus-within:outline-danger'],
       },
     },
-    size: {
-      xs: {
-        group: ['text-xs'],
-        input: ['h-6', 'placeholder:text-xs'],
-      },
-      sm: {
-        group: ['text-sm'],
-        input: ['h-8', 'placeholder:text-sm'],
-      },
-      md: {
-        group: ['text-base'],
-        input: ['h-10', 'placeholder:text-base'],
-      },
-      lg: {
-        group: ['text-lg'],
-        input: ['h-12', 'placeholder:text-lg'],
-      },
-    },
     shape: {
       none: {
         group: ['rounded-md'],
@@ -60,6 +43,9 @@ export const input = tv({
       pill: {
         group: ['rounded-full'],
       },
+    },
+    size: {
+      ...using('group', SIZE_VARIANTS),
     },
     variant: {
       none: {},
@@ -69,7 +55,7 @@ export const input = tv({
     },
   },
   defaultVariants: {
-    size: 'md',
+    size: SIZE_VARIANTS_DEFAULT,
     color: 'neutral',
     shape: 'none',
     variant: 'outlined',

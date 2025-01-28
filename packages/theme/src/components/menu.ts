@@ -1,65 +1,50 @@
 import type { VariantProps } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
+import { SIZE, SIZE_VARIANTS_DEFAULT } from '~/constants/sizes'
+
 export const menu = tv({
   slots: {
-    menu: [],
-    popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md', 'p-1'],
-    list: ['flex flex-col gap-1', 'outline-none'],
-    item: [
-      'flex flex-row items-center gap-2',
-      'px-2 py-1',
-      'rounded-md',
-      'cursor-pointer',
-      'outline-none',
-      'text-content',
-      'overflow-hidden',
-      'disabled:opacity-50 disabled:cursor-default',
+    menu: [
+      'relative',
+      'w-full',
+      'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
+      'focus:outline-dashed focus:outline-offset-2 focus:outline-1',
     ],
-    trigger: ['flex', 'focus:outline-none'],
+    popover: ['bg-foreground', 'border border-shark', 'rounded-md', 'w-[--trigger-width]'],
+    list: ['flex flex-col gap-1', 'p-1.5', 'outline-none'],
+    item: [
+      'flex items-center gap-x-2',
+      'px-2 py-1.5',
+      'rounded',
+      'outline-none',
+      'truncate',
+      'cursor-pointer',
+      'hover:bg-middleground',
+      'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
+    ],
   },
   variants: {
     size: {
       xs: {
-        item: ['text-xs'],
+        item: [SIZE.text.xs],
       },
       sm: {
-        item: ['text-sm'],
+        item: [SIZE.text.sm],
       },
       md: {
-        item: ['text-base'],
+        item: [SIZE.text.md],
       },
       lg: {
-        item: ['text-lg'],
+        item: [SIZE.text.lg],
       },
       xl: {
-        item: ['text-xl'],
-      },
-    },
-    color: {
-      neutral: {
-        item: ['hover:bg-middleground'],
-      },
-      brand: {
-        item: ['hover:bg-brand/20'],
-      },
-      success: {
-        item: ['hover:bg-success/20'],
-      },
-      info: {
-        item: ['hover:bg-info/20'],
-      },
-      warning: {
-        item: ['hover:bg-warning/20'],
-      },
-      danger: {
-        item: ['hover:bg-danger/20'],
+        item: [SIZE.text.xl],
       },
     },
   },
   defaultVariants: {
-    size: 'md',
-    color: 'neutral',
+    size: SIZE_VARIANTS_DEFAULT,
   },
 })
 
