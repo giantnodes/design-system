@@ -5,7 +5,7 @@ export const toggle = tv({
   slots: {
     label: [
       'group',
-      'inline-flex items-center flex-shrink-0',
+      'inline-flex items-center shrink-0',
       'bg-foreground',
       'rounded-full',
       'border-2 border-transparent',

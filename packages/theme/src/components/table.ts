@@ -6,9 +6,9 @@ export const table = tv({
     table: ['bg-middleground', 'table-auto', 'min-w-full', 'overflow-hidden'],
     thead: [],
     tbody: ['divide-y divide-partition'],
-    tr: ['outline-none'],
-    th: ['bg-background', 'text-title text-left font-medium', 'outline-none', 'whitespace-nowrap'],
-    td: ['text-content', 'whitespace-normal', 'outline-none'],
+    tr: ['outline-hidden'],
+    th: ['bg-background', 'text-title text-left font-medium', 'outline-hidden', 'whitespace-nowrap'],
+    td: ['text-content', 'whitespace-normal', 'outline-hidden'],
   },
   variants: {
     size: {
@@ -27,7 +27,7 @@ export const table = tv({
     },
     sticky: {
       true: {
-        th: ['sticky top-0', 'bg-opacity-75', 'backdrop-blur backdrop-filter', 'border-b border-partition', 'z-10'],
+        th: ['sticky top-0', 'bg-opacity/75', 'backdrop-blur-sm', 'border-b border-partition', 'z-10'],
       },
     },
     striped: {

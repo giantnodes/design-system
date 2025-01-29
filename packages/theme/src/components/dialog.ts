@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants'
 
 export const dialog = tv({
   slots: {
-    root: ['relative', 'outline-none'],
+    root: ['relative', 'outline-hidden'],
   },
   variants: {},
   defaultVariants: {},

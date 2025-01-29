@@ -12,7 +12,7 @@ export const button = tv({
       'cursor-pointer',
       'rounded-md',
       'border',
-      'outline-none outline-0',
+      'outline-hidden outline-0',
       'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
       'focus:outline-dashed focus:outline-offset-2 focus:outline-1',
     ],

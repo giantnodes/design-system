@@ -12,7 +12,7 @@ export const card = tv({
       'overflow-auto',
     ],
     header: ['text-title'],
-    body: ['flex-grow', 'text-content', 'overflow-auto'],
+    body: ['grow', 'text-content', 'overflow-auto'],
     footer: ['text-content'],
   },
   variants: {

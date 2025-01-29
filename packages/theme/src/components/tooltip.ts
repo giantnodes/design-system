@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 export const tooltip = tv({
   slots: {
     root: [],
-    trigger: ['flex', 'focus:outline-none'],
+    trigger: ['flex', 'focus:outline-hidden'],
     popover: ['group', 'bg-foreground', 'border border-partition', 'rounded-md', 'px-3 py-1'],
     arrow: [
       'fill-foreground',

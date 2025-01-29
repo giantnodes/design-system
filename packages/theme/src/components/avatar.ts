@@ -20,7 +20,7 @@ export const avatar = tv({
   variants: {
     color: {
       none: {
-        avatar: ['border-transparent'],
+        avatar: ['bg-transparent', 'border-transparent'],
         notification: ['bg-transparent'],
       },
       neutral: {
@@ -53,10 +53,10 @@ export const avatar = tv({
         avatar: ['rounded-none'],
       },
       xs: {
-        avatar: ['rounded-sm'],
+        avatar: ['rounded-xs'],
       },
       sm: {
-        avatar: ['rounded'],
+        avatar: ['rounded-sm'],
       },
       md: {
         avatar: ['rounded-md'],
