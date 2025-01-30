@@ -4,12 +4,12 @@ import { tv } from 'tailwind-variants'
 export const modal = tv({
   slots: {
     root: ['flex', 'fixed inset-0 z-50', 'bg-black/50', 'min-h-full', 'overflow-y-auto'],
-    content: ['relative', 'outline-none'],
+    content: ['relative', 'outline-hidden'],
   },
   variants: {
     blur: {
       true: {
-        root: ['backdrop-blur-sm'],
+        root: ['backdrop-blur-xs'],
       },
     },
     placement: {

@@ -1,4 +1,5 @@
 import path from 'path'
+import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -7,4 +8,5 @@ export default defineConfig({
       '~': path.resolve(__dirname, './src'),
     },
   },
+  plugins: [tailwindcss()],
 })

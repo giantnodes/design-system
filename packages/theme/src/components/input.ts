@@ -12,7 +12,7 @@ export const input = tv({
       'has-[:disabled]:opacity-50 has-[:disabled]:cursor-not-allowed has-[:disabled]:pointer-events-none',
       'focus-within:outline-dashed focus-within:outline-offset-2 focus-within:outline-1',
     ],
-    input: ['flex-grow', 'bg-transparent', 'font-normal', 'placeholder-subtitle', 'outline-none'],
+    input: ['grow', 'bg-transparent', 'font-normal', 'placeholder-subtitle', 'outline-hidden'],
     addon: ['inline-flex items-center'],
   },
   variants: {

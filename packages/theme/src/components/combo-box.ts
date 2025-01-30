@@ -4,14 +4,14 @@ import { tv } from 'tailwind-variants'
 export const combobox = tv({
   slots: {
     combobox: ['group flex flex-col gap-1'],
-    popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md', 'w-[--trigger-width]'],
-    list: ['flex flex-col gap-1', 'p-1', 'outline-none'],
+    popover: ['bg-foreground', 'border border-solid border-partition', 'rounded-md', 'w-(--trigger-width)'],
+    list: ['flex flex-col gap-1', 'p-1', 'outline-hidden'],
     item: [
       'flex tems-center',
       'px-2 py-1',
       'rounded-md',
       'cursor-pointer',
-      'outline-none',
+      'outline-hidden',
       'text-content',
       'overflow-hidden',
       'disabled:opacity-50 disabled:cursor-default',

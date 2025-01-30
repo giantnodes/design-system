@@ -1,33 +1,110 @@
+import type { Config } from 'tailwindcss'
+import Color from 'colorjs.io'
 import plugin from 'tailwindcss/plugin'
-import { resolveTwcConfig } from 'tw-colors'
 
 import { semantic } from '~/colors/semantic'
 
-export const giantnodes = () => {
-  const theme = {
-    ...semantic,
+type DeepRecord = {
+  [key: string]: string | DeepRecord
+}
+
+class TailwindPluginBuilder {
+  private readonly themes: Record<string, Record<string, string>>
+
+  constructor(private readonly config: NonNullable<Config['theme']>) {
+    this.themes = this.build()
   }
 
-  // https://github.com/L-Blondy/tw-colors/blob/c8721d32c17dbd5a4da2e9275b5f36530d61bf40/lib/index.ts#L150
-  const config = resolveTwcConfig(theme)
+  private normalize(key: string): string {
+    return key.replace('-DEFAULT', '').trim()
+  }
 
-  return plugin(
-    ({ addUtilities, addVariant }) => {
-      // add the css variables to "@layer utilities" because:
-      // - The Base layer does not provide intellisense
-      // - The Components layer might get overriden by tailwind default colors in case of name clash
-      addUtilities(config.utilities)
+  private build() {
+    return Object.keys(this.config).reduce<Record<string, Record<string, string>>>((acc, name) => {
+      acc[name] = this.flatten(this.config[name] as DeepRecord)
+      return acc
+    }, {})
+  }
 
-      // add the theme as variant e.g. "theme-[name]:text-2xl"
-      config.variants.forEach(({ name, definition }) => addVariant(name, definition))
-    },
-    {
-      theme: {
-        extend: {
-          // @ts-expect-error tailwind types are broken
-          colors: config.colors,
-        },
+  private flatten(input: DeepRecord, prefix = '', delimiter = '-'): Record<string, string> {
+    return Object.keys(input).reduce<Record<string, string>>((acc, key) => {
+      const value = input[key]
+      const segment = prefix ? this.normalize(`${prefix}${delimiter}${key}`) : key
+
+      if (value == undefined) return acc
+
+      if (typeof value === 'string') {
+        acc[segment] = value
+        return acc
+      }
+
+      const flattened = this.flatten(value, segment, delimiter)
+      Object.assign(acc, flattened)
+
+      if (typeof value.DEFAULT === 'string' && prefix) {
+        acc[this.normalize(prefix)] = value.DEFAULT
+      }
+
+      return acc
+    }, {})
+  }
+
+  variants() {
+    return Object.keys(this.themes).reduce<Record<string, string[]>>((acc, name) => {
+      acc[name] = [
+        `.${name}&`,
+        `:is(.${name} > &:not([data-theme]))`,
+        `:is(.${name} &:not(.${name} [data-theme]:not(.${name}) * ))`,
+        `:is(.${name}:not(:has([data-theme])) &:not([data-theme]))`,
+      ]
+
+      return acc
+    }, {})
+  }
+
+  utilities() {
+    return Object.keys(this.themes).reduce<Record<string, Record<string, string>>>((acc, name) => {
+      const colors = this.themes[name]
+      if (!colors) return acc
+
+      acc[`.${name}`] = Object.entries(colors).reduce<Record<string, string>>((vars, [key, color]) => {
+        const oklch = new Color(color).to('oklch').toString({ format: 'css', precision: 3, inGamut: true })
+        vars[`--color-${key}`] = oklch
+        return vars
+      }, {})
+
+      return acc
+    }, {})
+  }
+
+  colors() {
+    const colors = new Set<string>()
+    Object.values(this.themes).forEach((theme) => Object.keys(theme).forEach((key) => colors.add(key)))
+
+    return Array.from(colors).reduce<Record<string, string>>((acc, key) => {
+      acc[key] = `var(--color-${key})`
+      return acc
+    }, {})
+  }
+
+  plugin(): ReturnType<typeof plugin> {
+    return plugin(
+      ({ addUtilities, addVariant }) => {
+        addUtilities(this.utilities())
+        Object.entries(this.variants()).forEach(([key, value]) => addVariant(key, value))
       },
-    }
-  )
+      {
+        theme: {
+          extend: {
+            colors: this.colors(),
+          },
+        },
+      }
+    )
+  }
+}
+
+export const giantnodes = (): ReturnType<typeof plugin> => {
+  const builder = new TailwindPluginBuilder(semantic)
+  return builder.plugin()
 }
