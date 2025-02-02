@@ -3,7 +3,12 @@ import { tv } from 'tailwind-variants'
 
 export const link = tv({
   slots: {
-    link: ['text-sky-600', 'transition-all duration-200', 'rounded', 'disabled:cursor-default disabled:opacity-50'],
+    link: [
+      'text-sky-600',
+      'rounded',
+      'transition-all duration-200',
+      'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
+    ],
   },
   variants: {
     underline: {

@@ -9,6 +9,7 @@ export const input = tv({
       'inline-flex items-center',
       'bg-foreground',
       'w-full',
+      'has-[textarea]:h-auto',
       'has-[:disabled]:opacity-50 has-[:disabled]:cursor-not-allowed has-[:disabled]:pointer-events-none',
       'focus-within:outline-dashed focus-within:outline-offset-2 focus-within:outline-1',
     ],

@@ -19,28 +19,28 @@ export const checkbox = tv({
   variants: {
     color: {
       neutral: {
-        label: ['selected:border-partition'],
-        icon: ['group-selected:stroke-partition'],
+        label: ['data-[selected=true]:border-partition'],
+        icon: ['group-data-[selected=true]:stroke-partition'],
       },
       brand: {
-        label: ['selected:border-brand'],
-        icon: ['group-selected:stroke-brand'],
+        label: ['data-[selected=true]:border-brand'],
+        icon: ['group-data-[selected=true]:stroke-brand'],
       },
       success: {
-        label: ['selected:border-success'],
-        icon: ['group-selected:stroke-success'],
+        label: ['data-[selected=true]:border-success'],
+        icon: ['group-data-[selected=true]:stroke-success'],
       },
       info: {
-        label: ['selected:border-info'],
-        icon: ['group-selected:stroke-info'],
+        label: ['data-[selected=true]:border-info'],
+        icon: ['group-data-[selected=true]:stroke-info'],
       },
       warning: {
-        label: ['selected:border-warning'],
-        icon: ['group-selected:stroke-warning'],
+        label: ['data-[selected=true]:border-warning'],
+        icon: ['group-data-[selected=true]:stroke-warning'],
       },
       danger: {
-        label: ['selected:border-danger'],
-        icon: ['group-selected:stroke-danger'],
+        label: ['data-[selected=true]:border-danger'],
+        icon: ['group-data-[selected=true]:stroke-danger'],
       },
     },
     size: {

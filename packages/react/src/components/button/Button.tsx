@@ -28,7 +28,7 @@ type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYP
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
-    const { as, children, className, block, color, size, isLoading, isDisabled, ...rest } = props
+    const { as, children, className, block, color, size, disabled, isLoading, isDisabled, ...rest } = props
 
     const Element = as ?? Button
     const slots = React.useMemo(() => button({ block, color, size }), [block, color, size])
@@ -37,10 +37,10 @@ const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOw
       () => ({
         'data-loading': isLoading,
         className: slots.button({ className: className?.toString() }),
-        isDisabled: isLoading ?? isDisabled,
+        isDisabled: disabled ?? isDisabled ?? isLoading,
         ...rest,
       }),
-      [className, isDisabled, isLoading, rest, slots]
+      [className, disabled, isDisabled, isLoading, rest, slots]
     )
 
     return (

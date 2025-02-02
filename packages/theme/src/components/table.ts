@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants'
 
 export const table = tv({
   slots: {
-    table: ['bg-middleground', 'table-auto', 'min-w-full', 'overflow-hidden'],
+    table: ['bg-middleground', 'table-auto', 'border-collapse', 'min-w-full', 'overflow-hidden'],
     thead: [],
     tbody: ['divide-y divide-partition'],
     tr: ['outline-hidden'],
