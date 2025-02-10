@@ -8,9 +8,8 @@ export const checkbox = tv({
       'relative',
       'flex items-center',
       'bg-shark',
-      'border-transparent',
       'rounded',
-      'border-2',
+      'border-2 border-transparent',
       'cursor-pointer',
       'transition-all',
     ],
@@ -19,27 +18,27 @@ export const checkbox = tv({
   variants: {
     color: {
       neutral: {
-        label: ['data-[selected=true]:border-partition'],
-        icon: ['group-data-[selected=true]:stroke-partition'],
+        label: ['selected:border-partition'],
+        icon: ['group-data-[selected=true]:text-partition'],
       },
       brand: {
-        label: ['data-[selected=true]:border-brand'],
-        icon: ['group-data-[selected=true]:stroke-brand'],
+        label: ['selected:border-brand'],
+        icon: ['group-data-[selected=true]:text-brand'],
       },
       success: {
-        label: ['data-[selected=true]:border-success'],
+        label: ['selected:border-success'],
         icon: ['group-data-[selected=true]:stroke-success'],
       },
       info: {
-        label: ['data-[selected=true]:border-info'],
+        label: ['selected:border-info'],
         icon: ['group-data-[selected=true]:stroke-info'],
       },
       warning: {
-        label: ['data-[selected=true]:border-warning'],
+        label: ['selected:border-warning'],
         icon: ['group-data-[selected=true]:stroke-warning'],
       },
       danger: {
-        label: ['data-[selected=true]:border-danger'],
+        label: ['selected:border-danger'],
         icon: ['group-data-[selected=true]:stroke-danger'],
       },
     },

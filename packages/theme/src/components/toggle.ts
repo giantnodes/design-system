@@ -24,22 +24,22 @@ export const toggle = tv({
   variants: {
     color: {
       neutral: {
-        label: ['data-[selected=true]:bg-shark', 'data-[selected=true]:focus-within:outline-shark'],
+        label: ['selected:bg-shark', 'selected:focus-within:outline-shark'],
       },
       brand: {
-        label: ['data-[selected=true]:bg-brand', 'data-[selected=true]:focus-within:outline-brand'],
+        label: ['selected:bg-brand', 'selected:focus-within:outline-brand'],
       },
       success: {
-        label: ['data-[selected=true]:bg-success', 'data-[selected=true]:focus-within:outline-success'],
+        label: ['selected:bg-success', 'selected:focus-within:outline-success'],
       },
       info: {
-        label: ['data-[selected=true]:bg-info', 'data-[selected=true]:focus-within:outline-info'],
+        label: ['selected:bg-info', 'selected:focus-within:outline-info'],
       },
       warning: {
-        label: ['data-[selected=true]:bg-warning', 'data-[selected=true]:focus-within:outline-warning'],
+        label: ['selected:bg-warning', 'selected:focus-within:outline-warning'],
       },
       danger: {
-        label: ['data-[selected=true]:bg-danger', 'data-[selected=true]:focus-within:outline-danger'],
+        label: ['selected:bg-danger', 'selected:focus-within:outline-danger'],
       },
     },
     size: {
