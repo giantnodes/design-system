@@ -99,6 +99,8 @@ class TailwindPluginBuilder {
             colors: this.colors(),
           },
         },
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        plugins: [require('tailwindcss-react-aria-components')],
       }
     )
   }
