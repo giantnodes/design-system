@@ -6,7 +6,7 @@ export const avatar = tv({
     group: ['isolate', 'flex', '-space-x-2'],
     avatar: [
       'relative',
-      'inline-flex items-center justify-center',
+      'inline-flex items-center justify-center shrink-0',
       'bg-middleground',
       'text-content',
       'leading-none',
