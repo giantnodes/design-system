@@ -18,7 +18,7 @@
     "eslint-plugin-react-compiler": "19.0.0-beta-714736e-20250131",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-turbo": "^2.4.0",
-    "typescript-eslint": "^8.22.0"
+    "typescript-eslint": "^8.28.0"
   },
   "devDependencies": {
     "@giantnodes/prettier-config": "workspace:*",
