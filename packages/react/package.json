@@ -54,7 +54,7 @@
     "@storybook/blocks": "^8.5.3",
     "@storybook/react": "^8.5.3",
     "@storybook/react-vite": "^8.5.3",
-    "@tailwindcss/vite": "^4.0.3",
+    "@tailwindcss/vite": "^4.0.17",
     "@types/react": "catalog:react",
     "@types/react-dom": "catalog:react",
     "babel-plugin-react-compiler": "19.0.0-beta-714736e-20250131",
