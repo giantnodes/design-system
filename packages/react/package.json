@@ -1,6 +1,6 @@
 {
   "name": "@giantnodes/react",
-  "version": "1.0.0-canary.32",
+  "version": "1.0.0-canary.33",
   "description": "A collection of Giantnodes React components",
   "license": "AGPL-3.0",
   "main": "dist/index.js",
