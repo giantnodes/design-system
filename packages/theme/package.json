@@ -1,7 +1,7 @@
 {
   "name": "@giantnodes/theme",
   "version": "1.0.0-canary.32",
-  "description": "A collection default Giantnodes Tailwind CSS components",
+  "description": "A collection of default Giantnodes Tailwind CSS components",
   "license": "AGPL-3.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "colorjs.io": "^0.5.2",
-    "tailwind-variants": "^0.3.1"
+    "tailwind-variants": "^1.0.0"
   },
   "devDependencies": {
     "@giantnodes/eslint-config": "workspace:*",
