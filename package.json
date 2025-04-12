@@ -3,7 +3,7 @@
   "version": "1.0.0-canary.32",
   "description": "",
   "license": "AGPL-3.0",
-  "packageManager": "pnpm@10.7.1",
+  "packageManager": "pnpm@10.8.0",
   "author": {
     "name": "Jordan Phillips",
     "email": "jordan@giantnodes.com"
