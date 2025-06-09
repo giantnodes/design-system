@@ -22,11 +22,11 @@ type ComponentType = (<TElement extends React.ElementType = typeof __ELEMENT_TYP
 
 const Component: ComponentType = React.forwardRef<React.ReactElement<ComponentOwnProps>, ComponentOwnProps>(
   <TElement extends React.ElementType>(props: ComponentProps<TElement>, ref: Polymorphic.Ref<TElement>) => {
-    const { as, className, size, ...rest } = props
+    const { as, className, color, size, ...rest } = props
 
     const Element = as ?? __ELEMENT_TYPE__
 
-    const slots = React.useMemo(() => spinner({ size }), [size])
+    const slots = React.useMemo(() => spinner({ color, size }), [color, size])
 
     const component = React.useMemo<React.ComponentPropsWithoutRef<typeof __ELEMENT_TYPE__>>(
       () => ({

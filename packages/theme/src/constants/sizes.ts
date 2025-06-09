@@ -1,18 +1,4 @@
 export const SIZE = {
-  text: {
-    xs: 'text-xs',
-    sm: 'text-sm',
-    md: 'text-sm',
-    lg: 'text-base',
-    xl: 'text-base',
-  },
-  padding: {
-    xs: 'px-2.5 py-1',
-    sm: 'px-3 py-2',
-    md: 'px-4 py-2',
-    lg: 'px-4 py-2',
-    xl: 'px-6 py-3',
-  },
   height: {
     xs: 'h-[26px]',
     sm: 'h-[34px]',
@@ -20,12 +6,33 @@ export const SIZE = {
     lg: 'h-[42px]',
     xl: 'h-[50px]',
   },
+  padding: {
+    xs: 'px-2.5 py-1.5',
+    sm: 'px-3 py-2',
+    md: 'px-4 py-2',
+    lg: 'px-4 py-2',
+    xl: 'px-6 py-3',
+  },
+  size: {
+    xs: 'size-3',
+    sm: 'size-3.5',
+    md: 'size-4',
+    lg: 'size-4.5',
+    xl: 'size-5',
+  },
   space: {
     xs: 'space-x-2.5',
     sm: 'space-x-3',
     md: 'space-x-4',
     lg: 'space-x-4',
     xl: 'space-x-6',
+  },
+  text: {
+    xs: 'text-xs',
+    sm: 'text-sm',
+    md: 'text-sm',
+    lg: 'text-base',
+    xl: 'text-base',
   },
 }
 
