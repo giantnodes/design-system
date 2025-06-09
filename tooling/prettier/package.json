@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "exports": {
-    ".": "./index.js"
+    ".": "./src/index.js"
   },
   "scripts": {
     "format": "prettier --check . --ignore-path ../../.gitignore",
