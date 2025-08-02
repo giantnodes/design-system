@@ -6,30 +6,15 @@ import React from 'react'
 import { Button, ListBox, Popover, Select } from 'react-aria-components'
 
 import type * as Polymorphic from '~/utilities/polymorphic'
-import type { Override } from '~/utilities/types'
 import { useFormGroup } from '~/components/form/use-form-group.hook'
 import SelectValue from '~/components/select/SelectValue'
 import { SelectContext, useSelectValue } from '~/components/select/use-select.hook'
 
 const __ELEMENT_TYPE__ = 'select'
 
-type OverriddenSelectProps<TElement extends object> = Override<
-  SelectProps<TElement>,
-  {
-    children?: React.ReactNode | ((item: TElement) => React.ReactNode)
-  }
->
-
-type OverriddenListBoxProps<TElement extends object> = Override<
-  ListBoxProps<TElement>,
-  {
-    items?: Iterable<TElement> | null
-  }
->
-
 type ComponentOwnProps<TData extends object> = SelectVariantProps &
-  OverriddenSelectProps<TData> &
-  OverriddenListBoxProps<TData> & {
+  Omit<SelectProps<TData>, 'children'> &
+  Pick<ListBoxProps<TData>, 'items' | 'children'> & {
     placement?: 'top' | 'bottom'
     icon?: React.ReactNode
   }
